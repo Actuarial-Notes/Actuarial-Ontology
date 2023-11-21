@@ -10,7 +10,7 @@ Actuarial science has a lot of specific terminology. While actuarial standards p
 
 This lack of consistent meaning introduces challenges when communicating actuarial information in different contexts like law, regulation, finance, and even with other actuaries.
 
-Effectively conveying meaning is a challenge both for humans and artificial agents. The "truthfullness" of artificial intelligence is a problem that ontologies can help solve by creating a common understanding of the structure of information. 
+Effectively conveying meaning is a challenge both for humans and artificial agents.
 
 With these challenges as context, this project has 3 targeted benefits:
 1. Improve communication of actuarial concepts between actuaries and other agents.
@@ -31,7 +31,7 @@ Additionally, actuaries are qualified by professional organizations that manage 
 - Casualty Actuarial Society (CAS): [Syllabus](https://www.casact.org/credential-requirements), [Capability Model](https://www.casact.org/professional-education/cas-capability-model), [Code of Conduct](https://www.casact.org/exams-admissions/resources/principles-and-policies-candidates)
 - Institute and Faculty of Actuaries (IFoA): [Syllabus](https://actuaries.org.uk/curriculum/), [Code of Conduct](https://actuaries.org.uk/media/p3vdcokt/actuaries-code-v3-1.pdf)
 
-An actuarial ontology would begin with consolidating the language in these actuarial standards and educational resources, then connect them together in a coherent model. With such a model, communication would be precise and consistent between actuaries, non-actuarial professionals, organizations, clients, and aritifical agents.
+An actuarial ontology would begin with deconstructing the language in these standards and educational resources, then connect them together in a coherent model. With such a model, communication would be precise and consistent between actuaries, non-actuarial professionals, organizations, clients, and aritifical agents.
 
 ### 2. Knowledge Base
 With an ontology in place, real-world entities can then be modelled to produce a knowledge base. Here are some examples of the kinds of entities that an actuarial ontology should be able to "talk about":
