@@ -5,8 +5,10 @@ Welcome! This is the home of an open source project to develop an ontology for t
 
 > **Actuarial science** is a discipline that quantifies risk and makes decisions about the redistribution of risk among groups.
 
+Currently, contributions are closed while the project is being set up. Once substantive work is ready to begin, we will welcome contributions from all interested actuaries and developers.
+
 ## Why create an ontology?
-Actuarial science has a lot of specific terminology. While actuarial standards provide definitions, the meaning of words can still differ between practice areas or products. Additionally, other professions may use the same "actuarial" word with a different meaning that's specific to their domain.
+Actuarial science has a lot of terminology. While actuarial standards provide definitions, the meaning of words can still differ between practice areas or products. Additionally, other professions may use the same "actuarial" word with a different meaning that's specific to their domain.
 
 This lack of consistent meaning introduces challenges when communicating actuarial information in different contexts like law, regulation, finance, and even with other actuaries.
 
@@ -24,7 +26,8 @@ The formal language used within the actuarial practice is primarily defined by r
 - Actuarial Standards Board's (ASB) [Actuarial Standards of Practice ](http://www.actuarialstandardsboard.org/standards-of-practice/) (ASOPs)
 - Actuarial Association of Europe's (AAE) [Europeean Standards of Actuarial Practice](https://actuary.eu/about-the-aae/european-standards-of-actuarial-practice/) (ESAPs)
 - International Actuarial Association's (IAA) [International Standards of Actuarial Practice](https://www.actuaries.org/iaa/IAA/Publications/ISAPs/IAA/Publications/05ISAPs.aspx?hkey=334b21a7-a3ac-4e0e-8294-3cbc755ab14a) (ISAPs)
-- Institute and Faculty of Actuaries's (IFoA) [Actuarial Profession Standards](https://actuaries.org.uk/standards/standards-and-guidance/professional-standards-directory/) (ASPs)
+- Institute and Faculty of Actuaries' (IFoA) [Actuarial Profession Standards](https://actuaries.org.uk/standards/standards-and-guidance/professional-standards-directory/) (ASPs)
+- Canadian Institute of Actuaries' (CIA) [Standards of Practice](https://www.cia-ica.ca/publications/standards-of-practice) (SOPs) 
 
 Additionally, actuaries are qualified by professional organizations that manage educational requirements and conduct: 
 - Society of Actuaries (SOA): [Syllabus](https://www.soa.org/education/exam-req/edu-fsa-req/), [Competency Framework](https://www.soa.org/professional-development/competency-framework/), [Code of Conduct](https://www.soa.org/about/governance/about-code-of-professional-conduct/)
