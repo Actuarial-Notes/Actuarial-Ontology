@@ -5,14 +5,19 @@ Welcome! This is the home of an open source project to develop an ontology for t
 
 > **Actuarial science** is a discipline that quantifies risk and makes decisions about the redistribution of risk among groups.
 
-Currently, contributions are closed while the project is being set up. Once substantive work is ready to begin, we will welcome contributions from all interested actuaries and developers.
+⬛ Contributions are closed while the project is being set up. Once work is ready to begin, we will welcome contributions from all interested actuaries, developers, and ontologists.
+
+👉 Please check out our Project Guide if you're interested in contributing! Community guidelines that describe the rules of contribution will be shared when the project is opened.
 
 ## Why create an ontology?
-Actuarial science has a lot of terminology. While actuarial standards provide definitions, the meaning of words can still differ between practice areas or products. Additionally, other professions may use the same "actuarial" word with a different meaning that's specific to their domain.
+> "In a sample of 100 companies, it was found that 63 companies who reported operating profit in the financial statements used **at least nine different definitions.**"
+> - [Consolidating economic exchange ontologies for financial reporting standard setting](https://www.sciencedirect.com/science/article/pii/S0169023X23000083#fn2) - 2023 - Data & Knowledge Engineering
 
-This lack of consistent meaning introduces challenges when communicating actuarial information in different contexts like law, regulation, finance, and even with other actuaries.
+Actuarial science has a lot of terminology used in day-to-day practice. While actuarial standards provide definitions, the meaning of words can still differ between practice areas or products.
 
-Effectively conveying meaning is a challenge both for humans and artificial agents.
+Additionally, other professions may use the same "actuarial" word with a different meaning in their domain.
+
+This lack of consistent meaning introduces challenges when communicating actuarial information in different contexts like law, regulation, finance, and even with other actuaries. Effectively conveying meaning is a challenge both for humans and artificial agents.
 
 With these challenges as context, this project has 3 targeted benefits:
 1. Improve communication of actuarial concepts between actuaries and other agents.
@@ -34,19 +39,15 @@ Additionally, actuaries are qualified by professional organizations that manage 
 - Casualty Actuarial Society (CAS): [Syllabus](https://www.casact.org/credential-requirements), [Capability Model](https://www.casact.org/professional-education/cas-capability-model), [Code of Conduct](https://www.casact.org/exams-admissions/resources/principles-and-policies-candidates)
 - Institute and Faculty of Actuaries (IFoA): [Syllabus](https://actuaries.org.uk/curriculum/), [Code of Conduct](https://actuaries.org.uk/media/p3vdcokt/actuaries-code-v3-1.pdf)
 
-An actuarial ontology would begin with deconstructing the language in these standards and educational resources, then connect them together in a coherent model. With such a model, communication would be precise and consistent between actuaries, non-actuarial professionals, organizations, clients, and aritifical agents.
+Developping an actuarial ontology would begin with deconstructing the language in these standards and educational resources, then connecting them together in a coherent model. With such a model, communication would be precise and consistent between actuaries, non-actuarial professionals, organizations, governments, regulators, clients, and aritifical agents.
 
 ### 2. Knowledge Base
-With an ontology in place, real-world entities can then be modelled to produce a knowledge base. Here are some examples of the kinds of entities that an actuarial ontology should be able to "talk about":
-- Insurance company
-- Pension Plan
-- Regulator
-- Insurance Product
-- Value
-- Model
-- Catastrophe
-- Actuarial Opinion
-- ...
+With an ontology in place, real-world entities can then be modelled to produce a knowledge base.
+
+A knowledge base is used to answer queries about the real world. "Competency Questions" are used to test ontologies and illustrate the kinds of questions that a knowledge base built on that ontology should be able to answer.
+- "Which companies acquired Royal Sun Alliance (RSA)?"
+- "Is this rating model compliant with regulations in California?"
+- "What is the impact on our loss ratio from the 2021 Calgary, Alberta hail storm?"
 
 ### 3. Artificial Intelligence
 With a knowledge base and ontology, software agents can then interact with information. For example, see Microsoft's [Azure Digital Twins documentation](https://learn.microsoft.com/en-us/azure/digital-twins/concepts-ontologies) to see how an ontology can be used to build digital twin solutions.
