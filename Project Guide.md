@@ -1,8 +1,20 @@
 # 📕 Project Guide
-This project guide defines the design principles and steps for developing the Actuarial Ontology.
+This **project guide** defines _how_ the Actuarial Ontology is developed.
+1. Examples
+2. Design Principles
+3. Steps
+4. Software
+5. Best Practices
+6. Sources
 
 
-## Design Principles
+## 1. Examples
+Examples and templates are available from the [Ontology Design Patterns](http://ontologydesignpatterns.org/wiki/Main_Page.) (ODPs) Wiki. ODPs are **reusable successful solutions to a recurrent modeling problem**.
+
+To see what a good final product looks like, take a look at their [Exemplary Ontologies](http://ontologydesignpatterns.org/wiki/Ontology:Main).
+
+
+## 2. Design Principles
 
 In their Ontology 101 guide, Stanford's Protégé group suggests 3 fundamental rules of ontology design:
 
@@ -13,7 +25,7 @@ In their Ontology 101 guide, Stanford's Protégé group suggests 3 fundamental r
 > 3) Concepts in the ontology should be **close to objects** (physical or logical) and relationships in your domain of interest. These are most likely to be nouns (objects) or verbs (relationships) in sentences that describe your domain.
 
 
-## Steps
+## 3. Steps
 The [Ontology Development 101](https://protege.stanford.edu/publications/ontology_development/ontology101.pdf) guide defines 8 steps in building an ontology:
 1. Decide **domain** and **scope**.
 2. Reuse **existing ontologies**.
@@ -25,7 +37,7 @@ The [Ontology Development 101](https://protege.stanford.edu/publications/ontolog
 8. Test **consistency** and **coherency**.
 
 
-### Software and Tools
+## 4. Software
 All software used in this project is open source and free.
 - **Languages**: Ontology Web Language (OWL), OntoUML
 - **Upper Ontology**: Unified Foundational Ontology (UFO)
@@ -34,8 +46,8 @@ All software used in this project is open source and free.
 - **Project Management**: Open Source Guide
 
 
-## Best Practices
-The following is an excerpt of a robust list of practical tips offered by [Michael K. Bergman's Reference Guide to Ontology Best Practices](https://www.mkbergman.com/911/a-reference-guide-to-ontology-best-practices/)
+## 5. Best Practices
+The following is a tiny excerpt of a extensive list of practical tips offered by [Michael K. Bergman's Reference Guide to Ontology Best Practices](https://www.mkbergman.com/911/a-reference-guide-to-ontology-best-practices/)
 
 1. Balance breadth and depth of scope (roughly equal)
 2. Reuse structure and vocabularies as much as possible (internally and externally).
@@ -48,11 +60,8 @@ The following is an excerpt of a robust list of practical tips offered by [Micha
    Example: A square [A] is a rectangle  [B] that has equal side lengths [C].
 
 
-## Examples
-Examples and templates are available from the [Ontology Design Patterns](http://ontologydesignpatterns.org/wiki/Main_Page.) (ODPs) Wiki. ODPs are **reusable successful solutions to a recurrent modeling problem**.  For inspiration, take a look at their list of [exemplary ontologies](http://ontologydesignpatterns.org/wiki/Ontology:Main).
 
-
-## Sources
+## 6. Sources
 1. An [Ontology Development 101](https://protege.stanford.edu/publications/ontology_development/ontology101.pdf) guide from Noy and McGuinness at Stanford.
 2. The [User Guide](https://protegewiki.stanford.edu/wiki/Pr4_UG_mi_Outline) for the ontology modelling software Protégé.
 3. [A Reference Guide to Ontology Best Practices](https://www.mkbergman.com/911/a-reference-guide-to-ontology-best-practices/) by Michael K. Bergman.
