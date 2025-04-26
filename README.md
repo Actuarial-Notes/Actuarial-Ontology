@@ -1,4 +1,4 @@
-# Actuarial Ontology (AO)
+# 🔺 Actuarial Ontology (AO)
 Welcome! This is the home of an open source project to develop an ontology for the domain of actuarial science.
 
 👉 Check out our [Project Guide](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Project%20Guide.md) and [Code of Conduct](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Code%20of%20Conduct.md) if you're interested in contributing!
@@ -9,7 +9,7 @@ Welcome! This is the home of an open source project to develop an ontology for t
 > An **Ontology** defines a set of representational primitives with which to model a domain of knowledge or discourse.
 > - [Tom Gruber - Definition of Ontology (2008)](https://tomgruber.org/writing/definition-of-ontology/)
 >
-> **Actuarial science** is a discipline that assesses financial risk.
+> **Actuarial science** is a domain that assesses financial risk.
 
 
 
@@ -52,6 +52,8 @@ A knowledge base is used to answer queries about the real world. "Competency Que
 - "Which companies acquired Royal Sun Alliance (RSA)?"
 - "Is this rating model compliant with regulations in California?"
 - "What is the impact on our loss ratio from the 2021 Calgary, Alberta hail storm?"
+
+The [Actuarial Notes Wiki](https://wiki.actuarialnotes.com/Actuarial+Notes+Wiki) is a knowledge base founded on the Actuarial Ontology.
 
 ### 3. Artificial Intelligence
 With a knowledge base and ontology, software agents can then interact with information. For example, see Microsoft's [Azure Digital Twins documentation](https://learn.microsoft.com/en-us/azure/digital-twins/concepts-ontologies) to see how an ontology can be used to build digital twin solutions.
