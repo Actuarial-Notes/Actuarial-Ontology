@@ -1,11 +1,17 @@
 # Actuarial Ontology (AO)
 Welcome! This is the home of an open source project to develop an ontology for the domain of actuarial science.
 
-> An **ontology** is a formal language that describes concepts and relationships within a domain of knowledge.
+👉 Check out our [Project Guide](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Project%20Guide.md) and [Code of Conduct](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Code%20of%20Conduct.md) if you're interested in contributing!
 
-> **Actuarial science** is a discipline that quantifies risk and makes decisions about the redistribution of risk among groups.
+---
 
-👉 Check out our [Project Guide](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Project%20Guide.md) if you're interested in contributing! Community guidelines that describe the rules of contribution will be shared when the project is opened.
+## What's an Ontology?
+> An **Ontology** defines a set of representational primitives with which to model a domain of knowledge or discourse.
+> - [Tom Gruber - Definition of Ontology (2008)](https://tomgruber.org/writing/definition-of-ontology/)
+>
+> **Actuarial science** is a discipline that assesses financial risk.
+
+
 
 ## Why create an ontology?
 > "In a sample of 100 companies, it was found that 63 companies who reported operating profit in the financial statements used **at least nine different definitions.**"
@@ -50,11 +56,14 @@ A knowledge base is used to answer queries about the real world. "Competency Que
 ### 3. Artificial Intelligence
 With a knowledge base and ontology, software agents can then interact with information. For example, see Microsoft's [Azure Digital Twins documentation](https://learn.microsoft.com/en-us/azure/digital-twins/concepts-ontologies) to see how an ontology can be used to build digital twin solutions.
 
-A useful artificial intelligence for actuaries should be capable of inference and decision tasks in:
-- Pricing
+A useful artificial intelligence for actuaries should be capable of inference and decision tasks in the following domains:
+- [Risk Assessment](https://wiki.actuarialnotes.com/Tools/Techniques/Risk+Assessment)
+- [Pricing](https://wiki.actuarialnotes.com/Tools/Techniques/Insurance+Pricing)
 - Reserving
 - Valuation
-- Capital modelling and allocation
-- Regulatory compliance
-- Product development
-- ...
+- [Investment](https://wiki.actuarialnotes.com/Concepts/Investment#Determining+Value)
+- Capital Modelling
+- Capital Allocation
+- Regulatory Compliance
+- Product Development
+
