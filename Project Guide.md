@@ -1,3 +1,4 @@
+# 📕 Project Guide
 This project guide defines the design principles and steps for developing the Actuarial Ontology.
 
 
@@ -5,13 +6,15 @@ This project guide defines the design principles and steps for developing the Ac
 
 In their Ontology 101 guide, Stanford's Protégé group suggests 3 fundamental rules of ontology design:
 
-> 1) There is no one correct way to model a domain— there are always viable alternatives. The best solution almost always depends on the application that you have in mind and the extensions that you anticipate. 
-> 2) Ontology development is necessarily an iterative process. 
-> 3) Concepts in the ontology should be close to objects (physical or logical) and relationships in your domain of interest. These are most likely to be nouns (objects) or verbs (relationships) in sentences that describe your domain.
+> 1) There is **no one correct way** to model a domain— there are always viable alternatives. The best solution almost always depends on the application that you have in mind and the extensions that you anticipate. 
+>
+> 2) Ontology development is necessarily an **iterative process.** 
+>
+> 3) Concepts in the ontology should be **close to objects** (physical or logical) and relationships in your domain of interest. These are most likely to be nouns (objects) or verbs (relationships) in sentences that describe your domain.
 
 
 ## Steps
-The [Ontology 101](https://protege.stanford.edu/publications/ontology_development/ontology101.pdf) defines 8 steps in building an ontology:
+The [Ontology Development 101](https://protege.stanford.edu/publications/ontology_development/ontology101.pdf) guide defines 8 steps in building an ontology:
 1. Decide **domain** and **scope**.
 2. Reuse **existing ontologies**.
 3. Enumerate **terms**.
@@ -54,5 +57,5 @@ Examples and templates are available from the [Ontology Design Patterns](http://
 2. The [User Guide](https://protegewiki.stanford.edu/wiki/Pr4_UG_mi_Outline) for the ontology modelling software Protégé.
 3. [A Reference Guide to Ontology Best Practices](https://www.mkbergman.com/911/a-reference-guide-to-ontology-best-practices/) by Michael K. Bergman.
 4. The [Wiki for Ontology Designs Patterns](http://ontologydesignpatterns.org/wiki/Main_Page.).
-5. [[CUBRC - 2016 - Best Practices of Ontology Development.pdf]]
+5. [CUBRC - 2016 - Best Practices of Ontology Development](https://www.nist.gov/system/files/documents/2021/10/14/nist-ai-rfi-cubrc_inc_002.pdf)
 6. [Gruber's view on Ontology (1992)](http://www-ksl.stanford.edu/kst/what-is-an-ontology.html) 
