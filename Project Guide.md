@@ -1,6 +1,6 @@
 This project guide defines the design principles and steps for developing the Actuarial Ontology.
 
----
+
 ## Design Principles
 
 In their Ontology 101 guide, Stanford's Protégé group suggests 3 fundamental rules of ontology design:
@@ -9,7 +9,7 @@ In their Ontology 101 guide, Stanford's Protégé group suggests 3 fundamental r
 > 2) Ontology development is necessarily an iterative process. 
 > 3) Concepts in the ontology should be close to objects (physical or logical) and relationships in your domain of interest. These are most likely to be nouns (objects) or verbs (relationships) in sentences that describe your domain.
 
----
+
 ## Steps
 The [Ontology 101](https://protege.stanford.edu/publications/ontology_development/ontology101.pdf) defines 8 steps in building an ontology:
 1. Decide **domain** and **scope**.
@@ -21,7 +21,7 @@ The [Ontology 101](https://protege.stanford.edu/publications/ontology_developmen
 7. Create **instances**.
 8. Test **consistency** and **coherency**.
 
----
+
 ### Software and Tools
 All software used in this project is open source and free.
 - **Languages**: Ontology Web Language (OWL), OntoUML
@@ -31,7 +31,6 @@ All software used in this project is open source and free.
 - **Project Management**: Open Source Guide
 
 
----
 ## Best Practices
 The following is an excerpt of a robust list of practical tips offered by [Michael K. Bergman's Reference Guide to Ontology Best Practices](https://www.mkbergman.com/911/a-reference-guide-to-ontology-best-practices/)
 
@@ -45,12 +44,11 @@ The following is an excerpt of a robust list of practical tips offered by [Micha
 8. Definitions should look like this: "A is a B that C", Where B is the "parent term" of A in the ontology, and C is what uniquely differentiates As from Bs.
    Example: A square [A] is a rectangle  [B] that has equal side lengths [C].
 
----
+
 ## Examples
 Examples and templates are available from the [Ontology Design Patterns](http://ontologydesignpatterns.org/wiki/Main_Page.) (ODPs) Wiki. ODPs are **reusable successful solutions to a recurrent modeling problem**.  For inspiration, take a look at their list of [exemplary ontologies](http://ontologydesignpatterns.org/wiki/Ontology:Main).
 
 
----
 ## Sources
 1. An [Ontology Development 101](https://protege.stanford.edu/publications/ontology_development/ontology101.pdf) guide from Noy and McGuinness at Stanford.
 2. The [User Guide](https://protegewiki.stanford.edu/wiki/Pr4_UG_mi_Outline) for the ontology modelling software Protégé.
