@@ -1,4 +1,4 @@
-# 🔺 Actuarial Ontology (AO)
+# Actuarial Ontology (AO)
 Welcome! This is the home of an open source project to develop an ontology for the domain of actuarial science.
 
 👉 Check out our [Project Guide](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Project%20Guide.md) and [Code of Conduct](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Code%20of%20Conduct.md) if you're interested in contributing!
