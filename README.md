@@ -59,7 +59,7 @@ A knowledge base is used to answer queries about the real world. "Competency Que
 
 
 ### 3. Artificial Intelligence
-With a knowledge base and ontology, software agents can then interact with information. For example, see Microsoft's [Azure Digital Twins documentation](https://learn.microsoft.com/en-us/azure/digital-twins/concepts-ontologies) to see how an ontology can be used to build digital twin solutions.
+With a knowledge base and ontology, software agents can then interact with information. For example, see Microsoft's [📄 Azure Digital Twins documentation](https://learn.microsoft.com/en-us/azure/digital-twins/concepts-ontologies) to see how an ontology can be used to build digital twin solutions.
 
 A useful artificial intelligence for actuaries should be capable of inference and decision tasks in the following domains:
 - [Risk Assessment](https://wiki.actuarialnotes.com/Tools/Techniques/Risk+Assessment)
