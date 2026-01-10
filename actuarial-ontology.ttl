@@ -1,0 +1,749 @@
+@prefix : <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://actuarialnotes.com/ontology/actuarial> rdf:type owl:Ontology ;
+    dcterms:title "Actuarial Ontology"@en ;
+    dcterms:description "An ontology for the domain of actuarial science - the discipline of measuring and managing financial risk."@en ;
+    dcterms:created "2026-01-10"^^xsd:date ;
+    dcterms:license <https://opensource.org/licenses/MIT> ;
+    owl:versionInfo "0.1.0-draft" ;
+    rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains."@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+### Core Relationships
+
+ao:hasAgent rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Activity ;
+    rdfs:range ao:Agent ;
+    rdfs:label "has agent"@en ;
+    rdfs:comment "Relates an activity to an agent that performs or participates in it."@en .
+
+ao:manages rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:Risk ;
+    rdfs:label "manages"@en ;
+    rdfs:comment "Relates an agent to a risk that they manage."@en .
+
+ao:exposedTo rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:Risk ;
+    rdfs:label "exposed to"@en ;
+    rdfs:comment "Relates an agent to a risk that they are exposed to."@en .
+
+ao:hasRisk rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Entity ;
+    rdfs:range ao:Risk ;
+    rdfs:label "has risk"@en ;
+    rdfs:comment "Relates an entity to a risk associated with it."@en .
+
+ao:causedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Event ;
+    rdfs:range ao:Peril ;
+    rdfs:label "caused by"@en ;
+    rdfs:comment "Relates an event to the peril that caused it."@en .
+
+ao:resultsIn rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Event ;
+    rdfs:range ao:Loss ;
+    rdfs:label "results in"@en ;
+    rdfs:comment "Relates an event to a loss that resulted from it."@en .
+
+### Insurance Relationships
+
+ao:insures rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Insurer ;
+    rdfs:range ao:Insured ;
+    rdfs:label "insures"@en ;
+    rdfs:comment "Relates an insurer to an entity they insure."@en .
+
+ao:hasPolicy rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Insured ;
+    rdfs:range ao:InsurancePolicy ;
+    rdfs:label "has policy"@en ;
+    rdfs:comment "Relates an insured entity to their insurance policy."@en .
+
+ao:covers rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:InsurancePolicy ;
+    rdfs:range ao:Risk ;
+    rdfs:label "covers"@en ;
+    rdfs:comment "Relates an insurance policy to a risk it covers."@en .
+
+ao:hasClaim rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:InsurancePolicy ;
+    rdfs:range ao:Claim ;
+    rdfs:label "has claim"@en ;
+    rdfs:comment "Relates an insurance policy to a claim made against it."@en .
+
+ao:triggeredBy rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Claim ;
+    rdfs:range ao:Event ;
+    rdfs:label "triggered by"@en ;
+    rdfs:comment "Relates a claim to the event that triggered it."@en .
+
+ao:hasReserve rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Claim ;
+    rdfs:range ao:Reserve ;
+    rdfs:label "has reserve"@en ;
+    rdfs:comment "Relates a claim to the reserve established for it."@en .
+
+### Financial Relationships
+
+ao:hasAsset rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Entity ;
+    rdfs:range ao:Asset ;
+    rdfs:label "has asset"@en ;
+    rdfs:comment "Relates an entity to an asset it holds."@en .
+
+ao:hasLiability rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Entity ;
+    rdfs:range ao:Liability ;
+    rdfs:label "has liability"@en ;
+    rdfs:comment "Relates an entity to a liability it owes."@en .
+
+ao:investsIn rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Investor ;
+    rdfs:range ao:Asset ;
+    rdfs:label "invests in"@en ;
+    rdfs:comment "Relates an investor to an asset they invest in."@en .
+
+### Model Relationships
+
+ao:usesModel rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialActivity ;
+    rdfs:range ao:ActuarialModel ;
+    rdfs:label "uses model"@en ;
+    rdfs:comment "Relates an actuarial activity to a model it uses."@en .
+
+ao:basedOnData rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialModel ;
+    rdfs:range ao:Data ;
+    rdfs:label "based on data"@en ;
+    rdfs:comment "Relates an actuarial model to data it is based on."@en .
+
+ao:producesEstimate rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialModel ;
+    rdfs:range ao:Estimate ;
+    rdfs:label "produces estimate"@en ;
+    rdfs:comment "Relates an actuarial model to an estimate it produces."@en .
+
+#################################################################
+#    Data Properties
+#################################################################
+
+### Measurement Properties
+
+ao:hasValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:Measurement ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has value"@en ;
+    rdfs:comment "The numeric value of a measurement."@en .
+
+ao:hasMonetaryValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:FinancialMeasurement ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has monetary value"@en ;
+    rdfs:comment "The monetary value in base currency."@en .
+
+ao:hasProbability rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:Event ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has probability"@en ;
+    rdfs:comment "The probability of an event occurring (0 to 1)."@en .
+
+ao:hasSeverity rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:Loss ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has severity"@en ;
+    rdfs:comment "The magnitude or severity of a loss."@en .
+
+ao:hasFrequency rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:Event ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has frequency"@en ;
+    rdfs:comment "The frequency of occurrence of an event type."@en .
+
+### Temporal Properties
+
+ao:effectiveDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:InsurancePolicy ;
+    rdfs:range xsd:date ;
+    rdfs:label "effective date"@en ;
+    rdfs:comment "The date when an insurance policy becomes effective."@en .
+
+ao:expirationDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:InsurancePolicy ;
+    rdfs:range xsd:date ;
+    rdfs:label "expiration date"@en ;
+    rdfs:comment "The date when an insurance policy expires."@en .
+
+ao:occurrenceDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:Event ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "occurrence date"@en ;
+    rdfs:comment "The date and time when an event occurred."@en .
+
+ao:reportingDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:Claim ;
+    rdfs:range xsd:date ;
+    rdfs:label "reporting date"@en ;
+    rdfs:comment "The date when a claim was reported."@en .
+
+### Identification Properties
+
+ao:policyNumber rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:InsurancePolicy ;
+    rdfs:range xsd:string ;
+    rdfs:label "policy number"@en ;
+    rdfs:comment "The unique identifier for an insurance policy."@en .
+
+ao:claimNumber rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:Claim ;
+    rdfs:range xsd:string ;
+    rdfs:label "claim number"@en ;
+    rdfs:comment "The unique identifier for a claim."@en .
+
+#################################################################
+#    Classes
+#################################################################
+
+### Top-Level Categories
+
+ao:Entity rdf:type owl:Class ;
+    rdfs:label "Entity"@en ;
+    rdfs:comment "A thing that exists and can be distinguished from other things."@en .
+
+ao:Agent rdf:type owl:Class ;
+    rdfs:subClassOf ao:Entity ;
+    rdfs:label "Agent"@en ;
+    rdfs:comment "An entity that can act, make decisions, or participate in activities."@en .
+
+ao:Event rdf:type owl:Class ;
+    rdfs:label "Event"@en ;
+    rdfs:comment "Something that happens at a particular time and place."@en .
+
+ao:Activity rdf:type owl:Class ;
+    rdfs:label "Activity"@en ;
+    rdfs:comment "A process or action performed by an agent over time."@en .
+
+ao:Object rdf:type owl:Class ;
+    rdfs:subClassOf ao:Entity ;
+    rdfs:label "Object"@en ;
+    rdfs:comment "A physical or abstract thing that does not perform actions."@en .
+
+### Agent Types
+
+ao:Person rdf:type owl:Class ;
+    rdfs:subClassOf ao:Agent ;
+    rdfs:label "Person"@en ;
+    rdfs:comment "A human individual."@en .
+
+ao:Organization rdf:type owl:Class ;
+    rdfs:subClassOf ao:Agent ;
+    rdfs:label "Organization"@en ;
+    rdfs:comment "A structured group of people with a collective goal."@en .
+
+ao:Actuary rdf:type owl:Class ;
+    rdfs:subClassOf ao:Person ;
+    rdfs:label "Actuary"@en ;
+    rdfs:comment "A person who is a professional in actuarial science, measuring and managing financial risk."@en .
+
+ao:Insurer rdf:type owl:Class ;
+    rdfs:subClassOf ao:Organization ;
+    rdfs:label "Insurer"@en ;
+    rdfs:comment "An organization that provides insurance coverage."@en .
+
+ao:Insured rdf:type owl:Class ;
+    rdfs:subClassOf ao:Agent ;
+    rdfs:label "Insured"@en ;
+    rdfs:comment "An agent that has insurance coverage."@en .
+
+ao:Policyholder rdf:type owl:Class ;
+    rdfs:subClassOf ao:Insured ;
+    rdfs:label "Policyholder"@en ;
+    rdfs:comment "An agent that holds an insurance policy."@en .
+
+ao:Beneficiary rdf:type owl:Class ;
+    rdfs:subClassOf ao:Agent ;
+    rdfs:label "Beneficiary"@en ;
+    rdfs:comment "An agent that receives benefits from an insurance policy or pension."@en .
+
+ao:Reinsurer rdf:type owl:Class ;
+    rdfs:subClassOf ao:Insurer ;
+    rdfs:label "Reinsurer"@en ;
+    rdfs:comment "An insurer that provides insurance to other insurers."@en .
+
+ao:Investor rdf:type owl:Class ;
+    rdfs:subClassOf ao:Agent ;
+    rdfs:label "Investor"@en ;
+    rdfs:comment "An agent that allocates capital with the expectation of future returns."@en .
+
+ao:Regulator rdf:type owl:Class ;
+    rdfs:subClassOf ao:Organization ;
+    rdfs:label "Regulator"@en ;
+    rdfs:comment "An organization that oversees and enforces regulations in the insurance or financial industry."@en .
+
+### Risk Concepts
+
+ao:Risk rdf:type owl:Class ;
+    rdfs:label "Risk"@en ;
+    rdfs:comment "The uncertainty of financial loss, or the potential for deviation from expected outcomes."@en .
+
+ao:InsurableRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Risk ;
+    rdfs:label "Insurable Risk"@en ;
+    rdfs:comment "A risk that meets criteria for insurance coverage (random, fortuitous, measurable, etc.)."@en .
+
+ao:UninsurableRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Risk ;
+    rdfs:label "Uninsurable Risk"@en ;
+    rdfs:comment "A risk that does not meet criteria for insurance coverage."@en .
+
+ao:SystemicRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Risk ;
+    rdfs:label "Systemic Risk"@en ;
+    rdfs:comment "A risk that affects an entire market or system, not just individual participants."@en .
+
+ao:IdiosyncraticRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Risk ;
+    rdfs:label "Idiosyncratic Risk"@en ;
+    rdfs:comment "A risk that is specific to a particular entity or asset."@en .
+
+### Risk Categories
+
+ao:MortalityRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsurableRisk ;
+    rdfs:label "Mortality Risk"@en ;
+    rdfs:comment "A risk associated with death occurring sooner than expected."@en .
+
+ao:LongevityRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsurableRisk ;
+    rdfs:label "Longevity Risk"@en ;
+    rdfs:comment "A risk associated with people living longer than expected."@en .
+
+ao:MorbidityRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsurableRisk ;
+    rdfs:label "Morbidity Risk"@en ;
+    rdfs:comment "A risk associated with illness or disability."@en .
+
+ao:PropertyRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsurableRisk ;
+    rdfs:label "Property Risk"@en ;
+    rdfs:comment "A risk of loss or damage to physical property."@en .
+
+ao:LiabilityRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsurableRisk ;
+    rdfs:label "Liability Risk"@en ;
+    rdfs:comment "A risk of being held legally responsible for harm or damages."@en .
+
+ao:MarketRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Risk ;
+    rdfs:label "Market Risk"@en ;
+    rdfs:comment "A risk of losses due to changes in market prices or rates."@en .
+
+ao:CreditRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Risk ;
+    rdfs:label "Credit Risk"@en ;
+    rdfs:comment "A risk that a borrower will default on their obligations."@en .
+
+ao:OperationalRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Risk ;
+    rdfs:label "Operational Risk"@en ;
+    rdfs:comment "A risk of loss from inadequate or failed processes, people, or systems."@en .
+
+ao:CatastropheRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsurableRisk ;
+    rdfs:label "Catastrophe Risk"@en ;
+    rdfs:comment "A risk of loss from extreme events affecting many insureds simultaneously."@en .
+
+### Perils and Events
+
+ao:Peril rdf:type owl:Class ;
+    rdfs:label "Peril"@en ;
+    rdfs:comment "A specific cause of loss or damage (e.g., fire, flood, theft)."@en .
+
+ao:NaturalPeril rdf:type owl:Class ;
+    rdfs:subClassOf ao:Peril ;
+    rdfs:label "Natural Peril"@en ;
+    rdfs:comment "A peril caused by natural forces (e.g., earthquake, hurricane, flood)."@en .
+
+ao:ManmadePeril rdf:type owl:Class ;
+    rdfs:subClassOf ao:Peril ;
+    rdfs:label "Man-made Peril"@en ;
+    rdfs:comment "A peril caused by human actions (e.g., fire, theft, terrorism)."@en .
+
+ao:LossEvent rdf:type owl:Class ;
+    rdfs:subClassOf ao:Event ;
+    rdfs:label "Loss Event"@en ;
+    rdfs:comment "An event that results in financial loss."@en .
+
+ao:ClaimEvent rdf:type owl:Class ;
+    rdfs:subClassOf ao:Event ;
+    rdfs:label "Claim Event"@en ;
+    rdfs:comment "An event that triggers an insurance claim."@en .
+
+### Insurance Products
+
+ao:InsuranceProduct rdf:type owl:Class ;
+    rdfs:label "Insurance Product"@en ;
+    rdfs:comment "A type of insurance offering that provides coverage for specific risks."@en .
+
+ao:LifeInsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsuranceProduct ;
+    rdfs:label "Life Insurance"@en ;
+    rdfs:comment "An insurance product that pays benefits upon the death of the insured."@en .
+
+ao:TermLifeInsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:LifeInsurance ;
+    rdfs:label "Term Life Insurance"@en ;
+    rdfs:comment "A life insurance product that provides coverage for a specific term."@en .
+
+ao:WholeLifeInsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:LifeInsurance ;
+    rdfs:label "Whole Life Insurance"@en ;
+    rdfs:comment "A life insurance product that provides lifetime coverage with a savings component."@en .
+
+ao:HealthInsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsuranceProduct ;
+    rdfs:label "Health Insurance"@en ;
+    rdfs:comment "An insurance product that covers medical expenses."@en .
+
+ao:PropertyInsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsuranceProduct ;
+    rdfs:label "Property Insurance"@en ;
+    rdfs:comment "An insurance product that covers damage to property."@en .
+
+ao:CasualtyInsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsuranceProduct ;
+    rdfs:label "Casualty Insurance"@en ;
+    rdfs:comment "An insurance product that covers liability risks."@en .
+
+ao:AutoInsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:PropertyInsurance ;
+    rdfs:label "Auto Insurance"@en ;
+    rdfs:comment "An insurance product that covers vehicles."@en .
+
+ao:HomeownersInsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:PropertyInsurance ;
+    rdfs:label "Homeowners Insurance"@en ;
+    rdfs:comment "An insurance product that covers residential property and related liabilities."@en .
+
+ao:Annuity rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsuranceProduct ;
+    rdfs:label "Annuity"@en ;
+    rdfs:comment "A financial product that provides a stream of payments over time."@en .
+
+ao:Pension rdf:type owl:Class ;
+    rdfs:label "Pension"@en ;
+    rdfs:comment "A retirement plan that provides income to beneficiaries."@en .
+
+ao:DefinedBenefitPension rdf:type owl:Class ;
+    rdfs:subClassOf ao:Pension ;
+    rdfs:label "Defined Benefit Pension"@en ;
+    rdfs:comment "A pension that guarantees a specific benefit amount based on salary and service."@en .
+
+ao:DefinedContributionPension rdf:type owl:Class ;
+    rdfs:subClassOf ao:Pension ;
+    rdfs:label "Defined Contribution Pension"@en ;
+    rdfs:comment "A pension where the benefit depends on contributions and investment returns."@en .
+
+### Insurance Contracts and Coverage
+
+ao:InsurancePolicy rdf:type owl:Class ;
+    rdfs:label "Insurance Policy"@en ;
+    rdfs:comment "A contract between an insurer and insured that specifies coverage terms."@en .
+
+ao:ReinsuranceContract rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsurancePolicy ;
+    rdfs:label "Reinsurance Contract"@en ;
+    rdfs:comment "A contract where one insurer transfers risk to another insurer."@en .
+
+ao:Coverage rdf:type owl:Class ;
+    rdfs:label "Coverage"@en ;
+    rdfs:comment "The scope of protection provided by an insurance policy."@en .
+
+ao:Exclusion rdf:type owl:Class ;
+    rdfs:label "Exclusion"@en ;
+    rdfs:comment "A provision that eliminates coverage for specific risks or circumstances."@en .
+
+ao:Deductible rdf:type owl:Class ;
+    rdfs:label "Deductible"@en ;
+    rdfs:comment "An amount that the insured must pay before insurance coverage applies."@en .
+
+ao:Limit rdf:type owl:Class ;
+    rdfs:label "Limit"@en ;
+    rdfs:comment "The maximum amount an insurer will pay under a policy."@en .
+
+### Claims
+
+ao:Claim rdf:type owl:Class ;
+    rdfs:label "Claim"@en ;
+    rdfs:comment "A formal request by an insured for payment under an insurance policy."@en .
+
+ao:ReportedClaim rdf:type owl:Class ;
+    rdfs:subClassOf ao:Claim ;
+    rdfs:label "Reported Claim"@en ;
+    rdfs:comment "A claim that has been reported to the insurer."@en .
+
+ao:IncurredButNotReported rdf:type owl:Class ;
+    rdfs:subClassOf ao:Claim ;
+    rdfs:label "Incurred But Not Reported (IBNR)"@en ;
+    rdfs:comment "A claim for a loss event that has occurred but has not yet been reported."@en .
+
+ao:PaidClaim rdf:type owl:Class ;
+    rdfs:subClassOf ao:ReportedClaim ;
+    rdfs:label "Paid Claim"@en ;
+    rdfs:comment "A claim that has been settled and paid."@en .
+
+ao:OutstandingClaim rdf:type owl:Class ;
+    rdfs:subClassOf ao:ReportedClaim ;
+    rdfs:label "Outstanding Claim"@en ;
+    rdfs:comment "A claim that has been reported but not yet fully settled."@en .
+
+### Financial Concepts
+
+ao:FinancialInstrument rdf:type owl:Class ;
+    rdfs:subClassOf ao:Object ;
+    rdfs:label "Financial Instrument"@en ;
+    rdfs:comment "A tradable asset or contract that has monetary value."@en .
+
+ao:Asset rdf:type owl:Class ;
+    rdfs:subClassOf ao:FinancialInstrument ;
+    rdfs:label "Asset"@en ;
+    rdfs:comment "A resource with economic value owned by an entity."@en .
+
+ao:Liability rdf:type owl:Class ;
+    rdfs:subClassOf ao:FinancialInstrument ;
+    rdfs:label "Liability"@en ;
+    rdfs:comment "A financial obligation owed by an entity."@en .
+
+ao:Reserve rdf:type owl:Class ;
+    rdfs:subClassOf ao:Liability ;
+    rdfs:label "Reserve"@en ;
+    rdfs:comment "Funds set aside to meet future obligations."@en .
+
+ao:ClaimReserve rdf:type owl:Class ;
+    rdfs:subClassOf ao:Reserve ;
+    rdfs:label "Claim Reserve"@en ;
+    rdfs:comment "A reserve established for estimated claim payments."@en .
+
+ao:CaseReserve rdf:type owl:Class ;
+    rdfs:subClassOf ao:ClaimReserve ;
+    rdfs:label "Case Reserve"@en ;
+    rdfs:comment "A reserve for a specific reported claim."@en .
+
+ao:IBNRReserve rdf:type owl:Class ;
+    rdfs:subClassOf ao:ClaimReserve ;
+    rdfs:label "IBNR Reserve"@en ;
+    rdfs:comment "A reserve for incurred but not reported claims."@en .
+
+ao:Premium rdf:type owl:Class ;
+    rdfs:label "Premium"@en ;
+    rdfs:comment "The amount paid by an insured for insurance coverage."@en .
+
+ao:Loss rdf:type owl:Class ;
+    rdfs:label "Loss"@en ;
+    rdfs:comment "A reduction in value or financial detriment."@en .
+
+ao:UltimateClaimCost rdf:type owl:Class ;
+    rdfs:subClassOf ao:Loss ;
+    rdfs:label "Ultimate Claim Cost"@en ;
+    rdfs:comment "The total cost of a claim including all payments and expenses."@en .
+
+ao:Capital rdf:type owl:Class ;
+    rdfs:subClassOf ao:Asset ;
+    rdfs:label "Capital"@en ;
+    rdfs:comment "Financial resources available to support operations and absorb losses."@en .
+
+ao:EconomicCapital rdf:type owl:Class ;
+    rdfs:subClassOf ao:Capital ;
+    rdfs:label "Economic Capital"@en ;
+    rdfs:comment "The amount of capital needed to remain solvent at a given risk tolerance."@en .
+
+ao:RegulatoryCapital rdf:type owl:Class ;
+    rdfs:subClassOf ao:Capital ;
+    rdfs:label "Regulatory Capital"@en ;
+    rdfs:comment "The minimum capital required by regulators."@en .
+
+### Actuarial Activities
+
+ao:ActuarialActivity rdf:type owl:Class ;
+    rdfs:subClassOf ao:Activity ;
+    rdfs:label "Actuarial Activity"@en ;
+    rdfs:comment "An activity performed by actuaries in measuring and managing financial risk."@en .
+
+ao:RiskAssessment rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Risk Assessment"@en ;
+    rdfs:comment "The process of identifying and evaluating risks."@en .
+
+ao:Pricing rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Pricing"@en ;
+    rdfs:comment "The process of determining appropriate premium rates for insurance products."@en .
+
+ao:Reserving rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Reserving"@en ;
+    rdfs:comment "The process of estimating and setting aside funds for future obligations."@en .
+
+ao:Valuation rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Valuation"@en ;
+    rdfs:comment "The process of determining the economic value of assets, liabilities, or entities."@en .
+
+ao:CapitalModeling rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Capital Modeling"@en ;
+    rdfs:comment "The process of modeling capital requirements and risk exposures."@en .
+
+ao:ExperienceAnalysis rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Experience Analysis"@en ;
+    rdfs:comment "The process of analyzing historical data to understand past performance."@en .
+
+ao:ProductDevelopment rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Product Development"@en ;
+    rdfs:comment "The process of designing and developing new insurance products."@en .
+
+### Actuarial Models and Methods
+
+ao:ActuarialModel rdf:type owl:Class ;
+    rdfs:label "Actuarial Model"@en ;
+    rdfs:comment "A mathematical or statistical model used in actuarial work."@en .
+
+ao:PricingModel rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialModel ;
+    rdfs:label "Pricing Model"@en ;
+    rdfs:comment "A model used to determine insurance premium rates."@en .
+
+ao:ReservingModel rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialModel ;
+    rdfs:label "Reserving Model"@en ;
+    rdfs:comment "A model used to estimate claim reserves."@en .
+
+ao:CapitalModel rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialModel ;
+    rdfs:label "Capital Model"@en ;
+    rdfs:comment "A model used to assess capital requirements and risk."@en .
+
+ao:MortalityTable rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialModel ;
+    rdfs:label "Mortality Table"@en ;
+    rdfs:comment "A table showing death rates by age and other characteristics."@en .
+
+ao:LossDevelopmentTriangle rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialModel ;
+    rdfs:label "Loss Development Triangle"@en ;
+    rdfs:comment "A tabular representation of loss development over time."@en .
+
+ao:GeneralizedLinearModel rdf:type owl:Class ;
+    rdfs:subClassOf ao:PricingModel ;
+    rdfs:label "Generalized Linear Model (GLM)"@en ;
+    rdfs:comment "A statistical model that extends linear regression for insurance pricing."@en .
+
+ao:ChainLadderMethod rdf:type owl:Class ;
+    rdfs:subClassOf ao:ReservingModel ;
+    rdfs:label "Chain Ladder Method"@en ;
+    rdfs:comment "A reserving method that projects ultimate claims using development factors."@en .
+
+### Data and Measurements
+
+ao:Data rdf:type owl:Class ;
+    rdfs:label "Data"@en ;
+    rdfs:comment "Information collected and used for analysis."@en .
+
+ao:ClaimData rdf:type owl:Class ;
+    rdfs:subClassOf ao:Data ;
+    rdfs:label "Claim Data"@en ;
+    rdfs:comment "Data about insurance claims."@en .
+
+ao:ExposureData rdf:type owl:Class ;
+    rdfs:subClassOf ao:Data ;
+    rdfs:label "Exposure Data"@en ;
+    rdfs:comment "Data about units of exposure to risk."@en .
+
+ao:PremiumData rdf:type owl:Class ;
+    rdfs:subClassOf ao:Data ;
+    rdfs:label "Premium Data"@en ;
+    rdfs:comment "Data about insurance premiums."@en .
+
+ao:Measurement rdf:type owl:Class ;
+    rdfs:label "Measurement"@en ;
+    rdfs:comment "A quantification of a property or characteristic."@en .
+
+ao:FinancialMeasurement rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Financial Measurement"@en ;
+    rdfs:comment "A measurement of a financial quantity."@en .
+
+ao:Estimate rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Estimate"@en ;
+    rdfs:comment "An approximation or best judgment of a quantity."@en .
+
+ao:Assumption rdf:type owl:Class ;
+    rdfs:label "Assumption"@en ;
+    rdfs:comment "A proposition taken to be true for the purpose of analysis or modeling."@en .
+
+### Metrics and Ratios
+
+ao:LossRatio rdf:type owl:Class ;
+    rdfs:subClassOf ao:FinancialMeasurement ;
+    rdfs:label "Loss Ratio"@en ;
+    rdfs:comment "The ratio of losses to premiums."@en .
+
+ao:ExpenseRatio rdf:type owl:Class ;
+    rdfs:subClassOf ao:FinancialMeasurement ;
+    rdfs:label "Expense Ratio"@en ;
+    rdfs:comment "The ratio of expenses to premiums."@en .
+
+ao:CombinedRatio rdf:type owl:Class ;
+    rdfs:subClassOf ao:FinancialMeasurement ;
+    rdfs:label "Combined Ratio"@en ;
+    rdfs:comment "The sum of loss ratio and expense ratio."@en .
+
+ao:ReturnOnEquity rdf:type owl:Class ;
+    rdfs:subClassOf ao:FinancialMeasurement ;
+    rdfs:label "Return on Equity (ROE)"@en ;
+    rdfs:comment "A measure of profitability relative to equity."@en .
+
+### Regulatory and Standards
+
+ao:Regulation rdf:type owl:Class ;
+    rdfs:label "Regulation"@en ;
+    rdfs:comment "A rule or directive made and maintained by a regulatory authority."@en .
+
+ao:ActuarialStandard rdf:type owl:Class ;
+    rdfs:label "Actuarial Standard"@en ;
+    rdfs:comment "A professional standard of practice for actuaries."@en .
+
+ao:AccountingStandard rdf:type owl:Class ;
+    rdfs:label "Accounting Standard"@en ;
+    rdfs:comment "A standard for financial reporting and accounting."@en .
+
+ao:IFRS17 rdf:type owl:Class ;
+    rdfs:subClassOf ao:AccountingStandard ;
+    rdfs:label "IFRS 17"@en ;
+    rdfs:comment "International Financial Reporting Standard 17 for insurance contracts."@en .
+
+ao:GAAP rdf:type owl:Class ;
+    rdfs:subClassOf ao:AccountingStandard ;
+    rdfs:label "GAAP"@en ;
+    rdfs:comment "Generally Accepted Accounting Principles."@en .
+
+ao:Solvency2 rdf:type owl:Class ;
+    rdfs:subClassOf ao:Regulation ;
+    rdfs:label "Solvency II"@en ;
+    rdfs:comment "A regulatory framework for insurance firms in the European Union."@en .
+
+### End of Ontology
