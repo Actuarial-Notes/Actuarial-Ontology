@@ -11,9 +11,51 @@
     dcterms:title "Actuarial Ontology"@en ;
     dcterms:description "An ontology for the domain of actuarial science - the discipline of measuring and managing financial risk."@en ;
     dcterms:created "2026-01-10"^^xsd:date ;
+    dcterms:modified "2026-01-11"^^xsd:date ;
     dcterms:license <https://opensource.org/licenses/MIT> ;
-    owl:versionInfo "0.1.0-draft" ;
-    rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains."@en .
+    owl:versionInfo "0.2.0-draft" ;
+    rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains. Aligned with UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk), and ASOPs (Actuarial Standards of Practice)."@en .
+
+#################################################################
+#    Annotation Properties
+#################################################################
+
+### UFO Meta-Properties
+
+ao:rigidity rdf:type owl:AnnotationProperty ;
+    rdfs:label "rigidity"@en ;
+    rdfs:comment "Indicates whether instances can change type while maintaining identity. Values: rigid (cannot change), anti-rigid (can change), semi-rigid (some can change). Based on UFO ontological meta-properties."@en .
+
+ao:ufoCategory rdf:type owl:AnnotationProperty ;
+    rdfs:label "UFO category"@en ;
+    rdfs:comment "Classifies types according to UFO ontological categories. Values: kind (rigid sortal providing identity), role (anti-rigid relational), phase (anti-rigid intrinsic), category, mixin."@en .
+
+ao:asopReference rdf:type owl:AnnotationProperty ;
+    rdfs:label "ASOP reference"@en ;
+    rdfs:comment "References specific Actuarial Standard of Practice (ASOP) number and section."@en .
+
+#################################################################
+#    Foundational Classes (UFO Alignment)
+#################################################################
+
+### Top-Level Ontological Distinctions
+
+ao:Endurant rdf:type owl:Class ;
+    rdfs:label "Endurant"@en ;
+    rdfs:comment "An entity that exists in time with all its parts present at once. Endurants persist through time maintaining their identity (UFO-A). Examples: persons, organizations, objects, policies."@en ;
+    ao:ufoCategory "category" .
+
+ao:Perdurant rdf:type owl:Class ;
+    rdfs:label "Perdurant"@en ;
+    rdfs:comment "An entity that unfolds in time, accumulating temporal parts. Perdurants occur or happen in time (UFO-B). Examples: events, processes, activities."@en ;
+    ao:ufoCategory "category" ;
+    owl:disjointWith ao:Endurant .
+
+ao:Moment rdf:type owl:Class ;
+    rdfs:subClassOf ao:Endurant ;
+    rdfs:label "Moment"@en ;
+    rdfs:comment "An intrinsic property or aspect that inheres in (depends on) another endurant. Moments cannot exist independently (UFO-A). Examples: qualities, measurements, dispositions."@en ;
+    ao:ufoCategory "category" .
 
 #################################################################
 #    Object Properties
@@ -135,6 +177,96 @@ ao:producesEstimate rdf:type owl:ObjectProperty ;
     rdfs:label "produces estimate"@en ;
     rdfs:comment "Relates an actuarial model to an estimate it produces."@en .
 
+### UFO Participation Relationships
+
+ao:participatesIn rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Endurant ;
+    rdfs:range ao:Perdurant ;
+    rdfs:label "participates in"@en ;
+    rdfs:comment "Relates an endurant to a perdurant (event/activity) it participates in (UFO-B)."@en .
+
+ao:hasParticipant rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Perdurant ;
+    rdfs:range ao:Endurant ;
+    rdfs:label "has participant"@en ;
+    rdfs:comment "Relates a perdurant (event/activity) to an endurant that participates in it (UFO-B)."@en ;
+    owl:inverseOf ao:participatesIn .
+
+ao:inheresIn rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Moment ;
+    rdfs:range ao:Endurant ;
+    rdfs:label "inheres in"@en ;
+    rdfs:comment "Relates a moment (property/quality) to the endurant it depends on (UFO-A)."@en .
+
+### COVER Event Chain Relationships
+
+ao:precipitates rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ThreatEvent ;
+    rdfs:range ao:LossEvent ;
+    rdfs:label "precipitates"@en ;
+    rdfs:comment "Relates a threat event to a loss event it can cause (COVER)."@en .
+
+ao:underminesObjectiveOf rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:LossEvent ;
+    rdfs:range ao:RiskSubject ;
+    rdfs:label "undermines objective of"@en ;
+    rdfs:comment "Relates a loss event to the risk subject whose objectives are undermined (COVER)."@en .
+
+ao:manifestsAs rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Disposition ;
+    rdfs:range ao:Event ;
+    rdfs:label "manifests as"@en ;
+    rdfs:comment "Relates a disposition to an event it can manifest as (UFO/COVER)."@en .
+
+### COVER Value Relationships
+
+ao:hasValueFor rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ValueObject ;
+    rdfs:range ao:Agent ;
+    rdfs:label "has value for"@en ;
+    rdfs:comment "Relates a value object to an agent for whom it has value (COVER)."@en .
+
+ao:enablesValueFor rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ValueEnabler ;
+    rdfs:range ao:Agent ;
+    rdfs:label "enables value for"@en ;
+    rdfs:comment "Relates a value enabler to an agent whose value experience it enables (COVER)."@en .
+
+ao:ascribesValue rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:ValueAscription ;
+    rdfs:label "ascribes value"@en ;
+    rdfs:comment "Relates an agent to a value ascription judgment they make (COVER)."@en .
+
+ao:assessesRisk rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:RiskAssessmentJudgment ;
+    rdfs:label "assesses risk"@en ;
+    rdfs:comment "Relates an agent to a risk assessment judgment they make (COVER)."@en .
+
+### ASOP 41 Communication Relationships
+
+ao:hasIntendedUser rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialCommunication ;
+    rdfs:range ao:IntendedUser ;
+    rdfs:label "has intended user"@en ;
+    rdfs:comment "Relates an actuarial communication to its intended user (ASOP 41)."@en ;
+    ao:asopReference "ASOP 41" .
+
+ao:hasDisclosure rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialCommunication ;
+    rdfs:range ao:Disclosure ;
+    rdfs:label "has disclosure"@en ;
+    rdfs:comment "Relates an actuarial communication to information disclosed within it (ASOP 41)."@en ;
+    ao:asopReference "ASOP 41" .
+
+ao:communicates rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Actuary ;
+    rdfs:range ao:ActuarialCommunication ;
+    rdfs:label "communicates"@en ;
+    rdfs:comment "Relates an actuary to a communication they produce (ASOP 41)."@en ;
+    ao:asopReference "ASOP 41" .
+
 #################################################################
 #    Data Properties
 #################################################################
@@ -215,107 +347,158 @@ ao:claimNumber rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
-### Top-Level Categories
+### Top-Level Categories (UFO-Aligned)
 
 ao:Entity rdf:type owl:Class ;
+    rdfs:subClassOf ao:Endurant ;
     rdfs:label "Entity"@en ;
-    rdfs:comment "A thing that exists and can be distinguished from other things."@en .
+    rdfs:comment "A substantial endurant - a thing that exists and can be distinguished from other things. Entities persist through time maintaining their identity."@en ;
+    ao:ufoCategory "category" .
 
 ao:Agent rdf:type owl:Class ;
     rdfs:subClassOf ao:Entity ;
     rdfs:label "Agent"@en ;
-    rdfs:comment "An entity that can act, make decisions, or participate in activities."@en .
-
-ao:Event rdf:type owl:Class ;
-    rdfs:label "Event"@en ;
-    rdfs:comment "Something that happens at a particular time and place."@en .
-
-ao:Activity rdf:type owl:Class ;
-    rdfs:label "Activity"@en ;
-    rdfs:comment "A process or action performed by an agent over time."@en .
+    rdfs:comment "An entity with intentionality that can act, make decisions, or participate in activities (UFO-C). Agents have beliefs, desires, and intentions."@en ;
+    ao:ufoCategory "category" .
 
 ao:Object rdf:type owl:Class ;
     rdfs:subClassOf ao:Entity ;
     rdfs:label "Object"@en ;
-    rdfs:comment "A physical or abstract thing that does not perform actions."@en .
+    rdfs:comment "A substantial endurant that does not have agency or perform intentional actions. Objects persist through time but lack intentionality."@en ;
+    ao:ufoCategory "category" ;
+    owl:disjointWith ao:Agent .
 
-### Agent Types
+ao:Event rdf:type owl:Class ;
+    rdfs:subClassOf ao:Perdurant ;
+    rdfs:label "Event"@en ;
+    rdfs:comment "An atomic perdurant - something that happens at a particular time and place. Events are temporal occurrences without complex internal structure (UFO-B)."@en ;
+    ao:ufoCategory "category" .
+
+ao:Activity rdf:type owl:Class ;
+    rdfs:subClassOf ao:Perdurant ;
+    rdfs:label "Activity"@en ;
+    rdfs:comment "A complex perdurant - a process or action performed by an agent over time. Activities have temporal parts and internal structure (UFO-B)."@en ;
+    ao:ufoCategory "category" .
+
+### Agent Types (Kinds and Roles)
 
 ao:Person rdf:type owl:Class ;
     rdfs:subClassOf ao:Agent ;
     rdfs:label "Person"@en ;
-    rdfs:comment "A human individual."@en .
+    rdfs:comment "A human individual. This is a kind - a person cannot cease to be a person while existing."@en ;
+    ao:rigidity "rigid" ;
+    ao:ufoCategory "kind" .
 
 ao:Organization rdf:type owl:Class ;
     rdfs:subClassOf ao:Agent ;
     rdfs:label "Organization"@en ;
-    rdfs:comment "A structured group of people with a collective goal."@en .
+    rdfs:comment "A structured group of people with a collective goal. This is a kind - an organization maintains this identity throughout its existence."@en ;
+    ao:rigidity "rigid" ;
+    ao:ufoCategory "kind" .
 
 ao:Actuary rdf:type owl:Class ;
     rdfs:subClassOf ao:Person ;
     rdfs:label "Actuary"@en ;
-    rdfs:comment "A person who is a professional in actuarial science, measuring and managing financial risk."@en .
+    rdfs:comment "A role played by a person who is a professional in actuarial science, measuring and managing financial risk. A person can become or cease to be an actuary."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
 
 ao:Insurer rdf:type owl:Class ;
     rdfs:subClassOf ao:Organization ;
     rdfs:label "Insurer"@en ;
-    rdfs:comment "An organization that provides insurance coverage."@en .
+    rdfs:comment "A role played by an organization that provides insurance coverage. An organization can start or stop being an insurer."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
 
 ao:Insured rdf:type owl:Class ;
     rdfs:subClassOf ao:Agent ;
     rdfs:label "Insured"@en ;
-    rdfs:comment "An agent that has insurance coverage."@en .
+    rdfs:comment "A role played by an agent that has insurance coverage. An agent can become insured or lose insurance status."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
 
 ao:Policyholder rdf:type owl:Class ;
     rdfs:subClassOf ao:Insured ;
     rdfs:label "Policyholder"@en ;
-    rdfs:comment "An agent that holds an insurance policy."@en .
+    rdfs:comment "A role played by an agent that holds an insurance policy. This is a subrole of Insured."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
 
 ao:Beneficiary rdf:type owl:Class ;
     rdfs:subClassOf ao:Agent ;
     rdfs:label "Beneficiary"@en ;
-    rdfs:comment "An agent that receives benefits from an insurance policy or pension."@en .
+    rdfs:comment "A role played by an agent that receives benefits from an insurance policy or pension."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
 
 ao:Reinsurer rdf:type owl:Class ;
     rdfs:subClassOf ao:Insurer ;
     rdfs:label "Reinsurer"@en ;
-    rdfs:comment "An insurer that provides insurance to other insurers."@en .
+    rdfs:comment "A specialized role played by an insurer that provides insurance to other insurers."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
 
 ao:Investor rdf:type owl:Class ;
     rdfs:subClassOf ao:Agent ;
     rdfs:label "Investor"@en ;
-    rdfs:comment "An agent that allocates capital with the expectation of future returns."@en .
+    rdfs:comment "A role played by an agent that allocates capital with the expectation of future returns."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
 
 ao:Regulator rdf:type owl:Class ;
     rdfs:subClassOf ao:Organization ;
     rdfs:label "Regulator"@en ;
-    rdfs:comment "An organization that oversees and enforces regulations in the insurance or financial industry."@en .
+    rdfs:comment "A role played by an organization that oversees and enforces regulations in the insurance or financial industry."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
 
-### Risk Concepts
+### Risk Concepts (COVER-Aligned)
 
 ao:Risk rdf:type owl:Class ;
     rdfs:label "Risk"@en ;
-    rdfs:comment "The uncertainty of financial loss, or the potential for deviation from expected outcomes."@en .
+    rdfs:comment "Abstract concept representing potential for loss or deviation from objectives. COVER distinguishes three facets: quantitative risk (numeric measure), risk experience (event chain), and risk assessment (agent judgment)."@en .
+
+ao:RiskSubject rdf:type owl:Class ;
+    rdfs:subClassOf ao:Agent ;
+    rdfs:label "Risk Subject"@en ;
+    rdfs:comment "A role played by an agent whose objectives may be undermined by loss events. The entity exposed to and bearing risk (COVER)."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
+
+### COVER's Three Risk Distinctions
+
+ao:QuantitativeRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Quantitative Risk"@en ;
+    rdfs:comment "A numerical measure or magnitude of risk, typically expressed as probability × severity or similar metrics (COVER). This is risk as a number."@en .
+
+ao:RiskExperience rdf:type owl:Class ;
+    rdfs:subClassOf ao:Event ;
+    rdfs:label "Risk Experience"@en ;
+    rdfs:comment "A multifaceted hypothetical or actual occurrence involving threat and loss events affecting a risk subject. This is risk as a chain of events (COVER)."@en .
+
+ao:RiskAssessmentJudgment rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Risk Assessment Judgment"@en ;
+    rdfs:comment "A perceptual ascription of risk by an agent to an object or experience. This is risk as agent judgment, a special case of value ascription (COVER)."@en .
+
+### Traditional Risk Classifications
 
 ao:InsurableRisk rdf:type owl:Class ;
-    rdfs:subClassOf ao:Risk ;
     rdfs:label "Insurable Risk"@en ;
-    rdfs:comment "A risk that meets criteria for insurance coverage (random, fortuitous, measurable, etc.)."@en .
+    rdfs:comment "A risk classification for risks that meet criteria for insurance coverage (random, fortuitous, measurable, definable, etc.). Can apply to any of the three COVER facets."@en .
 
 ao:UninsurableRisk rdf:type owl:Class ;
-    rdfs:subClassOf ao:Risk ;
     rdfs:label "Uninsurable Risk"@en ;
-    rdfs:comment "A risk that does not meet criteria for insurance coverage."@en .
+    rdfs:comment "A risk classification for risks that do not meet criteria for insurance coverage. Can apply to any of the three COVER facets."@en .
 
 ao:SystemicRisk rdf:type owl:Class ;
-    rdfs:subClassOf ao:Risk ;
     rdfs:label "Systemic Risk"@en ;
     rdfs:comment "A risk that affects an entire market or system, not just individual participants."@en .
 
 ao:IdiosyncraticRisk rdf:type owl:Class ;
-    rdfs:subClassOf ao:Risk ;
     rdfs:label "Idiosyncratic Risk"@en ;
-    rdfs:comment "A risk that is specific to a particular entity or asset."@en .
+    rdfs:comment "A risk that is specific to a particular entity or asset, not affecting the broader system."@en .
 
 ### Risk Categories
 
@@ -364,11 +547,11 @@ ao:CatastropheRisk rdf:type owl:Class ;
     rdfs:label "Catastrophe Risk"@en ;
     rdfs:comment "A risk of loss from extreme events affecting many insureds simultaneously."@en .
 
-### Perils and Events
+### Perils and Events (COVER Event Chain)
 
 ao:Peril rdf:type owl:Class ;
     rdfs:label "Peril"@en ;
-    rdfs:comment "A specific cause of loss or damage (e.g., fire, flood, theft)."@en .
+    rdfs:comment "A specific cause of loss or damage (e.g., fire, flood, theft). Perils are sources that can trigger threat events."@en .
 
 ao:NaturalPeril rdf:type owl:Class ;
     rdfs:subClassOf ao:Peril ;
@@ -380,15 +563,68 @@ ao:ManmadePeril rdf:type owl:Class ;
     rdfs:label "Man-made Peril"@en ;
     rdfs:comment "A peril caused by human actions (e.g., fire, theft, terrorism)."@en .
 
+ao:ThreatEvent rdf:type owl:Class ;
+    rdfs:subClassOf ao:Event ;
+    rdfs:label "Threat Event"@en ;
+    rdfs:comment "A hypothetical or actual event capable of precipitating a loss event. Threat events form the link between perils and losses in COVER's event chain (COVER)."@en .
+
 ao:LossEvent rdf:type owl:Class ;
     rdfs:subClassOf ao:Event ;
     rdfs:label "Loss Event"@en ;
-    rdfs:comment "An event that results in financial loss."@en .
+    rdfs:comment "An event that results in financial loss and undermines the objectives of a risk subject. Loss events are precipitated by threat events (COVER)."@en .
 
 ao:ClaimEvent rdf:type owl:Class ;
     rdfs:subClassOf ao:Event ;
     rdfs:label "Claim Event"@en ;
-    rdfs:comment "An event that triggers an insurance claim."@en .
+    rdfs:comment "An event that triggers an insurance claim. A specific type of loss event that activates insurance coverage."@en .
+
+### COVER Value Concepts
+
+ao:Value rdf:type owl:Class ;
+    rdfs:label "Value"@en ;
+    rdfs:comment "The worth, importance, or usefulness of something to an agent. COVER shows that risk is fundamentally intertwined with value (COVER)."@en .
+
+ao:ValueObject rdf:type owl:Class ;
+    rdfs:subClassOf ao:Object ;
+    rdfs:label "Value Object"@en ;
+    rdfs:comment "An object whose dispositions enable value experiences for an agent. Objects that have value to a value subject (COVER)."@en .
+
+ao:ValueEnabler rdf:type owl:Class ;
+    rdfs:subClassOf ao:Object ;
+    rdfs:label "Value Enabler"@en ;
+    rdfs:comment "An object whose dispositions enable the occurrence of value experiences (COVER)."@en .
+
+ao:ValueExperience rdf:type owl:Class ;
+    rdfs:subClassOf ao:Event ;
+    rdfs:label "Value Experience"@en ;
+    rdfs:comment "An event that realizes or delivers value for a value subject. Parallel concept to risk experience (COVER)."@en .
+
+ao:ValueAscription rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Value Ascription"@en ;
+    rdfs:comment "A judgment by an agent about the value of an object or experience. Risk assessment is a special case of value ascription (COVER)."@en .
+
+ao:ObjectAtRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Object ;
+    rdfs:label "Object at Risk"@en ;
+    rdfs:comment "An object that can be affected by threat or loss events. Objects whose value may be undermined (COVER)."@en .
+
+ao:RiskEnabler rdf:type owl:Class ;
+    rdfs:subClassOf ao:Object ;
+    rdfs:label "Risk Enabler"@en ;
+    rdfs:comment "An object whose dispositions can enable the occurrence of threat or loss events (COVER)."@en .
+
+### Dispositions (UFO/COVER)
+
+ao:Disposition rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Disposition"@en ;
+    rdfs:comment "A tendency or capacity of an endurant to produce certain effects under specific conditions. Dispositions are moments that can manifest as events (UFO/COVER)."@en .
+
+ao:Vulnerability rdf:type owl:Class ;
+    rdfs:subClassOf ao:Disposition ;
+    rdfs:label "Vulnerability"@en ;
+    rdfs:comment "A disposition of an object at risk or risk enabler that can manifest as threat or loss events. A specific type of disposition related to risk (COVER)."@en .
 
 ### Insurance Products
 
@@ -501,12 +737,16 @@ ao:IncurredButNotReported rdf:type owl:Class ;
 ao:PaidClaim rdf:type owl:Class ;
     rdfs:subClassOf ao:ReportedClaim ;
     rdfs:label "Paid Claim"@en ;
-    rdfs:comment "A claim that has been settled and paid."@en .
+    rdfs:comment "A phase - a claim that has been settled and paid. A claim can transition from outstanding to paid (UFO phase)."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "phase" .
 
 ao:OutstandingClaim rdf:type owl:Class ;
     rdfs:subClassOf ao:ReportedClaim ;
     rdfs:label "Outstanding Claim"@en ;
-    rdfs:comment "A claim that has been reported but not yet fully settled."@en .
+    rdfs:comment "A phase - a claim that has been reported but not yet fully settled. A claim can transition to paid status (UFO phase)."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "phase" .
 
 ### Financial Concepts
 
@@ -678,8 +918,10 @@ ao:PremiumData rdf:type owl:Class ;
     rdfs:comment "Data about insurance premiums."@en .
 
 ao:Measurement rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
     rdfs:label "Measurement"@en ;
-    rdfs:comment "A quantification of a property or characteristic."@en .
+    rdfs:comment "A quantification of a property or characteristic. Measurements are moments that inhere in entities (UFO)."@en ;
+    ao:ufoCategory "moment" .
 
 ao:FinancialMeasurement rdf:type owl:Class ;
     rdfs:subClassOf ao:Measurement ;
@@ -745,5 +987,81 @@ ao:Solvency2 rdf:type owl:Class ;
     rdfs:subClassOf ao:Regulation ;
     rdfs:label "Solvency II"@en ;
     rdfs:comment "A regulatory framework for insurance firms in the European Union."@en .
+
+### ASOP 41: Actuarial Communications
+
+ao:ActuarialCommunication rdf:type owl:Class ;
+    rdfs:subClassOf ao:Object ;
+    rdfs:label "Actuarial Communication"@en ;
+    rdfs:comment "A written, electronic, or oral communication issued by an actuary with respect to actuarial services. Includes reports, opinions, presentations, and other work products (ASOP 41)."@en ;
+    ao:asopReference "ASOP 41" .
+
+ao:ActuarialReport rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialCommunication ;
+    rdfs:label "Actuarial Report"@en ;
+    rdfs:comment "A formal written actuarial communication documenting actuarial services, findings, and recommendations (ASOP 41)."@en ;
+    ao:asopReference "ASOP 41" .
+
+ao:ActuarialOpinion rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialCommunication ;
+    rdfs:label "Actuarial Opinion"@en ;
+    rdfs:comment "A formal statement by an actuary expressing professional judgment regarding the adequacy of reserves, adequacy of capital, or other actuarial matters (ASOP 41)."@en ;
+    ao:asopReference "ASOP 41" .
+
+ao:StatementOfActuarialOpinion rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialOpinion ;
+    rdfs:label "Statement of Actuarial Opinion"@en ;
+    rdfs:comment "A formal regulatory opinion on the adequacy of reserves or financial condition, often required by law. Typically provided by an appointed actuary."@en ;
+    ao:asopReference "ASOP 36, ASOP 41" .
+
+ao:Disclosure rdf:type owl:Class ;
+    rdfs:label "Disclosure"@en ;
+    rdfs:comment "Information that an actuary must disclose in an actuarial communication per professional standards. Includes data limitations, assumptions, methods, reliance on others, etc. (ASOP 41)."@en ;
+    ao:asopReference "ASOP 41" .
+
+ao:IntendedUser rdf:type owl:Class ;
+    rdfs:subClassOf ao:Agent ;
+    rdfs:label "Intended User"@en ;
+    rdfs:comment "A role played by an agent identified by the actuary as able to rely on the actuarial communication. Communications should be appropriate for the intended user (ASOP 41)."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" ;
+    ao:asopReference "ASOP 41" .
+
+ao:AppointedActuary rdf:type owl:Class ;
+    rdfs:subClassOf ao:Actuary ;
+    rdfs:label "Appointed Actuary"@en ;
+    rdfs:comment "A role played by an actuary who is appointed by an organization or designated by a regulator to provide specific actuarial opinions, typically regarding reserve adequacy."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
+
+### UFO-C: Social and Intentional Entities
+
+ao:Commitment rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Commitment"@en ;
+    rdfs:comment "A social moment that binds an agent to a course of action. Commitments create obligations and expectations (UFO-C)."@en ;
+    ao:ufoCategory "moment" .
+
+ao:PolicyCommitment rdf:type owl:Class ;
+    rdfs:subClassOf ao:Commitment ;
+    rdfs:label "Policy Commitment"@en ;
+    rdfs:comment "An insurer's commitment to pay benefits under specified conditions. The binding obligation created by an insurance policy (UFO-C)."@en .
+
+ao:Right rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Right"@en ;
+    rdfs:comment "A claim or entitlement held by an agent. Rights are social moments that derive from commitments (UFO-C). Not to be confused with insurance claim."@en ;
+    ao:ufoCategory "moment" .
+
+ao:Goal rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Goal"@en ;
+    rdfs:comment "A desired state of affairs or outcome that an agent intends to achieve. Goals are intentional moments (UFO-C)."@en ;
+    ao:ufoCategory "moment" .
+
+ao:RiskManagementGoal rdf:type owl:Class ;
+    rdfs:subClassOf ao:Goal ;
+    rdfs:label "Risk Management Goal"@en ;
+    rdfs:comment "A goal related to identifying, assessing, mitigating, or transferring risks."@en .
 
 ### End of Ontology
