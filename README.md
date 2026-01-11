@@ -72,3 +72,44 @@ A useful artificial intelligence for actuaries should be capable of inference an
 - Regulatory Compliance
 - Product Development
 
+---
+
+## Visualizations
+
+The ontology includes comprehensive visualizations to help understand its structure and relationships. See the **[Visualization Guide](VISUALIZATION-GUIDE.md)** for detailed information.
+
+### Available Visualizations
+
+1. **📊 Class Hierarchy** (`ontology_class_hierarchy.png`)
+   - Complete taxonomic structure showing all classes and inheritance
+   - Color-coded by domain and UFO categories
+
+2. **🔗 Relationship Diagram** (`ontology_relationships.png`)
+   - Key object properties and how concepts connect
+   - Shows core relationships like "insures", "manages", "covers"
+
+3. **🎨 Domain Layers** (`ontology_domain_layers.png`)
+   - Six focused views of different conceptual areas:
+     - UFO Foundational Layer
+     - Agent Types (Kinds & Roles)
+     - Risk Concepts (COVER)
+     - Insurance & Coverage
+     - Financial Concepts
+     - Actuarial Activities & Models
+
+4. **🌐 Interactive HTML Viewer** (`ontology_interactive.html`)
+   - Browse the ontology in your web browser
+   - Includes statistics, legends, and searchable hierarchy
+
+### Generating Visualizations
+
+```bash
+pip install -r requirements.txt
+python3 visualize_ontology.py
+```
+
+The ontology is aligned with:
+- **UFO** (Unified Foundational Ontology) - Foundational ontological distinctions
+- **COVER** (Common Ontology of Value and Risk) - Risk and value theory
+- **ASOPs** (Actuarial Standards of Practice) - Professional standards
+

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Actuarial Ontology - Interactive Visualization</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .class-tree {
+            font-family: 'Courier New', monospace;
+            line-height: 1.8;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .class-item {
+            margin-left: 20px;
+            padding: 5px;
+            border-left: 2px solid #ddd;
+        }
+        .class-item:hover {
+            background: #e8f4f8;
+            border-left-color: #3498db;
+        }
+        .ufo-kind { color: #16a085; font-weight: bold; }
+        .ufo-role { color: #2980b9; font-style: italic; }
+        .ufo-phase { color: #8e44ad; font-style: italic; }
+        .ufo-moment { color: #f39c12; }
+        .ufo-category { color: #c0392b; font-weight: bold; }
+        .relationship {
+            padding: 10px;
+            margin: 5px 0;
+            background: #ecf0f1;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .domain {
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            min-width: 150px;
+            text-align: center;
+        }
+        .property {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 0 10px;
+            font-style: italic;
+        }
+        .range {
+            background: #2ecc71;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            min-width: 150px;
+            text-align: center;
+        }
+        .arrow { margin: 0 10px; font-size: 1.5em; color: #7f8c8d; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Actuarial Ontology</h1>
+        <div class="subtitle">
+            A comprehensive ontology for actuarial science<br>
+            Aligned with UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk), and ASOPs (Actuarial Standards of Practice)
+        </div>
+
+        <div class="section">
+            <h2>📊 Ontology Statistics</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">134</div>
+                    <div class="stat-label">Classes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">31</div>
+                    <div class="stat-label">Relationships</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">44</div>
+                    <div class="stat-label">Parent Classes</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏷️ UFO Categories Legend</h2>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #16a085;"></div>
+                    <span><strong>Kind</strong> - Rigid sortals providing identity</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #2980b9;"></div>
+                    <span><strong>Role</strong> - Anti-rigid relational types</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #8e44ad;"></div>
+                    <span><strong>Phase</strong> - Anti-rigid intrinsic types</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f39c12;"></div>
+                    <span><strong>Moment</strong> - Dependent properties</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #c0392b;"></div>
+                    <span><strong>Category</strong> - General classifications</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌳 Class Hierarchy</h2>
+            <div class="class-tree">
+<div class="class-item"><span class="">Accounting Standard</span></div>
+  <div class="class-item"><span class="">GAAP</span></div>
+  <div class="class-item"><span class="">IFRS 17</span></div>
+<div class="class-item"><span class="">Actuarial Model</span></div>
+  <div class="class-item"><span class="">Capital Model</span></div>
+  <div class="class-item"><span class="">Loss Development Triangle</span></div>
+  <div class="class-item"><span class="">Mortality Table</span></div>
+  <div class="class-item"><span class="">Pricing Model</span></div>
+    <div class="class-item"><span class="">Generalized Linear Model (GLM)</span></div>
+  <div class="class-item"><span class="">Reserving Model</span></div>
+    <div class="class-item"><span class="">Chain Ladder Method</span></div>
+<div class="class-item"><span class="">Actuarial Standard</span></div>
+<div class="class-item"><span class="">Assumption</span></div>
+<div class="class-item"><span class="">Claim</span></div>
+  <div class="class-item"><span class="">Incurred But Not Reported (IBNR)</span></div>
+  <div class="class-item"><span class="">Reported Claim</span></div>
+    <div class="class-item"><span class="ufo-phase">Outstanding Claim</span> <small style="color: #7f8c8d;">(phase)</small></div>
+    <div class="class-item"><span class="ufo-phase">Paid Claim</span> <small style="color: #7f8c8d;">(phase)</small></div>
+<div class="class-item"><span class="">Coverage</span></div>
+<div class="class-item"><span class="">Data</span></div>
+  <div class="class-item"><span class="">Claim Data</span></div>
+  <div class="class-item"><span class="">Exposure Data</span></div>
+  <div class="class-item"><span class="">Premium Data</span></div>
+<div class="class-item"><span class="">Deductible</span></div>
+<div class="class-item"><span class="">Disclosure</span></div>
+<div class="class-item"><span class="ufo-category">Endurant</span> <small style="color: #7f8c8d;">(category)</small></div>
+  <div class="class-item"><span class="ufo-category">Entity</span> <small style="color: #7f8c8d;">(category)</small></div>
+    <div class="class-item"><span class="ufo-category">Agent</span> <small style="color: #7f8c8d;">(category)</small></div>
+      <div class="class-item"><span class="ufo-role">Beneficiary</span> <small style="color: #7f8c8d;">(role)</small></div>
+      <div class="class-item"><span class="ufo-role">Insured</span> <small style="color: #7f8c8d;">(role)</small></div>
+        <div class="class-item"><span class="ufo-role">Policyholder</span> <small style="color: #7f8c8d;">(role)</small></div>
+      <div class="class-item"><span class="ufo-role">Intended User</span> <small style="color: #7f8c8d;">(role)</small></div>
+      <div class="class-item"><span class="ufo-role">Investor</span> <small style="color: #7f8c8d;">(role)</small></div>
+      <div class="class-item"><span class="ufo-kind">Organization</span> <small style="color: #7f8c8d;">(kind)</small></div>
+        <div class="class-item"><span class="ufo-role">Insurer</span> <small style="color: #7f8c8d;">(role)</small></div>
+          <div class="class-item"><span class="ufo-role">Reinsurer</span> <small style="color: #7f8c8d;">(role)</small></div>
+        <div class="class-item"><span class="ufo-role">Regulator</span> <small style="color: #7f8c8d;">(role)</small></div>
+      <div class="class-item"><span class="ufo-kind">Person</span> <small style="color: #7f8c8d;">(kind)</small></div>
+        <div class="class-item"><span class="ufo-role">Actuary</span> <small style="color: #7f8c8d;">(role)</small></div>
+          <div class="class-item"><span class="ufo-role">Appointed Actuary</span> <small style="color: #7f8c8d;">(role)</small></div>
+      <div class="class-item"><span class="ufo-role">Risk Subject</span> <small style="color: #7f8c8d;">(role)</small></div>
+    <div class="class-item"><span class="ufo-category">Object</span> <small style="color: #7f8c8d;">(category)</small></div>
+      <div class="class-item"><span class="">Actuarial Communication</span></div>
+        <div class="class-item"><span class="">Actuarial Opinion</span></div>
+          <div class="class-item"><span class="">Statement of Actuarial Opinion</span></div>
+        <div class="class-item"><span class="">Actuarial Report</span></div>
+      <div class="class-item"><span class="">Financial Instrument</span></div>
+        <div class="class-item"><span class="">Asset</span></div>
+          <div class="class-item"><span class="">Capital</span></div>
+            <div class="class-item"><span class="">Economic Capital</span></div>
+            <div class="class-item"><span class="">Regulatory Capital</span></div>
+        <div class="class-item"><span class="">Liability</span></div>
+          <div class="class-item"><span class="">Reserve</span></div>
+            <div class="class-item"><span class="">Claim Reserve</span></div>
+              <div class="class-item"><span class="">Case Reserve</span></div>
+              <div class="class-item"><span class="">IBNR Reserve</span></div>
+      <div class="class-item"><span class="">Object at Risk</span></div>
+      <div class="class-item"><span class="">Risk Enabler</span></div>
+      <div class="class-item"><span class="">Value Enabler</span></div>
+      <div class="class-item"><span class="">Value Object</span></div>
+  <div class="class-item"><span class="ufo-category">Moment</span> <small style="color: #7f8c8d;">(category)</small></div>
+    <div class="class-item"><span class="ufo-moment">Commitment</span> <small style="color: #7f8c8d;">(moment)</small></div>
+      <div class="class-item"><span class="">Policy Commitment</span></div>
+    <div class="class-item"><span class="">Disposition</span></div>
+      <div class="class-item"><span class="">Vulnerability</span></div>
+    <div class="class-item"><span class="ufo-moment">Goal</span> <small style="color: #7f8c8d;">(moment)</small></div>
+      <div class="class-item"><span class="">Risk Management Goal</span></div>
+    <div class="class-item"><span class="ufo-moment">Measurement</span> <small style="color: #7f8c8d;">(moment)</small></div>
+      <div class="class-item"><span class="">Estimate</span></div>
+      <div class="class-item"><span class="">Financial Measurement</span></div>
+        <div class="class-item"><span class="">Combined Ratio</span></div>
+        <div class="class-item"><span class="">Expense Ratio</span></div>
+        <div class="class-item"><span class="">Loss Ratio</span></div>
+        <div class="class-item"><span class="">Return on Equity (ROE)</span></div>
+      <div class="class-item"><span class="">Quantitative Risk</span></div>
+    <div class="class-item"><span class="ufo-moment">Right</span> <small style="color: #7f8c8d;">(moment)</small></div>
+    <div class="class-item"><span class="">Risk Assessment Judgment</span></div>
+    <div class="class-item"><span class="">Value Ascription</span></div>
+<div class="class-item"><span class="">Exclusion</span></div>
+<div class="class-item"><span class="">Idiosyncratic Risk</span></div>
+<div class="class-item"><span class="">Insurable Risk</span></div>
+  <div class="class-item"><span class="">Catastrophe Risk</span></div>
+  <div class="class-item"><span class="">Liability Risk</span></div>
+  <div class="class-item"><span class="">Longevity Risk</span></div>
+  <div class="class-item"><span class="">Morbidity Risk</span></div>
+  <div class="class-item"><span class="">Mortality Risk</span></div>
+  <div class="class-item"><span class="">Property Risk</span></div>
+<div class="class-item"><span class="">Insurance Policy</span></div>
+  <div class="class-item"><span class="">Reinsurance Contract</span></div>
+<div class="class-item"><span class="">Insurance Product</span></div>
+  <div class="class-item"><span class="">Annuity</span></div>
+  <div class="class-item"><span class="">Casualty Insurance</span></div>
+  <div class="class-item"><span class="">Health Insurance</span></div>
+  <div class="class-item"><span class="">Life Insurance</span></div>
+    <div class="class-item"><span class="">Term Life Insurance</span></div>
+    <div class="class-item"><span class="">Whole Life Insurance</span></div>
+  <div class="class-item"><span class="">Property Insurance</span></div>
+    <div class="class-item"><span class="">Auto Insurance</span></div>
+    <div class="class-item"><span class="">Homeowners Insurance</span></div>
+<div class="class-item"><span class="">Limit</span></div>
+<div class="class-item"><span class="">Loss</span></div>
+  <div class="class-item"><span class="">Ultimate Claim Cost</span></div>
+<div class="class-item"><span class="">Pension</span></div>
+  <div class="class-item"><span class="">Defined Benefit Pension</span></div>
+  <div class="class-item"><span class="">Defined Contribution Pension</span></div>
+<div class="class-item"><span class="ufo-category">Perdurant</span> <small style="color: #7f8c8d;">(category)</small></div>
+  <div class="class-item"><span class="ufo-category">Activity</span> <small style="color: #7f8c8d;">(category)</small></div>
+    <div class="class-item"><span class="">Actuarial Activity</span></div>
+      <div class="class-item"><span class="">Capital Modeling</span></div>
+      <div class="class-item"><span class="">Experience Analysis</span></div>
+      <div class="class-item"><span class="">Pricing</span></div>
+      <div class="class-item"><span class="">Product Development</span></div>
+      <div class="class-item"><span class="">Reserving</span></div>
+      <div class="class-item"><span class="">Risk Assessment</span></div>
+      <div class="class-item"><span class="">Valuation</span></div>
+  <div class="class-item"><span class="ufo-category">Event</span> <small style="color: #7f8c8d;">(category)</small></div>
+    <div class="class-item"><span class="">Claim Event</span></div>
+    <div class="class-item"><span class="">Loss Event</span></div>
+    <div class="class-item"><span class="">Risk Experience</span></div>
+    <div class="class-item"><span class="">Threat Event</span></div>
+    <div class="class-item"><span class="">Value Experience</span></div>
+<div class="class-item"><span class="">Peril</span></div>
+  <div class="class-item"><span class="">Man-made Peril</span></div>
+  <div class="class-item"><span class="">Natural Peril</span></div>
+<div class="class-item"><span class="">Premium</span></div>
+<div class="class-item"><span class="">Regulation</span></div>
+  <div class="class-item"><span class="">Solvency II</span></div>
+<div class="class-item"><span class="">Risk</span></div>
+  <div class="class-item"><span class="">Credit Risk</span></div>
+  <div class="class-item"><span class="">Market Risk</span></div>
+  <div class="class-item"><span class="">Operational Risk</span></div>
+<div class="class-item"><span class="">Systemic Risk</span></div>
+<div class="class-item"><span class="">Uninsurable Risk</span></div>
+<div class="class-item"><span class="">Value</span></div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔗 Key Relationships (Object Properties)</h2>
+
+            <div class="relationship">
+                <span class="domain">Activity</span>
+                <span class="arrow">→</span>
+                <span class="property">has agent</span>
+                <span class="arrow">→</span>
+                <span class="range">Agent</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Actuarial Activity</span>
+                <span class="arrow">→</span>
+                <span class="property">uses model</span>
+                <span class="arrow">→</span>
+                <span class="range">Actuarial Model</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Actuarial Communication</span>
+                <span class="arrow">→</span>
+                <span class="property">has disclosure</span>
+                <span class="arrow">→</span>
+                <span class="range">Disclosure</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Actuarial Communication</span>
+                <span class="arrow">→</span>
+                <span class="property">has intended user</span>
+                <span class="arrow">→</span>
+                <span class="range">Intended User</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Actuarial Model</span>
+                <span class="arrow">→</span>
+                <span class="property">based on data</span>
+                <span class="arrow">→</span>
+                <span class="range">Data</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Actuarial Model</span>
+                <span class="arrow">→</span>
+                <span class="property">produces estimate</span>
+                <span class="arrow">→</span>
+                <span class="range">Estimate</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Agent</span>
+                <span class="arrow">→</span>
+                <span class="property">ascribes value</span>
+                <span class="arrow">→</span>
+                <span class="range">Value Ascription</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Agent</span>
+                <span class="arrow">→</span>
+                <span class="property">assesses risk</span>
+                <span class="arrow">→</span>
+                <span class="range">Risk Assessment Judgment</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Agent</span>
+                <span class="arrow">→</span>
+                <span class="property">exposed to</span>
+                <span class="arrow">→</span>
+                <span class="range">Risk</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Agent</span>
+                <span class="arrow">→</span>
+                <span class="property">manages</span>
+                <span class="arrow">→</span>
+                <span class="range">Risk</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Claim</span>
+                <span class="arrow">→</span>
+                <span class="property">has reserve</span>
+                <span class="arrow">→</span>
+                <span class="range">Reserve</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Claim</span>
+                <span class="arrow">→</span>
+                <span class="property">triggered by</span>
+                <span class="arrow">→</span>
+                <span class="range">Event</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Disposition</span>
+                <span class="arrow">→</span>
+                <span class="property">manifests as</span>
+                <span class="arrow">→</span>
+                <span class="range">Event</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Endurant</span>
+                <span class="arrow">→</span>
+                <span class="property">participates in</span>
+                <span class="arrow">→</span>
+                <span class="range">Perdurant</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Entity</span>
+                <span class="arrow">→</span>
+                <span class="property">has asset</span>
+                <span class="arrow">→</span>
+                <span class="range">Asset</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Entity</span>
+                <span class="arrow">→</span>
+                <span class="property">has liability</span>
+                <span class="arrow">→</span>
+                <span class="range">Liability</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Entity</span>
+                <span class="arrow">→</span>
+                <span class="property">has risk</span>
+                <span class="arrow">→</span>
+                <span class="range">Risk</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Event</span>
+                <span class="arrow">→</span>
+                <span class="property">caused by</span>
+                <span class="arrow">→</span>
+                <span class="range">Peril</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Event</span>
+                <span class="arrow">→</span>
+                <span class="property">results in</span>
+                <span class="arrow">→</span>
+                <span class="range">Loss</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Insurance Policy</span>
+                <span class="arrow">→</span>
+                <span class="property">covers</span>
+                <span class="arrow">→</span>
+                <span class="range">Risk</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Insurance Policy</span>
+                <span class="arrow">→</span>
+                <span class="property">has claim</span>
+                <span class="arrow">→</span>
+                <span class="range">Claim</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Insured</span>
+                <span class="arrow">→</span>
+                <span class="property">has policy</span>
+                <span class="arrow">→</span>
+                <span class="range">Insurance Policy</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Insurer</span>
+                <span class="arrow">→</span>
+                <span class="property">insures</span>
+                <span class="arrow">→</span>
+                <span class="range">Insured</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Investor</span>
+                <span class="arrow">→</span>
+                <span class="property">invests in</span>
+                <span class="arrow">→</span>
+                <span class="range">Asset</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Loss Event</span>
+                <span class="arrow">→</span>
+                <span class="property">undermines objective of</span>
+                <span class="arrow">→</span>
+                <span class="range">Risk Subject</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Moment</span>
+                <span class="arrow">→</span>
+                <span class="property">inheres in</span>
+                <span class="arrow">→</span>
+                <span class="range">Endurant</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Perdurant</span>
+                <span class="arrow">→</span>
+                <span class="property">has participant</span>
+                <span class="arrow">→</span>
+                <span class="range">Endurant</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Threat Event</span>
+                <span class="arrow">→</span>
+                <span class="property">precipitates</span>
+                <span class="arrow">→</span>
+                <span class="range">Loss Event</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Value Enabler</span>
+                <span class="arrow">→</span>
+                <span class="property">enables value for</span>
+                <span class="arrow">→</span>
+                <span class="range">Agent</span>
+            </div>
+
+            <div class="relationship">
+                <span class="domain">Value Object</span>
+                <span class="arrow">→</span>
+                <span class="property">has value for</span>
+                <span class="arrow">→</span>
+                <span class="range">Agent</span>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
