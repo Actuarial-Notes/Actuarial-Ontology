@@ -9,7 +9,7 @@ This document describes the Actuarial Ontology (AO), version 0.2.0-draft. The on
 - **COVER** (Common Ontology of Value and Risk) - value-risk integration and event chains
 - **ASOPs** (Actuarial Standards of Practice) - professional practice framework
 
-See [STANDARDS-REVIEW.md](STANDARDS-REVIEW.md) for detailed analysis.
+See [AO-Standards-Review](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/AO-Standards-Review.md) for detailed analysis.
 
 ## Purpose
 
