@@ -74,39 +74,42 @@ A useful artificial intelligence for actuaries should be capable of inference an
 
 ---
 
-## Visualizations
+## Visualization
 
-The ontology includes comprehensive visualizations to help understand its structure and relationships. See the **[Visualization Guide](VISUALIZATION-GUIDE.md)** for detailed information.
+The ontology includes a clear, legible visualization showing the domain structure and key concepts.
 
-### Available Visualizations
+![Ontology Visualization](ontology_visualization.png)
 
-1. **📊 Class Hierarchy** (`ontology_class_hierarchy.png`)
-   - Complete taxonomic structure showing all classes and inheritance
-   - Color-coded by domain and UFO categories
+### Features
 
-2. **🔗 Relationship Diagram** (`ontology_relationships.png`)
-   - Key object properties and how concepts connect
-   - Shows core relationships like "insures", "manages", "covers"
+- **6 Domain Layers** organized in a clear grid layout:
+  - **UFO Foundation** - Core ontological categories (Endurant, Perdurant, Moment)
+  - **Agents & Roles** - Who participates (Actuary, Insurer, Insured, etc.)
+  - **Risk Concepts** - COVER risk facets (Quantitative Risk, Risk Experience, Risk Assessment)
+  - **Insurance** - Products and contracts (Policy, Claim, Coverage, Premium)
+  - **Financial** - Instruments and metrics (Asset, Liability, Capital, Reserve)
+  - **Actuarial Practice** - Activities and models (Pricing, Reserving, Valuation)
 
-3. **🎨 Domain Layers** (`ontology_domain_layers.png`)
-   - Six focused views of different conceptual areas:
-     - UFO Foundational Layer
-     - Agent Types (Kinds & Roles)
-     - Risk Concepts (COVER)
-     - Insurance & Coverage
-     - Financial Concepts
-     - Actuarial Activities & Models
+- **Relationship Arrows** showing key connections between domains
+- **Color-Coded** by domain for easy identification
+- **Large, Readable Text** with clear visual hierarchy
 
-4. **🌐 Interactive HTML Viewer** (`ontology_interactive.html`)
-   - Browse the ontology in your web browser
-   - Includes statistics, legends, and searchable hierarchy
+### Interactive Explorer
 
-### Generating Visualizations
+Open [`ontology_interactive.html`](ontology_interactive.html) in your browser for an interactive view with:
+- Statistics dashboard
+- Domain cards with key concepts
+- Complete relationship listing
+- Standards alignment information
+
+### Generate Visualization
 
 ```bash
 pip install -r requirements.txt
 python3 visualize_ontology.py
 ```
+
+### Standards Alignment
 
 The ontology is aligned with:
 - **UFO** (Unified Foundational Ontology) - Foundational ontological distinctions

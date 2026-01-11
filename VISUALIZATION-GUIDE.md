@@ -1,234 +1,267 @@
 # Actuarial Ontology Visualization Guide
 
-This guide explains how to visualize and explore the Actuarial Ontology.
+This guide explains the visualization of the Actuarial Ontology domain structure.
 
 ## Overview
 
-The Actuarial Ontology visualization suite provides four comprehensive views of the ontology structure:
+The Actuarial Ontology visualization provides a clear, legible view of the ontology organized into six domain layers. The visualization is designed to be easily readable and understandable at a glance.
 
-1. **Class Hierarchy** - Complete taxonomic structure
-2. **Relationship Diagram** - Key object properties and connections
-3. **Domain Layers** - Domain-specific concept groupings
-4. **Interactive HTML** - Browsable web interface
+![Ontology Visualization](ontology_visualization.png)
 
-## Generated Visualizations
+## Domain Structure
 
-### 1. Class Hierarchy (`ontology_class_hierarchy.png`)
+The ontology is organized into six complementary domains:
 
-A comprehensive visualization showing all classes in the ontology with their inheritance relationships.
+### 1. UFO Foundation 🔴
+**Core ontological categories**
 
-**Color Coding:**
-- 🔴 **Red** - Foundational categories (Endurant, Perdurant, Moment)
-- 🔵 **Teal** - UFO Kinds (rigid types like Person, Organization)
-- 💚 **Light Teal** - UFO Roles (anti-rigid types like Actuary, Insurer)
-- 🌸 **Pink** - UFO Phases (temporary states like Paid Claim)
-- 💛 **Yellow** - UFO Moments (dependent properties)
-- 💜 **Purple** - Risk concepts
-- 🎀 **Pink** - Insurance concepts
-- 🌊 **Blue** - Financial concepts
-- ⭐ **Yellow** - Actuarial activities
-- 🌲 **Green** - Models and data
-- 🌺 **Light Pink** - Events and activities
+Key Concepts:
+- **Endurant** - Entities that exist in time with all parts present
+- **Perdurant** - Entities that unfold in time (events, activities)
+- **Moment** - Dependent properties that inhere in other entities
+- **Entity** - Substantial endurants
+- **Agent** - Entities with intentionality
+- **Event** - Atomic temporal occurrences
+- **Activity** - Complex processes over time
 
-### 2. Relationship Diagram (`ontology_relationships.png`)
+This layer provides the foundational ontological distinctions from UFO (Unified Foundational Ontology) that underpin the entire structure.
 
-Shows the most important object properties connecting classes.
+### 2. Agents & Roles 🔵
+**Who participates in actuarial contexts**
 
-**Features:**
-- Directed arrows show relationship directions
-- Edge labels display property names (e.g., "insures", "manages", "covers")
-- Nodes colored by domain area for easy identification
-- Focuses on core concepts for clarity
+Key Concepts:
+- **Person** - Human individuals (Kind)
+- **Organization** - Structured groups (Kind)
+- **Actuary** - Professional measuring/managing risk (Role)
+- **Insurer** - Provider of insurance coverage (Role)
+- **Insured** - Holder of insurance coverage (Role)
+- **Regulator** - Overseer of regulations (Role)
+- **Risk Subject** - Entity whose objectives may be undermined (Role)
 
-**Key Relationships Shown:**
-- `Insurer → insures → Insured`
-- `Agent → manages → Risk`
-- `Insurance Policy → covers → Risk`
-- `Claim → triggered by → Event`
-- `Actuary → communicates → Actuarial Communication`
-- Many more...
+This layer distinguishes between rigid kinds (Person, Organization) and anti-rigid roles that entities can gain or lose.
 
-### 3. Domain Layers (`ontology_domain_layers.png`)
+### 3. Risk Concepts 💜
+**COVER risk facets and classifications**
 
-Six focused views showing different conceptual areas:
+Key Concepts:
+- **Risk** - Abstract concept of potential loss
+- **Quantitative Risk** - Risk as a numerical measure
+- **Risk Experience** - Risk as an event chain
+- **Risk Assessment** - Risk as agent judgment
+- **Threat Event** - Event capable of precipitating loss
+- **Loss Event** - Event resulting in financial loss
 
-1. **UFO Foundational Layer** - Core ontological distinctions
-   - Endurants, Perdurants, Moments
-   - Entity, Agent, Object, Event, Activity
+This layer implements COVER's (Common Ontology of Value and Risk) three-faceted view of risk, recognizing that "risk" has multiple distinct meanings.
 
-2. **Agent Types (Kinds & Roles)** - Who participates
-   - Person, Organization, Actuary
-   - Insurer, Insured, Regulator, etc.
+### 4. Insurance 🎀
+**Insurance products and contracts**
 
-3. **Risk Concepts (COVER)** - Risk theory
-   - Three facets: Quantitative Risk, Risk Experience, Risk Assessment
-   - Risk categories: Mortality, Property, Market, etc.
-   - Dispositions and Vulnerabilities
+Key Concepts:
+- **Insurance Policy** - Contract specifying coverage terms
+- **Claim** - Request for payment under policy
+- **Coverage** - Scope of protection provided
+- **Reserve** - Funds set aside for obligations
+- **Premium** - Amount paid for coverage
+- **Deductible** - Amount insured must pay first
 
-4. **Insurance & Coverage** - Insurance domain
-   - Products: Life, Health, Property
-   - Contracts: Policies, Claims
-   - Coverage elements: Exclusions, Deductibles, Limits
+This layer covers the core insurance domain, including products, contracts, and operational concepts.
 
-5. **Financial Concepts** - Financial theory
-   - Assets, Liabilities, Capital
-   - Reserves (Case, IBNR)
-   - Premium, Loss
+### 5. Financial 🌊
+**Financial instruments and metrics**
 
-6. **Actuarial Activities & Models** - Actuarial practice
-   - Activities: Pricing, Reserving, Valuation
-   - Models: Pricing Model, Reserving Model, Capital Model
-   - Communications: Reports, Opinions
+Key Concepts:
+- **Asset** - Resources with economic value
+- **Liability** - Financial obligations owed
+- **Capital** - Resources to support operations
+- **Loss** - Reduction in value
+- **Financial Measurement** - Quantification of financial properties
+- **Reserve** - Funds for future obligations
 
-### 4. Interactive HTML (`ontology_interactive.html`)
+This layer provides the financial foundation supporting insurance and actuarial operations.
 
-A browsable web interface for exploring the ontology.
+### 6. Actuarial Practice ⭐
+**Activities, models, and standards**
 
-**Features:**
-- 📊 Statistics dashboard
-- 🏷️ UFO categories legend
-- 🌳 Expandable class hierarchy tree
-- 🔗 Complete relationship listing
-- Hover effects for easy navigation
-- Responsive design
+Key Concepts:
+- **Pricing** - Determining premium rates
+- **Reserving** - Estimating future obligations
+- **Valuation** - Determining economic value
+- **Actuarial Model** - Mathematical/statistical models
+- **Actuarial Communication** - Reports and opinions (ASOP 41)
+- **Risk Assessment** - Identifying and evaluating risks
 
-**To Use:**
-Simply open `ontology_interactive.html` in any web browser.
+This layer represents the practice of actuarial science, including key activities, models, and professional standards.
 
-## UFO Category System
+## Relationships Between Domains
 
-The ontology uses UFO (Unified Foundational Ontology) meta-properties:
+The visualization shows key relationships as arrows:
 
-### Rigidity
-- **Rigid** - Cannot change type while maintaining identity (e.g., Person)
-- **Anti-rigid** - Can gain/lose type (e.g., Actuary, Insurer)
-- **Semi-rigid** - Some instances can change (mixed)
+- **Agents → Risk**: "exposed to" - Agents are exposed to risks
+- **Agents → Insurance**: "holds" - Agents hold insurance policies
+- **Risk → Insurance**: "covered by" - Risks are covered by insurance
+- **Insurance → Financial**: "backed by" - Insurance is backed by financial instruments
+- **Actuarial → Risk**: "assesses" - Actuaries assess risks
+- **Actuarial → Insurance**: "prices" - Actuaries price insurance products
 
-### UFO Categories
-- **Kind** - Rigid sortal providing identity principle
-- **Role** - Anti-rigid relational type (depends on external relations)
-- **Phase** - Anti-rigid intrinsic type (depends on intrinsic properties)
-- **Moment** - Dependent property that inheres in another entity
-- **Category** - General classification spanning multiple kinds
+## Design Principles
 
-## COVER Integration
+### Clarity
+- Large, readable text (12-18pt for concepts, 32pt for title)
+- High contrast between text and backgrounds
+- Clean, organized grid layout
+- Generous spacing between elements
 
-The ontology incorporates COVER (Common Ontology of Value and Risk) distinctions:
+### Color Coding
+Each domain has a distinct color:
+- 🔴 Red (#FF6B6B) - UFO Foundation
+- 🔵 Teal (#4ECDC4) - Agents & Roles
+- 💜 Purple (#9B59B6) - Risk Concepts
+- 🎀 Pink (#E91E63) - Insurance
+- 🌊 Blue (#3498DB) - Financial
+- ⭐ Orange (#F39C12) - Actuarial Practice
 
-### Three Facets of Risk
-1. **Quantitative Risk** - Risk as a numerical measure
-2. **Risk Experience** - Risk as an event chain (threat → loss)
-3. **Risk Assessment Judgment** - Risk as agent perception
+### Visual Hierarchy
+1. **Title** - Largest text, centered at top
+2. **Domain Titles** - Bold, colored by domain
+3. **Domain Descriptions** - Italic, explanatory
+4. **Concepts** - Clear, bordered bubbles
+5. **Relationships** - Subtle arrows connecting domains
+6. **Standards Legend** - Bottom section explaining alignment
 
-### Event Chain
-```
-Peril → Threat Event → Loss Event → undermines → Risk Subject
-```
+## Interactive HTML Explorer
 
-### Value-Risk Relationship
-- Value Objects enable Value Experiences
-- Risk Enablers enable Threat/Loss Events
-- Risk fundamentally intertwined with value
+The `ontology_interactive.html` file provides an interactive web interface:
 
-## ASOP Alignment
+### Features
+- **Statistics Dashboard** - Count of classes, relationships, and parent classes
+- **Domain Cards** - Hover effects and visual feedback
+- **Relationship Browser** - Complete listing of object properties
+- **Standards Legend** - Information about UFO, COVER, and ASOP alignment
+- **Responsive Design** - Adapts to different screen sizes
 
-The ontology aligns with Actuarial Standards of Practice:
+### Usage
+Simply open the HTML file in any modern web browser. No server or special setup required.
 
+## Standards Alignment
+
+### UFO (Unified Foundational Ontology)
+The ontology uses UFO's fundamental distinctions:
+- **Endurants vs Perdurants** - Things vs happenings
+- **Kinds vs Roles vs Phases** - Rigid vs anti-rigid types
+- **Moments** - Dependent properties
+
+### COVER (Common Ontology of Value and Risk)
+The ontology adopts COVER's analysis of risk:
+- **Three risk facets** - Quantitative, Experience, Assessment
+- **Event chains** - Threat → Loss → Undermines objectives
+- **Value-risk duality** - Risk fundamentally related to value
+
+### ASOPs (Actuarial Standards of Practice)
+The ontology incorporates professional standards:
 - **ASOP 41** - Actuarial Communications
-  - Actuarial Communication, Actuarial Report, Actuarial Opinion
-  - Intended User, Disclosure requirements
+- **Communication elements** - Reports, Opinions, Disclosures
+- **Professional roles** - Appointed Actuary, Intended User
 
-- **ASOP 36** - Statement of Actuarial Opinion
-
-Classes include `asopReference` annotations linking to specific standards.
-
-## Generating Visualizations
+## Generating the Visualization
 
 ### Prerequisites
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run Visualization Script
+This installs:
+- `rdflib` - For parsing the ontology (Turtle format)
+- `networkx` - For graph structures
+- `matplotlib` - For rendering the visualization
+
+### Run the Script
 ```bash
 python3 visualize_ontology.py
 ```
 
-### Dependencies
-- `rdflib` - RDF/OWL parsing
-- `networkx` - Graph structures
-- `matplotlib` - Visualization rendering
+### Output Files
+1. `ontology_visualization.png` - Main domain structure visualization (390KB, 150 DPI)
+2. `ontology_interactive.html` - Interactive web explorer (22KB)
 
-## File Structure
+## Understanding the Ontology
 
+### Key Insights
+
+1. **Solid Foundation**: Built on UFO's well-established ontological framework
+2. **Role-Heavy Design**: Many concepts are anti-rigid roles (Actuary, Insurer) rather than rigid kinds, reflecting the flexible nature of actuarial relationships
+3. **COVER Integration**: Clear separation of risk into three distinct facets avoids confusion
+4. **Domain Coverage**: Comprehensive coverage of insurance, finance, and actuarial practice
+5. **Standards Compliance**: Explicit representation of ASOP concepts
+
+### Reading the Visualization
+
+1. **Start with UFO Foundation** (top-left) to understand the ontological basis
+2. **Follow the arrows** to see how domains connect
+3. **Read domain descriptions** for context on each area
+4. **Explore concepts** to see the key classes in each domain
+5. **Check the legend** at bottom for standards alignment
+
+### Use Cases
+
+The visualization is helpful for:
+- **Onboarding** - Introducing new contributors to the ontology structure
+- **Presentations** - Explaining the ontology to stakeholders
+- **Documentation** - Providing a visual reference in papers or reports
+- **Analysis** - Understanding the scope and organization of concepts
+- **Teaching** - Illustrating ontological principles and actuarial concepts
+
+## Customization
+
+To customize the visualization, edit `visualize_ontology.py`:
+
+### Change Colors
+Modify the `domains` dictionary color values (lines 36-65)
+
+### Add/Remove Concepts
+Modify the `concepts` lists in each domain
+
+### Adjust Layout
+Modify the positioning parameters (lines 79-94):
+- `box_width`, `box_height` - Size of domain boxes
+- `x_margin`, `y_margin` - Margins around the figure
+- `x_gap`, `y_gap` - Spacing between boxes
+
+### Change Relationships
+Modify the `relationships` list (lines 165-173):
+```python
+(from_domain_idx, to_domain_idx, 'label')
 ```
-Actuarial-Ontology/
-├── actuarial-ontology.ttl          # Main ontology (Turtle format)
-├── visualize_ontology.py           # Visualization generator
-├── requirements.txt                # Python dependencies
-├── VISUALIZATION-GUIDE.md          # This guide
-├── ontology_class_hierarchy.png    # Generated: full hierarchy
-├── ontology_relationships.png      # Generated: relationships
-├── ontology_domain_layers.png      # Generated: domain views
-└── ontology_interactive.html       # Generated: interactive viewer
-```
 
-## Understanding the Visualizations
+### Adjust Text Sizes
+Modify `fontsize` parameters throughout the code
 
-### Reading the Class Hierarchy
-1. Start with foundational categories (top level)
-2. Follow arrows downward to see specializations
-3. Note UFO categories to understand type stability
-4. Color groups show domain clustering
+## Technical Details
 
-### Reading the Relationships
-1. Domain (source) on the left
-2. Property (relationship) in the middle
-3. Range (target) on the right
-4. Arrows show directionality
-
-### Using Domain Layers
-Each layer is self-contained:
-- Shows key classes for that domain
-- Includes only internal relationships
-- Use for focused understanding of specific areas
-
-## Key Insights from Visualizations
-
-1. **Foundational Structure**: Built on solid UFO foundation
-2. **Role-Heavy Design**: Many anti-rigid roles (flexible typing)
-3. **COVER Integration**: Clear separation of risk facets
-4. **Insurance Focus**: Comprehensive insurance domain coverage
-5. **Actuarial Practice**: Well-represented actuarial activities and models
-6. **Standard Compliance**: ASOP concepts explicitly represented
-
-## Tips for Exploration
-
-1. **Start with Interactive HTML** for overview and navigation
-2. **Use Class Hierarchy** to understand taxonomic structure
-3. **Check Relationships** to see how concepts connect
-4. **Explore Domain Layers** for focused area study
-5. **Reference UFO/COVER** documentation for deeper understanding
+- **Format**: PNG image
+- **Resolution**: 150 DPI (suitable for screens and presentations)
+- **Dimensions**: 20" × 14" (3000 × 2100 pixels)
+- **File Size**: ~390KB (optimized for web)
+- **Dependencies**: Python 3.7+, rdflib, networkx, matplotlib
 
 ## Future Enhancements
 
-Potential visualization improvements:
-- Interactive graph with zoom/pan
-- Filtering by domain or UFO category
-- SPARQL query interface
-- OWL axiom visualization
-- Competency question validation views
-- Example instance diagrams
+Potential improvements to consider:
+- SVG output for infinite scaling
+- PDF generation for print quality
+- Interactive JavaScript version with zoom/pan
+- Filtering by UFO category or domain
+- Animation showing concept relationships
+- Integration with ontology editors
 
 ## Questions or Issues?
 
-For questions about the ontology or visualizations, please refer to:
-- `ONTOLOGY-DOCUMENTATION.md` - Ontology design documentation
-- `STANDARDS-REVIEW.md` - Alignment with standards
-- `README.md` - Project overview
+For questions about the visualization:
+- See `ONTOLOGY-DOCUMENTATION.md` for ontology design details
+- See `STANDARDS-REVIEW.md` for alignment with standards
+- See `README.md` for project overview
 
 ---
 
 **Last Updated**: 2026-01-11
 **Version**: 0.2.0-draft
-**Generated by**: visualize_ontology.py
+**Generator**: visualize_ontology.py
