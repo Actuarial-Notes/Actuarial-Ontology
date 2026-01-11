@@ -1,7 +1,7 @@
 # Actuarial Ontology (AO)
 Welcome! This is the home of an open source project to develop **an ontology for the domain of actuarial science**.
 - [Actuarial Ontology (.ttl)](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/actuarial-ontology.ttl)
-- [Documentation](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/AO-Documentation)
+- [Documentation](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/AO-Documentation.md)
 
 
 > **Actuarial science** is the discipline of measuring and managing financial risk.
