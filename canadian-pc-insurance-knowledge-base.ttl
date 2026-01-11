@@ -1,0 +1,3145 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ao: <http://example.org/actuarial-ontology#> .
+@prefix kb: <http://example.org/knowledge-base/> .
+
+kb:Peril_Fire rdf:type ao:Peril ;
+    rdfs:label "Fire" .
+
+kb:Peril_Flood rdf:type ao:Peril ;
+    rdfs:label "Flood" .
+
+kb:Peril_Wildfire rdf:type ao:Peril ;
+    rdfs:label "Wildfire" .
+
+kb:Peril_IceStorm rdf:type ao:Peril ;
+    rdfs:label "Ice Storm" .
+
+kb:Peril_Hurricane rdf:type ao:Peril ;
+    rdfs:label "Hurricane" .
+
+kb:Peril_Hail rdf:type ao:Peril ;
+    rdfs:label "Hail" .
+
+kb:Peril_Windstorm rdf:type ao:Peril ;
+    rdfs:label "Windstorm" .
+
+kb:Peril_Earthquake rdf:type ao:Peril ;
+    rdfs:label "Earthquake" .
+
+kb:Peril_Explosion rdf:type ao:Peril ;
+    rdfs:label "Explosion" .
+
+kb:Peril_Theft rdf:type ao:Peril ;
+    rdfs:label "Theft" .
+
+kb:Peril_Tornado rdf:type ao:Peril ;
+    rdfs:label "Tornado" .
+
+kb:Peril_Drought rdf:type ao:Peril ;
+    rdfs:label "Drought" .
+
+kb:Peril_Electrical rdf:type ao:Peril ;
+    rdfs:label "Electrical Current Damage" .
+
+kb:Peril_Riot rdf:type ao:Peril ;
+    rdfs:label "Riot or Civil Commotion" .
+
+kb:Peril_Vehicle rdf:type ao:Peril ;
+    rdfs:label "Damage Caused by Vehicles" .
+
+kb:Peril_Cyclone rdf:type ao:Peril ;
+    rdfs:label "Cyclone" .
+
+kb:Insurer_Intact rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Intact Financial Corporation" .
+
+kb:Insurer_Desjardins rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Desjardins General Insurance" .
+
+kb:Insurer_Aviva rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Aviva Canada" .
+
+kb:Insurer_Cooperators rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "The Co-operators Group" .
+
+kb:Insurer_TD rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "TD Insurance Group" .
+
+kb:Insurer_Definity rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Definity" .
+
+kb:Insurer_Allstate rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Allstate Group" .
+
+kb:Insurer_Wawanesa rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Wawanesa Mutual Insurance" .
+
+kb:Insurer_Chubb rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Chubb Group" .
+
+kb:Insurer_SGI rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "SGI Canada" .
+
+kb:Insurer_MPI rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Manitoba Public Insurance" .
+
+kb:Insurer_ICBC rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Insurance Corporation of British Columbia" .
+
+kb:Insurer_SAAQ rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Société de l'assurance automobile du Québec" .
+
+kb:Insurer_Gore rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Gore Mutual Insurance" .
+
+kb:Event_PurelyMutual1882 rdf:type ao:Event ;
+    rdfs:label "Formation of Purely Mutual Underwriters Association" ;
+    ao:occurrenceDate "1882-01-01"^^xsd:date ;
+    ao:causedBy kb:Peril_Riot ;
+    ao:resultsIn kb:Loss_PurelyMutual1882 .
+
+kb:Loss_PurelyMutual1882 rdf:type ao:Loss ;
+    rdfs:label "Loss from Formation of Purely Mutual Underwriters Association" ;
+    ao:hasSeverity "0.00"^^xsd:decimal .
+
+kb:Event_UniformAct1932 rdf:type ao:Event ;
+    rdfs:label "Uniform Automobile Insurance Act introduced" ;
+    ao:occurrenceDate "1932-09-01"^^xsd:date ;
+    ao:causedBy kb:Peril_Riot ;
+    ao:resultsIn kb:Loss_UniformAct1932 .
+
+kb:Loss_UniformAct1932 rdf:type ao:Loss ;
+    rdfs:label "Loss from Uniform Automobile Insurance Act introduced" ;
+    ao:hasSeverity "0.00"^^xsd:decimal .
+
+kb:Event_UniformAct1933 rdf:type ao:Event ;
+    rdfs:label "Uniform Act enforced across Canada" ;
+    ao:occurrenceDate "1933-10-01"^^xsd:date ;
+    ao:causedBy kb:Peril_Riot ;
+    ao:resultsIn kb:Loss_UniformAct1933 .
+
+kb:Loss_UniformAct1933 rdf:type ao:Loss ;
+    rdfs:label "Loss from Uniform Act enforced across Canada" ;
+    ao:hasSeverity "0.00"^^xsd:decimal .
+
+kb:Event_SGI1944 rdf:type ao:Event ;
+    rdfs:label "Creation of Saskatchewan Government Insurance" ;
+    ao:occurrenceDate "1944-11-10"^^xsd:date ;
+    ao:causedBy kb:Peril_Riot ;
+    ao:resultsIn kb:Loss_SGI1944 .
+
+kb:Loss_SGI1944 rdf:type ao:Loss ;
+    rdfs:label "Loss from Creation of Saskatchewan Government Insurance" ;
+    ao:hasSeverity "0.00"^^xsd:decimal .
+
+kb:Event_AAIA1946 rdf:type ao:Event ;
+    rdfs:label "Automobile Accident Insurance Act establishes compulsory auto insurance" ;
+    ao:occurrenceDate "1946-01-01"^^xsd:date ;
+    ao:causedBy kb:Peril_Riot ;
+    ao:resultsIn kb:Loss_AAIA1946 .
+
+kb:Loss_AAIA1946 rdf:type ao:Loss ;
+    rdfs:label "Loss from Automobile Accident Insurance Act establishes compulsory auto insurance" ;
+    ao:hasSeverity "0.00"^^xsd:decimal .
+
+kb:Event_TorontoFire1904 rdf:type ao:Event ;
+    rdfs:label "Great Fire of Toronto" ;
+    ao:occurrenceDate "1904-04-19"^^xsd:date ;
+    ao:causedBy kb:Peril_Fire ;
+    ao:resultsIn kb:Loss_TorontoFire1904 .
+
+kb:Loss_TorontoFire1904 rdf:type ao:Loss ;
+    rdfs:label "Loss from Great Fire of Toronto" ;
+    ao:hasSeverity "0.01"^^xsd:decimal .
+
+kb:Event_HurricaneHazel1954 rdf:type ao:Event ;
+    rdfs:label "Hurricane Hazel" ;
+    ao:occurrenceDate "1954-10-15"^^xsd:date ;
+    ao:causedBy kb:Peril_Hurricane ;
+    ao:resultsIn kb:Loss_HurricaneHazel1954 .
+
+kb:Loss_HurricaneHazel1954 rdf:type ao:Loss ;
+    rdfs:label "Loss from Hurricane Hazel" ;
+    ao:hasSeverity "0.14"^^xsd:decimal .
+
+kb:Event_MPI1971 rdf:type ao:Event ;
+    rdfs:label "Establishment of Manitoba Public Insurance" ;
+    ao:occurrenceDate "1971-11-01"^^xsd:date ;
+    ao:causedBy kb:Peril_Riot ;
+    ao:resultsIn kb:Loss_MPI1971 .
+
+kb:Loss_MPI1971 rdf:type ao:Loss ;
+    rdfs:label "Loss from Establishment of Manitoba Public Insurance" ;
+    ao:hasSeverity "0.00"^^xsd:decimal .
+
+kb:Event_ICBC1973 rdf:type ao:Event ;
+    rdfs:label "Establishment of ICBC" ;
+    ao:occurrenceDate "1973-05-01"^^xsd:date ;
+    ao:causedBy kb:Peril_Riot ;
+    ao:resultsIn kb:Loss_ICBC1973 .
+
+kb:Loss_ICBC1973 rdf:type ao:Loss ;
+    rdfs:label "Loss from Establishment of ICBC" ;
+    ao:hasSeverity "0.00"^^xsd:decimal .
+
+kb:Event_SAAQ1978 rdf:type ao:Event ;
+    rdfs:label "Introduction of Quebec no-fault auto insurance (SAAQ)" ;
+    ao:occurrenceDate "1978-03-01"^^xsd:date ;
+    ao:causedBy kb:Peril_Riot ;
+    ao:resultsIn kb:Loss_SAAQ1978 .
+
+kb:Loss_SAAQ1978 rdf:type ao:Loss ;
+    rdfs:label "Loss from Introduction of Quebec no-fault auto insurance (SAAQ)" ;
+    ao:hasSeverity "0.00"^^xsd:decimal .
+
+kb:Event_OntarioOMPP1989 rdf:type ao:Event ;
+    rdfs:label "Ontario Motorist Protection Plan introduced" ;
+    ao:occurrenceDate "1989-09-15"^^xsd:date ;
+    ao:causedBy kb:Peril_Riot ;
+    ao:resultsIn kb:Loss_OntarioOMPP1989 .
+
+kb:Loss_OntarioOMPP1989 rdf:type ao:Loss ;
+    rdfs:label "Loss from Ontario Motorist Protection Plan introduced" ;
+    ao:hasSeverity "0.00"^^xsd:decimal .
+
+kb:Event_Bill1641994 rdf:type ao:Event ;
+    rdfs:label "Ontario Bill 164 reform" ;
+    ao:occurrenceDate "1994-01-01"^^xsd:date ;
+    ao:causedBy kb:Peril_Riot ;
+    ao:resultsIn kb:Loss_Bill1641994 .
+
+kb:Loss_Bill1641994 rdf:type ao:Loss ;
+    rdfs:label "Loss from Ontario Bill 164 reform" ;
+    ao:hasSeverity "0.00"^^xsd:decimal .
+
+kb:Event_IceStorm1998 rdf:type ao:Event ;
+    rdfs:label "1998 Quebec Ice Storm" ;
+    ao:occurrenceDate "1998-01-04"^^xsd:date ;
+    ao:causedBy kb:Peril_IceStorm ;
+    ao:resultsIn kb:Loss_IceStorm1998 .
+
+kb:Loss_IceStorm1998 rdf:type ao:Loss ;
+    rdfs:label "Loss from 1998 Quebec Ice Storm" ;
+    ao:hasSeverity "1.38"^^xsd:decimal .
+
+kb:Event_AlbertaFlood2013 rdf:type ao:Event ;
+    rdfs:label "2013 Alberta Floods" ;
+    ao:occurrenceDate "2013-06-20"^^xsd:date ;
+    ao:causedBy kb:Peril_Flood ;
+    ao:resultsIn kb:Loss_AlbertaFlood2013 .
+
+kb:Loss_AlbertaFlood2013 rdf:type ao:Loss ;
+    rdfs:label "Loss from 2013 Alberta Floods" ;
+    ao:hasSeverity "1.74"^^xsd:decimal .
+
+kb:Event_TorontoFlood2013 rdf:type ao:Event ;
+    rdfs:label "2013 Toronto Flash Flood" ;
+    ao:occurrenceDate "2013-07-08"^^xsd:date ;
+    ao:causedBy kb:Peril_Flood ;
+    ao:resultsIn kb:Loss_TorontoFlood2013 .
+
+kb:Loss_TorontoFlood2013 rdf:type ao:Loss ;
+    rdfs:label "Loss from 2013 Toronto Flash Flood" ;
+    ao:hasSeverity "0.94"^^xsd:decimal .
+
+kb:Event_SlaveLake2011 rdf:type ao:Event ;
+    rdfs:label "2011 Slave Lake Wildfire" ;
+    ao:occurrenceDate "2011-05-15"^^xsd:date ;
+    ao:causedBy kb:Peril_Wildfire ;
+    ao:resultsIn kb:Loss_SlaveLake2011 .
+
+kb:Loss_SlaveLake2011 rdf:type ao:Loss ;
+    rdfs:label "Loss from 2011 Slave Lake Wildfire" ;
+    ao:hasSeverity "0.70"^^xsd:decimal .
+
+kb:Event_FortMcMurray2016 rdf:type ao:Event ;
+    rdfs:label "2016 Fort McMurray Wildfires" ;
+    ao:occurrenceDate "2016-05-03"^^xsd:date ;
+    ao:causedBy kb:Peril_Wildfire ;
+    ao:resultsIn kb:Loss_FortMcMurray2016 .
+
+kb:Loss_FortMcMurray2016 rdf:type ao:Loss ;
+    rdfs:label "Loss from 2016 Fort McMurray Wildfires" ;
+    ao:hasSeverity "3.58"^^xsd:decimal .
+
+kb:Event_CalgaryHail2020 rdf:type ao:Event ;
+    rdfs:label "2020 Calgary Hailstorm" ;
+    ao:occurrenceDate "2020-06-13"^^xsd:date ;
+    ao:causedBy kb:Peril_Hail ;
+    ao:resultsIn kb:Loss_CalgaryHail2020 .
+
+kb:Loss_CalgaryHail2020 rdf:type ao:Loss ;
+    rdfs:label "Loss from 2020 Calgary Hailstorm" ;
+    ao:hasSeverity "1.30"^^xsd:decimal .
+
+kb:Event_BCFloods2021 rdf:type ao:Event ;
+    rdfs:label "2021 British Columbia Floods & Wildfires" ;
+    ao:occurrenceDate "2021-07-01"^^xsd:date ;
+    ao:causedBy kb:Peril_Flood ;
+    ao:resultsIn kb:Loss_BCFloods2021 .
+
+kb:Loss_BCFloods2021 rdf:type ao:Loss ;
+    rdfs:label "Loss from 2021 British Columbia Floods & Wildfires" ;
+    ao:hasSeverity "2.00"^^xsd:decimal .
+
+kb:Event_SevereWeather2024 rdf:type ao:Event ;
+    rdfs:label "2024 Severe Weather & Hailstorms" ;
+    ao:occurrenceDate "2024-06-01"^^xsd:date ;
+    ao:causedBy kb:Peril_Hail ;
+    ao:resultsIn kb:Loss_SevereWeather2024 .
+
+kb:Loss_SevereWeather2024 rdf:type ao:Loss ;
+    rdfs:label "Loss from 2024 Severe Weather & Hailstorms" ;
+    ao:hasSeverity "8.55"^^xsd:decimal .
+
+kb:Person_1 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Johnson" .
+
+kb:Person_2 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Johnson" .
+
+kb:Person_3 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Johnson" .
+
+kb:Person_4 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Johnson" .
+
+kb:Person_5 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Johnson" .
+
+kb:Person_6 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Johnson" .
+
+kb:Person_7 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Johnson" .
+
+kb:Person_8 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Johnson" .
+
+kb:Person_9 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Johnson" .
+
+kb:Person_10 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Johnson" .
+
+kb:Person_11 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Smith" .
+
+kb:Person_12 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Smith" .
+
+kb:Person_13 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Smith" .
+
+kb:Person_14 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Smith" .
+
+kb:Person_15 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Smith" .
+
+kb:Person_16 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Smith" .
+
+kb:Person_17 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Smith" .
+
+kb:Person_18 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Smith" .
+
+kb:Person_19 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Smith" .
+
+kb:Person_20 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Smith" .
+
+kb:Person_21 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Lee" .
+
+kb:Person_22 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Lee" .
+
+kb:Person_23 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Lee" .
+
+kb:Person_24 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Lee" .
+
+kb:Person_25 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Lee" .
+
+kb:Person_26 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Lee" .
+
+kb:Person_27 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Lee" .
+
+kb:Person_28 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Lee" .
+
+kb:Person_29 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Lee" .
+
+kb:Person_30 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Lee" .
+
+kb:Person_31 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Brown" .
+
+kb:Person_32 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Brown" .
+
+kb:Person_33 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Brown" .
+
+kb:Person_34 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Brown" .
+
+kb:Person_35 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Brown" .
+
+kb:Person_36 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Brown" .
+
+kb:Person_37 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Brown" .
+
+kb:Person_38 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Brown" .
+
+kb:Person_39 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Brown" .
+
+kb:Person_40 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Brown" .
+
+kb:Person_41 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Wilson" .
+
+kb:Person_42 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Wilson" .
+
+kb:Person_43 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Wilson" .
+
+kb:Person_44 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Wilson" .
+
+kb:Person_45 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Wilson" .
+
+kb:Person_46 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Wilson" .
+
+kb:Person_47 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Wilson" .
+
+kb:Person_48 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Wilson" .
+
+kb:Person_49 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Wilson" .
+
+kb:Person_50 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Wilson" .
+
+kb:Person_51 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Taylor" .
+
+kb:Person_52 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Taylor" .
+
+kb:Person_53 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Taylor" .
+
+kb:Person_54 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Taylor" .
+
+kb:Person_55 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Taylor" .
+
+kb:Person_56 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Taylor" .
+
+kb:Person_57 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Taylor" .
+
+kb:Person_58 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Taylor" .
+
+kb:Person_59 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Taylor" .
+
+kb:Person_60 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Taylor" .
+
+kb:Person_61 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Martinez" .
+
+kb:Person_62 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Martinez" .
+
+kb:Person_63 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Martinez" .
+
+kb:Person_64 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Martinez" .
+
+kb:Person_65 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Martinez" .
+
+kb:Person_66 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Martinez" .
+
+kb:Person_67 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Martinez" .
+
+kb:Person_68 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Martinez" .
+
+kb:Person_69 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Martinez" .
+
+kb:Person_70 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Martinez" .
+
+kb:Person_71 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Anderson" .
+
+kb:Person_72 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Anderson" .
+
+kb:Person_73 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Anderson" .
+
+kb:Person_74 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Anderson" .
+
+kb:Person_75 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Anderson" .
+
+kb:Person_76 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Anderson" .
+
+kb:Person_77 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Anderson" .
+
+kb:Person_78 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Anderson" .
+
+kb:Person_79 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Anderson" .
+
+kb:Person_80 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Anderson" .
+
+kb:Person_81 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Clark" .
+
+kb:Person_82 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Clark" .
+
+kb:Person_83 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Clark" .
+
+kb:Person_84 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Clark" .
+
+kb:Person_85 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Clark" .
+
+kb:Person_86 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Clark" .
+
+kb:Person_87 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Clark" .
+
+kb:Person_88 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Clark" .
+
+kb:Person_89 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Clark" .
+
+kb:Person_90 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Clark" .
+
+kb:Person_91 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Lewis" .
+
+kb:Person_92 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Lewis" .
+
+kb:Person_93 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Lewis" .
+
+kb:Person_94 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Lewis" .
+
+kb:Person_95 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Lewis" .
+
+kb:Person_96 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Lewis" .
+
+kb:Person_97 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Lewis" .
+
+kb:Person_98 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Lewis" .
+
+kb:Person_99 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Lewis" .
+
+kb:Person_100 rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Lewis" .
+
+kb:Policy_1 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00001" ;
+    ao:policyNumber "CANPOL00001" ;
+    ao:effectiveDate "2024-06-18"^^xsd:date ;
+    ao:expirationDate "2025-06-18"^^xsd:date ;
+    ao:insures kb:Insurer_Gore ;
+    ao:hasPolicy kb:Person_1 .
+
+kb:Policy_2 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00002" ;
+    ao:policyNumber "CANPOL00002" ;
+    ao:effectiveDate "2024-08-11"^^xsd:date ;
+    ao:expirationDate "2025-08-11"^^xsd:date ;
+    ao:insures kb:Insurer_Definity ;
+    ao:hasPolicy kb:Person_2 .
+
+kb:Policy_3 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00003" ;
+    ao:policyNumber "CANPOL00003" ;
+    ao:effectiveDate "2024-06-28"^^xsd:date ;
+    ao:expirationDate "2025-06-28"^^xsd:date ;
+    ao:insures kb:Insurer_Definity ;
+    ao:hasPolicy kb:Person_3 .
+
+kb:Policy_4 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00004" ;
+    ao:policyNumber "CANPOL00004" ;
+    ao:effectiveDate "2024-10-17"^^xsd:date ;
+    ao:expirationDate "2025-10-17"^^xsd:date ;
+    ao:insures kb:Insurer_MPI ;
+    ao:hasPolicy kb:Person_4 .
+
+kb:Policy_5 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00005" ;
+    ao:policyNumber "CANPOL00005" ;
+    ao:effectiveDate "2024-10-16"^^xsd:date ;
+    ao:expirationDate "2025-10-16"^^xsd:date ;
+    ao:insures kb:Insurer_Aviva ;
+    ao:hasPolicy kb:Person_5 .
+
+kb:Policy_6 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00006" ;
+    ao:policyNumber "CANPOL00006" ;
+    ao:effectiveDate "2024-12-19"^^xsd:date ;
+    ao:expirationDate "2025-12-19"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_6 .
+
+kb:Policy_7 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00007" ;
+    ao:policyNumber "CANPOL00007" ;
+    ao:effectiveDate "2024-10-08"^^xsd:date ;
+    ao:expirationDate "2025-10-08"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_7 .
+
+kb:Policy_8 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00008" ;
+    ao:policyNumber "CANPOL00008" ;
+    ao:effectiveDate "2024-08-10"^^xsd:date ;
+    ao:expirationDate "2025-08-10"^^xsd:date ;
+    ao:insures kb:Insurer_ICBC ;
+    ao:hasPolicy kb:Person_8 .
+
+kb:Policy_9 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00009" ;
+    ao:policyNumber "CANPOL00009" ;
+    ao:effectiveDate "2024-10-30"^^xsd:date ;
+    ao:expirationDate "2025-10-30"^^xsd:date ;
+    ao:insures kb:Insurer_Definity ;
+    ao:hasPolicy kb:Person_9 .
+
+kb:Policy_10 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00010" ;
+    ao:policyNumber "CANPOL00010" ;
+    ao:effectiveDate "2024-07-29"^^xsd:date ;
+    ao:expirationDate "2025-07-29"^^xsd:date ;
+    ao:insures kb:Insurer_Chubb ;
+    ao:hasPolicy kb:Person_10 .
+
+kb:Policy_11 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00011" ;
+    ao:policyNumber "CANPOL00011" ;
+    ao:effectiveDate "2024-07-22"^^xsd:date ;
+    ao:expirationDate "2025-07-22"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_11 .
+
+kb:Policy_12 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00012" ;
+    ao:policyNumber "CANPOL00012" ;
+    ao:effectiveDate "2024-05-24"^^xsd:date ;
+    ao:expirationDate "2025-05-24"^^xsd:date ;
+    ao:insures kb:Insurer_TD ;
+    ao:hasPolicy kb:Person_12 .
+
+kb:Policy_13 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00013" ;
+    ao:policyNumber "CANPOL00013" ;
+    ao:effectiveDate "2024-03-27"^^xsd:date ;
+    ao:expirationDate "2025-03-27"^^xsd:date ;
+    ao:insures kb:Insurer_MPI ;
+    ao:hasPolicy kb:Person_13 .
+
+kb:Policy_14 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00014" ;
+    ao:policyNumber "CANPOL00014" ;
+    ao:effectiveDate "2024-02-27"^^xsd:date ;
+    ao:expirationDate "2025-02-26"^^xsd:date ;
+    ao:insures kb:Insurer_SGI ;
+    ao:hasPolicy kb:Person_14 .
+
+kb:Policy_15 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00015" ;
+    ao:policyNumber "CANPOL00015" ;
+    ao:effectiveDate "2024-01-25"^^xsd:date ;
+    ao:expirationDate "2025-01-24"^^xsd:date ;
+    ao:insures kb:Insurer_MPI ;
+    ao:hasPolicy kb:Person_15 .
+
+kb:Policy_16 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00016" ;
+    ao:policyNumber "CANPOL00016" ;
+    ao:effectiveDate "2024-04-19"^^xsd:date ;
+    ao:expirationDate "2025-04-19"^^xsd:date ;
+    ao:insures kb:Insurer_Chubb ;
+    ao:hasPolicy kb:Person_16 .
+
+kb:Policy_17 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00017" ;
+    ao:policyNumber "CANPOL00017" ;
+    ao:effectiveDate "2024-07-06"^^xsd:date ;
+    ao:expirationDate "2025-07-06"^^xsd:date ;
+    ao:insures kb:Insurer_Chubb ;
+    ao:hasPolicy kb:Person_17 .
+
+kb:Policy_18 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00018" ;
+    ao:policyNumber "CANPOL00018" ;
+    ao:effectiveDate "2024-01-24"^^xsd:date ;
+    ao:expirationDate "2025-01-23"^^xsd:date ;
+    ao:insures kb:Insurer_TD ;
+    ao:hasPolicy kb:Person_18 .
+
+kb:Policy_19 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00019" ;
+    ao:policyNumber "CANPOL00019" ;
+    ao:effectiveDate "2024-11-07"^^xsd:date ;
+    ao:expirationDate "2025-11-07"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_19 .
+
+kb:Policy_20 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00020" ;
+    ao:policyNumber "CANPOL00020" ;
+    ao:effectiveDate "2024-05-01"^^xsd:date ;
+    ao:expirationDate "2025-05-01"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_20 .
+
+kb:Policy_21 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00021" ;
+    ao:policyNumber "CANPOL00021" ;
+    ao:effectiveDate "2024-12-23"^^xsd:date ;
+    ao:expirationDate "2025-12-23"^^xsd:date ;
+    ao:insures kb:Insurer_Gore ;
+    ao:hasPolicy kb:Person_21 .
+
+kb:Policy_22 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00022" ;
+    ao:policyNumber "CANPOL00022" ;
+    ao:effectiveDate "2024-04-07"^^xsd:date ;
+    ao:expirationDate "2025-04-07"^^xsd:date ;
+    ao:insures kb:Insurer_ICBC ;
+    ao:hasPolicy kb:Person_22 .
+
+kb:Policy_23 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00023" ;
+    ao:policyNumber "CANPOL00023" ;
+    ao:effectiveDate "2024-08-13"^^xsd:date ;
+    ao:expirationDate "2025-08-13"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_23 .
+
+kb:Policy_24 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00024" ;
+    ao:policyNumber "CANPOL00024" ;
+    ao:effectiveDate "2024-11-23"^^xsd:date ;
+    ao:expirationDate "2025-11-23"^^xsd:date ;
+    ao:insures kb:Insurer_Desjardins ;
+    ao:hasPolicy kb:Person_24 .
+
+kb:Policy_25 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00025" ;
+    ao:policyNumber "CANPOL00025" ;
+    ao:effectiveDate "2024-05-23"^^xsd:date ;
+    ao:expirationDate "2025-05-23"^^xsd:date ;
+    ao:insures kb:Insurer_Gore ;
+    ao:hasPolicy kb:Person_25 .
+
+kb:Policy_26 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00026" ;
+    ao:policyNumber "CANPOL00026" ;
+    ao:effectiveDate "2024-01-01"^^xsd:date ;
+    ao:expirationDate "2024-12-31"^^xsd:date ;
+    ao:insures kb:Insurer_Wawanesa ;
+    ao:hasPolicy kb:Person_26 .
+
+kb:Policy_27 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00027" ;
+    ao:policyNumber "CANPOL00027" ;
+    ao:effectiveDate "2024-10-10"^^xsd:date ;
+    ao:expirationDate "2025-10-10"^^xsd:date ;
+    ao:insures kb:Insurer_Aviva ;
+    ao:hasPolicy kb:Person_27 .
+
+kb:Policy_28 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00028" ;
+    ao:policyNumber "CANPOL00028" ;
+    ao:effectiveDate "2024-05-24"^^xsd:date ;
+    ao:expirationDate "2025-05-24"^^xsd:date ;
+    ao:insures kb:Insurer_Desjardins ;
+    ao:hasPolicy kb:Person_28 .
+
+kb:Policy_29 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00029" ;
+    ao:policyNumber "CANPOL00029" ;
+    ao:effectiveDate "2024-12-30"^^xsd:date ;
+    ao:expirationDate "2025-12-30"^^xsd:date ;
+    ao:insures kb:Insurer_Cooperators ;
+    ao:hasPolicy kb:Person_29 .
+
+kb:Policy_30 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00030" ;
+    ao:policyNumber "CANPOL00030" ;
+    ao:effectiveDate "2024-05-25"^^xsd:date ;
+    ao:expirationDate "2025-05-25"^^xsd:date ;
+    ao:insures kb:Insurer_Definity ;
+    ao:hasPolicy kb:Person_30 .
+
+kb:Policy_31 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00031" ;
+    ao:policyNumber "CANPOL00031" ;
+    ao:effectiveDate "2024-02-22"^^xsd:date ;
+    ao:expirationDate "2025-02-21"^^xsd:date ;
+    ao:insures kb:Insurer_MPI ;
+    ao:hasPolicy kb:Person_31 .
+
+kb:Policy_32 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00032" ;
+    ao:policyNumber "CANPOL00032" ;
+    ao:effectiveDate "2024-06-20"^^xsd:date ;
+    ao:expirationDate "2025-06-20"^^xsd:date ;
+    ao:insures kb:Insurer_Aviva ;
+    ao:hasPolicy kb:Person_32 .
+
+kb:Policy_33 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00033" ;
+    ao:policyNumber "CANPOL00033" ;
+    ao:effectiveDate "2024-07-03"^^xsd:date ;
+    ao:expirationDate "2025-07-03"^^xsd:date ;
+    ao:insures kb:Insurer_Aviva ;
+    ao:hasPolicy kb:Person_33 .
+
+kb:Policy_34 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00034" ;
+    ao:policyNumber "CANPOL00034" ;
+    ao:effectiveDate "2024-06-26"^^xsd:date ;
+    ao:expirationDate "2025-06-26"^^xsd:date ;
+    ao:insures kb:Insurer_SGI ;
+    ao:hasPolicy kb:Person_34 .
+
+kb:Policy_35 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00035" ;
+    ao:policyNumber "CANPOL00035" ;
+    ao:effectiveDate "2024-06-28"^^xsd:date ;
+    ao:expirationDate "2025-06-28"^^xsd:date ;
+    ao:insures kb:Insurer_Gore ;
+    ao:hasPolicy kb:Person_35 .
+
+kb:Policy_36 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00036" ;
+    ao:policyNumber "CANPOL00036" ;
+    ao:effectiveDate "2024-05-31"^^xsd:date ;
+    ao:expirationDate "2025-05-31"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_36 .
+
+kb:Policy_37 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00037" ;
+    ao:policyNumber "CANPOL00037" ;
+    ao:effectiveDate "2024-11-27"^^xsd:date ;
+    ao:expirationDate "2025-11-27"^^xsd:date ;
+    ao:insures kb:Insurer_Allstate ;
+    ao:hasPolicy kb:Person_37 .
+
+kb:Policy_38 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00038" ;
+    ao:policyNumber "CANPOL00038" ;
+    ao:effectiveDate "2024-11-26"^^xsd:date ;
+    ao:expirationDate "2025-11-26"^^xsd:date ;
+    ao:insures kb:Insurer_ICBC ;
+    ao:hasPolicy kb:Person_38 .
+
+kb:Policy_39 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00039" ;
+    ao:policyNumber "CANPOL00039" ;
+    ao:effectiveDate "2024-05-09"^^xsd:date ;
+    ao:expirationDate "2025-05-09"^^xsd:date ;
+    ao:insures kb:Insurer_SGI ;
+    ao:hasPolicy kb:Person_39 .
+
+kb:Policy_40 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00040" ;
+    ao:policyNumber "CANPOL00040" ;
+    ao:effectiveDate "2024-12-30"^^xsd:date ;
+    ao:expirationDate "2025-12-30"^^xsd:date ;
+    ao:insures kb:Insurer_Definity ;
+    ao:hasPolicy kb:Person_40 .
+
+kb:Policy_41 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00041" ;
+    ao:policyNumber "CANPOL00041" ;
+    ao:effectiveDate "2024-10-12"^^xsd:date ;
+    ao:expirationDate "2025-10-12"^^xsd:date ;
+    ao:insures kb:Insurer_SGI ;
+    ao:hasPolicy kb:Person_41 .
+
+kb:Policy_42 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00042" ;
+    ao:policyNumber "CANPOL00042" ;
+    ao:effectiveDate "2024-10-27"^^xsd:date ;
+    ao:expirationDate "2025-10-27"^^xsd:date ;
+    ao:insures kb:Insurer_Desjardins ;
+    ao:hasPolicy kb:Person_42 .
+
+kb:Policy_43 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00043" ;
+    ao:policyNumber "CANPOL00043" ;
+    ao:effectiveDate "2024-03-14"^^xsd:date ;
+    ao:expirationDate "2025-03-14"^^xsd:date ;
+    ao:insures kb:Insurer_SAAQ ;
+    ao:hasPolicy kb:Person_43 .
+
+kb:Policy_44 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00044" ;
+    ao:policyNumber "CANPOL00044" ;
+    ao:effectiveDate "2024-07-09"^^xsd:date ;
+    ao:expirationDate "2025-07-09"^^xsd:date ;
+    ao:insures kb:Insurer_Allstate ;
+    ao:hasPolicy kb:Person_44 .
+
+kb:Policy_45 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00045" ;
+    ao:policyNumber "CANPOL00045" ;
+    ao:effectiveDate "2024-05-08"^^xsd:date ;
+    ao:expirationDate "2025-05-08"^^xsd:date ;
+    ao:insures kb:Insurer_Definity ;
+    ao:hasPolicy kb:Person_45 .
+
+kb:Policy_46 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00046" ;
+    ao:policyNumber "CANPOL00046" ;
+    ao:effectiveDate "2024-12-02"^^xsd:date ;
+    ao:expirationDate "2025-12-02"^^xsd:date ;
+    ao:insures kb:Insurer_Desjardins ;
+    ao:hasPolicy kb:Person_46 .
+
+kb:Policy_47 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00047" ;
+    ao:policyNumber "CANPOL00047" ;
+    ao:effectiveDate "2024-09-27"^^xsd:date ;
+    ao:expirationDate "2025-09-27"^^xsd:date ;
+    ao:insures kb:Insurer_TD ;
+    ao:hasPolicy kb:Person_47 .
+
+kb:Policy_48 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00048" ;
+    ao:policyNumber "CANPOL00048" ;
+    ao:effectiveDate "2024-04-15"^^xsd:date ;
+    ao:expirationDate "2025-04-15"^^xsd:date ;
+    ao:insures kb:Insurer_Cooperators ;
+    ao:hasPolicy kb:Person_48 .
+
+kb:Policy_49 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00049" ;
+    ao:policyNumber "CANPOL00049" ;
+    ao:effectiveDate "2024-09-23"^^xsd:date ;
+    ao:expirationDate "2025-09-23"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_49 .
+
+kb:Policy_50 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00050" ;
+    ao:policyNumber "CANPOL00050" ;
+    ao:effectiveDate "2024-11-16"^^xsd:date ;
+    ao:expirationDate "2025-11-16"^^xsd:date ;
+    ao:insures kb:Insurer_Desjardins ;
+    ao:hasPolicy kb:Person_50 .
+
+kb:Policy_51 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00051" ;
+    ao:policyNumber "CANPOL00051" ;
+    ao:effectiveDate "2024-03-06"^^xsd:date ;
+    ao:expirationDate "2025-03-06"^^xsd:date ;
+    ao:insures kb:Insurer_MPI ;
+    ao:hasPolicy kb:Person_51 .
+
+kb:Policy_52 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00052" ;
+    ao:policyNumber "CANPOL00052" ;
+    ao:effectiveDate "2024-03-24"^^xsd:date ;
+    ao:expirationDate "2025-03-24"^^xsd:date ;
+    ao:insures kb:Insurer_Wawanesa ;
+    ao:hasPolicy kb:Person_52 .
+
+kb:Policy_53 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00053" ;
+    ao:policyNumber "CANPOL00053" ;
+    ao:effectiveDate "2024-10-01"^^xsd:date ;
+    ao:expirationDate "2025-10-01"^^xsd:date ;
+    ao:insures kb:Insurer_Definity ;
+    ao:hasPolicy kb:Person_53 .
+
+kb:Policy_54 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00054" ;
+    ao:policyNumber "CANPOL00054" ;
+    ao:effectiveDate "2024-12-15"^^xsd:date ;
+    ao:expirationDate "2025-12-15"^^xsd:date ;
+    ao:insures kb:Insurer_Wawanesa ;
+    ao:hasPolicy kb:Person_54 .
+
+kb:Policy_55 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00055" ;
+    ao:policyNumber "CANPOL00055" ;
+    ao:effectiveDate "2024-12-29"^^xsd:date ;
+    ao:expirationDate "2025-12-29"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_55 .
+
+kb:Policy_56 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00056" ;
+    ao:policyNumber "CANPOL00056" ;
+    ao:effectiveDate "2024-07-29"^^xsd:date ;
+    ao:expirationDate "2025-07-29"^^xsd:date ;
+    ao:insures kb:Insurer_Allstate ;
+    ao:hasPolicy kb:Person_56 .
+
+kb:Policy_57 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00057" ;
+    ao:policyNumber "CANPOL00057" ;
+    ao:effectiveDate "2024-09-05"^^xsd:date ;
+    ao:expirationDate "2025-09-05"^^xsd:date ;
+    ao:insures kb:Insurer_Cooperators ;
+    ao:hasPolicy kb:Person_57 .
+
+kb:Policy_58 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00058" ;
+    ao:policyNumber "CANPOL00058" ;
+    ao:effectiveDate "2024-10-01"^^xsd:date ;
+    ao:expirationDate "2025-10-01"^^xsd:date ;
+    ao:insures kb:Insurer_MPI ;
+    ao:hasPolicy kb:Person_58 .
+
+kb:Policy_59 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00059" ;
+    ao:policyNumber "CANPOL00059" ;
+    ao:effectiveDate "2024-05-29"^^xsd:date ;
+    ao:expirationDate "2025-05-29"^^xsd:date ;
+    ao:insures kb:Insurer_TD ;
+    ao:hasPolicy kb:Person_59 .
+
+kb:Policy_60 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00060" ;
+    ao:policyNumber "CANPOL00060" ;
+    ao:effectiveDate "2024-03-22"^^xsd:date ;
+    ao:expirationDate "2025-03-22"^^xsd:date ;
+    ao:insures kb:Insurer_Cooperators ;
+    ao:hasPolicy kb:Person_60 .
+
+kb:Policy_61 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00061" ;
+    ao:policyNumber "CANPOL00061" ;
+    ao:effectiveDate "2024-02-21"^^xsd:date ;
+    ao:expirationDate "2025-02-20"^^xsd:date ;
+    ao:insures kb:Insurer_Allstate ;
+    ao:hasPolicy kb:Person_61 .
+
+kb:Policy_62 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00062" ;
+    ao:policyNumber "CANPOL00062" ;
+    ao:effectiveDate "2024-07-31"^^xsd:date ;
+    ao:expirationDate "2025-07-31"^^xsd:date ;
+    ao:insures kb:Insurer_Desjardins ;
+    ao:hasPolicy kb:Person_62 .
+
+kb:Policy_63 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00063" ;
+    ao:policyNumber "CANPOL00063" ;
+    ao:effectiveDate "2024-06-04"^^xsd:date ;
+    ao:expirationDate "2025-06-04"^^xsd:date ;
+    ao:insures kb:Insurer_Cooperators ;
+    ao:hasPolicy kb:Person_63 .
+
+kb:Policy_64 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00064" ;
+    ao:policyNumber "CANPOL00064" ;
+    ao:effectiveDate "2024-05-23"^^xsd:date ;
+    ao:expirationDate "2025-05-23"^^xsd:date ;
+    ao:insures kb:Insurer_Allstate ;
+    ao:hasPolicy kb:Person_64 .
+
+kb:Policy_65 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00065" ;
+    ao:policyNumber "CANPOL00065" ;
+    ao:effectiveDate "2024-01-07"^^xsd:date ;
+    ao:expirationDate "2025-01-06"^^xsd:date ;
+    ao:insures kb:Insurer_Desjardins ;
+    ao:hasPolicy kb:Person_65 .
+
+kb:Policy_66 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00066" ;
+    ao:policyNumber "CANPOL00066" ;
+    ao:effectiveDate "2024-07-17"^^xsd:date ;
+    ao:expirationDate "2025-07-17"^^xsd:date ;
+    ao:insures kb:Insurer_Wawanesa ;
+    ao:hasPolicy kb:Person_66 .
+
+kb:Policy_67 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00067" ;
+    ao:policyNumber "CANPOL00067" ;
+    ao:effectiveDate "2024-05-30"^^xsd:date ;
+    ao:expirationDate "2025-05-30"^^xsd:date ;
+    ao:insures kb:Insurer_Gore ;
+    ao:hasPolicy kb:Person_67 .
+
+kb:Policy_68 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00068" ;
+    ao:policyNumber "CANPOL00068" ;
+    ao:effectiveDate "2024-02-02"^^xsd:date ;
+    ao:expirationDate "2025-02-01"^^xsd:date ;
+    ao:insures kb:Insurer_Gore ;
+    ao:hasPolicy kb:Person_68 .
+
+kb:Policy_69 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00069" ;
+    ao:policyNumber "CANPOL00069" ;
+    ao:effectiveDate "2024-07-17"^^xsd:date ;
+    ao:expirationDate "2025-07-17"^^xsd:date ;
+    ao:insures kb:Insurer_SAAQ ;
+    ao:hasPolicy kb:Person_69 .
+
+kb:Policy_70 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00070" ;
+    ao:policyNumber "CANPOL00070" ;
+    ao:effectiveDate "2024-01-01"^^xsd:date ;
+    ao:expirationDate "2024-12-31"^^xsd:date ;
+    ao:insures kb:Insurer_Chubb ;
+    ao:hasPolicy kb:Person_70 .
+
+kb:Policy_71 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00071" ;
+    ao:policyNumber "CANPOL00071" ;
+    ao:effectiveDate "2024-06-06"^^xsd:date ;
+    ao:expirationDate "2025-06-06"^^xsd:date ;
+    ao:insures kb:Insurer_SGI ;
+    ao:hasPolicy kb:Person_71 .
+
+kb:Policy_72 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00072" ;
+    ao:policyNumber "CANPOL00072" ;
+    ao:effectiveDate "2024-03-03"^^xsd:date ;
+    ao:expirationDate "2025-03-03"^^xsd:date ;
+    ao:insures kb:Insurer_Gore ;
+    ao:hasPolicy kb:Person_72 .
+
+kb:Policy_73 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00073" ;
+    ao:policyNumber "CANPOL00073" ;
+    ao:effectiveDate "2024-08-06"^^xsd:date ;
+    ao:expirationDate "2025-08-06"^^xsd:date ;
+    ao:insures kb:Insurer_Desjardins ;
+    ao:hasPolicy kb:Person_73 .
+
+kb:Policy_74 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00074" ;
+    ao:policyNumber "CANPOL00074" ;
+    ao:effectiveDate "2024-08-10"^^xsd:date ;
+    ao:expirationDate "2025-08-10"^^xsd:date ;
+    ao:insures kb:Insurer_Wawanesa ;
+    ao:hasPolicy kb:Person_74 .
+
+kb:Policy_75 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00075" ;
+    ao:policyNumber "CANPOL00075" ;
+    ao:effectiveDate "2024-09-20"^^xsd:date ;
+    ao:expirationDate "2025-09-20"^^xsd:date ;
+    ao:insures kb:Insurer_Cooperators ;
+    ao:hasPolicy kb:Person_75 .
+
+kb:Policy_76 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00076" ;
+    ao:policyNumber "CANPOL00076" ;
+    ao:effectiveDate "2024-01-18"^^xsd:date ;
+    ao:expirationDate "2025-01-17"^^xsd:date ;
+    ao:insures kb:Insurer_TD ;
+    ao:hasPolicy kb:Person_76 .
+
+kb:Policy_77 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00077" ;
+    ao:policyNumber "CANPOL00077" ;
+    ao:effectiveDate "2024-10-31"^^xsd:date ;
+    ao:expirationDate "2025-10-31"^^xsd:date ;
+    ao:insures kb:Insurer_SGI ;
+    ao:hasPolicy kb:Person_77 .
+
+kb:Policy_78 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00078" ;
+    ao:policyNumber "CANPOL00078" ;
+    ao:effectiveDate "2024-04-28"^^xsd:date ;
+    ao:expirationDate "2025-04-28"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_78 .
+
+kb:Policy_79 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00079" ;
+    ao:policyNumber "CANPOL00079" ;
+    ao:effectiveDate "2024-08-19"^^xsd:date ;
+    ao:expirationDate "2025-08-19"^^xsd:date ;
+    ao:insures kb:Insurer_MPI ;
+    ao:hasPolicy kb:Person_79 .
+
+kb:Policy_80 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00080" ;
+    ao:policyNumber "CANPOL00080" ;
+    ao:effectiveDate "2024-01-30"^^xsd:date ;
+    ao:expirationDate "2025-01-29"^^xsd:date ;
+    ao:insures kb:Insurer_Chubb ;
+    ao:hasPolicy kb:Person_80 .
+
+kb:Policy_81 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00081" ;
+    ao:policyNumber "CANPOL00081" ;
+    ao:effectiveDate "2024-12-11"^^xsd:date ;
+    ao:expirationDate "2025-12-11"^^xsd:date ;
+    ao:insures kb:Insurer_Wawanesa ;
+    ao:hasPolicy kb:Person_81 .
+
+kb:Policy_82 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00082" ;
+    ao:policyNumber "CANPOL00082" ;
+    ao:effectiveDate "2024-04-17"^^xsd:date ;
+    ao:expirationDate "2025-04-17"^^xsd:date ;
+    ao:insures kb:Insurer_SGI ;
+    ao:hasPolicy kb:Person_82 .
+
+kb:Policy_83 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00083" ;
+    ao:policyNumber "CANPOL00083" ;
+    ao:effectiveDate "2024-05-21"^^xsd:date ;
+    ao:expirationDate "2025-05-21"^^xsd:date ;
+    ao:insures kb:Insurer_MPI ;
+    ao:hasPolicy kb:Person_83 .
+
+kb:Policy_84 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00084" ;
+    ao:policyNumber "CANPOL00084" ;
+    ao:effectiveDate "2024-08-17"^^xsd:date ;
+    ao:expirationDate "2025-08-17"^^xsd:date ;
+    ao:insures kb:Insurer_SGI ;
+    ao:hasPolicy kb:Person_84 .
+
+kb:Policy_85 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00085" ;
+    ao:policyNumber "CANPOL00085" ;
+    ao:effectiveDate "2024-01-24"^^xsd:date ;
+    ao:expirationDate "2025-01-23"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_85 .
+
+kb:Policy_86 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00086" ;
+    ao:policyNumber "CANPOL00086" ;
+    ao:effectiveDate "2024-03-28"^^xsd:date ;
+    ao:expirationDate "2025-03-28"^^xsd:date ;
+    ao:insures kb:Insurer_Wawanesa ;
+    ao:hasPolicy kb:Person_86 .
+
+kb:Policy_87 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00087" ;
+    ao:policyNumber "CANPOL00087" ;
+    ao:effectiveDate "2024-09-02"^^xsd:date ;
+    ao:expirationDate "2025-09-02"^^xsd:date ;
+    ao:insures kb:Insurer_MPI ;
+    ao:hasPolicy kb:Person_87 .
+
+kb:Policy_88 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00088" ;
+    ao:policyNumber "CANPOL00088" ;
+    ao:effectiveDate "2024-03-10"^^xsd:date ;
+    ao:expirationDate "2025-03-10"^^xsd:date ;
+    ao:insures kb:Insurer_SAAQ ;
+    ao:hasPolicy kb:Person_88 .
+
+kb:Policy_89 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00089" ;
+    ao:policyNumber "CANPOL00089" ;
+    ao:effectiveDate "2024-09-07"^^xsd:date ;
+    ao:expirationDate "2025-09-07"^^xsd:date ;
+    ao:insures kb:Insurer_Aviva ;
+    ao:hasPolicy kb:Person_89 .
+
+kb:Policy_90 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00090" ;
+    ao:policyNumber "CANPOL00090" ;
+    ao:effectiveDate "2024-05-30"^^xsd:date ;
+    ao:expirationDate "2025-05-30"^^xsd:date ;
+    ao:insures kb:Insurer_SAAQ ;
+    ao:hasPolicy kb:Person_90 .
+
+kb:Policy_91 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00091" ;
+    ao:policyNumber "CANPOL00091" ;
+    ao:effectiveDate "2024-12-12"^^xsd:date ;
+    ao:expirationDate "2025-12-12"^^xsd:date ;
+    ao:insures kb:Insurer_SAAQ ;
+    ao:hasPolicy kb:Person_91 .
+
+kb:Policy_92 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00092" ;
+    ao:policyNumber "CANPOL00092" ;
+    ao:effectiveDate "2024-06-13"^^xsd:date ;
+    ao:expirationDate "2025-06-13"^^xsd:date ;
+    ao:insures kb:Insurer_Intact ;
+    ao:hasPolicy kb:Person_92 .
+
+kb:Policy_93 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00093" ;
+    ao:policyNumber "CANPOL00093" ;
+    ao:effectiveDate "2024-09-10"^^xsd:date ;
+    ao:expirationDate "2025-09-10"^^xsd:date ;
+    ao:insures kb:Insurer_TD ;
+    ao:hasPolicy kb:Person_93 .
+
+kb:Policy_94 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00094" ;
+    ao:policyNumber "CANPOL00094" ;
+    ao:effectiveDate "2024-09-23"^^xsd:date ;
+    ao:expirationDate "2025-09-23"^^xsd:date ;
+    ao:insures kb:Insurer_Chubb ;
+    ao:hasPolicy kb:Person_94 .
+
+kb:Policy_95 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00095" ;
+    ao:policyNumber "CANPOL00095" ;
+    ao:effectiveDate "2024-08-01"^^xsd:date ;
+    ao:expirationDate "2025-08-01"^^xsd:date ;
+    ao:insures kb:Insurer_Desjardins ;
+    ao:hasPolicy kb:Person_95 .
+
+kb:Policy_96 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00096" ;
+    ao:policyNumber "CANPOL00096" ;
+    ao:effectiveDate "2024-03-19"^^xsd:date ;
+    ao:expirationDate "2025-03-19"^^xsd:date ;
+    ao:insures kb:Insurer_Aviva ;
+    ao:hasPolicy kb:Person_96 .
+
+kb:Policy_97 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00097" ;
+    ao:policyNumber "CANPOL00097" ;
+    ao:effectiveDate "2024-04-02"^^xsd:date ;
+    ao:expirationDate "2025-04-02"^^xsd:date ;
+    ao:insures kb:Insurer_Allstate ;
+    ao:hasPolicy kb:Person_97 .
+
+kb:Policy_98 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00098" ;
+    ao:policyNumber "CANPOL00098" ;
+    ao:effectiveDate "2024-03-16"^^xsd:date ;
+    ao:expirationDate "2025-03-16"^^xsd:date ;
+    ao:insures kb:Insurer_TD ;
+    ao:hasPolicy kb:Person_98 .
+
+kb:Policy_99 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00099" ;
+    ao:policyNumber "CANPOL00099" ;
+    ao:effectiveDate "2024-07-08"^^xsd:date ;
+    ao:expirationDate "2025-07-08"^^xsd:date ;
+    ao:insures kb:Insurer_Cooperators ;
+    ao:hasPolicy kb:Person_99 .
+
+kb:Policy_100 rdf:type ao:InsurancePolicy ;
+    rdfs:label "Insurance Policy CANPOL00100" ;
+    ao:policyNumber "CANPOL00100" ;
+    ao:effectiveDate "2024-09-06"^^xsd:date ;
+    ao:expirationDate "2025-09-06"^^xsd:date ;
+    ao:insures kb:Insurer_Gore ;
+    ao:hasPolicy kb:Person_100 .
+
+kb:Risk_1 rdf:type ao:Risk ;
+    rdfs:label "Risk 1" ;
+    ao:covers kb:Policy_16 ;
+    ao:covers kb:Policy_17 ;
+    ao:exposedTo kb:Person_83 ;
+    ao:causedBy kb:Peril_Riot .
+
+kb:Risk_2 rdf:type ao:Risk ;
+    rdfs:label "Risk 2" ;
+    ao:covers kb:Policy_73 ;
+    ao:covers kb:Policy_36 ;
+    ao:exposedTo kb:Person_39 ;
+    ao:causedBy kb:Peril_Earthquake .
+
+kb:Risk_3 rdf:type ao:Risk ;
+    rdfs:label "Risk 3" ;
+    ao:covers kb:Policy_27 ;
+    ao:covers kb:Policy_43 ;
+    ao:exposedTo kb:Person_3 ;
+    ao:causedBy kb:Peril_Explosion .
+
+kb:Risk_4 rdf:type ao:Risk ;
+    rdfs:label "Risk 4" ;
+    ao:covers kb:Policy_96 ;
+    ao:covers kb:Policy_91 ;
+    ao:exposedTo kb:Person_70 ;
+    ao:causedBy kb:Peril_Windstorm .
+
+kb:Risk_5 rdf:type ao:Risk ;
+    rdfs:label "Risk 5" ;
+    ao:covers kb:Policy_30 ;
+    ao:covers kb:Policy_9 ;
+    ao:exposedTo kb:Person_60 ;
+    ao:causedBy kb:Peril_Wildfire .
+
+kb:Risk_6 rdf:type ao:Risk ;
+    rdfs:label "Risk 6" ;
+    ao:covers kb:Policy_78 ;
+    ao:covers kb:Policy_82 ;
+    ao:exposedTo kb:Person_72 ;
+    ao:causedBy kb:Peril_IceStorm .
+
+kb:Risk_7 rdf:type ao:Risk ;
+    rdfs:label "Risk 7" ;
+    ao:covers kb:Policy_85 ;
+    ao:covers kb:Policy_19 ;
+    ao:exposedTo kb:Person_48 ;
+    ao:causedBy kb:Peril_Theft .
+
+kb:Risk_8 rdf:type ao:Risk ;
+    rdfs:label "Risk 8" ;
+    ao:covers kb:Policy_13 ;
+    ao:covers kb:Policy_92 ;
+    ao:exposedTo kb:Person_11 ;
+    ao:causedBy kb:Peril_Cyclone .
+
+kb:Risk_9 rdf:type ao:Risk ;
+    rdfs:label "Risk 9" ;
+    ao:covers kb:Policy_77 ;
+    ao:covers kb:Policy_51 ;
+    ao:exposedTo kb:Person_23 ;
+    ao:causedBy kb:Peril_Tornado .
+
+kb:Risk_10 rdf:type ao:Risk ;
+    rdfs:label "Risk 10" ;
+    ao:covers kb:Policy_34 ;
+    ao:covers kb:Policy_46 ;
+    ao:exposedTo kb:Person_64 ;
+    ao:causedBy kb:Peril_Earthquake .
+
+kb:Risk_11 rdf:type ao:Risk ;
+    rdfs:label "Risk 11" ;
+    ao:covers kb:Policy_25 ;
+    ao:covers kb:Policy_54 ;
+    ao:exposedTo kb:Person_24 ;
+    ao:causedBy kb:Peril_IceStorm .
+
+kb:Risk_12 rdf:type ao:Risk ;
+    rdfs:label "Risk 12" ;
+    ao:covers kb:Policy_88 ;
+    ao:covers kb:Policy_96 ;
+    ao:exposedTo kb:Person_31 ;
+    ao:causedBy kb:Peril_Cyclone .
+
+kb:Risk_13 rdf:type ao:Risk ;
+    rdfs:label "Risk 13" ;
+    ao:covers kb:Policy_43 ;
+    ao:covers kb:Policy_29 ;
+    ao:exposedTo kb:Person_62 ;
+    ao:causedBy kb:Peril_Explosion .
+
+kb:Risk_14 rdf:type ao:Risk ;
+    rdfs:label "Risk 14" ;
+    ao:covers kb:Policy_4 ;
+    ao:covers kb:Policy_99 ;
+    ao:exposedTo kb:Person_50 ;
+    ao:causedBy kb:Peril_Fire .
+
+kb:Risk_15 rdf:type ao:Risk ;
+    rdfs:label "Risk 15" ;
+    ao:covers kb:Policy_80 ;
+    ao:covers kb:Policy_99 ;
+    ao:exposedTo kb:Person_52 ;
+    ao:causedBy kb:Peril_Explosion .
+
+kb:Risk_16 rdf:type ao:Risk ;
+    rdfs:label "Risk 16" ;
+    ao:covers kb:Policy_26 ;
+    ao:covers kb:Policy_80 ;
+    ao:exposedTo kb:Person_41 ;
+    ao:causedBy kb:Peril_Riot .
+
+kb:Risk_17 rdf:type ao:Risk ;
+    rdfs:label "Risk 17" ;
+    ao:covers kb:Policy_72 ;
+    ao:covers kb:Policy_100 ;
+    ao:exposedTo kb:Person_54 ;
+    ao:causedBy kb:Peril_IceStorm .
+
+kb:Risk_18 rdf:type ao:Risk ;
+    rdfs:label "Risk 18" ;
+    ao:covers kb:Policy_32 ;
+    ao:covers kb:Policy_67 ;
+    ao:exposedTo kb:Person_79 ;
+    ao:causedBy kb:Peril_Fire .
+
+kb:Risk_19 rdf:type ao:Risk ;
+    rdfs:label "Risk 19" ;
+    ao:covers kb:Policy_47 ;
+    ao:covers kb:Policy_5 ;
+    ao:exposedTo kb:Person_87 ;
+    ao:causedBy kb:Peril_Flood .
+
+kb:Risk_20 rdf:type ao:Risk ;
+    rdfs:label "Risk 20" ;
+    ao:covers kb:Policy_50 ;
+    ao:covers kb:Policy_2 ;
+    ao:exposedTo kb:Person_25 ;
+    ao:causedBy kb:Peril_Theft .
+
+kb:Risk_21 rdf:type ao:Risk ;
+    rdfs:label "Risk 21" ;
+    ao:covers kb:Policy_100 ;
+    ao:covers kb:Policy_75 ;
+    ao:exposedTo kb:Person_55 ;
+    ao:causedBy kb:Peril_Wildfire .
+
+kb:Risk_22 rdf:type ao:Risk ;
+    rdfs:label "Risk 22" ;
+    ao:covers kb:Policy_96 ;
+    ao:covers kb:Policy_74 ;
+    ao:exposedTo kb:Person_52 ;
+    ao:causedBy kb:Peril_Theft .
+
+kb:Risk_23 rdf:type ao:Risk ;
+    rdfs:label "Risk 23" ;
+    ao:covers kb:Policy_43 ;
+    ao:covers kb:Policy_69 ;
+    ao:exposedTo kb:Person_58 ;
+    ao:causedBy kb:Peril_Flood .
+
+kb:Risk_24 rdf:type ao:Risk ;
+    rdfs:label "Risk 24" ;
+    ao:covers kb:Policy_26 ;
+    ao:covers kb:Policy_74 ;
+    ao:exposedTo kb:Person_89 ;
+    ao:causedBy kb:Peril_Windstorm .
+
+kb:Risk_25 rdf:type ao:Risk ;
+    rdfs:label "Risk 25" ;
+    ao:covers kb:Policy_69 ;
+    ao:covers kb:Policy_77 ;
+    ao:exposedTo kb:Person_27 ;
+    ao:causedBy kb:Peril_Riot .
+
+kb:Risk_26 rdf:type ao:Risk ;
+    rdfs:label "Risk 26" ;
+    ao:covers kb:Policy_38 ;
+    ao:covers kb:Policy_89 ;
+    ao:exposedTo kb:Person_84 ;
+    ao:causedBy kb:Peril_Drought .
+
+kb:Risk_27 rdf:type ao:Risk ;
+    rdfs:label "Risk 27" ;
+    ao:covers kb:Policy_96 ;
+    ao:covers kb:Policy_25 ;
+    ao:exposedTo kb:Person_27 ;
+    ao:causedBy kb:Peril_Vehicle .
+
+kb:Risk_28 rdf:type ao:Risk ;
+    rdfs:label "Risk 28" ;
+    ao:covers kb:Policy_82 ;
+    ao:covers kb:Policy_26 ;
+    ao:exposedTo kb:Person_41 ;
+    ao:causedBy kb:Peril_Riot .
+
+kb:Risk_29 rdf:type ao:Risk ;
+    rdfs:label "Risk 29" ;
+    ao:covers kb:Policy_98 ;
+    ao:covers kb:Policy_22 ;
+    ao:exposedTo kb:Person_36 ;
+    ao:causedBy kb:Peril_Earthquake .
+
+kb:Risk_30 rdf:type ao:Risk ;
+    rdfs:label "Risk 30" ;
+    ao:covers kb:Policy_41 ;
+    ao:covers kb:Policy_72 ;
+    ao:exposedTo kb:Person_29 ;
+    ao:causedBy kb:Peril_Wildfire .
+
+kb:Risk_31 rdf:type ao:Risk ;
+    rdfs:label "Risk 31" ;
+    ao:covers kb:Policy_4 ;
+    ao:covers kb:Policy_35 ;
+    ao:exposedTo kb:Person_4 ;
+    ao:causedBy kb:Peril_Hurricane .
+
+kb:Risk_32 rdf:type ao:Risk ;
+    rdfs:label "Risk 32" ;
+    ao:covers kb:Policy_56 ;
+    ao:covers kb:Policy_82 ;
+    ao:exposedTo kb:Person_77 ;
+    ao:causedBy kb:Peril_Drought .
+
+kb:Risk_33 rdf:type ao:Risk ;
+    rdfs:label "Risk 33" ;
+    ao:covers kb:Policy_65 ;
+    ao:covers kb:Policy_63 ;
+    ao:exposedTo kb:Person_54 ;
+    ao:causedBy kb:Peril_Windstorm .
+
+kb:Risk_34 rdf:type ao:Risk ;
+    rdfs:label "Risk 34" ;
+    ao:covers kb:Policy_21 ;
+    ao:covers kb:Policy_29 ;
+    ao:exposedTo kb:Person_57 ;
+    ao:causedBy kb:Peril_Explosion .
+
+kb:Risk_35 rdf:type ao:Risk ;
+    rdfs:label "Risk 35" ;
+    ao:covers kb:Policy_25 ;
+    ao:covers kb:Policy_16 ;
+    ao:exposedTo kb:Person_34 ;
+    ao:causedBy kb:Peril_Vehicle .
+
+kb:Risk_36 rdf:type ao:Risk ;
+    rdfs:label "Risk 36" ;
+    ao:covers kb:Policy_76 ;
+    ao:covers kb:Policy_86 ;
+    ao:exposedTo kb:Person_54 ;
+    ao:causedBy kb:Peril_Fire .
+
+kb:Risk_37 rdf:type ao:Risk ;
+    rdfs:label "Risk 37" ;
+    ao:covers kb:Policy_30 ;
+    ao:covers kb:Policy_15 ;
+    ao:exposedTo kb:Person_70 ;
+    ao:causedBy kb:Peril_Earthquake .
+
+kb:Risk_38 rdf:type ao:Risk ;
+    rdfs:label "Risk 38" ;
+    ao:covers kb:Policy_41 ;
+    ao:covers kb:Policy_84 ;
+    ao:exposedTo kb:Person_79 ;
+    ao:causedBy kb:Peril_Fire .
+
+kb:Risk_39 rdf:type ao:Risk ;
+    rdfs:label "Risk 39" ;
+    ao:covers kb:Policy_43 ;
+    ao:covers kb:Policy_69 ;
+    ao:exposedTo kb:Person_70 ;
+    ao:causedBy kb:Peril_Electrical .
+
+kb:Risk_40 rdf:type ao:Risk ;
+    rdfs:label "Risk 40" ;
+    ao:covers kb:Policy_12 ;
+    ao:covers kb:Policy_1 ;
+    ao:exposedTo kb:Person_48 ;
+    ao:causedBy kb:Peril_Vehicle .
+
+kb:Risk_41 rdf:type ao:Risk ;
+    rdfs:label "Risk 41" ;
+    ao:covers kb:Policy_7 ;
+    ao:covers kb:Policy_65 ;
+    ao:exposedTo kb:Person_58 ;
+    ao:causedBy kb:Peril_Riot .
+
+kb:Risk_42 rdf:type ao:Risk ;
+    rdfs:label "Risk 42" ;
+    ao:covers kb:Policy_16 ;
+    ao:covers kb:Policy_10 ;
+    ao:exposedTo kb:Person_19 ;
+    ao:causedBy kb:Peril_Theft .
+
+kb:Risk_43 rdf:type ao:Risk ;
+    rdfs:label "Risk 43" ;
+    ao:covers kb:Policy_64 ;
+    ao:covers kb:Policy_75 ;
+    ao:exposedTo kb:Person_39 ;
+    ao:causedBy kb:Peril_Flood .
+
+kb:Risk_44 rdf:type ao:Risk ;
+    rdfs:label "Risk 44" ;
+    ao:covers kb:Policy_5 ;
+    ao:covers kb:Policy_65 ;
+    ao:exposedTo kb:Person_66 ;
+    ao:causedBy kb:Peril_Cyclone .
+
+kb:Risk_45 rdf:type ao:Risk ;
+    rdfs:label "Risk 45" ;
+    ao:covers kb:Policy_52 ;
+    ao:covers kb:Policy_71 ;
+    ao:exposedTo kb:Person_29 ;
+    ao:causedBy kb:Peril_Explosion .
+
+kb:Risk_46 rdf:type ao:Risk ;
+    rdfs:label "Risk 46" ;
+    ao:covers kb:Policy_51 ;
+    ao:covers kb:Policy_9 ;
+    ao:exposedTo kb:Person_16 ;
+    ao:causedBy kb:Peril_IceStorm .
+
+kb:Risk_47 rdf:type ao:Risk ;
+    rdfs:label "Risk 47" ;
+    ao:covers kb:Policy_67 ;
+    ao:covers kb:Policy_32 ;
+    ao:exposedTo kb:Person_27 ;
+    ao:causedBy kb:Peril_Hurricane .
+
+kb:Risk_48 rdf:type ao:Risk ;
+    rdfs:label "Risk 48" ;
+    ao:covers kb:Policy_85 ;
+    ao:covers kb:Policy_47 ;
+    ao:exposedTo kb:Person_32 ;
+    ao:causedBy kb:Peril_Flood .
+
+kb:Risk_49 rdf:type ao:Risk ;
+    rdfs:label "Risk 49" ;
+    ao:covers kb:Policy_35 ;
+    ao:covers kb:Policy_28 ;
+    ao:exposedTo kb:Person_8 ;
+    ao:causedBy kb:Peril_Electrical .
+
+kb:Risk_50 rdf:type ao:Risk ;
+    rdfs:label "Risk 50" ;
+    ao:covers kb:Policy_13 ;
+    ao:covers kb:Policy_94 ;
+    ao:exposedTo kb:Person_41 ;
+    ao:causedBy kb:Peril_Windstorm .
+
+kb:Claim_1 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00001" ;
+    ao:claimNumber "CLM00001" ;
+    ao:reportingDate "1994-01-29"^^xsd:date ;
+    ao:triggeredBy kb:Event_Bill1641994 ;
+    ao:hasPolicy kb:Policy_29 .
+
+kb:Claim_2 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00002" ;
+    ao:claimNumber "CLM00002" ;
+    ao:reportingDate "2013-07-05"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_19 .
+
+kb:Claim_3 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00003" ;
+    ao:claimNumber "CLM00003" ;
+    ao:reportingDate "1973-05-29"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_64 .
+
+kb:Claim_4 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00004" ;
+    ao:claimNumber "CLM00004" ;
+    ao:reportingDate "1978-03-11"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_77 .
+
+kb:Claim_5 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00005" ;
+    ao:claimNumber "CLM00005" ;
+    ao:reportingDate "2013-07-22"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFlood2013 ;
+    ao:hasPolicy kb:Policy_49 .
+
+kb:Claim_6 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00006" ;
+    ao:claimNumber "CLM00006" ;
+    ao:reportingDate "1933-10-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1933 ;
+    ao:hasPolicy kb:Policy_9 .
+
+kb:Claim_7 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00007" ;
+    ao:claimNumber "CLM00007" ;
+    ao:reportingDate "1933-10-31"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1933 ;
+    ao:hasPolicy kb:Policy_67 .
+
+kb:Claim_8 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00008" ;
+    ao:claimNumber "CLM00008" ;
+    ao:reportingDate "1989-09-28"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_48 .
+
+kb:Claim_9 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00009" ;
+    ao:claimNumber "CLM00009" ;
+    ao:reportingDate "1932-09-26"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1932 ;
+    ao:hasPolicy kb:Policy_12 .
+
+kb:Claim_10 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00010" ;
+    ao:claimNumber "CLM00010" ;
+    ao:reportingDate "2011-06-09"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_95 .
+
+kb:Claim_11 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00011" ;
+    ao:claimNumber "CLM00011" ;
+    ao:reportingDate "1973-05-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_70 .
+
+kb:Claim_12 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00012" ;
+    ao:claimNumber "CLM00012" ;
+    ao:reportingDate "1946-01-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_6 .
+
+kb:Claim_13 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00013" ;
+    ao:claimNumber "CLM00013" ;
+    ao:reportingDate "1904-04-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_37 .
+
+kb:Claim_14 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00014" ;
+    ao:claimNumber "CLM00014" ;
+    ao:reportingDate "1882-01-10"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_43 .
+
+kb:Claim_15 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00015" ;
+    ao:claimNumber "CLM00015" ;
+    ao:reportingDate "1882-01-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_98 .
+
+kb:Claim_16 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00016" ;
+    ao:claimNumber "CLM00016" ;
+    ao:reportingDate "1933-10-06"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1933 ;
+    ao:hasPolicy kb:Policy_13 .
+
+kb:Claim_17 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00017" ;
+    ao:claimNumber "CLM00017" ;
+    ao:reportingDate "1989-09-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_69 .
+
+kb:Claim_18 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00018" ;
+    ao:claimNumber "CLM00018" ;
+    ao:reportingDate "1904-05-02"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_78 .
+
+kb:Claim_19 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00019" ;
+    ao:claimNumber "CLM00019" ;
+    ao:reportingDate "1973-05-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_13 .
+
+kb:Claim_20 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00020" ;
+    ao:claimNumber "CLM00020" ;
+    ao:reportingDate "2016-06-01"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_82 .
+
+kb:Claim_21 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00021" ;
+    ao:claimNumber "CLM00021" ;
+    ao:reportingDate "2013-07-18"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_63 .
+
+kb:Claim_22 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00022" ;
+    ao:claimNumber "CLM00022" ;
+    ao:reportingDate "2013-07-19"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFlood2013 ;
+    ao:hasPolicy kb:Policy_97 .
+
+kb:Claim_23 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00023" ;
+    ao:claimNumber "CLM00023" ;
+    ao:reportingDate "1978-03-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_3 .
+
+kb:Claim_24 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00024" ;
+    ao:claimNumber "CLM00024" ;
+    ao:reportingDate "1998-02-01"^^xsd:date ;
+    ao:triggeredBy kb:Event_IceStorm1998 ;
+    ao:hasPolicy kb:Policy_3 .
+
+kb:Claim_25 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00025" ;
+    ao:claimNumber "CLM00025" ;
+    ao:reportingDate "1904-05-02"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_57 .
+
+kb:Claim_26 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00026" ;
+    ao:claimNumber "CLM00026" ;
+    ao:reportingDate "1978-03-22"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_8 .
+
+kb:Claim_27 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00027" ;
+    ao:claimNumber "CLM00027" ;
+    ao:reportingDate "2013-07-15"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_89 .
+
+kb:Claim_28 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00028" ;
+    ao:claimNumber "CLM00028" ;
+    ao:reportingDate "2016-05-16"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_61 .
+
+kb:Claim_29 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00029" ;
+    ao:claimNumber "CLM00029" ;
+    ao:reportingDate "2021-07-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_BCFloods2021 ;
+    ao:hasPolicy kb:Policy_78 .
+
+kb:Claim_30 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00030" ;
+    ao:claimNumber "CLM00030" ;
+    ao:reportingDate "2021-07-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_BCFloods2021 ;
+    ao:hasPolicy kb:Policy_37 .
+
+kb:Claim_31 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00031" ;
+    ao:claimNumber "CLM00031" ;
+    ao:reportingDate "2011-06-12"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_79 .
+
+kb:Claim_32 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00032" ;
+    ao:claimNumber "CLM00032" ;
+    ao:reportingDate "1904-05-03"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_88 .
+
+kb:Claim_33 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00033" ;
+    ao:claimNumber "CLM00033" ;
+    ao:reportingDate "2020-06-21"^^xsd:date ;
+    ao:triggeredBy kb:Event_CalgaryHail2020 ;
+    ao:hasPolicy kb:Policy_56 .
+
+kb:Claim_34 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00034" ;
+    ao:claimNumber "CLM00034" ;
+    ao:reportingDate "1933-10-25"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1933 ;
+    ao:hasPolicy kb:Policy_59 .
+
+kb:Claim_35 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00035" ;
+    ao:claimNumber "CLM00035" ;
+    ao:reportingDate "1954-11-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_HurricaneHazel1954 ;
+    ao:hasPolicy kb:Policy_33 .
+
+kb:Claim_36 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00036" ;
+    ao:claimNumber "CLM00036" ;
+    ao:reportingDate "1954-11-13"^^xsd:date ;
+    ao:triggeredBy kb:Event_HurricaneHazel1954 ;
+    ao:hasPolicy kb:Policy_96 .
+
+kb:Claim_37 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00037" ;
+    ao:claimNumber "CLM00037" ;
+    ao:reportingDate "1932-09-28"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1932 ;
+    ao:hasPolicy kb:Policy_95 .
+
+kb:Claim_38 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00038" ;
+    ao:claimNumber "CLM00038" ;
+    ao:reportingDate "2013-06-26"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_57 .
+
+kb:Claim_39 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00039" ;
+    ao:claimNumber "CLM00039" ;
+    ao:reportingDate "1882-01-23"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_29 .
+
+kb:Claim_40 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00040" ;
+    ao:claimNumber "CLM00040" ;
+    ao:reportingDate "2020-07-09"^^xsd:date ;
+    ao:triggeredBy kb:Event_CalgaryHail2020 ;
+    ao:hasPolicy kb:Policy_23 .
+
+kb:Claim_41 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00041" ;
+    ao:claimNumber "CLM00041" ;
+    ao:reportingDate "1904-04-21"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_41 .
+
+kb:Claim_42 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00042" ;
+    ao:claimNumber "CLM00042" ;
+    ao:reportingDate "1882-01-18"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_7 .
+
+kb:Claim_43 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00043" ;
+    ao:claimNumber "CLM00043" ;
+    ao:reportingDate "1994-01-16"^^xsd:date ;
+    ao:triggeredBy kb:Event_Bill1641994 ;
+    ao:hasPolicy kb:Policy_64 .
+
+kb:Claim_44 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00044" ;
+    ao:claimNumber "CLM00044" ;
+    ao:reportingDate "1973-05-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_89 .
+
+kb:Claim_45 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00045" ;
+    ao:claimNumber "CLM00045" ;
+    ao:reportingDate "1946-01-09"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_4 .
+
+kb:Claim_46 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00046" ;
+    ao:claimNumber "CLM00046" ;
+    ao:reportingDate "1973-05-02"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_86 .
+
+kb:Claim_47 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00047" ;
+    ao:claimNumber "CLM00047" ;
+    ao:reportingDate "1998-01-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_IceStorm1998 ;
+    ao:hasPolicy kb:Policy_48 .
+
+kb:Claim_48 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00048" ;
+    ao:claimNumber "CLM00048" ;
+    ao:reportingDate "1932-09-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1932 ;
+    ao:hasPolicy kb:Policy_96 .
+
+kb:Claim_49 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00049" ;
+    ao:claimNumber "CLM00049" ;
+    ao:reportingDate "1994-01-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_Bill1641994 ;
+    ao:hasPolicy kb:Policy_34 .
+
+kb:Claim_50 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00050" ;
+    ao:claimNumber "CLM00050" ;
+    ao:reportingDate "2016-05-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_27 .
+
+kb:Claim_51 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00051" ;
+    ao:claimNumber "CLM00051" ;
+    ao:reportingDate "1973-05-02"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_52 .
+
+kb:Claim_52 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00052" ;
+    ao:claimNumber "CLM00052" ;
+    ao:reportingDate "1882-01-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_40 .
+
+kb:Claim_53 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00053" ;
+    ao:claimNumber "CLM00053" ;
+    ao:reportingDate "2024-06-26"^^xsd:date ;
+    ao:triggeredBy kb:Event_SevereWeather2024 ;
+    ao:hasPolicy kb:Policy_94 .
+
+kb:Claim_54 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00054" ;
+    ao:claimNumber "CLM00054" ;
+    ao:reportingDate "2016-05-23"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_58 .
+
+kb:Claim_55 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00055" ;
+    ao:claimNumber "CLM00055" ;
+    ao:reportingDate "1944-11-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_SGI1944 ;
+    ao:hasPolicy kb:Policy_9 .
+
+kb:Claim_56 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00056" ;
+    ao:claimNumber "CLM00056" ;
+    ao:reportingDate "2016-05-28"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_70 .
+
+kb:Claim_57 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00057" ;
+    ao:claimNumber "CLM00057" ;
+    ao:reportingDate "1946-01-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_96 .
+
+kb:Claim_58 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00058" ;
+    ao:claimNumber "CLM00058" ;
+    ao:reportingDate "1973-05-08"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_17 .
+
+kb:Claim_59 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00059" ;
+    ao:claimNumber "CLM00059" ;
+    ao:reportingDate "1904-05-11"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_69 .
+
+kb:Claim_60 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00060" ;
+    ao:claimNumber "CLM00060" ;
+    ao:reportingDate "1933-10-05"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1933 ;
+    ao:hasPolicy kb:Policy_67 .
+
+kb:Claim_61 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00061" ;
+    ao:claimNumber "CLM00061" ;
+    ao:reportingDate "1944-12-10"^^xsd:date ;
+    ao:triggeredBy kb:Event_SGI1944 ;
+    ao:hasPolicy kb:Policy_81 .
+
+kb:Claim_62 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00062" ;
+    ao:claimNumber "CLM00062" ;
+    ao:reportingDate "1998-01-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_IceStorm1998 ;
+    ao:hasPolicy kb:Policy_65 .
+
+kb:Claim_63 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00063" ;
+    ao:claimNumber "CLM00063" ;
+    ao:reportingDate "1971-11-29"^^xsd:date ;
+    ao:triggeredBy kb:Event_MPI1971 ;
+    ao:hasPolicy kb:Policy_74 .
+
+kb:Claim_64 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00064" ;
+    ao:claimNumber "CLM00064" ;
+    ao:reportingDate "1998-01-22"^^xsd:date ;
+    ao:triggeredBy kb:Event_IceStorm1998 ;
+    ao:hasPolicy kb:Policy_29 .
+
+kb:Claim_65 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00065" ;
+    ao:claimNumber "CLM00065" ;
+    ao:reportingDate "2011-05-30"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_82 .
+
+kb:Claim_66 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00066" ;
+    ao:claimNumber "CLM00066" ;
+    ao:reportingDate "1998-01-30"^^xsd:date ;
+    ao:triggeredBy kb:Event_IceStorm1998 ;
+    ao:hasPolicy kb:Policy_48 .
+
+kb:Claim_67 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00067" ;
+    ao:claimNumber "CLM00067" ;
+    ao:reportingDate "1882-01-15"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_2 .
+
+kb:Claim_68 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00068" ;
+    ao:claimNumber "CLM00068" ;
+    ao:reportingDate "1946-01-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_32 .
+
+kb:Claim_69 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00069" ;
+    ao:claimNumber "CLM00069" ;
+    ao:reportingDate "2021-07-10"^^xsd:date ;
+    ao:triggeredBy kb:Event_BCFloods2021 ;
+    ao:hasPolicy kb:Policy_5 .
+
+kb:Claim_70 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00070" ;
+    ao:claimNumber "CLM00070" ;
+    ao:reportingDate "1946-01-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_66 .
+
+kb:Claim_71 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00071" ;
+    ao:claimNumber "CLM00071" ;
+    ao:reportingDate "1978-03-07"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_26 .
+
+kb:Claim_72 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00072" ;
+    ao:claimNumber "CLM00072" ;
+    ao:reportingDate "1904-04-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_7 .
+
+kb:Claim_73 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00073" ;
+    ao:claimNumber "CLM00073" ;
+    ao:reportingDate "1882-01-13"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_93 .
+
+kb:Claim_74 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00074" ;
+    ao:claimNumber "CLM00074" ;
+    ao:reportingDate "1973-05-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_72 .
+
+kb:Claim_75 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00075" ;
+    ao:claimNumber "CLM00075" ;
+    ao:reportingDate "1998-01-11"^^xsd:date ;
+    ao:triggeredBy kb:Event_IceStorm1998 ;
+    ao:hasPolicy kb:Policy_76 .
+
+kb:Claim_76 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00076" ;
+    ao:claimNumber "CLM00076" ;
+    ao:reportingDate "1989-10-02"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_16 .
+
+kb:Claim_77 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00077" ;
+    ao:claimNumber "CLM00077" ;
+    ao:reportingDate "1994-01-27"^^xsd:date ;
+    ao:triggeredBy kb:Event_Bill1641994 ;
+    ao:hasPolicy kb:Policy_27 .
+
+kb:Claim_78 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00078" ;
+    ao:claimNumber "CLM00078" ;
+    ao:reportingDate "2013-06-23"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_60 .
+
+kb:Claim_79 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00079" ;
+    ao:claimNumber "CLM00079" ;
+    ao:reportingDate "1989-09-19"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_51 .
+
+kb:Claim_80 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00080" ;
+    ao:claimNumber "CLM00080" ;
+    ao:reportingDate "1971-11-13"^^xsd:date ;
+    ao:triggeredBy kb:Event_MPI1971 ;
+    ao:hasPolicy kb:Policy_78 .
+
+kb:Claim_81 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00081" ;
+    ao:claimNumber "CLM00081" ;
+    ao:reportingDate "1933-10-21"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1933 ;
+    ao:hasPolicy kb:Policy_80 .
+
+kb:Claim_82 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00082" ;
+    ao:claimNumber "CLM00082" ;
+    ao:reportingDate "1932-09-15"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1932 ;
+    ao:hasPolicy kb:Policy_82 .
+
+kb:Claim_83 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00083" ;
+    ao:claimNumber "CLM00083" ;
+    ao:reportingDate "1973-05-11"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_41 .
+
+kb:Claim_84 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00084" ;
+    ao:claimNumber "CLM00084" ;
+    ao:reportingDate "2016-05-12"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_64 .
+
+kb:Claim_85 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00085" ;
+    ao:claimNumber "CLM00085" ;
+    ao:reportingDate "2011-05-22"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_2 .
+
+kb:Claim_86 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00086" ;
+    ao:claimNumber "CLM00086" ;
+    ao:reportingDate "1882-01-27"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_61 .
+
+kb:Claim_87 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00087" ;
+    ao:claimNumber "CLM00087" ;
+    ao:reportingDate "1978-03-12"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_21 .
+
+kb:Claim_88 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00088" ;
+    ao:claimNumber "CLM00088" ;
+    ao:reportingDate "2011-06-05"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_40 .
+
+kb:Claim_89 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00089" ;
+    ao:claimNumber "CLM00089" ;
+    ao:reportingDate "1904-04-22"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_45 .
+
+kb:Claim_90 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00090" ;
+    ao:claimNumber "CLM00090" ;
+    ao:reportingDate "1882-01-25"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_3 .
+
+kb:Claim_91 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00091" ;
+    ao:claimNumber "CLM00091" ;
+    ao:reportingDate "1989-10-08"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_37 .
+
+kb:Claim_92 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00092" ;
+    ao:claimNumber "CLM00092" ;
+    ao:reportingDate "1978-03-22"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_66 .
+
+kb:Claim_93 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00093" ;
+    ao:claimNumber "CLM00093" ;
+    ao:reportingDate "1978-03-05"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_90 .
+
+kb:Claim_94 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00094" ;
+    ao:claimNumber "CLM00094" ;
+    ao:reportingDate "2011-05-16"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_18 .
+
+kb:Claim_95 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00095" ;
+    ao:claimNumber "CLM00095" ;
+    ao:reportingDate "1946-01-11"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_27 .
+
+kb:Claim_96 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00096" ;
+    ao:claimNumber "CLM00096" ;
+    ao:reportingDate "1978-03-08"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_20 .
+
+kb:Claim_97 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00097" ;
+    ao:claimNumber "CLM00097" ;
+    ao:reportingDate "1946-01-07"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_21 .
+
+kb:Claim_98 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00098" ;
+    ao:claimNumber "CLM00098" ;
+    ao:reportingDate "1973-05-28"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_97 .
+
+kb:Claim_99 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00099" ;
+    ao:claimNumber "CLM00099" ;
+    ao:reportingDate "1989-10-10"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_69 .
+
+kb:Claim_100 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00100" ;
+    ao:claimNumber "CLM00100" ;
+    ao:reportingDate "1989-09-23"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_15 .
+
+kb:Claim_101 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00101" ;
+    ao:claimNumber "CLM00101" ;
+    ao:reportingDate "2013-07-25"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFlood2013 ;
+    ao:hasPolicy kb:Policy_9 .
+
+kb:Claim_102 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00102" ;
+    ao:claimNumber "CLM00102" ;
+    ao:reportingDate "1954-10-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_HurricaneHazel1954 ;
+    ao:hasPolicy kb:Policy_81 .
+
+kb:Claim_103 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00103" ;
+    ao:claimNumber "CLM00103" ;
+    ao:reportingDate "1944-11-21"^^xsd:date ;
+    ao:triggeredBy kb:Event_SGI1944 ;
+    ao:hasPolicy kb:Policy_75 .
+
+kb:Claim_104 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00104" ;
+    ao:claimNumber "CLM00104" ;
+    ao:reportingDate "2016-05-23"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_65 .
+
+kb:Claim_105 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00105" ;
+    ao:claimNumber "CLM00105" ;
+    ao:reportingDate "1954-11-05"^^xsd:date ;
+    ao:triggeredBy kb:Event_HurricaneHazel1954 ;
+    ao:hasPolicy kb:Policy_82 .
+
+kb:Claim_106 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00106" ;
+    ao:claimNumber "CLM00106" ;
+    ao:reportingDate "2013-07-09"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFlood2013 ;
+    ao:hasPolicy kb:Policy_47 .
+
+kb:Claim_107 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00107" ;
+    ao:claimNumber "CLM00107" ;
+    ao:reportingDate "1946-01-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_61 .
+
+kb:Claim_108 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00108" ;
+    ao:claimNumber "CLM00108" ;
+    ao:reportingDate "2024-06-22"^^xsd:date ;
+    ao:triggeredBy kb:Event_SevereWeather2024 ;
+    ao:hasPolicy kb:Policy_92 .
+
+kb:Claim_109 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00109" ;
+    ao:claimNumber "CLM00109" ;
+    ao:reportingDate "2011-05-16"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_97 .
+
+kb:Claim_110 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00110" ;
+    ao:claimNumber "CLM00110" ;
+    ao:reportingDate "1932-09-07"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1932 ;
+    ao:hasPolicy kb:Policy_13 .
+
+kb:Claim_111 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00111" ;
+    ao:claimNumber "CLM00111" ;
+    ao:reportingDate "1978-03-16"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_4 .
+
+kb:Claim_112 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00112" ;
+    ao:claimNumber "CLM00112" ;
+    ao:reportingDate "1978-03-27"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_34 .
+
+kb:Claim_113 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00113" ;
+    ao:claimNumber "CLM00113" ;
+    ao:reportingDate "1994-01-10"^^xsd:date ;
+    ao:triggeredBy kb:Event_Bill1641994 ;
+    ao:hasPolicy kb:Policy_35 .
+
+kb:Claim_114 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00114" ;
+    ao:claimNumber "CLM00114" ;
+    ao:reportingDate "2024-06-02"^^xsd:date ;
+    ao:triggeredBy kb:Event_SevereWeather2024 ;
+    ao:hasPolicy kb:Policy_44 .
+
+kb:Claim_115 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00115" ;
+    ao:claimNumber "CLM00115" ;
+    ao:reportingDate "2020-06-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_CalgaryHail2020 ;
+    ao:hasPolicy kb:Policy_76 .
+
+kb:Claim_116 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00116" ;
+    ao:claimNumber "CLM00116" ;
+    ao:reportingDate "2021-07-29"^^xsd:date ;
+    ao:triggeredBy kb:Event_BCFloods2021 ;
+    ao:hasPolicy kb:Policy_69 .
+
+kb:Claim_117 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00117" ;
+    ao:claimNumber "CLM00117" ;
+    ao:reportingDate "2024-06-06"^^xsd:date ;
+    ao:triggeredBy kb:Event_SevereWeather2024 ;
+    ao:hasPolicy kb:Policy_22 .
+
+kb:Claim_118 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00118" ;
+    ao:claimNumber "CLM00118" ;
+    ao:reportingDate "1973-05-26"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_100 .
+
+kb:Claim_119 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00119" ;
+    ao:claimNumber "CLM00119" ;
+    ao:reportingDate "1954-11-02"^^xsd:date ;
+    ao:triggeredBy kb:Event_HurricaneHazel1954 ;
+    ao:hasPolicy kb:Policy_60 .
+
+kb:Claim_120 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00120" ;
+    ao:claimNumber "CLM00120" ;
+    ao:reportingDate "1994-01-06"^^xsd:date ;
+    ao:triggeredBy kb:Event_Bill1641994 ;
+    ao:hasPolicy kb:Policy_96 .
+
+kb:Claim_121 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00121" ;
+    ao:claimNumber "CLM00121" ;
+    ao:reportingDate "1944-11-18"^^xsd:date ;
+    ao:triggeredBy kb:Event_SGI1944 ;
+    ao:hasPolicy kb:Policy_60 .
+
+kb:Claim_122 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00122" ;
+    ao:claimNumber "CLM00122" ;
+    ao:reportingDate "2013-07-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_25 .
+
+kb:Claim_123 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00123" ;
+    ao:claimNumber "CLM00123" ;
+    ao:reportingDate "1994-01-12"^^xsd:date ;
+    ao:triggeredBy kb:Event_Bill1641994 ;
+    ao:hasPolicy kb:Policy_20 .
+
+kb:Claim_124 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00124" ;
+    ao:claimNumber "CLM00124" ;
+    ao:reportingDate "1904-05-01"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_64 .
+
+kb:Claim_125 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00125" ;
+    ao:claimNumber "CLM00125" ;
+    ao:reportingDate "1994-01-26"^^xsd:date ;
+    ao:triggeredBy kb:Event_Bill1641994 ;
+    ao:hasPolicy kb:Policy_11 .
+
+kb:Claim_126 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00126" ;
+    ao:claimNumber "CLM00126" ;
+    ao:reportingDate "1932-09-05"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1932 ;
+    ao:hasPolicy kb:Policy_89 .
+
+kb:Claim_127 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00127" ;
+    ao:claimNumber "CLM00127" ;
+    ao:reportingDate "1944-11-23"^^xsd:date ;
+    ao:triggeredBy kb:Event_SGI1944 ;
+    ao:hasPolicy kb:Policy_68 .
+
+kb:Claim_128 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00128" ;
+    ao:claimNumber "CLM00128" ;
+    ao:reportingDate "2020-06-18"^^xsd:date ;
+    ao:triggeredBy kb:Event_CalgaryHail2020 ;
+    ao:hasPolicy kb:Policy_38 .
+
+kb:Claim_129 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00129" ;
+    ao:claimNumber "CLM00129" ;
+    ao:reportingDate "2020-07-04"^^xsd:date ;
+    ao:triggeredBy kb:Event_CalgaryHail2020 ;
+    ao:hasPolicy kb:Policy_87 .
+
+kb:Claim_130 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00130" ;
+    ao:claimNumber "CLM00130" ;
+    ao:reportingDate "1954-11-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_HurricaneHazel1954 ;
+    ao:hasPolicy kb:Policy_84 .
+
+kb:Claim_131 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00131" ;
+    ao:claimNumber "CLM00131" ;
+    ao:reportingDate "2013-07-19"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFlood2013 ;
+    ao:hasPolicy kb:Policy_39 .
+
+kb:Claim_132 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00132" ;
+    ao:claimNumber "CLM00132" ;
+    ao:reportingDate "1978-03-19"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_76 .
+
+kb:Claim_133 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00133" ;
+    ao:claimNumber "CLM00133" ;
+    ao:reportingDate "1971-11-06"^^xsd:date ;
+    ao:triggeredBy kb:Event_MPI1971 ;
+    ao:hasPolicy kb:Policy_54 .
+
+kb:Claim_134 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00134" ;
+    ao:claimNumber "CLM00134" ;
+    ao:reportingDate "1946-01-21"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_55 .
+
+kb:Claim_135 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00135" ;
+    ao:claimNumber "CLM00135" ;
+    ao:reportingDate "1882-01-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_1 .
+
+kb:Claim_136 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00136" ;
+    ao:claimNumber "CLM00136" ;
+    ao:reportingDate "1998-01-21"^^xsd:date ;
+    ao:triggeredBy kb:Event_IceStorm1998 ;
+    ao:hasPolicy kb:Policy_46 .
+
+kb:Claim_137 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00137" ;
+    ao:claimNumber "CLM00137" ;
+    ao:reportingDate "2024-06-25"^^xsd:date ;
+    ao:triggeredBy kb:Event_SevereWeather2024 ;
+    ao:hasPolicy kb:Policy_76 .
+
+kb:Claim_138 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00138" ;
+    ao:claimNumber "CLM00138" ;
+    ao:reportingDate "1973-05-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_53 .
+
+kb:Claim_139 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00139" ;
+    ao:claimNumber "CLM00139" ;
+    ao:reportingDate "1978-03-30"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_25 .
+
+kb:Claim_140 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00140" ;
+    ao:claimNumber "CLM00140" ;
+    ao:reportingDate "1904-05-10"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_64 .
+
+kb:Claim_141 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00141" ;
+    ao:claimNumber "CLM00141" ;
+    ao:reportingDate "1904-05-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_66 .
+
+kb:Claim_142 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00142" ;
+    ao:claimNumber "CLM00142" ;
+    ao:reportingDate "2024-06-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_SevereWeather2024 ;
+    ao:hasPolicy kb:Policy_15 .
+
+kb:Claim_143 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00143" ;
+    ao:claimNumber "CLM00143" ;
+    ao:reportingDate "1932-09-02"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1932 ;
+    ao:hasPolicy kb:Policy_17 .
+
+kb:Claim_144 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00144" ;
+    ao:claimNumber "CLM00144" ;
+    ao:reportingDate "1932-09-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1932 ;
+    ao:hasPolicy kb:Policy_90 .
+
+kb:Claim_145 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00145" ;
+    ao:claimNumber "CLM00145" ;
+    ao:reportingDate "1946-01-27"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_67 .
+
+kb:Claim_146 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00146" ;
+    ao:claimNumber "CLM00146" ;
+    ao:reportingDate "1933-10-28"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1933 ;
+    ao:hasPolicy kb:Policy_83 .
+
+kb:Claim_147 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00147" ;
+    ao:claimNumber "CLM00147" ;
+    ao:reportingDate "2021-07-26"^^xsd:date ;
+    ao:triggeredBy kb:Event_BCFloods2021 ;
+    ao:hasPolicy kb:Policy_63 .
+
+kb:Claim_148 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00148" ;
+    ao:claimNumber "CLM00148" ;
+    ao:reportingDate "2013-07-31"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFlood2013 ;
+    ao:hasPolicy kb:Policy_96 .
+
+kb:Claim_149 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00149" ;
+    ao:claimNumber "CLM00149" ;
+    ao:reportingDate "1989-10-09"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_95 .
+
+kb:Claim_150 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00150" ;
+    ao:claimNumber "CLM00150" ;
+    ao:reportingDate "1944-12-03"^^xsd:date ;
+    ao:triggeredBy kb:Event_SGI1944 ;
+    ao:hasPolicy kb:Policy_53 .
+
+kb:Claim_151 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00151" ;
+    ao:claimNumber "CLM00151" ;
+    ao:reportingDate "1946-01-13"^^xsd:date ;
+    ao:triggeredBy kb:Event_AAIA1946 ;
+    ao:hasPolicy kb:Policy_24 .
+
+kb:Claim_152 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00152" ;
+    ao:claimNumber "CLM00152" ;
+    ao:reportingDate "2016-05-20"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_72 .
+
+kb:Claim_153 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00153" ;
+    ao:claimNumber "CLM00153" ;
+    ao:reportingDate "1882-01-21"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_38 .
+
+kb:Claim_154 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00154" ;
+    ao:claimNumber "CLM00154" ;
+    ao:reportingDate "2016-05-28"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_39 .
+
+kb:Claim_155 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00155" ;
+    ao:claimNumber "CLM00155" ;
+    ao:reportingDate "1882-01-28"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_47 .
+
+kb:Claim_156 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00156" ;
+    ao:claimNumber "CLM00156" ;
+    ao:reportingDate "1994-01-05"^^xsd:date ;
+    ao:triggeredBy kb:Event_Bill1641994 ;
+    ao:hasPolicy kb:Policy_51 .
+
+kb:Claim_157 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00157" ;
+    ao:claimNumber "CLM00157" ;
+    ao:reportingDate "1998-01-05"^^xsd:date ;
+    ao:triggeredBy kb:Event_IceStorm1998 ;
+    ao:hasPolicy kb:Policy_72 .
+
+kb:Claim_158 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00158" ;
+    ao:claimNumber "CLM00158" ;
+    ao:reportingDate "1933-10-31"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1933 ;
+    ao:hasPolicy kb:Policy_3 .
+
+kb:Claim_159 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00159" ;
+    ao:claimNumber "CLM00159" ;
+    ao:reportingDate "1998-01-15"^^xsd:date ;
+    ao:triggeredBy kb:Event_IceStorm1998 ;
+    ao:hasPolicy kb:Policy_3 .
+
+kb:Claim_160 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00160" ;
+    ao:claimNumber "CLM00160" ;
+    ao:reportingDate "2016-05-29"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_32 .
+
+kb:Claim_161 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00161" ;
+    ao:claimNumber "CLM00161" ;
+    ao:reportingDate "1978-03-29"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_67 .
+
+kb:Claim_162 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00162" ;
+    ao:claimNumber "CLM00162" ;
+    ao:reportingDate "1944-11-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_SGI1944 ;
+    ao:hasPolicy kb:Policy_53 .
+
+kb:Claim_163 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00163" ;
+    ao:claimNumber "CLM00163" ;
+    ao:reportingDate "2013-06-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_69 .
+
+kb:Claim_164 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00164" ;
+    ao:claimNumber "CLM00164" ;
+    ao:reportingDate "1989-10-04"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_76 .
+
+kb:Claim_165 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00165" ;
+    ao:claimNumber "CLM00165" ;
+    ao:reportingDate "1932-09-06"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1932 ;
+    ao:hasPolicy kb:Policy_99 .
+
+kb:Claim_166 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00166" ;
+    ao:claimNumber "CLM00166" ;
+    ao:reportingDate "2011-05-30"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_99 .
+
+kb:Claim_167 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00167" ;
+    ao:claimNumber "CLM00167" ;
+    ao:reportingDate "2013-07-10"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_48 .
+
+kb:Claim_168 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00168" ;
+    ao:claimNumber "CLM00168" ;
+    ao:reportingDate "2011-05-22"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_100 .
+
+kb:Claim_169 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00169" ;
+    ao:claimNumber "CLM00169" ;
+    ao:reportingDate "2020-06-18"^^xsd:date ;
+    ao:triggeredBy kb:Event_CalgaryHail2020 ;
+    ao:hasPolicy kb:Policy_33 .
+
+kb:Claim_170 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00170" ;
+    ao:claimNumber "CLM00170" ;
+    ao:reportingDate "2020-06-19"^^xsd:date ;
+    ao:triggeredBy kb:Event_CalgaryHail2020 ;
+    ao:hasPolicy kb:Policy_84 .
+
+kb:Claim_171 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00171" ;
+    ao:claimNumber "CLM00171" ;
+    ao:reportingDate "1994-01-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_Bill1641994 ;
+    ao:hasPolicy kb:Policy_19 .
+
+kb:Claim_172 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00172" ;
+    ao:claimNumber "CLM00172" ;
+    ao:reportingDate "2021-07-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_BCFloods2021 ;
+    ao:hasPolicy kb:Policy_88 .
+
+kb:Claim_173 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00173" ;
+    ao:claimNumber "CLM00173" ;
+    ao:reportingDate "2011-05-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_47 .
+
+kb:Claim_174 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00174" ;
+    ao:claimNumber "CLM00174" ;
+    ao:reportingDate "2013-07-18"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_24 .
+
+kb:Claim_175 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00175" ;
+    ao:claimNumber "CLM00175" ;
+    ao:reportingDate "1933-10-07"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1933 ;
+    ao:hasPolicy kb:Policy_78 .
+
+kb:Claim_176 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00176" ;
+    ao:claimNumber "CLM00176" ;
+    ao:reportingDate "1882-01-30"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_58 .
+
+kb:Claim_177 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00177" ;
+    ao:claimNumber "CLM00177" ;
+    ao:reportingDate "2011-06-07"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_86 .
+
+kb:Claim_178 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00178" ;
+    ao:claimNumber "CLM00178" ;
+    ao:reportingDate "1973-05-07"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_91 .
+
+kb:Claim_179 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00179" ;
+    ao:claimNumber "CLM00179" ;
+    ao:reportingDate "2024-06-16"^^xsd:date ;
+    ao:triggeredBy kb:Event_SevereWeather2024 ;
+    ao:hasPolicy kb:Policy_27 .
+
+kb:Claim_180 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00180" ;
+    ao:claimNumber "CLM00180" ;
+    ao:reportingDate "1882-01-25"^^xsd:date ;
+    ao:triggeredBy kb:Event_PurelyMutual1882 ;
+    ao:hasPolicy kb:Policy_69 .
+
+kb:Claim_181 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00181" ;
+    ao:claimNumber "CLM00181" ;
+    ao:reportingDate "1989-10-09"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_72 .
+
+kb:Claim_182 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00182" ;
+    ao:claimNumber "CLM00182" ;
+    ao:reportingDate "2016-05-26"^^xsd:date ;
+    ao:triggeredBy kb:Event_FortMcMurray2016 ;
+    ao:hasPolicy kb:Policy_7 .
+
+kb:Claim_183 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00183" ;
+    ao:claimNumber "CLM00183" ;
+    ao:reportingDate "2011-06-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_39 .
+
+kb:Claim_184 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00184" ;
+    ao:claimNumber "CLM00184" ;
+    ao:reportingDate "1998-01-17"^^xsd:date ;
+    ao:triggeredBy kb:Event_IceStorm1998 ;
+    ao:hasPolicy kb:Policy_9 .
+
+kb:Claim_185 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00185" ;
+    ao:claimNumber "CLM00185" ;
+    ao:reportingDate "1978-03-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_4 .
+
+kb:Claim_186 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00186" ;
+    ao:claimNumber "CLM00186" ;
+    ao:reportingDate "2013-06-28"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_14 .
+
+kb:Claim_187 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00187" ;
+    ao:claimNumber "CLM00187" ;
+    ao:reportingDate "1989-09-27"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_78 .
+
+kb:Claim_188 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00188" ;
+    ao:claimNumber "CLM00188" ;
+    ao:reportingDate "2013-07-16"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_22 .
+
+kb:Claim_189 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00189" ;
+    ao:claimNumber "CLM00189" ;
+    ao:reportingDate "2013-07-11"^^xsd:date ;
+    ao:triggeredBy kb:Event_AlbertaFlood2013 ;
+    ao:hasPolicy kb:Policy_41 .
+
+kb:Claim_190 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00190" ;
+    ao:claimNumber "CLM00190" ;
+    ao:reportingDate "2013-08-01"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFlood2013 ;
+    ao:hasPolicy kb:Policy_27 .
+
+kb:Claim_191 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00191" ;
+    ao:claimNumber "CLM00191" ;
+    ao:reportingDate "1904-04-25"^^xsd:date ;
+    ao:triggeredBy kb:Event_TorontoFire1904 ;
+    ao:hasPolicy kb:Policy_17 .
+
+kb:Claim_192 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00192" ;
+    ao:claimNumber "CLM00192" ;
+    ao:reportingDate "1973-05-05"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_7 .
+
+kb:Claim_193 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00193" ;
+    ao:claimNumber "CLM00193" ;
+    ao:reportingDate "1978-03-27"^^xsd:date ;
+    ao:triggeredBy kb:Event_SAAQ1978 ;
+    ao:hasPolicy kb:Policy_62 .
+
+kb:Claim_194 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00194" ;
+    ao:claimNumber "CLM00194" ;
+    ao:reportingDate "2021-07-24"^^xsd:date ;
+    ao:triggeredBy kb:Event_BCFloods2021 ;
+    ao:hasPolicy kb:Policy_89 .
+
+kb:Claim_195 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00195" ;
+    ao:claimNumber "CLM00195" ;
+    ao:reportingDate "1989-10-14"^^xsd:date ;
+    ao:triggeredBy kb:Event_OntarioOMPP1989 ;
+    ao:hasPolicy kb:Policy_40 .
+
+kb:Claim_196 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00196" ;
+    ao:claimNumber "CLM00196" ;
+    ao:reportingDate "1933-10-09"^^xsd:date ;
+    ao:triggeredBy kb:Event_UniformAct1933 ;
+    ao:hasPolicy kb:Policy_34 .
+
+kb:Claim_197 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00197" ;
+    ao:claimNumber "CLM00197" ;
+    ao:reportingDate "1954-11-04"^^xsd:date ;
+    ao:triggeredBy kb:Event_HurricaneHazel1954 ;
+    ao:hasPolicy kb:Policy_45 .
+
+kb:Claim_198 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00198" ;
+    ao:claimNumber "CLM00198" ;
+    ao:reportingDate "2011-06-02"^^xsd:date ;
+    ao:triggeredBy kb:Event_SlaveLake2011 ;
+    ao:hasPolicy kb:Policy_54 .
+
+kb:Claim_199 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00199" ;
+    ao:claimNumber "CLM00199" ;
+    ao:reportingDate "2021-07-10"^^xsd:date ;
+    ao:triggeredBy kb:Event_BCFloods2021 ;
+    ao:hasPolicy kb:Policy_3 .
+
+kb:Claim_200 rdf:type ao:Claim , ao:ReportedClaim ;
+    rdfs:label "Claim CLM00200" ;
+    ao:claimNumber "CLM00200" ;
+    ao:reportingDate "1973-05-10"^^xsd:date ;
+    ao:triggeredBy kb:Event_ICBC1973 ;
+    ao:hasPolicy kb:Policy_98 .
