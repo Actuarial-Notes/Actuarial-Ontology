@@ -3,6 +3,7 @@ Welcome! This is the home of an open source project to develop **an ontology for
 - [Actuarial Ontology (.ttl)](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/actuarial-ontology.ttl)
 - [Documentation](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/AO-Documentation.md)
 
+**Example** [Canadian P&C Insurance Knowledge Base.ttl](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/canadian-pc-insurance-knowledge-base.ttl)
 
 > **Actuarial science** is the discipline of measuring and managing financial risk.
 >
