@@ -2,7 +2,14 @@
 
 ## Overview
 
-This document describes the first draft of the Actuarial Ontology (AO), version 0.1.0-draft. The ontology is written in Turtle (TTL) format and can be opened in Protégé or other OWL ontology editors.
+This document describes the Actuarial Ontology (AO), version 0.2.0-draft. The ontology is written in Turtle (TTL) format and can be opened in Protégé or other OWL ontology editors.
+
+**Major Update (v0.2.0):** This version includes Phase 1 foundational alignment with:
+- **UFO** (Unified Foundational Ontology) - ontological rigor for endurants/perdurants, kinds/roles/phases
+- **COVER** (Common Ontology of Value and Risk) - value-risk integration and event chains
+- **ASOPs** (Actuarial Standards of Practice) - professional practice framework
+
+See [STANDARDS-REVIEW.md](STANDARDS-REVIEW.md) for detailed analysis.
 
 ## Purpose
 
@@ -13,15 +20,19 @@ The Actuarial Ontology defines core concepts, relationships, and practices in ac
 - Risk management
 - Investment and capital modeling
 - Actuarial processes and methods
+- Value assessment and risk-value connections
+- Actuarial professional communications and standards
 
 ## Structure
 
-The ontology follows best practices outlined in the Project Guide:
+The ontology follows ontological engineering best practices and aligns with established frameworks:
 
 1. **Domain & Scope**: Actuarial science and related financial risk management
-2. **Top-Level Categories**: Entities, Agents, Events, Activities, Objects
-3. **Clear Definitions**: Each class and property includes rdfs:comment with definitions
-4. **Hierarchical Organization**: Classes organized in meaningful taxonomies
+2. **Top-Level Categories**: Aligned with UFO - Endurants (entities persisting through time) and Perdurants (events occurring in time)
+3. **Rigidity Distinctions**: Kinds (rigid types like Person), Roles (anti-rigid like Insured), Phases (anti-rigid intrinsic like PaidClaim)
+4. **Clear Definitions**: Each class and property includes rdfs:comment with definitions
+5. **Hierarchical Organization**: Classes organized in meaningful taxonomies
+6. **Standards Alignment**: Explicit references to ASOPs and ontological patterns
 
 ## Main Components
 
@@ -237,17 +248,41 @@ See the project [README.md](README.md) and [Code of Conduct](Code%20of%20Conduct
 
 ## References
 
-- Actuarial Standards of Practice (ASOPs)
+**Foundational Ontologies:**
+- UFO (Unified Foundational Ontology) - [nemo.inf.ufes.br/en/projetos/ufo](https://nemo.inf.ufes.br/en/projetos/ufo/)
+- COVER (Common Ontology of Value and Risk) - Sales & Baião (2018)
+- gUFO - Lightweight UFO implementation - [nemo-ufes.github.io/gufo](https://nemo-ufes.github.io/gufo/)
+
+**Actuarial Standards:**
+- Actuarial Standards of Practice (ASOPs) - [actuarialstandardsboard.org](http://www.actuarialstandardsboard.org/)
 - International Standards of Actuarial Practice (ISAPs)
+- European Standards of Actuarial Practice (ESAPs)
 - SOA Competency Framework
 - CAS Capability Model
+
+**Regulatory Frameworks:**
 - IFRS 17 - Insurance Contracts
 - Solvency II Framework
+- GAAP - Generally Accepted Accounting Principles
 
 ## License
 
 This ontology is released under the MIT License. See [LICENSE](LICENSE) file for details.
 
 ## Version History
+
+- **0.2.0-draft** (2026-01-11): Phase 1 foundational alignment
+  - Restructured top-level categories aligned with UFO (Endurants/Perdurants)
+  - Added rigidity distinctions (Kinds: Person, Organization; Roles: Actuary, Insured; Phases: PaidClaim, OutstandingClaim)
+  - Integrated COVER's tripartite risk distinction (QuantitativeRisk, RiskExperience, RiskAssessmentJudgment)
+  - Added COVER value concepts (Value, ValueObject, ValueExperience, ValueAscription)
+  - Enhanced event chain with ThreatEvent (Peril → ThreatEvent → LossEvent)
+  - Added dispositions and vulnerabilities (COVER/UFO pattern)
+  - Added ASOP 41 communication framework (ActuarialCommunication, ActuarialOpinion, Disclosure, IntendedUser)
+  - Added UFO-C social concepts (Commitment, Right, Goal)
+  - Added annotation properties (rigidity, ufoCategory, asopReference)
+  - Added UFO participation model (participatesIn, hasParticipant, inheresIn)
+  - Updated Measurement as subclass of Moment (UFO pattern)
+  - Total: 134 classes (↑34), 31 object properties (↑18), 3 annotation properties (new)
 
 - **0.1.0-draft** (2026-01-10): Initial draft covering core actuarial concepts across insurance, pensions, risk management, and financial domains.
