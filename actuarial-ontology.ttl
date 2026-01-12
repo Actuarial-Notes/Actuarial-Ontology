@@ -11,9 +11,9 @@
     dcterms:title "Actuarial Ontology"@en ;
     dcterms:description "An ontology for the domain of actuarial science - the discipline of measuring and managing financial risk."@en ;
     dcterms:created "2026-01-10"^^xsd:date ;
-    dcterms:modified "2026-01-11"^^xsd:date ;
+    dcterms:modified "2026-01-12"^^xsd:date ;
     dcterms:license <https://opensource.org/licenses/MIT> ;
-    owl:versionInfo "0.2.0-draft" ;
+    owl:versionInfo "0.3.0-draft" ;
     rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains. Aligned with UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk), and ASOPs (Actuarial Standards of Practice)."@en .
 
 #################################################################
@@ -243,6 +243,106 @@ ao:assessesRisk rdf:type owl:ObjectProperty ;
     rdfs:range ao:RiskAssessmentJudgment ;
     rdfs:label "assesses risk"@en ;
     rdfs:comment "Relates an agent to a risk assessment judgment they make (COVER)."@en .
+
+### ASOP 51 Risk Assessment Relationships
+
+ao:identifies rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:RiskIdentification ;
+    rdfs:range ao:Risk ;
+    rdfs:label "identifies"@en ;
+    rdfs:comment "Relates a risk identification activity to a risk it identifies (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+ao:quantifies rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:RiskMeasurement ;
+    rdfs:range ao:QuantitativeRisk ;
+    rdfs:label "quantifies"@en ;
+    rdfs:comment "Relates a risk measurement activity to a quantitative risk measure it produces (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+ao:mitigates rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:RiskMitigation ;
+    rdfs:range ao:Risk ;
+    rdfs:label "mitigates"@en ;
+    rdfs:comment "Relates a risk mitigation activity to a risk it aims to reduce or control (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+ao:monitors rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:RiskMonitoring ;
+    rdfs:range ao:Risk ;
+    rdfs:label "monitors"@en ;
+    rdfs:comment "Relates a risk monitoring activity to a risk it tracks (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+ao:hasRiskTolerance rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:RiskTolerance ;
+    rdfs:label "has risk tolerance"@en ;
+    rdfs:comment "Relates an agent to their risk tolerance level (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+ao:hasRiskAppetite rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:RiskAppetite ;
+    rdfs:label "has risk appetite"@en ;
+    rdfs:comment "Relates an agent to their risk appetite (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+### UFO-C Social and Intentional Relationships
+
+ao:hasCommitment rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:Commitment ;
+    rdfs:label "has commitment"@en ;
+    rdfs:comment "Relates an agent to a commitment they have made (UFO-C)."@en .
+
+ao:hasObligation rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:Obligation ;
+    rdfs:label "has obligation"@en ;
+    rdfs:comment "Relates an agent to an obligation they must fulfill (UFO-C)."@en .
+
+ao:hasRight rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:Right ;
+    rdfs:label "has right"@en ;
+    rdfs:comment "Relates an agent to a right or entitlement they hold (UFO-C)."@en .
+
+ao:hasGoal rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:Goal ;
+    rdfs:label "has goal"@en ;
+    rdfs:comment "Relates an agent to a goal they intend to achieve (UFO-C)."@en .
+
+ao:hasIntention rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:Intention ;
+    rdfs:label "has intention"@en ;
+    rdfs:comment "Relates an agent to an intention they hold (UFO-C)."@en .
+
+ao:hasBelief rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:Belief ;
+    rdfs:label "has belief"@en ;
+    rdfs:comment "Relates an agent to a belief they hold (UFO-C)."@en .
+
+ao:derivesFrom rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Right ;
+    rdfs:range ao:Commitment ;
+    rdfs:label "derives from"@en ;
+    rdfs:comment "Relates a right to the commitment it derives from. Rights are correlative to commitments (UFO-C)."@en .
+
+ao:imposesObligation rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Commitment ;
+    rdfs:range ao:Obligation ;
+    rdfs:label "imposes obligation"@en ;
+    rdfs:comment "Relates a commitment to the obligation it creates (UFO-C)."@en .
+
+ao:directedAt rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Intention ;
+    rdfs:range ao:Goal ;
+    rdfs:label "directed at"@en ;
+    rdfs:comment "Relates an intention to the goal it aims to achieve (UFO-C)."@en .
 
 ### ASOP 41 Communication Relationships
 
@@ -823,7 +923,52 @@ ao:ActuarialActivity rdf:type owl:Class ;
 ao:RiskAssessment rdf:type owl:Class ;
     rdfs:subClassOf ao:ActuarialActivity ;
     rdfs:label "Risk Assessment"@en ;
-    rdfs:comment "The process of identifying and evaluating risks."@en .
+    rdfs:comment "The process of identifying and evaluating risks. Can be decomposed into risk identification, measurement, and mitigation activities (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+### ASOP 51: Risk Assessment Components
+
+ao:RiskIdentification rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Risk Identification"@en ;
+    rdfs:comment "The process of systematically identifying risks that could affect an entity's objectives. Involves recognizing and documenting potential sources of uncertainty (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+ao:RiskMeasurement rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Risk Measurement"@en ;
+    rdfs:comment "The process of quantifying the magnitude and likelihood of identified risks. Involves estimating potential impacts and probabilities (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+ao:RiskMitigation rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Risk Mitigation"@en ;
+    rdfs:comment "The process of developing and implementing strategies to reduce, transfer, or control risks. Includes risk avoidance, reduction, sharing, and retention (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+ao:RiskMonitoring rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Risk Monitoring"@en ;
+    rdfs:comment "The ongoing process of tracking identified risks, monitoring residual risks, identifying new risks, and evaluating risk mitigation effectiveness (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+ao:EnterpriseRiskManagement rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Enterprise Risk Management"@en ;
+    rdfs:comment "A comprehensive, integrated approach to managing all risks across an organization. ERM considers interdependencies among risks and aligns risk management with strategic objectives (ASOP 58)."@en ;
+    ao:asopReference "ASOP 58" .
+
+ao:RiskTolerance rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Risk Tolerance"@en ;
+    rdfs:comment "The acceptable level of variation in outcomes relative to objectives. Represents the amount of risk an entity is willing to accept in pursuit of its goals (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
+
+ao:RiskAppetite rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Risk Appetite"@en ;
+    rdfs:comment "The amount and type of risk an entity is willing to pursue or retain in order to achieve its objectives. Broader than risk tolerance (ASOP 51)."@en ;
+    ao:asopReference "ASOP 51" .
 
 ao:Pricing rdf:type owl:Class ;
     rdfs:subClassOf ao:ActuarialActivity ;
@@ -1063,5 +1208,28 @@ ao:RiskManagementGoal rdf:type owl:Class ;
     rdfs:subClassOf ao:Goal ;
     rdfs:label "Risk Management Goal"@en ;
     rdfs:comment "A goal related to identifying, assessing, mitigating, or transferring risks."@en .
+
+ao:Intention rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Intention"@en ;
+    rdfs:comment "A mental moment directed at achieving a goal. Intentions represent an agent's commitment to pursue a particular course of action (UFO-C)."@en ;
+    ao:ufoCategory "moment" .
+
+ao:Belief rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Belief"@en ;
+    rdfs:comment "A mental moment representing an agent's acceptance of a proposition as true. Beliefs inform decision-making and risk assessment (UFO-C)."@en ;
+    ao:ufoCategory "moment" .
+
+ao:Obligation rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Obligation"@en ;
+    rdfs:comment "A social moment that binds an agent to perform a specific action or refrain from it. Obligations arise from commitments and social relationships (UFO-C)."@en ;
+    ao:ufoCategory "moment" .
+
+ao:PolicyObligation rdf:type owl:Class ;
+    rdfs:subClassOf ao:Obligation ;
+    rdfs:label "Policy Obligation"@en ;
+    rdfs:comment "An obligation arising from an insurance policy, such as the policyholder's obligation to pay premiums or the insurer's obligation to pay claims."@en .
 
 ### End of Ontology
