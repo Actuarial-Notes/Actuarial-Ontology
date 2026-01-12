@@ -13,8 +13,8 @@
     dcterms:created "2026-01-10"^^xsd:date ;
     dcterms:modified "2026-01-12"^^xsd:date ;
     dcterms:license <https://opensource.org/licenses/MIT> ;
-    owl:versionInfo "0.6.0-draft" ;
-    rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains. Aligned with UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk), and ASOPs (Actuarial Standards of Practice). Version 0.6 adds hasMetric and hasSubject/subjectOf properties to achieve 100% competency question answerability."@en .
+    owl:versionInfo "0.7.0-draft" ;
+    rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains. Aligned with UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk), and ASOPs (Actuarial Standards of Practice). Version 0.7 adds comprehensive domain expansions including underwriting, reinsurance structures, distribution, claims management, policyholder behavior, ALM, life insurance specifics, premium/rating, emerging risks, portfolio management, stochastic modeling, embedded value, and experience studies - expanding from 194 to ~320 classes and from 76 to ~90 object properties."@en .
 
 #################################################################
 #    Annotation Properties
@@ -1700,5 +1700,724 @@ ao:AuditTrail rdf:type owl:Class ;
 ao:WorkPaper rdf:type owl:Class ;
     rdfs:label "Work Paper"@en ;
     rdfs:comment "Documentation supporting actuarial work, including data sources, methods, assumptions, calculations, and results. Work papers provide the detail behind actuarial communications and enable review of the work."@en .
+
+### Underwriting Concepts (New Domain)
+
+ao:Underwriting rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Underwriting"@en ;
+    rdfs:comment "The process of evaluating and selecting risks for insurance coverage. Underwriting involves assessing applicants, classifying risks, determining appropriate premiums, and deciding whether to accept, modify, or reject insurance applications."@en .
+
+ao:RiskSelection rdf:type owl:Class ;
+    rdfs:subClassOf ao:Underwriting ;
+    rdfs:label "Risk Selection"@en ;
+    rdfs:comment "The process of choosing which risks to insure based on underwriting criteria and guidelines. Risk selection aims to build a profitable portfolio while avoiding adverse selection."@en .
+
+ao:RiskClassification rdf:type owl:Class ;
+    rdfs:subClassOf ao:Underwriting ;
+    rdfs:label "Risk Classification"@en ;
+    rdfs:comment "The process of categorizing risks into groups with similar risk characteristics for pricing purposes. Risk classification enables differentiation of premiums based on expected loss costs."@en .
+
+ao:MedicalUnderwriting rdf:type owl:Class ;
+    rdfs:subClassOf ao:Underwriting ;
+    rdfs:label "Medical Underwriting"@en ;
+    rdfs:comment "The process of evaluating health risks for life and health insurance. Medical underwriting assesses medical history, current health status, lifestyle factors, and other health-related information."@en .
+
+ao:FinancialUnderwriting rdf:type owl:Class ;
+    rdfs:subClassOf ao:Underwriting ;
+    rdfs:label "Financial Underwriting"@en ;
+    rdfs:comment "The process of assessing an applicant's financial situation to determine appropriate insurance coverage amounts and ensure insurable interest."@en .
+
+ao:UnderwritingGuidelines rdf:type owl:Class ;
+    rdfs:label "Underwriting Guidelines"@en ;
+    rdfs:comment "A set of rules and criteria used by underwriters to evaluate risks and make underwriting decisions. Guidelines specify acceptable risk characteristics, pricing adjustments, and approval authorities."@en .
+
+ao:UnderwritingCriteria rdf:type owl:Class ;
+    rdfs:label "Underwriting Criteria"@en ;
+    rdfs:comment "Specific factors or standards used to evaluate and classify risks during underwriting. Criteria may include age, health status, occupation, location, claims history, or other risk indicators."@en .
+
+ao:AdverseSelection rdf:type owl:Class ;
+    rdfs:label "Adverse Selection"@en ;
+    rdfs:comment "A phenomenon where individuals with higher risk are more likely to purchase or retain insurance coverage, leading to worse-than-expected claims experience. Also known as antiselection."@en .
+
+ao:MoralHazard rdf:type owl:Class ;
+    rdfs:label "Moral Hazard"@en ;
+    rdfs:comment "A situation where insurance coverage changes behavior, leading to increased risk or claims. Moral hazard occurs when insured parties take more risks because they are protected from consequences."@en .
+
+ao:PreferredRisk rdf:type owl:Class ;
+    rdfs:label "Preferred Risk"@en ;
+    rdfs:comment "A risk classification for applicants with better-than-average risk characteristics who qualify for lower premium rates."@en .
+
+ao:StandardRisk rdf:type owl:Class ;
+    rdfs:label "Standard Risk"@en ;
+    rdfs:comment "A risk classification for applicants with average risk characteristics who qualify for standard premium rates."@en .
+
+ao:SubstandardRisk rdf:type owl:Class ;
+    rdfs:label "Substandard Risk"@en ;
+    rdfs:comment "A risk classification for applicants with worse-than-average risk characteristics who may be charged higher premiums or face coverage limitations."@en .
+
+ao:DeclinedRisk rdf:type owl:Class ;
+    rdfs:label "Declined Risk"@en ;
+    rdfs:comment "A risk that has been rejected for insurance coverage because it does not meet underwriting criteria or is deemed uninsurable."@en .
+
+### Reinsurance Structures
+
+ao:TreatyReinsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:ReinsuranceContract ;
+    rdfs:label "Treaty Reinsurance"@en ;
+    rdfs:comment "A reinsurance agreement covering a portfolio or class of business automatically. Treaty reinsurance applies to all risks within the defined scope without individual selection."@en .
+
+ao:FacultativeReinsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:ReinsuranceContract ;
+    rdfs:label "Facultative Reinsurance"@en ;
+    rdfs:comment "A reinsurance agreement covering a single risk or policy on a case-by-case basis. Both the ceding insurer and reinsurer have the option to accept or decline each risk individually."@en .
+
+ao:ProportionalReinsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:ReinsuranceContract ;
+    rdfs:label "Proportional Reinsurance"@en ;
+    rdfs:comment "A reinsurance structure where premiums and losses are shared between insurer and reinsurer in agreed proportions. Also known as quota share or participating reinsurance."@en .
+
+ao:QuotaShareReinsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:ProportionalReinsurance ;
+    rdfs:label "Quota Share Reinsurance"@en ;
+    rdfs:comment "A proportional reinsurance agreement where the reinsurer assumes a fixed percentage of all policies in a portfolio, sharing premiums and losses in the same proportion."@en .
+
+ao:SurplusReinsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:ProportionalReinsurance ;
+    rdfs:label "Surplus Reinsurance"@en ;
+    rdfs:comment "A proportional reinsurance agreement where the ceding insurer retains coverage up to a specified limit and cedes the surplus to the reinsurer."@en .
+
+ao:NonProportionalReinsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:ReinsuranceContract ;
+    rdfs:label "Non-Proportional Reinsurance"@en ;
+    rdfs:comment "A reinsurance structure where the reinsurer pays only when losses exceed a specified threshold. Also known as excess of loss reinsurance."@en .
+
+ao:ExcessOfLossReinsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:NonProportionalReinsurance ;
+    rdfs:label "Excess of Loss Reinsurance"@en ;
+    rdfs:comment "A non-proportional reinsurance agreement where the reinsurer covers losses exceeding a specified retention limit up to a maximum amount."@en .
+
+ao:CatastropheExcessOfLoss rdf:type owl:Class ;
+    rdfs:subClassOf ao:ExcessOfLossReinsurance ;
+    rdfs:label "Catastrophe Excess of Loss"@en ;
+    rdfs:comment "Excess of loss reinsurance specifically covering catastrophic events that affect multiple policies simultaneously."@en .
+
+ao:StopLossReinsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:NonProportionalReinsurance ;
+    rdfs:label "Stop Loss Reinsurance"@en ;
+    rdfs:comment "A non-proportional reinsurance agreement that protects against aggregate losses exceeding a specified loss ratio or amount over a period."@en .
+
+ao:RetentionLimit rdf:type owl:Class ;
+    rdfs:label "Retention Limit"@en ;
+    rdfs:comment "The maximum amount of risk that an insurer retains before reinsurance coverage applies. Also known as retention or deductible in reinsurance context."@en .
+
+ao:ReinsuranceCession rdf:type owl:Class ;
+    rdfs:label "Reinsurance Cession"@en ;
+    rdfs:comment "The transfer of risk from a ceding insurer to a reinsurer. A cession represents the portion of risk passed to the reinsurer under a reinsurance agreement."@en .
+
+ao:CedingCommission rdf:type owl:Class ;
+    rdfs:label "Ceding Commission"@en ;
+    rdfs:comment "A payment from reinsurer to ceding insurer to cover acquisition costs and other expenses. Ceding commissions are typically a percentage of ceded premiums."@en .
+
+ao:Retrocession rdf:type owl:Class ;
+    rdfs:subClassOf ao:ReinsuranceContract ;
+    rdfs:label "Retrocession"@en ;
+    rdfs:comment "A reinsurance transaction where a reinsurer transfers risk to another reinsurer. The reinsurer becomes a retrocedent and the assuming reinsurer is called a retrocessionaire."@en .
+
+### Distribution and Marketing
+
+ao:Agent rdf:type owl:Class ;
+    rdfs:subClassOf ao:Person ;
+    rdfs:label "Insurance Agent"@en ;
+    rdfs:comment "A role played by a person who sells insurance on behalf of one or more insurers. Agents may be captive (representing one insurer) or independent (representing multiple insurers)."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
+
+ao:Broker rdf:type owl:Class ;
+    rdfs:subClassOf ao:Person ;
+    rdfs:label "Insurance Broker"@en ;
+    rdfs:comment "A role played by a person who represents insurance buyers and arranges coverage from insurers. Brokers act on behalf of the insured rather than the insurer."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
+
+ao:DistributionChannel rdf:type owl:Class ;
+    rdfs:label "Distribution Channel"@en ;
+    rdfs:comment "A method or pathway through which insurance products are sold to customers. Examples include agents, brokers, direct sales, and digital platforms."@en .
+
+ao:DirectWriter rdf:type owl:Class ;
+    rdfs:subClassOf ao:Insurer ;
+    rdfs:label "Direct Writer"@en ;
+    rdfs:comment "An insurer that sells insurance directly to customers without using independent agents or brokers."@en .
+
+ao:CaptiveAgent rdf:type owl:Class ;
+    rdfs:subClassOf ao:Agent ;
+    rdfs:label "Captive Agent"@en ;
+    rdfs:comment "An agent who represents and sells products exclusively for one insurance company."@en .
+
+ao:IndependentAgent rdf:type owl:Class ;
+    rdfs:subClassOf ao:Agent ;
+    rdfs:label "Independent Agent"@en ;
+    rdfs:comment "An agent who represents and sells products from multiple insurance companies."@en .
+
+ao:ManagingGeneralAgent rdf:type owl:Class ;
+    rdfs:subClassOf ao:Agent ;
+    rdfs:label "Managing General Agent (MGA)"@en ;
+    rdfs:comment "An agent with authority to underwrite and bind coverage on behalf of insurers. MGAs typically have broader authority than standard agents."@en .
+
+### Claims Management Process
+
+ao:ClaimsAdjustment rdf:type owl:Class ;
+    rdfs:subClassOf ao:Activity ;
+    rdfs:label "Claims Adjustment"@en ;
+    rdfs:comment "The process of investigating, evaluating, and settling insurance claims. Claims adjustment determines coverage applicability and appropriate payment amounts."@en .
+
+ao:ClaimsInvestigation rdf:type owl:Class ;
+    rdfs:subClassOf ao:ClaimsAdjustment ;
+    rdfs:label "Claims Investigation"@en ;
+    rdfs:comment "The process of gathering and analyzing information about a claim to verify its validity and determine the extent of the insurer's liability."@en .
+
+ao:ClaimsSettlement rdf:type owl:Class ;
+    rdfs:subClassOf ao:Activity ;
+    rdfs:label "Claims Settlement"@en ;
+    rdfs:comment "The process of resolving a claim through payment, denial, or other disposition. Settlement concludes the claims handling process."@en .
+
+ao:ClaimsAdjuster rdf:type owl:Class ;
+    rdfs:subClassOf ao:Person ;
+    rdfs:label "Claims Adjuster"@en ;
+    rdfs:comment "A role played by a person who investigates and settles insurance claims. Adjusters evaluate damages, verify coverage, and determine settlement amounts."@en ;
+    ao:rigidity "anti-rigid" ;
+    ao:ufoCategory "role" .
+
+ao:IndependentAdjuster rdf:type owl:Class ;
+    rdfs:subClassOf ao:ClaimsAdjuster ;
+    rdfs:label "Independent Adjuster"@en ;
+    rdfs:comment "A claims adjuster who works on a contract basis for multiple insurance companies rather than as an employee of a single insurer."@en .
+
+ao:PublicAdjuster rdf:type owl:Class ;
+    rdfs:subClassOf ao:ClaimsAdjuster ;
+    rdfs:label "Public Adjuster"@en ;
+    rdfs:comment "A claims adjuster hired by policyholders to represent their interests in the claims settlement process."@en .
+
+ao:FraudDetection rdf:type owl:Class ;
+    rdfs:subClassOf ao:Activity ;
+    rdfs:label "Fraud Detection"@en ;
+    rdfs:comment "The process of identifying potentially fraudulent insurance claims or applications through investigation and analysis."@en .
+
+ao:FraudulentClaim rdf:type owl:Class ;
+    rdfs:subClassOf ao:Claim ;
+    rdfs:label "Fraudulent Claim"@en ;
+    rdfs:comment "A claim that involves misrepresentation or deception for the purpose of obtaining insurance benefits to which the claimant is not entitled."@en .
+
+ao:Salvage rdf:type owl:Class ;
+    rdfs:label "Salvage"@en ;
+    rdfs:comment "Property remaining after an insured loss that has residual value. Insurers may take possession of salvage to recover part of claim payments."@en .
+
+ao:Subrogation rdf:type owl:Class ;
+    rdfs:label "Subrogation"@en ;
+    rdfs:comment "The insurer's right to recover claim payments from third parties responsible for causing the loss. Subrogation allows insurers to pursue recovery after paying claims."@en .
+
+### Policyholder Behavior
+
+ao:Lapse rdf:type owl:Class ;
+    rdfs:subClassOf ao:Event ;
+    rdfs:label "Lapse"@en ;
+    rdfs:comment "The termination of an insurance policy due to non-payment of premiums. A lapsed policy ceases to provide coverage."@en .
+
+ao:Surrender rdf:type owl:Class ;
+    rdfs:subClassOf ao:Event ;
+    rdfs:label "Surrender"@en ;
+    rdfs:comment "The voluntary termination of a life insurance policy by the policyholder before maturity. The policyholder receives the cash surrender value."@en .
+
+ao:Persistency rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Persistency"@en ;
+    rdfs:comment "The rate at which policies remain in force over time. Persistency measures the continuation of insurance coverage and is the opposite of lapse."@en .
+
+ao:LapseRate rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Lapse Rate"@en ;
+    rdfs:comment "The proportion of policies that terminate due to non-payment of premiums during a specified period. Lapse rate is a key metric for policy experience analysis."@en .
+
+ao:PersistencyRate rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Persistency Rate"@en ;
+    rdfs:comment "The proportion of policies that remain in force over a specified period. Persistency rate measures policy retention."@en .
+
+ao:PolicyWithdrawal rdf:type owl:Class ;
+    rdfs:subClassOf ao:Event ;
+    rdfs:label "Policy Withdrawal"@en ;
+    rdfs:comment "A partial or full withdrawal of cash value from a life insurance policy. Withdrawals reduce the policy's death benefit and cash value."@en .
+
+ao:PolicyLoan rdf:type owl:Class ;
+    rdfs:label "Policy Loan"@en ;
+    rdfs:comment "A loan made by an insurer to a policyholder using the policy's cash value as collateral. Policy loans accrue interest and reduce the death benefit if not repaid."@en .
+
+### Asset-Liability Management
+
+ao:AssetLiabilityManagement rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Asset-Liability Management (ALM)"@en ;
+    rdfs:comment "The practice of managing assets and liabilities together to control risk arising from mismatches in duration, cash flows, or other characteristics. ALM is critical for insurers and pension plans."@en .
+
+ao:DurationMatching rdf:type owl:Class ;
+    rdfs:subClassOf ao:AssetLiabilityManagement ;
+    rdfs:label "Duration Matching"@en ;
+    rdfs:comment "An ALM strategy that matches the duration of assets with the duration of liabilities to minimize interest rate risk."@en .
+
+ao:CashFlowMatching rdf:type owl:Class ;
+    rdfs:subClassOf ao:AssetLiabilityManagement ;
+    rdfs:label "Cash Flow Matching"@en ;
+    rdfs:comment "An ALM strategy that aligns the timing of asset cash flows with liability cash flows to ensure sufficient funds are available when needed."@en .
+
+ao:ImmunizationStrategy rdf:type owl:Class ;
+    rdfs:subClassOf ao:AssetLiabilityManagement ;
+    rdfs:label "Immunization Strategy"@en ;
+    rdfs:comment "An ALM approach that protects a portfolio against interest rate risk by matching duration and convexity of assets and liabilities."@en .
+
+ao:AssetAllocation rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Asset Allocation"@en ;
+    rdfs:comment "The process of dividing investments among different asset categories such as stocks, bonds, and cash to balance risk and return objectives."@en .
+
+ao:InterestRateRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:MarketRisk ;
+    rdfs:label "Interest Rate Risk"@en ;
+    rdfs:comment "The risk of losses due to changes in interest rates. Interest rate risk affects the value of both assets and liabilities."@en .
+
+ao:ReinvestmentRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:InterestRateRisk ;
+    rdfs:label "Reinvestment Risk"@en ;
+    rdfs:comment "The risk that cash flows from investments will need to be reinvested at lower interest rates than originally expected."@en .
+
+### Life Insurance Specific Concepts
+
+ao:CashValue rdf:type owl:Class ;
+    rdfs:subClassOf ao:Asset ;
+    rdfs:label "Cash Value"@en ;
+    rdfs:comment "The savings component of permanent life insurance policies that accumulates over time. Cash value can be borrowed against or withdrawn."@en .
+
+ao:SurrenderValue rdf:type owl:Class ;
+    rdfs:subClassOf ao:CashValue ;
+    rdfs:label "Surrender Value"@en ;
+    rdfs:comment "The amount payable to a policyholder who voluntarily terminates a life insurance policy before maturity. Surrender value equals cash value minus any surrender charges."@en .
+
+ao:NonForfeitureValue rdf:type owl:Class ;
+    rdfs:subClassOf ao:CashValue ;
+    rdfs:label "Non-Forfeiture Value"@en ;
+    rdfs:comment "The guaranteed benefits available to a policyholder who stops paying premiums on a permanent life insurance policy. Non-forfeiture options include cash surrender, reduced paid-up insurance, or extended term insurance."@en .
+
+ao:PolicyDividend rdf:type owl:Class ;
+    rdfs:label "Policy Dividend"@en ;
+    rdfs:comment "A return of premium to policyholders of participating life insurance policies. Dividends represent the insurer's favorable experience in mortality, investment returns, and expenses."@en .
+
+ao:ParticipatingPolicy rdf:type owl:Class ;
+    rdfs:subClassOf ao:LifeInsurance ;
+    rdfs:label "Participating Policy"@en ;
+    rdfs:comment "A life insurance policy that entitles the policyholder to receive policy dividends. Participating policies share in the insurer's favorable experience."@en .
+
+ao:NonParticipatingPolicy rdf:type owl:Class ;
+    rdfs:subClassOf ao:LifeInsurance ;
+    rdfs:label "Non-Participating Policy"@en ;
+    rdfs:comment "A life insurance policy that does not pay dividends. Non-participating policies typically have lower premiums than participating policies."@en .
+
+ao:UniversalLifeInsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:LifeInsurance ;
+    rdfs:label "Universal Life Insurance"@en ;
+    rdfs:comment "A flexible premium permanent life insurance policy with an explicit cash value account that earns interest. Policyholders can adjust premiums and death benefits."@en .
+
+ao:VariableLifeInsurance rdf:type owl:Class ;
+    rdfs:subClassOf ao:LifeInsurance ;
+    rdfs:label "Variable Life Insurance"@en ;
+    rdfs:comment "A permanent life insurance policy where cash values are invested in separate accounts similar to mutual funds. The death benefit and cash value fluctuate based on investment performance."@en .
+
+ao:RiderBenefit rdf:type owl:Class ;
+    rdfs:label "Rider Benefit"@en ;
+    rdfs:comment "An optional provision added to an insurance policy that provides additional coverage or benefits. Riders customize policies to meet specific needs."@en .
+
+ao:LivingBenefit rdf:type owl:Class ;
+    rdfs:subClassOf ao:RiderBenefit ;
+    rdfs:label "Living Benefit"@en ;
+    rdfs:comment "A benefit payable while the insured is still alive, typically triggered by critical illness, chronic illness, or long-term care needs."@en .
+
+ao:DeathBenefit rdf:type owl:Class ;
+    rdfs:label "Death Benefit"@en ;
+    rdfs:comment "The amount payable by a life insurance policy upon the death of the insured. The death benefit is the primary purpose of life insurance."@en .
+
+ao:AcceleratedDeathBenefit rdf:type owl:Class ;
+    rdfs:subClassOf ao:LivingBenefit ;
+    rdfs:label "Accelerated Death Benefit"@en ;
+    rdfs:comment "A rider that allows early payment of part of the death benefit if the insured becomes terminally ill."@en .
+
+ao:GuaranteedMinimumDeathBenefit rdf:type owl:Class ;
+    rdfs:subClassOf ao:DeathBenefit ;
+    rdfs:label "Guaranteed Minimum Death Benefit (GMDB)"@en ;
+    rdfs:comment "A guarantee in variable annuities and variable life insurance that the death benefit will not fall below a specified minimum regardless of investment performance."@en .
+
+ao:WaiverOfPremiumRider rdf:type owl:Class ;
+    rdfs:subClassOf ao:RiderBenefit ;
+    rdfs:label "Waiver of Premium Rider"@en ;
+    rdfs:comment "A rider that waives premium payments if the insured becomes disabled, allowing the policy to remain in force without payment."@en .
+
+### Premium and Rating Concepts
+
+ao:GrossPremium rdf:type owl:Class ;
+    rdfs:subClassOf ao:Premium ;
+    rdfs:label "Gross Premium"@en ;
+    rdfs:comment "The total premium charged to the policyholder, including all loadings for expenses, profit, and contingencies."@en .
+
+ao:NetPremium rdf:type owl:Class ;
+    rdfs:subClassOf ao:Premium ;
+    rdfs:label "Net Premium"@en ;
+    rdfs:comment "The portion of premium needed to cover expected claims costs without any loadings for expenses or profit. Also called pure premium or risk premium."@en .
+
+ao:LoadedPremium rdf:type owl:Class ;
+    rdfs:subClassOf ao:Premium ;
+    rdfs:label "Loaded Premium"@en ;
+    rdfs:comment "Premium that includes loadings for expenses, profit, contingencies, and other factors beyond the net premium."@en .
+
+ao:PremiumRate rdf:type owl:Class ;
+    rdfs:label "Premium Rate"@en ;
+    rdfs:comment "The premium amount per unit of exposure or coverage. Rates are used to calculate total premiums based on policy characteristics."@en .
+
+ao:RatingFactor rdf:type owl:Class ;
+    rdfs:label "Rating Factor"@en ;
+    rdfs:comment "A characteristic or variable used to differentiate premiums among insureds. Rating factors reflect differences in expected losses and may include age, location, coverage amount, or other risk indicators."@en .
+
+ao:ExperienceRating rdf:type owl:Class ;
+    rdfs:subClassOf ao:Pricing ;
+    rdfs:label "Experience Rating"@en ;
+    rdfs:comment "A pricing method that adjusts premiums based on the insured's own loss experience. Experience rating is common in group insurance and large commercial accounts."@en .
+
+ao:ManualRating rdf:type owl:Class ;
+    rdfs:subClassOf ao:Pricing ;
+    rdfs:label "Manual Rating"@en ;
+    rdfs:comment "A pricing method that uses standard rate tables based on classification factors rather than individual experience."@en .
+
+ao:ScheduleRating rdf:type owl:Class ;
+    rdfs:subClassOf ao:Pricing ;
+    rdfs:label "Schedule Rating"@en ;
+    rdfs:comment "A pricing method that adjusts premiums based on specific characteristics of the risk using a schedule of credits and debits."@en .
+
+ao:RetrospectiveRating rdf:type owl:Class ;
+    rdfs:subClassOf ao:ExperienceRating ;
+    rdfs:label "Retrospective Rating"@en ;
+    rdfs:comment "A pricing arrangement where the final premium is adjusted based on actual losses incurred during the policy period."@en .
+
+ao:LossCost rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Loss Cost"@en ;
+    rdfs:comment "The expected losses per unit of exposure, excluding expense loadings. Loss costs form the basis for net premiums."@en .
+
+ao:ExpenseLoading rdf:type owl:Class ;
+    rdfs:label "Expense Loading"@en ;
+    rdfs:comment "An amount added to net premium to cover operating expenses, commissions, taxes, and profit. Expense loadings convert net premiums to gross premiums."@en .
+
+ao:AcquisitionExpense rdf:type owl:Class ;
+    rdfs:subClassOf ao:ExpenseLoading ;
+    rdfs:label "Acquisition Expense"@en ;
+    rdfs:comment "Expenses incurred in acquiring new business, including commissions, underwriting costs, and marketing expenses."@en .
+
+ao:MaintenanceExpense rdf:type owl:Class ;
+    rdfs:subClassOf ao:ExpenseLoading ;
+    rdfs:label "Maintenance Expense"@en ;
+    rdfs:comment "Ongoing expenses of maintaining policies in force, including administration, billing, and policy service costs."@en .
+
+### Emerging Risks
+
+ao:EmergingRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Risk ;
+    rdfs:label "Emerging Risk"@en ;
+    rdfs:comment "A risk that is newly developing or changing in ways that may materially affect insurers. Emerging risks require ongoing monitoring and assessment."@en .
+
+ao:CyberRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:EmergingRisk ;
+    rdfs:label "Cyber Risk"@en ;
+    rdfs:comment "The risk of losses from cyber attacks, data breaches, system failures, or other technology-related incidents. Cyber risk is a growing concern for insurers and insureds."@en .
+
+ao:PandemicRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:EmergingRisk ;
+    rdfs:label "Pandemic Risk"@en ;
+    rdfs:comment "The risk of widespread disease outbreaks affecting large populations. Pandemic risk has significant implications for mortality, morbidity, and business interruption."@en .
+
+ao:ClimateRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:EmergingRisk ;
+    rdfs:label "Climate Risk"@en ;
+    rdfs:comment "The risk of losses from climate change and its effects, including increased frequency and severity of natural disasters, changing weather patterns, and environmental transitions."@en .
+
+ao:ESGRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:EmergingRisk ;
+    rdfs:label "ESG Risk"@en ;
+    rdfs:comment "Risks related to environmental, social, and governance factors. ESG risks encompass climate change, social inequality, corporate governance failures, and related issues."@en .
+
+ao:TechnologyRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:OperationalRisk ;
+    rdfs:label "Technology Risk"@en ;
+    rdfs:comment "The risk of losses from technology failures, system errors, inadequate technology infrastructure, or inability to adapt to technological change."@en .
+
+### Portfolio and Exposure Management
+
+ao:Portfolio rdf:type owl:Class ;
+    rdfs:label "Portfolio"@en ;
+    rdfs:comment "A collection of insurance policies, investments, or risks managed as a group. Portfolios are analyzed for aggregate risk, profitability, and performance."@en .
+
+ao:InsurancePortfolio rdf:type owl:Class ;
+    rdfs:subClassOf ao:Portfolio ;
+    rdfs:label "Insurance Portfolio"@en ;
+    rdfs:comment "A collection of insurance policies grouped for management and analysis purposes. Insurance portfolios may be segmented by product, geography, or other characteristics."@en .
+
+ao:InvestmentPortfolio rdf:type owl:Class ;
+    rdfs:subClassOf ao:Portfolio ;
+    rdfs:label "Investment Portfolio"@en ;
+    rdfs:comment "A collection of investment assets held by an entity. Investment portfolios are managed to achieve return objectives while controlling risk."@en .
+
+ao:ExposureUnit rdf:type owl:Class ;
+    rdfs:label "Exposure Unit"@en ;
+    rdfs:comment "A measure of the extent of risk exposure used as a basis for premium calculation. Examples include car-years for auto insurance, life-years for life insurance, or property values for property insurance."@en .
+
+ao:InForcePolicy rdf:type owl:Class ;
+    rdfs:subClassOf ao:InsurancePolicy ;
+    rdfs:label "In-Force Policy"@en ;
+    rdfs:comment "An insurance policy that is currently active and providing coverage. In-force policies constitute the active portfolio."@en .
+
+ao:BookOfBusiness rdf:type owl:Class ;
+    rdfs:subClassOf ao:Portfolio ;
+    rdfs:label "Book of Business"@en ;
+    rdfs:comment "The total collection of policies or accounts managed by an agent, broker, or insurer."@en .
+
+ao:PortfolioSegmentation rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Portfolio Segmentation"@en ;
+    rdfs:comment "The process of dividing a portfolio into homogeneous groups for analysis, pricing, or risk management purposes."@en .
+
+### Stochastic and Statistical Modeling
+
+ao:StochasticModel rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialModel ;
+    rdfs:label "Stochastic Model"@en ;
+    rdfs:comment "A model that incorporates random variables and probability distributions to account for uncertainty. Stochastic models produce ranges of possible outcomes rather than single point estimates."@en .
+
+ao:DeterministicModel rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialModel ;
+    rdfs:label "Deterministic Model"@en ;
+    rdfs:comment "A model that produces a single outcome for a given set of inputs without randomness. Deterministic models are simpler but do not capture uncertainty."@en .
+
+ao:MonteCarloSimulation rdf:type owl:Class ;
+    rdfs:subClassOf ao:StochasticModel ;
+    rdfs:label "Monte Carlo Simulation"@en ;
+    rdfs:comment "A computational technique that uses repeated random sampling to model uncertainty and estimate probability distributions of outcomes. Monte Carlo methods are widely used in capital modeling and risk assessment."@en .
+
+ao:ScenarioGeneration rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Scenario Generation"@en ;
+    rdfs:comment "The process of creating multiple plausible future scenarios for analysis. Scenario generation is used in stochastic modeling and stress testing."@en .
+
+ao:StressTesting rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Stress Testing"@en ;
+    rdfs:comment "The process of evaluating how extreme events or adverse conditions would affect an entity's financial position. Stress testing assesses resilience to worst-case scenarios."@en .
+
+ao:SensitivityAnalysis rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Sensitivity Analysis"@en ;
+    rdfs:comment "The process of examining how model outputs change when input assumptions are varied. Sensitivity analysis identifies key drivers and assesses model robustness."@en .
+
+ao:BackTesting rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Back Testing"@en ;
+    rdfs:comment "The process of testing a model by comparing its predictions against historical actual results. Back testing validates model accuracy and identifies potential improvements."@en .
+
+ao:Bootstrapping rdf:type owl:Class ;
+    rdfs:subClassOf ao:StochasticModel ;
+    rdfs:label "Bootstrapping"@en ;
+    rdfs:comment "A statistical method that uses resampling with replacement from historical data to estimate distributions and confidence intervals."@en .
+
+### Embedded Value and Appraisal
+
+ao:EmbeddedValue rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Embedded Value (EV)"@en ;
+    rdfs:comment "A measure of the value of in-force life insurance business, consisting of adjusted net worth plus the present value of future profits. Embedded value is used to assess insurer value and performance."@en .
+
+ao:AppraisalValue rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Appraisal Value"@en ;
+    rdfs:comment "The estimated market value of an insurance company or block of business. Appraisal value typically includes embedded value plus value of future new business."@en .
+
+ao:ValueOfNewBusiness rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Value of New Business (VNB)"@en ;
+    rdfs:comment "The present value of future profits expected from new policies written in a period. VNB measures the profitability of new sales."@en .
+
+ao:ValueOfInForceBusiness rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Value of In-Force Business (VIF)"@en ;
+    rdfs:comment "The present value of future profits from existing in-force policies. VIF is a major component of embedded value."@en .
+
+ao:MarketConsistentEmbeddedValue rdf:type owl:Class ;
+    rdfs:subClassOf ao:EmbeddedValue ;
+    rdfs:label "Market Consistent Embedded Value (MCEV)"@en ;
+    rdfs:comment "An embedded value calculation using market-consistent assumptions and stochastic modeling. MCEV provides a more market-aligned valuation than traditional embedded value."@en .
+
+ao:EuropeanEmbeddedValue rdf:type owl:Class ;
+    rdfs:subClassOf ao:EmbeddedValue ;
+    rdfs:label "European Embedded Value (EEV)"@en ;
+    rdfs:comment "An embedded value framework developed by the CFO Forum using market-consistent principles. EEV standardizes embedded value reporting across European insurers."@en .
+
+### Experience Studies
+
+ao:ExperienceStudy rdf:type owl:Class ;
+    rdfs:subClassOf ao:ExperienceAnalysis ;
+    rdfs:label "Experience Study"@en ;
+    rdfs:comment "A systematic analysis of historical experience data to understand actual versus expected results. Experience studies inform assumption setting and pricing."@en .
+
+ao:MortalityStudy rdf:type owl:Class ;
+    rdfs:subClassOf ao:ExperienceStudy ;
+    rdfs:label "Mortality Study"@en ;
+    rdfs:comment "An experience study analyzing death rates and mortality patterns in an insured population."@en .
+
+ao:LapseStudy rdf:type owl:Class ;
+    rdfs:subClassOf ao:ExperienceStudy ;
+    rdfs:label "Lapse Study"@en ;
+    rdfs:comment "An experience study analyzing policy termination and persistency patterns."@en .
+
+ao:ExpenseStudy rdf:type owl:Class ;
+    rdfs:subClassOf ao:ExperienceStudy ;
+    rdfs:label "Expense Study"@en ;
+    rdfs:comment "An experience study analyzing operating expenses to support expense assumption setting and allocation."@en .
+
+ao:ClaimsExperienceStudy rdf:type owl:Class ;
+    rdfs:subClassOf ao:ExperienceStudy ;
+    rdfs:label "Claims Experience Study"@en ;
+    rdfs:comment "An experience study analyzing claim frequency, severity, and development patterns."@en .
+
+### Additional Object Properties for New Domains
+
+ao:underwrites rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:Risk ;
+    rdfs:label "underwrites"@en ;
+    rdfs:comment "Relates an agent (typically an insurer or underwriter) to a risk they evaluate and accept for coverage."@en .
+
+ao:classifiesAs rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:RiskClassification ;
+    rdfs:label "classifies as"@en ;
+    rdfs:comment "Relates a risk classification activity to the classification category assigned (e.g., preferred, standard, substandard)."@en .
+
+ao:sellsThrough rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Insurer ;
+    rdfs:range ao:DistributionChannel ;
+    rdfs:label "sells through"@en ;
+    rdfs:comment "Relates an insurer to the distribution channels it uses to market and sell products."@en .
+
+ao:representsInsurer rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Agent ;
+    rdfs:range ao:Insurer ;
+    rdfs:label "represents insurer"@en ;
+    rdfs:comment "Relates an agent to an insurer they represent in selling insurance."@en .
+
+ao:investigates rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ClaimsAdjuster ;
+    rdfs:range ao:Claim ;
+    rdfs:label "investigates"@en ;
+    rdfs:comment "Relates a claims adjuster to a claim they are investigating."@en .
+
+ao:settles rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ClaimsAdjuster ;
+    rdfs:range ao:Claim ;
+    rdfs:label "settles"@en ;
+    rdfs:comment "Relates a claims adjuster to a claim they settle."@en .
+
+ao:cedesTo rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Insurer ;
+    rdfs:range ao:Reinsurer ;
+    rdfs:label "cedes to"@en ;
+    rdfs:comment "Relates a ceding insurer to a reinsurer to whom they transfer risk."@en .
+
+ao:assumesFrom rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Reinsurer ;
+    rdfs:range ao:Insurer ;
+    rdfs:label "assumes from"@en ;
+    rdfs:comment "Relates a reinsurer to a ceding insurer from whom they assume risk."@en ;
+    owl:inverseOf ao:cedesTo .
+
+ao:hasExposure rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Portfolio ;
+    rdfs:range ao:ExposureUnit ;
+    rdfs:label "has exposure"@en ;
+    rdfs:comment "Relates a portfolio to its exposure units."@en .
+
+ao:segmentsInto rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:PortfolioSegmentation ;
+    rdfs:range ao:Portfolio ;
+    rdfs:label "segments into"@en ;
+    rdfs:comment "Relates a portfolio segmentation activity to resulting portfolio segments."@en .
+
+ao:generatesScenario rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ScenarioGeneration ;
+    rdfs:label "generates scenario"@en ;
+    rdfs:comment "Relates a scenario generation activity to scenarios it produces."@en .
+
+ao:containsPolicy rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Portfolio ;
+    rdfs:range ao:InsurancePolicy ;
+    rdfs:label "contains policy"@en ;
+    rdfs:comment "Relates a portfolio to the individual policies it contains."@en .
+
+ao:belongsToPortfolio rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:InsurancePolicy ;
+    rdfs:range ao:Portfolio ;
+    rdfs:label "belongs to portfolio"@en ;
+    rdfs:comment "Relates an insurance policy to the portfolio it belongs to."@en ;
+    owl:inverseOf ao:containsPolicy .
+
+### Additional Data Properties
+
+ao:retentionAmount rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:RetentionLimit ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "retention amount"@en ;
+    rdfs:comment "The monetary amount of retention limit in reinsurance."@en .
+
+ao:lapseRate rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:LapseRate ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "lapse rate value"@en ;
+    rdfs:comment "The numeric lapse rate, typically expressed as a proportion or percentage."@en .
+
+ao:persistencyRate rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:PersistencyRate ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "persistency rate value"@en ;
+    rdfs:comment "The numeric persistency rate, typically expressed as a proportion or percentage."@en .
+
+ao:cashValueAmount rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:CashValue ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "cash value amount"@en ;
+    rdfs:comment "The monetary amount of cash value in a life insurance policy."@en .
+
+ao:deathBenefitAmount rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:DeathBenefit ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "death benefit amount"@en ;
+    rdfs:comment "The monetary amount payable as death benefit."@en .
+
+ao:loadingPercentage rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:ExpenseLoading ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "loading percentage"@en ;
+    rdfs:comment "The percentage of premium allocated to expense loading."@en .
+
+ao:exposureAmount rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:ExposureUnit ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "exposure amount"@en ;
+    rdfs:comment "The numeric measure of exposure (e.g., number of cars, sum insured, life-years)."@en .
+
+ao:embeddedValueAmount rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:EmbeddedValue ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "embedded value amount"@en ;
+    rdfs:comment "The calculated embedded value amount."@en .
 
 ### End of Ontology
