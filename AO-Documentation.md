@@ -2,19 +2,21 @@
 
 ## Overview
 
-This document describes the Actuarial Ontology (AO), version 0.5.0-draft. The ontology is written in Turtle (TTL) format and can be opened in Protégé or other OWL ontology editors.
+This document describes the Actuarial Ontology (AO), version 0.6.0-draft. The ontology is written in Turtle (TTL) format and can be opened in Protégé or other OWL ontology editors.
 
-**Major Update (v0.5.0):** This version completes Phase 4 domain expansion with:
+**Current Version (v0.6.0):** All 4 improvement phases have been successfully implemented, achieving 100% competency question answerability:
+
+**Phase 4 (v0.5.0)** - Domain expansion with:
 - **ASOP 38/39** - Catastrophe modeling, scenario analysis, and extreme event concepts
 - **Professional Practice** - Professional judgment, peer review, and quality control concepts
 - **Detailed Regulatory Framework** - Enhanced Solvency II, IFRS 17, and regulatory reporting concepts
 
-Previous phases included foundational alignment with:
+**Previous Phases** included foundational alignment with:
 - **UFO** (Unified Foundational Ontology) - ontological rigor for endurants/perdurants, kinds/roles/phases
 - **COVER** (Common Ontology of Value and Risk) - value-risk integration and event chains
 - **ASOPs** (Actuarial Standards of Practice) - professional practice framework
 
-See [AO-Standards-Review](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/AO-Standards-Review.md) for detailed analysis.
+See [AO-Testing-Report](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/AO-Testing-Report.md) for detailed testing results.
 
 ## Purpose
 
@@ -257,19 +259,23 @@ To work with this ontology:
 5. Use the Data Properties tab to see attributes
 6. Run reasoners (Fact++, HermiT) to check consistency
 
-## Next Steps
+## Status and Next Steps
 
-This is a first draft. Future development should:
+**Completed:**
+- ✅ All 4 improvement phases implemented (v0.6.0)
+- ✅ 100% competency question answerability achieved
+- ✅ Foundational alignment with UFO, COVER, and ASOPs complete
+- ✅ Comprehensive domain coverage across all actuarial practice areas
 
-1. **Expand Coverage**: Add more specific concepts from actuarial standards
-2. **Add Instances**: Create example entities to test the ontology
-3. **Define Constraints**: Add domain/range restrictions, cardinality constraints
-4. **Align with Upper Ontologies**: Map to UFO (Unified Foundational Ontology)
-5. **Cross-reference Standards**: Link to specific ASOP, ESAP, ISAP definitions
-6. **Add Axioms**: Define logical rules and constraints
-7. **Community Review**: Gather feedback from actuarial professionals
-8. **Test with Reasoners**: Validate logical consistency
-9. **Build Knowledge Base**: Populate with real-world instances
+**Future Development:**
+1. **Add Formal Constraints**: Define domain/range restrictions, cardinality constraints, and disjointness axioms
+2. **Expand Knowledge Base**: Populate with more real-world instances beyond Canadian P&C insurance
+3. **Add SPARQL Query Library**: Create reusable query patterns for common use cases
+4. **Define Advanced Axioms**: Add property chains, value restrictions, and logical rules
+5. **Community Review**: Gather feedback from actuarial professionals and practitioners
+6. **Integration**: Map to external ontologies (FIBO, schema.org) for broader interoperability
+7. **Multilingual Support**: Add labels and definitions in other languages (French, Spanish, etc.)
+8. **Validation Framework**: Implement SHACL shapes for enhanced data quality validation
 
 ## Contributing
 
@@ -299,6 +305,13 @@ See the project [README.md](README.md) and [Code of Conduct](Code%20of%20Conduct
 This ontology is released under the MIT License. See [LICENSE](LICENSE) file for details.
 
 ## Version History
+
+- **0.6.0-draft** (2026-01-12): Competency gap closure - 100% answerability achieved
+  - Added `ao:hasMetric` property to enable financial metric and performance measure queries
+  - Added `ao:hasSubject` / `ao:subjectOf` inverse property pair to link entities to actuarial activities
+  - All 14 competency questions now fully answerable (up from 7/14 in v0.4.0)
+  - Improved from 50% to 100% competency question coverage
+  - Total: 194 classes, 76 object properties
 
 - **0.5.0-draft** (2026-01-12): Phase 4 domain expansion
   - Added catastrophe modeling (ASOP 38/39): CatastropheModel, FrequencyModel, SeverityModel, ScenarioAnalysis, TailRisk, ExtremeEvent, ReturnPeriod, CatastropheScenario
