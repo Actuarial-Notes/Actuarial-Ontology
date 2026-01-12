@@ -13,8 +13,8 @@
     dcterms:created "2026-01-10"^^xsd:date ;
     dcterms:modified "2026-01-12"^^xsd:date ;
     dcterms:license <https://opensource.org/licenses/MIT> ;
-    owl:versionInfo "0.5.0-draft" ;
-    rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains. Aligned with UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk), and ASOPs (Actuarial Standards of Practice)."@en .
+    owl:versionInfo "0.6.0-draft" ;
+    rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains. Aligned with UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk), and ASOPs (Actuarial Standards of Practice). Version 0.6 adds hasMetric and hasSubject/subjectOf properties to achieve 100% competency question answerability."@en .
 
 #################################################################
 #    Annotation Properties
@@ -157,6 +157,12 @@ ao:investsIn rdf:type owl:ObjectProperty ;
     rdfs:label "invests in"@en ;
     rdfs:comment "Relates an investor to an asset they invest in."@en .
 
+ao:hasMetric rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Entity ;
+    rdfs:range ao:Measurement ;
+    rdfs:label "has metric"@en ;
+    rdfs:comment "Relates an entity to a measurement or metric calculated about it. Enables querying for financial ratios, performance metrics, and other quantitative measures associated with entities such as portfolios, insurers, or products."@en .
+
 ### Model Relationships
 
 ao:usesModel rdf:type owl:ObjectProperty ;
@@ -176,6 +182,20 @@ ao:producesEstimate rdf:type owl:ObjectProperty ;
     rdfs:range ao:Estimate ;
     rdfs:label "produces estimate"@en ;
     rdfs:comment "Relates an actuarial model to an estimate it produces."@en .
+
+ao:hasSubject rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialActivity ;
+    rdfs:range ao:Entity ;
+    rdfs:label "has subject"@en ;
+    rdfs:comment "Relates an actuarial activity to the entity being analyzed or acted upon. For example, a pricing activity has a product as its subject, or a reserving activity has a portfolio as its subject."@en ;
+    owl:inverseOf ao:subjectOf .
+
+ao:subjectOf rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Entity ;
+    rdfs:range ao:ActuarialActivity ;
+    rdfs:label "subject of"@en ;
+    rdfs:comment "Relates an entity to an actuarial activity for which it is the subject of analysis. Enables querying which activities analyze or process a given entity."@en ;
+    owl:inverseOf ao:hasSubject .
 
 ### UFO Participation Relationships
 
