@@ -13,7 +13,7 @@
     dcterms:created "2026-01-10"^^xsd:date ;
     dcterms:modified "2026-01-12"^^xsd:date ;
     dcterms:license <https://opensource.org/licenses/MIT> ;
-    owl:versionInfo "0.4.0-draft" ;
+    owl:versionInfo "0.5.0-draft" ;
     rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains. Aligned with UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk), and ASOPs (Actuarial Standards of Practice)."@en .
 
 #################################################################
@@ -435,6 +435,91 @@ ao:communicates rdf:type owl:ObjectProperty ;
     rdfs:label "communicates"@en ;
     rdfs:comment "Relates an actuary to a communication they produce (ASOP 41)."@en ;
     ao:asopReference "ASOP 41" .
+
+### ASOP 38/39 Catastrophe Modeling Relationships
+
+ao:models rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:CatastropheModel ;
+    rdfs:range ao:CatastropheRisk ;
+    rdfs:label "models"@en ;
+    rdfs:comment "Relates a catastrophe model to the catastrophe risk it models (ASOP 38)."@en ;
+    ao:asopReference "ASOP 38" .
+
+ao:analyzesScenario rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ScenarioAnalysis ;
+    rdfs:range ao:CatastropheScenario ;
+    rdfs:label "analyzes scenario"@en ;
+    rdfs:comment "Relates a scenario analysis activity to a catastrophe scenario being analyzed (ASOP 39)."@en ;
+    ao:asopReference "ASOP 39" .
+
+ao:estimatesFrequency rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:FrequencyModel ;
+    rdfs:range ao:Event ;
+    rdfs:label "estimates frequency"@en ;
+    rdfs:comment "Relates a frequency model to the type of event whose frequency it estimates (ASOP 38)."@en ;
+    ao:asopReference "ASOP 38" .
+
+ao:estimatesSeverity rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:SeverityModel ;
+    rdfs:range ao:Loss ;
+    rdfs:label "estimates severity"@en ;
+    rdfs:comment "Relates a severity model to the loss whose severity it estimates (ASOP 38)."@en ;
+    ao:asopReference "ASOP 38" .
+
+### Professional Practice Relationships
+
+ao:exercises rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Actuary ;
+    rdfs:range ao:ProfessionalJudgment ;
+    rdfs:label "exercises"@en ;
+    rdfs:comment "Relates an actuary to professional judgment they exercise in their work."@en .
+
+ao:documentsDeviation rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Actuary ;
+    rdfs:range ao:Deviation ;
+    rdfs:label "documents deviation"@en ;
+    rdfs:comment "Relates an actuary to a documented deviation from actuarial standards."@en .
+
+ao:reviews rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:PeerReview ;
+    rdfs:range ao:ActuarialCommunication ;
+    rdfs:label "reviews"@en ;
+    rdfs:comment "Relates a peer review activity to the actuarial communication being reviewed."@en .
+
+ao:reviewedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialCommunication ;
+    rdfs:range ao:Actuary ;
+    rdfs:label "reviewed by"@en ;
+    rdfs:comment "Relates an actuarial communication to the actuary who reviewed it."@en .
+
+### Regulatory Framework Relationships
+
+ao:compliesWith rdf:type owl:ObjectProperty ;
+    rdfs:label "complies with"@en ;
+    rdfs:comment "Relates an entity or activity to a regulation or standard it complies with."@en .
+
+ao:mandates rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Regulation ;
+    rdfs:label "mandates"@en ;
+    rdfs:comment "Relates a regulation to requirements it mandates."@en .
+
+ao:prescribesMinimum rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Regulation ;
+    rdfs:range ao:Capital ;
+    rdfs:label "prescribes minimum"@en ;
+    rdfs:comment "Relates a regulation to minimum capital requirements it prescribes."@en .
+
+ao:regulates rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Regulator ;
+    rdfs:range ao:Insurer ;
+    rdfs:label "regulates"@en ;
+    rdfs:comment "Relates a regulator to an insurer they regulate."@en .
+
+ao:filesReport rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Insurer ;
+    rdfs:range ao:RegulatoryReport ;
+    rdfs:label "files report"@en ;
+    rdfs:comment "Relates an insurer to a regulatory report they file."@en .
 
 #################################################################
 #    Data Properties
@@ -1201,6 +1286,55 @@ ao:ChainLadderMethod rdf:type owl:Class ;
     rdfs:label "Chain Ladder Method"@en ;
     rdfs:comment "A reserving method that projects ultimate claims using development factors."@en .
 
+### ASOP 38/39: Catastrophe Modeling
+
+ao:CatastropheModel rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialModel ;
+    rdfs:label "Catastrophe Model"@en ;
+    rdfs:comment "A model for estimating the frequency and severity of catastrophic events and their resulting losses. Catastrophe models typically combine hazard, vulnerability, and financial modules to estimate loss distributions (ASOP 38)."@en ;
+    ao:asopReference "ASOP 38" .
+
+ao:FrequencyModel rdf:type owl:Class ;
+    rdfs:subClassOf ao:CatastropheModel ;
+    rdfs:label "Frequency Model"@en ;
+    rdfs:comment "A component of catastrophe modeling that estimates how often catastrophic events occur. Frequency models use historical data and scientific knowledge about hazard occurrence (ASOP 38)."@en ;
+    ao:asopReference "ASOP 38" .
+
+ao:SeverityModel rdf:type owl:Class ;
+    rdfs:subClassOf ao:CatastropheModel ;
+    rdfs:label "Severity Model"@en ;
+    rdfs:comment "A component of catastrophe modeling that estimates the magnitude of losses from catastrophic events. Severity models consider vulnerability of exposed property and financial impacts (ASOP 38)."@en ;
+    ao:asopReference "ASOP 38" .
+
+ao:ScenarioAnalysis rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Scenario Analysis"@en ;
+    rdfs:comment "An actuarial activity involving the analysis of specific event scenarios to estimate their potential impact. Commonly used for catastrophe or extreme event analysis to understand tail risk (ASOP 39)."@en ;
+    ao:asopReference "ASOP 39" .
+
+ao:CatastropheScenario rdf:type owl:Class ;
+    rdfs:label "Catastrophe Scenario"@en ;
+    rdfs:comment "A specific hypothetical or historical catastrophic event used for analysis. Examples include a magnitude 7.5 earthquake in Los Angeles or a Category 5 hurricane making landfall in Miami (ASOP 39)."@en ;
+    ao:asopReference "ASOP 39" .
+
+ao:TailRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Risk ;
+    rdfs:label "Tail Risk"@en ;
+    rdfs:comment "The risk of extreme losses in the tail of a probability distribution. Tail risks represent low-probability, high-severity events that can have catastrophic impact (ASOP 39)."@en ;
+    ao:asopReference "ASOP 39" .
+
+ao:ExtremeEvent rdf:type owl:Class ;
+    rdfs:subClassOf ao:Event ;
+    rdfs:label "Extreme Event"@en ;
+    rdfs:comment "An event with unusually high severity or low frequency, typically located in the tail of the loss distribution (ASOP 39)."@en ;
+    ao:asopReference "ASOP 39" .
+
+ao:ReturnPeriod rdf:type owl:Class ;
+    rdfs:subClassOf ao:Measurement ;
+    rdfs:label "Return Period"@en ;
+    rdfs:comment "A measurement representing the average time interval between events of a given magnitude. For example, a 100-year return period event has a 1% annual probability of occurrence (ASOP 38)."@en ;
+    ao:asopReference "ASOP 38" .
+
 ### Data and Measurements
 
 ao:Data rdf:type owl:Class ;
@@ -1356,7 +1490,67 @@ ao:GAAP rdf:type owl:Class ;
 ao:Solvency2 rdf:type owl:Class ;
     rdfs:subClassOf ao:Regulation ;
     rdfs:label "Solvency II"@en ;
-    rdfs:comment "A regulatory framework for insurance firms in the European Union."@en .
+    rdfs:comment "A comprehensive regulatory framework for insurance firms in the European Union. Solvency II consists of three pillars: quantitative requirements (capital requirements), supervisory review (governance and risk management), and market discipline (disclosure and transparency)."@en .
+
+### Detailed Regulatory Framework
+
+ao:RegulatoryReporting rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Regulatory Reporting"@en ;
+    rdfs:comment "The activity of preparing and submitting required reports to regulatory authorities. Regulatory reporting ensures compliance with regulatory requirements and provides regulators with information to monitor the financial health of insurance entities."@en .
+
+ao:RegulatoryReport rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialCommunication ;
+    rdfs:label "Regulatory Report"@en ;
+    rdfs:comment "A formal report submitted to regulatory authorities as required by law or regulation. Examples include annual statements, quarterly financial reports, and special regulatory filings."@en .
+
+ao:RegulatoryRequirement rdf:type owl:Class ;
+    rdfs:label "Regulatory Requirement"@en ;
+    rdfs:comment "A specific requirement imposed by a regulation or regulatory authority. Regulatory requirements may relate to capital adequacy, reserving, reporting, governance, or other aspects of insurance operations."@en .
+
+ao:CapitalRequirement rdf:type owl:Class ;
+    rdfs:subClassOf ao:RegulatoryRequirement ;
+    rdfs:label "Capital Requirement"@en ;
+    rdfs:comment "A regulatory requirement specifying the minimum amount of capital an insurance entity must hold. Capital requirements are designed to ensure solvency and protect policyholders."@en .
+
+ao:SolvencyCapitalRequirement rdf:type owl:Class ;
+    rdfs:subClassOf ao:CapitalRequirement ;
+    rdfs:label "Solvency Capital Requirement (SCR)"@en ;
+    rdfs:comment "The capital required under Solvency II to ensure an insurer can meet obligations over a one-year period with 99.5% probability. The SCR can be calculated using the standard formula or an approved internal model."@en .
+
+ao:MinimumCapitalRequirement rdf:type owl:Class ;
+    rdfs:subClassOf ao:CapitalRequirement ;
+    rdfs:label "Minimum Capital Requirement (MCR)"@en ;
+    rdfs:comment "The minimum level of capital below which policyholders and beneficiaries would be exposed to an unacceptable level of risk. Under Solvency II, the MCR represents a lower threshold that triggers ultimate supervisory action."@en .
+
+ao:RiskBasedCapital rdf:type owl:Class ;
+    rdfs:subClassOf ao:CapitalRequirement ;
+    rdfs:label "Risk-Based Capital (RBC)"@en ;
+    rdfs:comment "A capital adequacy standard used in the United States that relates required capital to the risks assumed by an insurer. RBC formulas consider asset risk, underwriting risk, interest rate risk, and business risk."@en .
+
+ao:ORSA rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Own Risk and Solvency Assessment (ORSA)"@en ;
+    rdfs:comment "A requirement under Solvency II and similar frameworks for insurers to assess their overall solvency needs, considering their risk profile and business strategy. The ORSA is a key component of enterprise risk management."@en .
+
+ao:ContractualServiceMargin rdf:type owl:Class ;
+    rdfs:subClassOf ao:Liability ;
+    rdfs:label "Contractual Service Margin (CSM)"@en ;
+    rdfs:comment "Under IFRS 17, the CSM represents the unearned profit of a group of insurance contracts that will be recognized as revenue over the coverage period. The CSM is a component of the carrying amount of insurance contract liabilities."@en .
+
+ao:RiskAdjustment rdf:type owl:Class ;
+    rdfs:subClassOf ao:Liability ;
+    rdfs:label "Risk Adjustment"@en ;
+    rdfs:comment "Under IFRS 17, the risk adjustment represents the compensation an entity requires for bearing the uncertainty about the amount and timing of cash flows from insurance contracts. It reflects the entity's degree of risk aversion."@en .
+
+ao:RegulatoryApproval rdf:type owl:Class ;
+    rdfs:label "Regulatory Approval"@en ;
+    rdfs:comment "A formal authorization or permission granted by a regulatory authority. Regulatory approvals may be required for new products, rate changes, mergers and acquisitions, or changes to internal models."@en .
+
+ao:InternalModel rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialModel ;
+    rdfs:label "Internal Model"@en ;
+    rdfs:comment "A risk measurement system developed by an insurer to calculate capital requirements based on its own risk profile. Under Solvency II, internal models require regulatory approval and must meet standards for use, statistical quality, calibration, profit and loss attribution, validation, and documentation."@en .
 
 ### ASOP 41: Actuarial Communications
 
@@ -1456,5 +1650,35 @@ ao:PolicyObligation rdf:type owl:Class ;
     rdfs:subClassOf ao:Obligation ;
     rdfs:label "Policy Obligation"@en ;
     rdfs:comment "An obligation arising from an insurance policy, such as the policyholder's obligation to pay premiums or the insurer's obligation to pay claims."@en .
+
+### Professional Practice Concepts
+
+ao:ProfessionalJudgment rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Professional Judgment"@en ;
+    rdfs:comment "An actuary's reasoned opinion or conclusion based on their professional knowledge, training, and experience. Professional judgment involves weighing available evidence, considering alternatives, and making informed decisions when faced with uncertainty or incomplete information."@en ;
+    ao:ufoCategory "moment" .
+
+ao:Deviation rdf:type owl:Class ;
+    rdfs:label "Deviation"@en ;
+    rdfs:comment "A departure from guidance in an Actuarial Standard of Practice. When an actuary deviates from guidance in an applicable ASOP, the actuary should disclose the deviation and provide the reason for it in accordance with ASOP 41."@en .
+
+ao:PeerReview rdf:type owl:Class ;
+    rdfs:subClassOf ao:Activity ;
+    rdfs:label "Peer Review"@en ;
+    rdfs:comment "A review of actuarial work by another qualified actuary to assess its quality, appropriateness, and compliance with professional standards. Peer review helps ensure work quality and provides independent verification of actuarial conclusions."@en .
+
+ao:QualityControl rdf:type owl:Class ;
+    rdfs:subClassOf ao:Activity ;
+    rdfs:label "Quality Control"@en ;
+    rdfs:comment "Systematic procedures to ensure actuarial work meets quality standards. Quality control may include checking calculations, reviewing assumptions, validating models, and documenting work."@en .
+
+ao:AuditTrail rdf:type owl:Class ;
+    rdfs:label "Audit Trail"@en ;
+    rdfs:comment "A documented record of the steps, decisions, and rationale in actuarial work. An audit trail enables others to understand and reproduce the work, facilitating review, verification, and regulatory compliance."@en .
+
+ao:WorkPaper rdf:type owl:Class ;
+    rdfs:label "Work Paper"@en ;
+    rdfs:comment "Documentation supporting actuarial work, including data sources, methods, assumptions, calculations, and results. Work papers provide the detail behind actuarial communications and enable review of the work."@en .
 
 ### End of Ontology

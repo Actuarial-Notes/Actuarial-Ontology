@@ -2,9 +2,14 @@
 
 ## Overview
 
-This document describes the Actuarial Ontology (AO), version 0.2.0-draft. The ontology is written in Turtle (TTL) format and can be opened in Protégé or other OWL ontology editors.
+This document describes the Actuarial Ontology (AO), version 0.5.0-draft. The ontology is written in Turtle (TTL) format and can be opened in Protégé or other OWL ontology editors.
 
-**Major Update (v0.2.0):** This version includes Phase 1 foundational alignment with:
+**Major Update (v0.5.0):** This version completes Phase 4 domain expansion with:
+- **ASOP 38/39** - Catastrophe modeling, scenario analysis, and extreme event concepts
+- **Professional Practice** - Professional judgment, peer review, and quality control concepts
+- **Detailed Regulatory Framework** - Enhanced Solvency II, IFRS 17, and regulatory reporting concepts
+
+Previous phases included foundational alignment with:
 - **UFO** (Unified Foundational Ontology) - ontological rigor for endurants/perdurants, kinds/roles/phases
 - **COVER** (Common Ontology of Value and Risk) - value-risk integration and event chains
 - **ASOPs** (Actuarial Standards of Practice) - professional practice framework
@@ -178,8 +183,32 @@ Professional activities:
 
 #### Regulatory and Standards
 - Regulation (Solvency2)
+  - RegulatoryRequirement
+  - CapitalRequirement (SolvencyCapitalRequirement, MinimumCapitalRequirement, RiskBasedCapital)
+  - RegulatoryApproval
 - ActuarialStandard
 - AccountingStandard (IFRS17, GAAP)
+- RegulatoryReporting, RegulatoryReport
+- ORSA (Own Risk and Solvency Assessment)
+- ContractualServiceMargin, RiskAdjustment
+- InternalModel
+
+#### Catastrophe Modeling (ASOP 38/39)
+- CatastropheModel
+  - FrequencyModel
+  - SeverityModel
+- ScenarioAnalysis
+- CatastropheScenario
+- TailRisk, ExtremeEvent
+- ReturnPeriod
+
+#### Professional Practice
+- ProfessionalJudgment
+- Deviation
+- PeerReview
+- QualityControl
+- AuditTrail
+- WorkPaper
 
 ## Design Principles Applied
 
@@ -270,6 +299,23 @@ See the project [README.md](README.md) and [Code of Conduct](Code%20of%20Conduct
 This ontology is released under the MIT License. See [LICENSE](LICENSE) file for details.
 
 ## Version History
+
+- **0.5.0-draft** (2026-01-12): Phase 4 domain expansion
+  - Added catastrophe modeling (ASOP 38/39): CatastropheModel, FrequencyModel, SeverityModel, ScenarioAnalysis, TailRisk, ExtremeEvent, ReturnPeriod, CatastropheScenario
+  - Added professional practice concepts: ProfessionalJudgment, Deviation, PeerReview, QualityControl, AuditTrail, WorkPaper
+  - Enhanced regulatory framework: RegulatoryReporting, RegulatoryReport, RegulatoryRequirement, CapitalRequirement, SolvencyCapitalRequirement, MinimumCapitalRequirement, RiskBasedCapital, ORSA, ContractualServiceMargin, RiskAdjustment, RegulatoryApproval, InternalModel
+  - Added 14 new object properties for catastrophe modeling, professional practice, and regulatory compliance
+  - Total: 194 classes (+31), 76 object properties (+14)
+
+- **0.4.0-draft** (2026-01-12): Phase 3 data and model governance
+  - Added ASOP 23 data quality concepts
+  - Added ASOP 56 model governance
+  - Added ASOP 25 credibility theory
+
+- **0.3.0-draft** (2026-01-12): Phase 2 risk and value modeling
+  - Enhanced risk assessment (ASOP 51)
+  - Added UFO-C social and intentional entities
+  - Enhanced risk tolerance and appetite concepts
 
 - **0.2.0-draft** (2026-01-11): Phase 1 foundational alignment
   - Restructured top-level categories aligned with UFO (Endurants/Perdurants)
