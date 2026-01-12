@@ -5,12 +5,13 @@ Welcome! This is the home of an open source project to develop **an ontology for
 
 **Example** [Canadian P&C Insurance Knowledge Base.ttl](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/canadian-pc-insurance-knowledge-base.ttl)
 
-> **Actuarial science** is the discipline of measuring and managing financial risk.
->
-
 👉 Check out our [Project Guide](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Project%20Guide.md) and [Code of Conduct](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Code%20of%20Conduct.md) if you're interested in contributing!
 
 ---
+
+## What's Actuarial Science?
+> **Actuarial science** is the discipline of measuring and managing risk, especially financial risk.
+
 
 ## What's an Ontology?
 > An **Ontology** defines a set of representational primitives with which to model a domain of knowledge or discourse.
