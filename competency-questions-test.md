@@ -1,7 +1,7 @@
 # Competency Questions Testing Report
 **Date:** 2026-01-12
-**Ontology Version:** 0.5.0-draft
-**Test Status:** Post Phase 4 Implementation
+**Ontology Version:** 0.6.0-draft
+**Test Status:** Post Phase 4 Implementation + Competency Gap Closure
 
 ## Executive Summary
 
@@ -192,44 +192,37 @@ WHERE {
 
 **Required Properties/Classes:**
 - `ao:LossRatio` class ✅ EXISTS (line 1446-1449, subclass of FinancialMeasurement)
-- ❌ Missing: Property to relate entity/portfolio to loss ratio metric
+- `ao:hasMetric` (Entity → Measurement) ✅ EXISTS (line 160-164) **[ADDED in v0.6!]**
 
-**SPARQL Query (IDEAL - not fully supported):**
+**SPARQL Query:**
 ```sparql
 PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
 
 SELECT ?lossRatio ?value
 WHERE {
-  :SpecificPortfolio ao:hasMetric ?lossRatio .  # ❌ Property doesn't exist
+  :SpecificPortfolio ao:hasMetric ?lossRatio .
   ?lossRatio a ao:LossRatio .
   ?lossRatio ao:hasValue ?value .
 }
 ```
 
-**Workaround Query (if loss ratio is modeled as instance):**
+**Alternative using UFO inherence:**
 ```sparql
 PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
 
 SELECT ?lossRatio ?value
 WHERE {
   ?lossRatio a ao:LossRatio .
-  ?lossRatio ao:inheresIn :SpecificPortfolio .  # Using UFO inherence relationship
+  ?lossRatio ao:inheresIn :SpecificPortfolio .
   ?lossRatio ao:hasValue ?value .
 }
 ```
 
-**Result:** ⚠️ **PARTIALLY ANSWERABLE**
+**Result:** ✅ **FULLY ANSWERABLE**
 
-**Gap:** No explicit `ao:hasMetric` or similar property to directly relate portfolios/entities to financial metrics. The `ao:inheresIn` property (line 195-199) from UFO could be used as LossRatio is a subclass of Measurement, which is a subclass of Moment, and moments inhere in endurants. However, this is indirect.
+**Status Change:** ⚠️ PARTIALLY ANSWERABLE (Previous) → ✅ FULLY ANSWERABLE (Now)
 
-**Recommendation:** Add `ao:hasMetric` property:
-```turtle
-ao:hasMetric rdf:type owl:ObjectProperty ;
-    rdfs:domain ao:Entity ;
-    rdfs:range ao:Measurement ;
-    rdfs:label "has metric"@en ;
-    rdfs:comment "Relates an entity to a measurement or metric about it."@en .
-```
+**Notes:** The `ao:hasMetric` property was added in version 0.6 to enable direct querying of financial metrics and performance measures associated with entities.
 
 ---
 
@@ -299,57 +292,43 @@ WHERE {
 ### Q10: What models are used in pricing this product?
 
 **Required Properties/Classes:**
-- `ao:usesModel` (ActuarialActivity → ActuarialModel) ✅ EXISTS (line 162-166)
+- `ao:usesModel` (ActuarialActivity → ActuarialModel) ✅ EXISTS (line 168-171)
 - `ao:Pricing` class ✅ EXISTS (line 1186-1189)
 - `ao:PricingModel` class ✅ EXISTS (line 1254-1257)
-- ❌ Missing: Property to relate InsuranceProduct to Pricing activity
+- `ao:subjectOf` (Entity → ActuarialActivity) ✅ EXISTS (line 193-198) **[ADDED in v0.6!]**
+- `ao:hasSubject` (ActuarialActivity → Entity) ✅ EXISTS (line 186-191) **[ADDED in v0.6!]**
 
-**SPARQL Query (IDEAL - requires additional relationship):**
+**SPARQL Query Option 1 (using subjectOf):**
 ```sparql
 PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
 
 SELECT ?model ?modelType
 WHERE {
-  :SpecificProduct ao:isPricedBy ?pricingActivity .  # ❌ Property doesn't exist
+  :SpecificProduct ao:subjectOf ?pricingActivity .
   ?pricingActivity a ao:Pricing .
   ?pricingActivity ao:usesModel ?model .
   ?model a ?modelType .
 }
 ```
 
-**Workaround Query (if pricing activity has participant relationship):**
+**SPARQL Query Option 2 (using hasSubject inverse):**
 ```sparql
 PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
 
 SELECT ?model ?modelType
 WHERE {
   ?pricingActivity a ao:Pricing .
-  ?pricingActivity ao:hasParticipant :SpecificProduct .  # Using UFO participation
+  ?pricingActivity ao:hasSubject :SpecificProduct .
   ?pricingActivity ao:usesModel ?model .
   ?model a ?modelType .
 }
 ```
 
-**Result:** ⚠️ **PARTIALLY ANSWERABLE**
+**Result:** ✅ **FULLY ANSWERABLE**
 
-**Gap:** No direct property linking insurance products to the pricing activities that determine their rates. The UFO `hasParticipant` relationship could work if products are considered participants in pricing activities, but this is semantically unclear.
+**Status Change:** ⚠️ PARTIALLY ANSWERABLE (Previous) → ✅ FULLY ANSWERABLE (Now)
 
-**Recommendation:** Add property to relate products to actuarial activities:
-```turtle
-ao:isPricedBy rdf:type owl:ObjectProperty ;
-    rdfs:domain ao:InsuranceProduct ;
-    rdfs:range ao:Pricing ;
-    rdfs:label "is priced by"@en .
-```
-
-Or more generally:
-```turtle
-ao:subjectOf rdf:type owl:ObjectProperty ;
-    rdfs:domain ao:Entity ;
-    rdfs:range ao:ActuarialActivity ;
-    rdfs:label "subject of"@en ;
-    rdfs:comment "Relates an entity to an actuarial activity for which it is the subject."@en .
-```
+**Notes:** The `ao:subjectOf` and `ao:hasSubject` property pair was added in version 0.6 to enable linking entities to the actuarial activities that analyze them. These are inverse properties for flexible querying.
 
 ---
 
@@ -498,18 +477,18 @@ WHERE {
 
 ## Summary of Results
 
-| # | Question | Category | Status | Change from Previous |
-|---|----------|----------|--------|---------------------|
+| # | Question | Category | Status | Change from v0.5 |
+|---|----------|----------|--------|-----------------|
 | 1 | What risks is this entity exposed to? | Risk Mgmt | ✅ Fully Answerable | No change |
 | 2 | Which agents manage mortality risk? | Risk Mgmt | ✅ Fully Answerable | No change |
 | 3 | Is this risk insurable? | Risk Mgmt | ✅ Fully Answerable | No change |
 | 4 | What policies cover this risk? | Insurance Ops | ✅ Fully Answerable | No change |
 | 5 | Which claims were triggered by natural perils? | Insurance Ops | ✅ Fully Answerable | No change |
 | 6 | What reserves are established for outstanding claims? | Insurance Ops | ✅ Fully Answerable | No change |
-| 7 | What is the loss ratio for this portfolio? | Financial | ⚠️ Partially Answerable | No change |
+| 7 | What is the loss ratio for this portfolio? | Financial | ✅ **Fully Answerable** | ⚠️→✅ **IMPROVED** |
 | 8 | What capital does this insurer hold? | Financial | ✅ Fully Answerable | No change |
 | 9 | What assets does this investor hold? | Financial | ✅ Fully Answerable | No change |
-| 10 | What models are used in pricing this product? | Actuarial | ⚠️ Partially Answerable | No change |
+| 10 | What models are used in pricing this product? | Actuarial | ✅ **Fully Answerable** | ⚠️→✅ **IMPROVED** |
 | 11 | What data is this reserving model based on? | Actuarial | ✅ Fully Answerable | No change |
 | 12 | Which actuarial activities use mortality tables? | Actuarial | ✅ Fully Answerable | No change |
 | 13 | Does this practice comply with IFRS 17? | Regulatory | ✅ **Fully Answerable** | ❌→✅ **IMPROVED** |
@@ -517,65 +496,101 @@ WHERE {
 
 ### Overall Statistics
 
-- **Fully Answerable:** 12 / 14 (86%) - **UP from 7/14 (50%)**
-- **Partially Answerable:** 2 / 14 (14%) - Down from 2/14 (14%)
+- **Fully Answerable:** 14 / 14 (100%) 🎉 - **UP from 7/14 (50%) in initial test**
+- **Partially Answerable:** 0 / 14 (0%) - Down from 2/14 (14%)
 - **Not Answerable:** 0 / 14 (0%) - **DOWN from 5/14 (36%)**
 
-### Key Improvements from Phase 4
+### Key Improvements Timeline
 
-Phase 4 implementation successfully addressed the critical regulatory compliance gap:
+**Phase 4 (v0.5.0)** successfully addressed the critical regulatory compliance gap:
 
-1. ✅ **Added `ao:compliesWith` property** - enables Q13 (IFRS 17 compliance)
-2. ✅ **Added `ao:mandates` property** - enables Q14 (Solvency II requirements)
-3. ✅ **Added `ao:prescribesMinimum` property** - enables Q14 (capital requirements)
+1. ✅ **Added `ao:compliesWith` property** - enabled Q13 (IFRS 17 compliance)
+2. ✅ **Added `ao:mandates` property** - enabled Q14 (Solvency II requirements)
+3. ✅ **Added `ao:prescribesMinimum` property** - enabled Q14 (capital requirements)
 
-### Remaining Gaps
+**Version 0.6.0** closed the final competency gaps:
 
-Two questions remain partially answerable, both requiring similar solutions:
+4. ✅ **Added `ao:hasMetric` property** - enabled Q7 (loss ratio and financial metrics)
+5. ✅ **Added `ao:hasSubject` / `ao:subjectOf` property pair** - enabled Q10 (pricing model queries)
 
-**Q7 (Loss Ratio):** Needs `ao:hasMetric` property to relate entities to financial metrics
-**Q10 (Pricing Models):** Needs `ao:subjectOf` or `ao:isPricedBy` property to relate products to pricing activities
+### Gap Closure Analysis
 
-Both gaps stem from the same underlying issue: **missing relationships between domain entities and the activities/measurements that concern them.**
+**Original Gaps (v0.5.0):**
+- **Q7 (Loss Ratio):** Required `ao:hasMetric` property to relate entities to financial metrics
+- **Q10 (Pricing Models):** Required `ao:subjectOf` or similar property to relate products to pricing activities
 
-### Recommended Next Steps
+**Root Cause:** Both gaps stemmed from missing relationships between domain entities and the activities/measurements that concern them.
 
-#### Priority 1: Add Entity-to-Metric Relationship
+**Solution Implemented (v0.6.0):**
+
+#### Property 1: Entity-to-Metric Relationship
 ```turtle
 ao:hasMetric rdf:type owl:ObjectProperty ;
     rdfs:domain ao:Entity ;
     rdfs:range ao:Measurement ;
     rdfs:label "has metric"@en ;
-    rdfs:comment "Relates an entity to a measurement or metric calculated about it."@en .
+    rdfs:comment "Relates an entity to a measurement or metric calculated about it.
+                  Enables querying for financial ratios, performance metrics, and
+                  other quantitative measures associated with entities such as
+                  portfolios, insurers, or products."@en .
 ```
 
-**Impact:** Makes Q7 fully answerable, enables portfolio analysis, financial reporting queries.
+**Impact:** ✅ Q7 fully answerable, enables portfolio analysis, financial reporting queries.
 
-#### Priority 2: Add Entity-to-Activity Subject Relationship
+#### Property 2: Entity-to-Activity Subject Relationship
 ```turtle
-ao:subjectOf rdf:type owl:ObjectProperty ;
-    rdfs:domain ao:Entity ;
-    rdfs:range ao:ActuarialActivity ;
-    rdfs:label "subject of"@en ;
-    rdfs:comment "Relates an entity to an actuarial activity for which it is the subject of analysis."@en ;
-    owl:inverseOf ao:hasSubject .
-
 ao:hasSubject rdf:type owl:ObjectProperty ;
     rdfs:domain ao:ActuarialActivity ;
     rdfs:range ao:Entity ;
     rdfs:label "has subject"@en ;
-    rdfs:comment "Relates an actuarial activity to the entity being analyzed."@en ;
+    rdfs:comment "Relates an actuarial activity to the entity being analyzed or
+                  acted upon. For example, a pricing activity has a product as
+                  its subject, or a reserving activity has a portfolio as its subject."@en ;
     owl:inverseOf ao:subjectOf .
+
+ao:subjectOf rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Entity ;
+    rdfs:range ao:ActuarialActivity ;
+    rdfs:label "subject of"@en ;
+    rdfs:comment "Relates an entity to an actuarial activity for which it is the
+                  subject of analysis. Enables querying which activities analyze
+                  or process a given entity."@en ;
+    owl:inverseOf ao:hasSubject .
 ```
 
-**Impact:** Makes Q10 fully answerable, enables product-to-pricing queries, better activity tracking.
+**Impact:** ✅ Q10 fully answerable, enables product-to-pricing queries, better activity tracking.
 
-With these two additions, **100% (14/14) of competency questions would be fully answerable**.
+### Result
+
+**All 14 competency questions (100%) are now fully answerable!** 🎉
 
 ---
 
 ## Conclusion
 
-The Phase 4 implementation has been **highly successful**, improving competency question answerability from **50% to 86%**. The addition of regulatory framework properties (`compliesWith`, `mandates`, `prescribesMinimum`) resolved the most critical gap.
+The actuarial ontology development has achieved **complete success** in competency question coverage:
 
-The two remaining partial gaps are minor and can be addressed with simple property additions. The ontology is now robust enough to support most actuarial knowledge representation and querying needs.
+### Achievement Summary
+
+- **Starting Point (v0.4.0):** 7/14 questions answerable (50%)
+- **After Phase 4 (v0.5.0):** 12/14 questions answerable (86%)
+- **Current Version (v0.6.0):** 14/14 questions answerable (100%) ✅
+
+### Key Success Factors
+
+1. **Strong foundational alignment** with UFO and COVER provided the conceptual framework
+2. **Systematic gap analysis** identified missing properties through SPARQL query testing
+3. **Incremental implementation** across 4 phases built comprehensive domain coverage
+4. **Regulatory framework integration** (Phase 4) addressed critical compliance requirements
+5. **Targeted property additions** (v0.6.0) closed final competency gaps
+
+### Ontology Completeness
+
+The ontology now provides **complete support** for:
+- ✅ Risk management queries (exposure, insurability, management)
+- ✅ Insurance operations (policies, claims, reserves)
+- ✅ Financial analysis (capital, assets, metrics, ratios)
+- ✅ Actuarial processes (models, data, activities)
+- ✅ Regulatory compliance (IFRS 17, Solvency II, capital requirements)
+
+The ontology is **production-ready** for actuarial knowledge representation, reasoning, and querying applications.
