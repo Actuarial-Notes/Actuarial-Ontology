@@ -13,7 +13,7 @@
     dcterms:created "2026-01-10"^^xsd:date ;
     dcterms:modified "2026-01-12"^^xsd:date ;
     dcterms:license <https://opensource.org/licenses/MIT> ;
-    owl:versionInfo "0.3.0-draft" ;
+    owl:versionInfo "0.4.0-draft" ;
     rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains. Aligned with UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk), and ASOPs (Actuarial Standards of Practice)."@en .
 
 #################################################################
@@ -344,6 +344,75 @@ ao:directedAt rdf:type owl:ObjectProperty ;
     rdfs:label "directed at"@en ;
     rdfs:comment "Relates an intention to the goal it aims to achieve (UFO-C)."@en .
 
+### ASOP 25 Credibility Relationships
+
+ao:hasCredibility rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Data ;
+    rdfs:range ao:Credibility ;
+    rdfs:label "has credibility"@en ;
+    rdfs:comment "Relates data to its credibility assessment for estimation purposes (ASOP 25)."@en ;
+    ao:asopReference "ASOP 25" .
+
+### ASOP 56 Model Governance Relationships
+
+ao:validates rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ModelValidation ;
+    rdfs:range ao:ActuarialModel ;
+    rdfs:label "validates"@en ;
+    rdfs:comment "Relates a model validation activity to the model being validated (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
+
+ao:hasModelUncertainty rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialModel ;
+    rdfs:range ao:ModelUncertainty ;
+    rdfs:label "has model uncertainty"@en ;
+    rdfs:comment "Relates a model to its associated uncertainty (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
+
+ao:hasAssumption rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialModel ;
+    rdfs:range ao:Assumption ;
+    rdfs:label "has assumption"@en ;
+    rdfs:comment "Relates a model to an assumption it uses (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
+
+ao:calibrates rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ModelCalibration ;
+    rdfs:range ao:ActuarialModel ;
+    rdfs:label "calibrates"@en ;
+    rdfs:comment "Relates a calibration activity to the model being calibrated (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
+
+ao:documents rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:ModelDocumentation ;
+    rdfs:range ao:ActuarialModel ;
+    rdfs:label "documents"@en ;
+    rdfs:comment "Relates a documentation activity to the model being documented (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
+
+### ASOP 23 Data Quality Relationships
+
+ao:hasDataQuality rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Data ;
+    rdfs:range ao:DataQuality ;
+    rdfs:label "has data quality"@en ;
+    rdfs:comment "Relates data to its quality assessment (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
+ao:hasDataLimitation rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Data ;
+    rdfs:range ao:DataLimitation ;
+    rdfs:label "has data limitation"@en ;
+    rdfs:comment "Relates data to a limitation affecting its use (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
+ao:hasDataSource rdf:type owl:ObjectProperty ;
+    rdfs:domain ao:Data ;
+    rdfs:range ao:DataSource ;
+    rdfs:label "has data source"@en ;
+    rdfs:comment "Relates data to its origin or provider (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
 ### ASOP 41 Communication Relationships
 
 ao:hasIntendedUser rdf:type owl:ObjectProperty ;
@@ -442,6 +511,59 @@ ao:claimNumber rdf:type owl:DatatypeProperty ;
     rdfs:range xsd:string ;
     rdfs:label "claim number"@en ;
     rdfs:comment "The unique identifier for a claim."@en .
+
+### ASOP 23: Data Quality Dimensions
+
+ao:completeness rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:DataQuality ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "completeness"@en ;
+    rdfs:comment "A measure of the extent to which data is complete and without missing values. Typically expressed as a proportion (0-1) or percentage (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
+ao:reliability rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:DataQuality ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "reliability"@en ;
+    rdfs:comment "A measure of the consistency and trustworthiness of data. Reliable data produces consistent results under consistent conditions (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
+ao:accuracy rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:DataQuality ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "accuracy"@en ;
+    rdfs:comment "A measure of how closely data values match the true or reference values. Higher accuracy indicates less error (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
+ao:relevance rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:DataQuality ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "relevance"@en ;
+    rdfs:comment "A measure of the degree to which data is applicable and helpful for the intended purpose (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
+ao:timeliness rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:DataQuality ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "timeliness"@en ;
+    rdfs:comment "A measure of how current and up-to-date the data is relative to the time period being analyzed (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
+### ASOP 25: Credibility Properties
+
+ao:credibilityWeight rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:Credibility ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "credibility weight"@en ;
+    rdfs:comment "A numeric weight (typically 0 to 1) representing the degree of credibility assigned to data. A weight of 1 indicates full credibility, while values less than 1 indicate partial credibility (ASOP 25)."@en ;
+    ao:asopReference "ASOP 25" .
+
+ao:credibilityStandard rdf:type owl:DatatypeProperty ;
+    rdfs:domain ao:Credibility ;
+    rdfs:range xsd:string ;
+    rdfs:label "credibility standard"@en ;
+    rdfs:comment "The standard or criterion used to determine credibility, such as 'limited fluctuation credibility' or 'greatest accuracy credibility' (ASOP 25)."@en ;
+    ao:asopReference "ASOP 25" .
 
 #################################################################
 #    Classes
@@ -641,6 +763,12 @@ ao:OperationalRisk rdf:type owl:Class ;
     rdfs:subClassOf ao:Risk ;
     rdfs:label "Operational Risk"@en ;
     rdfs:comment "A risk of loss from inadequate or failed processes, people, or systems."@en .
+
+ao:ModelRisk rdf:type owl:Class ;
+    rdfs:subClassOf ao:Risk ;
+    rdfs:label "Model Risk"@en ;
+    rdfs:comment "The risk of adverse consequences from decisions based on incorrect or misused model outputs and reports. Model risk can arise from errors in model design, implementation, or application (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
 
 ao:CatastropheRisk rdf:type owl:Class ;
     rdfs:subClassOf ao:InsurableRisk ;
@@ -1000,6 +1128,38 @@ ao:ProductDevelopment rdf:type owl:Class ;
     rdfs:label "Product Development"@en ;
     rdfs:comment "The process of designing and developing new insurance products."@en .
 
+### ASOP 56: Model Governance Activities
+
+ao:ModelValidation rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Model Validation"@en ;
+    rdfs:comment "The process of evaluating whether a model is appropriate for its intended purpose. Validation assesses model conceptual soundness, data quality, implementation correctness, and ongoing performance (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
+
+ao:ModelCalibration rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Model Calibration"@en ;
+    rdfs:comment "The process of adjusting model parameters to ensure model outputs align with observed data or expert judgment (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
+
+ao:ParameterSelection rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Parameter Selection"@en ;
+    rdfs:comment "The process of choosing appropriate values for model parameters based on data analysis, expert judgment, or other relevant information (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
+
+ao:AssumptionSetting rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Assumption Setting"@en ;
+    rdfs:comment "The process of establishing assumptions for use in actuarial analysis and modeling. Assumptions should be reasonable and appropriate for the intended purpose (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
+
+ao:ModelDocumentation rdf:type owl:Class ;
+    rdfs:subClassOf ao:ActuarialActivity ;
+    rdfs:label "Model Documentation"@en ;
+    rdfs:comment "The process of recording information about a model's design, development, testing, and appropriate use (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" .
+
 ### Actuarial Models and Methods
 
 ao:ActuarialModel rdf:type owl:Class ;
@@ -1062,6 +1222,37 @@ ao:PremiumData rdf:type owl:Class ;
     rdfs:label "Premium Data"@en ;
     rdfs:comment "Data about insurance premiums."@en .
 
+### ASOP 23: Data Quality
+
+ao:DataQuality rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Data Quality"@en ;
+    rdfs:comment "An assessment of the appropriateness, reliability, and limitations of data for a specific purpose. Data quality is a critical consideration in actuarial work (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" ;
+    ao:ufoCategory "moment" .
+
+ao:DataLimitation rdf:type owl:Class ;
+    rdfs:label "Data Limitation"@en ;
+    rdfs:comment "A constraint, deficiency, or issue affecting the usefulness or reliability of data for actuarial analysis. Actuaries should identify and disclose material data limitations (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
+ao:DataDeficiency rdf:type owl:Class ;
+    rdfs:subClassOf ao:DataLimitation ;
+    rdfs:label "Data Deficiency"@en ;
+    rdfs:comment "An inadequacy in the data that may include missing data, insufficient volume, lack of relevance, or poor quality (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
+ao:DataInconsistency rdf:type owl:Class ;
+    rdfs:subClassOf ao:DataLimitation ;
+    rdfs:label "Data Inconsistency"@en ;
+    rdfs:comment "A lack of uniformity or coherence in data, which may indicate errors or changes in data collection methods (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
+ao:DataSource rdf:type owl:Class ;
+    rdfs:label "Data Source"@en ;
+    rdfs:comment "The origin or provider of data. Understanding the data source helps assess data quality and reliability (ASOP 23)."@en ;
+    ao:asopReference "ASOP 23" .
+
 ao:Measurement rdf:type owl:Class ;
     rdfs:subClassOf ao:Moment ;
     rdfs:label "Measurement"@en ;
@@ -1078,9 +1269,43 @@ ao:Estimate rdf:type owl:Class ;
     rdfs:label "Estimate"@en ;
     rdfs:comment "An approximation or best judgment of a quantity."@en .
 
+### ASOP 25: Credibility
+
+ao:Credibility rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Credibility"@en ;
+    rdfs:comment "A measure of the predictive value or weight given to a body of data in forming estimates. Credibility reflects the degree of confidence that a set of data can be used to predict future outcomes (ASOP 25)."@en ;
+    ao:asopReference "ASOP 25" ;
+    ao:ufoCategory "moment" .
+
+ao:FullCredibility rdf:type owl:Class ;
+    rdfs:subClassOf ao:Credibility ;
+    rdfs:label "Full Credibility"@en ;
+    rdfs:comment "A credibility level indicating that a body of data is sufficient to be given complete weight in forming an estimate, without need for supplemental data or smoothing (ASOP 25)."@en ;
+    ao:asopReference "ASOP 25" .
+
+ao:PartialCredibility rdf:type owl:Class ;
+    rdfs:subClassOf ao:Credibility ;
+    rdfs:label "Partial Credibility"@en ;
+    rdfs:comment "A credibility level indicating that a body of data should be given partial weight, typically combined with other data sources or prior estimates to form a final estimate (ASOP 25)."@en ;
+    ao:asopReference "ASOP 25" .
+
+ao:NoCredibility rdf:type owl:Class ;
+    rdfs:subClassOf ao:Credibility ;
+    rdfs:label "No Credibility"@en ;
+    rdfs:comment "A credibility level indicating that a body of data has insufficient predictive value to be used directly in forming estimates (ASOP 25)."@en ;
+    ao:asopReference "ASOP 25" .
+
 ao:Assumption rdf:type owl:Class ;
     rdfs:label "Assumption"@en ;
     rdfs:comment "A proposition taken to be true for the purpose of analysis or modeling."@en .
+
+ao:ModelUncertainty rdf:type owl:Class ;
+    rdfs:subClassOf ao:Moment ;
+    rdfs:label "Model Uncertainty"@en ;
+    rdfs:comment "Uncertainty in model outputs arising from limitations in model structure, parameter values, or assumptions. Model uncertainty should be considered when using model results for decision-making (ASOP 56)."@en ;
+    ao:asopReference "ASOP 56" ;
+    ao:ufoCategory "moment" .
 
 ### Metrics and Ratios
 
