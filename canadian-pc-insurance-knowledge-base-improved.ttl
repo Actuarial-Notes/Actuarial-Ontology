@@ -1,0 +1,998 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix kb: <http://example.org/knowledge-base/> .
+
+#################################################################
+#    Canadian P&C Insurance Knowledge Base (Improved)
+#################################################################
+#
+#    This knowledge base demonstrates property and casualty insurance
+#    concepts in the Canadian market, properly aligned with the
+#    Actuarial Ontology.
+#
+#    Key improvements over original:
+#    - Fixed ontology property usage (insures, hasPolicy, causedBy)
+#    - Classified perils as Natural vs Man-made
+#    - Added insurance product types
+#    - Added premium information
+#    - Added claim reserves
+#    - Added coverage details (deductibles, limits)
+#    - Added actuaries and actuarial activities
+#    - Added catastrophe models
+#    - Added regulators
+#    - Added reinsurance relationships
+#    - Added data quality metadata
+#    - Properly modeled threat/loss event chains
+#
+#################################################################
+
+#################################################################
+#    Perils (Properly Classified)
+#################################################################
+
+### Natural Perils
+
+kb:Peril_Fire rdf:type ao:NaturalPeril ;
+    rdfs:label "Fire" ;
+    rdfs:comment "Uncontrolled combustion causing property damage" .
+
+kb:Peril_Flood rdf:type ao:NaturalPeril ;
+    rdfs:label "Flood" ;
+    rdfs:comment "Overflow of water onto normally dry land" .
+
+kb:Peril_Wildfire rdf:type ao:NaturalPeril ;
+    rdfs:label "Wildfire" ;
+    rdfs:comment "Uncontrolled fire in wilderness or rural areas" .
+
+kb:Peril_IceStorm rdf:type ao:NaturalPeril ;
+    rdfs:label "Ice Storm" ;
+    rdfs:comment "Freezing rain accumulation causing damage" .
+
+kb:Peril_Hurricane rdf:type ao:NaturalPeril ;
+    rdfs:label "Hurricane" ;
+    rdfs:comment "Tropical cyclone with sustained winds over 119 km/h" .
+
+kb:Peril_Hail rdf:type ao:NaturalPeril ;
+    rdfs:label "Hail" ;
+    rdfs:comment "Precipitation in the form of ice pellets" .
+
+kb:Peril_Windstorm rdf:type ao:NaturalPeril ;
+    rdfs:label "Windstorm" ;
+    rdfs:comment "Strong winds causing property damage" .
+
+kb:Peril_Earthquake rdf:type ao:NaturalPeril ;
+    rdfs:label "Earthquake" ;
+    rdfs:comment "Seismic activity causing ground shaking" .
+
+kb:Peril_Tornado rdf:type ao:NaturalPeril ;
+    rdfs:label "Tornado" ;
+    rdfs:comment "Violently rotating column of air" .
+
+kb:Peril_Drought rdf:type ao:NaturalPeril ;
+    rdfs:label "Drought" ;
+    rdfs:comment "Extended period of abnormally low rainfall" .
+
+kb:Peril_Cyclone rdf:type ao:NaturalPeril ;
+    rdfs:label "Cyclone" ;
+    rdfs:comment "Large scale air mass rotating around a low pressure center" .
+
+kb:Peril_Lightning rdf:type ao:NaturalPeril ;
+    rdfs:label "Lightning" ;
+    rdfs:comment "Electrical discharge during thunderstorms" .
+
+### Man-made Perils
+
+kb:Peril_Explosion rdf:type ao:ManmadePeril ;
+    rdfs:label "Explosion" ;
+    rdfs:comment "Sudden release of energy causing blast damage" .
+
+kb:Peril_Theft rdf:type ao:ManmadePeril ;
+    rdfs:label "Theft" ;
+    rdfs:comment "Unauthorized taking of property" .
+
+kb:Peril_Riot rdf:type ao:ManmadePeril ;
+    rdfs:label "Riot or Civil Commotion" ;
+    rdfs:comment "Violent disturbance by a group" .
+
+kb:Peril_Vandalism rdf:type ao:ManmadePeril ;
+    rdfs:label "Vandalism" ;
+    rdfs:comment "Deliberate destruction or damage to property" .
+
+kb:Peril_Vehicle rdf:type ao:ManmadePeril ;
+    rdfs:label "Vehicle Impact" ;
+    rdfs:comment "Damage caused by collision with vehicle" .
+
+kb:Peril_Water rdf:type ao:ManmadePeril ;
+    rdfs:label "Water Damage" ;
+    rdfs:comment "Damage from burst pipes, appliance leaks, etc." .
+
+#################################################################
+#    Insurers and Reinsurers
+#################################################################
+
+### Private Insurers
+
+kb:Insurer_Intact rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Intact Financial Corporation" ;
+    rdfs:comment "Canada's largest property and casualty insurer. Operates under Intact Insurance, belairdirect, and other brands." .
+
+kb:Insurer_Desjardins rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Desjardins General Insurance" ;
+    rdfs:comment "Quebec-based insurer affiliated with Desjardins Group cooperative" .
+
+kb:Insurer_Aviva rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Aviva Canada" ;
+    rdfs:comment "Canadian subsidiary of UK-based Aviva plc" .
+
+kb:Insurer_Cooperators rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "The Co-operators Group" ;
+    rdfs:comment "Canadian cooperative insurance company" .
+
+kb:Insurer_TD rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "TD Insurance" ;
+    rdfs:comment "Insurance division of TD Bank Group" .
+
+kb:Insurer_Definity rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Definity Financial Corporation" ;
+    rdfs:comment "Formerly Economical Insurance, operates multiple brands" .
+
+kb:Insurer_Wawanesa rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Wawanesa Mutual Insurance Company" ;
+    rdfs:comment "Canadian mutual insurance company founded 1896" .
+
+kb:Insurer_Gore rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Gore Mutual Insurance Company" ;
+    rdfs:comment "Canada's oldest mutual insurance company, founded 1839" .
+
+### Government Insurers (Provincial Auto)
+
+kb:Insurer_ICBC rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Insurance Corporation of British Columbia" ;
+    rdfs:comment "Provincial Crown corporation providing mandatory basic auto insurance in BC since 1973" .
+
+kb:Insurer_MPI rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Manitoba Public Insurance" ;
+    rdfs:comment "Provincial Crown corporation providing mandatory auto insurance in Manitoba since 1971" .
+
+kb:Insurer_SGI rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "SGI Canada" ;
+    rdfs:comment "Saskatchewan Government Insurance, providing auto insurance since 1944" .
+
+kb:Insurer_SAAQ rdf:type ao:Insurer , ao:Organization ;
+    rdfs:label "Société de l'assurance automobile du Québec" ;
+    rdfs:comment "Quebec government agency administering no-fault auto insurance since 1978" .
+
+### Reinsurers
+
+kb:Reinsurer_MunichRe rdf:type ao:Reinsurer , ao:Organization ;
+    rdfs:label "Munich Re Canada" ;
+    rdfs:comment "Canadian branch of Munich Reinsurance Company" .
+
+kb:Reinsurer_SwissRe rdf:type ao:Reinsurer , ao:Organization ;
+    rdfs:label "Swiss Re Canada" ;
+    rdfs:comment "Canadian branch of Swiss Reinsurance Company" .
+
+kb:Reinsurer_HannoverRe rdf:type ao:Reinsurer , ao:Organization ;
+    rdfs:label "Hannover Re Canada" ;
+    rdfs:comment "Canadian branch of Hannover Rück SE" .
+
+#################################################################
+#    Regulators
+#################################################################
+
+kb:Regulator_OSFI rdf:type ao:Regulator , ao:Organization ;
+    rdfs:label "Office of the Superintendent of Financial Institutions" ;
+    rdfs:comment "Federal regulator for financial institutions in Canada including federally-regulated insurers" .
+
+kb:Regulator_FSRA rdf:type ao:Regulator , ao:Organization ;
+    rdfs:label "Financial Services Regulatory Authority of Ontario" ;
+    rdfs:comment "Provincial regulator for insurance and financial services in Ontario" .
+
+kb:Regulator_AMF rdf:type ao:Regulator , ao:Organization ;
+    rdfs:label "Autorité des marchés financiers" ;
+    rdfs:comment "Quebec's integrated financial regulator" .
+
+### Regulatory Relationships
+
+kb:Regulator_OSFI ao:regulates kb:Insurer_Intact ,
+                                kb:Insurer_Desjardins ,
+                                kb:Insurer_Aviva ,
+                                kb:Insurer_Cooperators ,
+                                kb:Insurer_TD ,
+                                kb:Insurer_Definity ,
+                                kb:Insurer_Wawanesa ,
+                                kb:Insurer_Gore .
+
+#################################################################
+#    Actuaries
+#################################################################
+
+kb:Actuary_SmithJ rdf:type ao:Actuary , ao:Person ;
+    rdfs:label "Jane Smith, FCAS" ;
+    rdfs:comment "Fellow of the Casualty Actuarial Society, Chief Actuary at Intact" .
+
+kb:Actuary_ChenM rdf:type ao:Actuary , ao:Person ;
+    rdfs:label "Michael Chen, FCIA" ;
+    rdfs:comment "Fellow of the Canadian Institute of Actuaries, VP of Pricing" .
+
+kb:Actuary_TremblayS rdf:type ao:Actuary , ao:Person ;
+    rdfs:label "Sophie Tremblay, FCAS, FCIA" ;
+    rdfs:comment "Dual Fellow, Director of Catastrophe Modeling" .
+
+kb:Actuary_PatelR rdf:type ao:Actuary , ao:Person ;
+    rdfs:label "Raj Patel, ACAS" ;
+    rdfs:comment "Associate of the Casualty Actuarial Society, Reserving Actuary" .
+
+#################################################################
+#    Actuarial Models
+#################################################################
+
+kb:PricingModel_AutoGLM rdf:type ao:PricingModel , ao:GeneralizedLinearModel ;
+    rdfs:label "Auto Insurance GLM Pricing Model" ;
+    rdfs:comment "Generalized Linear Model for personal auto insurance pricing in Ontario" .
+
+kb:PricingModel_HomeGLM rdf:type ao:PricingModel , ao:GeneralizedLinearModel ;
+    rdfs:label "Homeowners GLM Pricing Model" ;
+    rdfs:comment "Generalized Linear Model for homeowners insurance pricing" .
+
+kb:ReservingModel_ChainLadder rdf:type ao:ReservingModel , ao:ChainLadderMethod ;
+    rdfs:label "Auto Claim Reserve Chain Ladder" ;
+    rdfs:comment "Chain ladder reserving method for auto insurance claims" .
+
+kb:CatModel_Wildfire rdf:type ao:CatastropheModel ;
+    rdfs:label "Western Canada Wildfire Catastrophe Model" ;
+    rdfs:comment "Proprietary model for estimating wildfire losses in Alberta and BC" .
+
+kb:CatModel_Earthquake rdf:type ao:CatastropheModel ;
+    rdfs:label "BC Earthquake Catastrophe Model" ;
+    rdfs:comment "Model for Cascadia Subduction Zone earthquake risk" .
+
+kb:CatModel_Hail rdf:type ao:CatastropheModel ;
+    rdfs:label "Severe Convective Storm Model" ;
+    rdfs:comment "Model for hail and tornado risk in the Prairies" .
+
+#################################################################
+#    Catastrophe Risks
+#################################################################
+
+kb:CatRisk_Wildfire rdf:type ao:CatastropheRisk ;
+    rdfs:label "Western Canada Wildfire Risk" ;
+    rdfs:comment "Catastrophe risk from wildfires in forested regions of Alberta and BC" .
+
+kb:CatModel_Wildfire ao:models kb:CatRisk_Wildfire .
+
+kb:CatRisk_Earthquake rdf:type ao:CatastropheRisk ;
+    rdfs:label "BC Earthquake Risk" ;
+    rdfs:comment "Catastrophe risk from Cascadia Subduction Zone and crustal earthquakes" .
+
+kb:CatModel_Earthquake ao:models kb:CatRisk_Earthquake .
+
+kb:CatRisk_Hail rdf:type ao:CatastropheRisk ;
+    rdfs:label "Prairie Severe Convective Storm Risk" ;
+    rdfs:comment "Catastrophe risk from hail, tornado, and severe thunderstorms in Alberta and Saskatchewan" .
+
+kb:CatModel_Hail ao:models kb:CatRisk_Hail .
+
+#################################################################
+#    Major Catastrophe Events (Properly Modeled)
+#################################################################
+
+### 2016 Fort McMurray Wildfire
+
+kb:ThreatEvent_FortMcMurray2016 rdf:type ao:ThreatEvent ;
+    rdfs:label "2016 Fort McMurray Wildfire Threat" ;
+    ao:occurrenceDate "2016-05-03"^^xsd:date ;
+    ao:causedBy kb:Peril_Wildfire ;
+    rdfs:comment "Horse River wildfire that forced evacuation of Fort McMurray" .
+
+kb:LossEvent_FortMcMurray2016 rdf:type ao:LossEvent ;
+    rdfs:label "2016 Fort McMurray Wildfire Losses" ;
+    ao:occurrenceDate "2016-05-03"^^xsd:date ;
+    rdfs:comment "Costliest natural disaster in Canadian history - destroyed 2,400 structures" .
+
+kb:ThreatEvent_FortMcMurray2016 ao:precipitates kb:LossEvent_FortMcMurray2016 .
+
+kb:Loss_FortMcMurray2016 rdf:type ao:Loss , ao:UltimateClaimCost ;
+    rdfs:label "Fort McMurray Industry Insured Loss" ;
+    ao:hasSeverity "3580000000.00"^^xsd:decimal ;
+    rdfs:comment "Industry insured loss of $3.58 billion CAD" .
+
+kb:LossEvent_FortMcMurray2016 ao:resultsIn kb:Loss_FortMcMurray2016 .
+
+### 2020 Calgary Hailstorm
+
+kb:ThreatEvent_CalgaryHail2020 rdf:type ao:ThreatEvent ;
+    rdfs:label "2020 Calgary Hailstorm Threat" ;
+    ao:occurrenceDate "2020-06-13"^^xsd:date ;
+    ao:causedBy kb:Peril_Hail ;
+    rdfs:comment "Severe hailstorm producing tennis ball sized hail in northeast Calgary" .
+
+kb:LossEvent_CalgaryHail2020 rdf:type ao:LossEvent ;
+    rdfs:label "2020 Calgary Hailstorm Losses" ;
+    ao:occurrenceDate "2020-06-13"^^xsd:date ;
+    rdfs:comment "Extensive damage to vehicles and roofs across Calgary" .
+
+kb:ThreatEvent_CalgaryHail2020 ao:precipitates kb:LossEvent_CalgaryHail2020 .
+
+kb:Loss_CalgaryHail2020 rdf:type ao:Loss , ao:UltimateClaimCost ;
+    rdfs:label "Calgary Hailstorm Industry Insured Loss" ;
+    ao:hasSeverity "1300000000.00"^^xsd:decimal ;
+    rdfs:comment "Industry insured loss of $1.3 billion CAD" .
+
+kb:LossEvent_CalgaryHail2020 ao:resultsIn kb:Loss_CalgaryHail2020 .
+
+### 2013 Alberta Floods
+
+kb:ThreatEvent_AlbertaFlood2013 rdf:type ao:ThreatEvent ;
+    rdfs:label "2013 Alberta Flood Threat" ;
+    ao:occurrenceDate "2013-06-20"^^xsd:date ;
+    ao:causedBy kb:Peril_Flood ;
+    rdfs:comment "Catastrophic flooding of Bow and Elbow rivers in southern Alberta" .
+
+kb:LossEvent_AlbertaFlood2013 rdf:type ao:LossEvent ;
+    rdfs:label "2013 Alberta Flood Losses" ;
+    ao:occurrenceDate "2013-06-20"^^xsd:date ;
+    rdfs:comment "Widespread flooding affecting Calgary, High River, and surrounding areas" .
+
+kb:ThreatEvent_AlbertaFlood2013 ao:precipitates kb:LossEvent_AlbertaFlood2013 .
+
+kb:Loss_AlbertaFlood2013 rdf:type ao:Loss , ao:UltimateClaimCost ;
+    rdfs:label "Alberta Flood Industry Insured Loss" ;
+    ao:hasSeverity "1740000000.00"^^xsd:decimal ;
+    rdfs:comment "Industry insured loss of $1.74 billion CAD" .
+
+kb:LossEvent_AlbertaFlood2013 ao:resultsIn kb:Loss_AlbertaFlood2013 .
+
+### 2021 BC Floods
+
+kb:ThreatEvent_BCFloods2021 rdf:type ao:ThreatEvent ;
+    rdfs:label "2021 BC Atmospheric River Floods" ;
+    ao:occurrenceDate "2021-11-14"^^xsd:date ;
+    ao:causedBy kb:Peril_Flood ;
+    rdfs:comment "Atmospheric river event causing catastrophic flooding in BC" .
+
+kb:LossEvent_BCFloods2021 rdf:type ao:LossEvent ;
+    rdfs:label "2021 BC Flood Losses" ;
+    ao:occurrenceDate "2021-11-14"^^xsd:date ;
+    rdfs:comment "Flooding that destroyed infrastructure and cut Vancouver off from rest of Canada" .
+
+kb:ThreatEvent_BCFloods2021 ao:precipitates kb:LossEvent_BCFloods2021 .
+
+kb:Loss_BCFloods2021 rdf:type ao:Loss , ao:UltimateClaimCost ;
+    rdfs:label "BC Flood Industry Insured Loss" ;
+    ao:hasSeverity "2000000000.00"^^xsd:decimal ;
+    rdfs:comment "Industry insured loss of $2.0 billion CAD" .
+
+kb:LossEvent_BCFloods2021 ao:resultsIn kb:Loss_BCFloods2021 .
+
+### 1998 Quebec Ice Storm
+
+kb:ThreatEvent_IceStorm1998 rdf:type ao:ThreatEvent ;
+    rdfs:label "1998 Quebec Ice Storm" ;
+    ao:occurrenceDate "1998-01-04"^^xsd:date ;
+    ao:causedBy kb:Peril_IceStorm ;
+    rdfs:comment "Massive ice storm that collapsed power transmission infrastructure" .
+
+kb:LossEvent_IceStorm1998 rdf:type ao:LossEvent ;
+    rdfs:label "1998 Ice Storm Losses" ;
+    ao:occurrenceDate "1998-01-04"^^xsd:date ;
+    rdfs:comment "Extended power outages affecting millions in Quebec and Eastern Ontario" .
+
+kb:ThreatEvent_IceStorm1998 ao:precipitates kb:LossEvent_IceStorm1998 .
+
+kb:Loss_IceStorm1998 rdf:type ao:Loss , ao:UltimateClaimCost ;
+    rdfs:label "Ice Storm Industry Insured Loss" ;
+    ao:hasSeverity "1380000000.00"^^xsd:decimal ;
+    rdfs:comment "Industry insured loss of $1.38 billion CAD (1998 dollars)" .
+
+kb:LossEvent_IceStorm1998 ao:resultsIn kb:Loss_IceStorm1998 .
+
+### 2024 Severe Weather (Most Recent)
+
+kb:ThreatEvent_SevereWeather2024 rdf:type ao:ThreatEvent ;
+    rdfs:label "2024 Severe Weather and Hailstorms" ;
+    ao:occurrenceDate "2024-08-05"^^xsd:date ;
+    ao:causedBy kb:Peril_Hail ;
+    rdfs:comment "Series of severe thunderstorms with large hail across Alberta and Ontario" .
+
+kb:LossEvent_SevereWeather2024 rdf:type ao:LossEvent ;
+    rdfs:label "2024 Severe Weather Losses" ;
+    ao:occurrenceDate "2024-08-05"^^xsd:date ;
+    rdfs:comment "Multiple hailstorms causing record property damage" .
+
+kb:ThreatEvent_SevereWeather2024 ao:precipitates kb:LossEvent_SevereWeather2024 .
+
+kb:Loss_SevereWeather2024 rdf:type ao:Loss , ao:UltimateClaimCost ;
+    rdfs:label "2024 Severe Weather Industry Insured Loss" ;
+    ao:hasSeverity "7100000000.00"^^xsd:decimal ;
+    rdfs:comment "Industry insured loss of $7.1 billion CAD - Canada's costliest severe weather event" .
+
+kb:LossEvent_SevereWeather2024 ao:resultsIn kb:Loss_SevereWeather2024 .
+
+#################################################################
+#    Sample Policyholders (Properly Typed)
+#################################################################
+
+kb:Person_Johnson_Alex rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Alex Johnson" ;
+    rdfs:comment "Homeowner in Calgary, AB" .
+
+kb:Person_Smith_Bailey rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Bailey Smith" ;
+    rdfs:comment "Condo owner in Toronto, ON" .
+
+kb:Person_Lee_Casey rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Casey Lee" ;
+    rdfs:comment "Homeowner in Vancouver, BC" .
+
+kb:Person_Brown_Drew rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Drew Brown" ;
+    rdfs:comment "Homeowner in Montreal, QC" .
+
+kb:Person_Wilson_Elena rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Elena Wilson" ;
+    rdfs:comment "Apartment renter in Halifax, NS" .
+
+kb:Person_Taylor_Finn rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Finn Taylor" ;
+    rdfs:comment "Homeowner in Fort McMurray, AB" .
+
+kb:Person_Martinez_Gale rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Gale Martinez" ;
+    rdfs:comment "Condo owner in Ottawa, ON" .
+
+kb:Person_Anderson_Hannah rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Hannah Anderson" ;
+    rdfs:comment "Homeowner in Winnipeg, MB" .
+
+kb:Person_Clark_Ian rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Ian Clark" ;
+    rdfs:comment "Homeowner in Edmonton, AB" .
+
+kb:Person_Lewis_Julia rdf:type ao:Person , ao:Policyholder , ao:Insured ;
+    rdfs:label "Julia Lewis" ;
+    rdfs:comment "Business owner in Regina, SK" .
+
+#################################################################
+#    Insurance Relationships (CORRECTLY MODELED)
+#################################################################
+
+### Intact insures multiple policyholders
+
+kb:Insurer_Intact ao:insures kb:Person_Johnson_Alex ,
+                              kb:Person_Taylor_Finn ,
+                              kb:Person_Clark_Ian .
+
+kb:Insurer_Desjardins ao:insures kb:Person_Brown_Drew .
+
+kb:Insurer_Aviva ao:insures kb:Person_Smith_Bailey ,
+                             kb:Person_Wilson_Elena .
+
+kb:Insurer_Wawanesa ao:insures kb:Person_Anderson_Hannah .
+
+kb:Insurer_ICBC ao:insures kb:Person_Lee_Casey .
+
+kb:Insurer_Gore ao:insures kb:Person_Martinez_Gale .
+
+kb:Insurer_Cooperators ao:insures kb:Person_Lewis_Julia .
+
+#################################################################
+#    Policies with Products, Premiums, and Coverage
+#################################################################
+
+### Policy 1: Calgary Homeowner (affected by 2020 hailstorm)
+
+kb:Policy_CAL001 rdf:type ao:InsurancePolicy , ao:HomeownersInsurance ;
+    rdfs:label "Homeowners Policy CAL001" ;
+    ao:policyNumber "CAL001" ;
+    ao:effectiveDate "2020-01-01"^^xsd:date ;
+    ao:expirationDate "2021-01-01"^^xsd:date .
+
+kb:Person_Johnson_Alex ao:hasPolicy kb:Policy_CAL001 .
+
+kb:Premium_CAL001 rdf:type ao:Premium ;
+    rdfs:label "Annual Premium for CAL001" ;
+    ao:hasMonetaryValue "2400.00"^^xsd:decimal ;
+    rdfs:comment "Annual premium in CAD" .
+
+kb:Deductible_CAL001 rdf:type ao:Deductible ;
+    rdfs:label "Deductible for CAL001" ;
+    ao:hasMonetaryValue "1000.00"^^xsd:decimal ;
+    rdfs:comment "All perils deductible" .
+
+kb:Limit_CAL001_Dwelling rdf:type ao:Limit ;
+    rdfs:label "Dwelling Coverage Limit" ;
+    ao:hasMonetaryValue "500000.00"^^xsd:decimal ;
+    rdfs:comment "Replacement cost coverage for dwelling" .
+
+kb:Limit_CAL001_Contents rdf:type ao:Limit ;
+    rdfs:label "Contents Coverage Limit" ;
+    ao:hasMonetaryValue "200000.00"^^xsd:decimal ;
+    rdfs:comment "Actual cash value for contents" .
+
+kb:Limit_CAL001_Liability rdf:type ao:Limit ;
+    rdfs:label "Liability Coverage Limit" ;
+    ao:hasMonetaryValue "2000000.00"^^xsd:decimal ;
+    rdfs:comment "Personal liability coverage" .
+
+### Policy 2: Fort McMurray Homeowner (affected by 2016 wildfire)
+
+kb:Policy_FMM001 rdf:type ao:InsurancePolicy , ao:HomeownersInsurance ;
+    rdfs:label "Homeowners Policy FMM001" ;
+    ao:policyNumber "FMM001" ;
+    ao:effectiveDate "2015-06-01"^^xsd:date ;
+    ao:expirationDate "2016-06-01"^^xsd:date .
+
+kb:Person_Taylor_Finn ao:hasPolicy kb:Policy_FMM001 .
+
+kb:Premium_FMM001 rdf:type ao:Premium ;
+    rdfs:label "Annual Premium for FMM001" ;
+    ao:hasMonetaryValue "3200.00"^^xsd:decimal ;
+    rdfs:comment "Higher premium due to wildfire risk zone" .
+
+kb:Deductible_FMM001 rdf:type ao:Deductible ;
+    rdfs:label "Deductible for FMM001" ;
+    ao:hasMonetaryValue "2500.00"^^xsd:decimal ;
+    rdfs:comment "Higher deductible for wildfire exposure" .
+
+kb:Limit_FMM001_Dwelling rdf:type ao:Limit ;
+    rdfs:label "Dwelling Coverage Limit" ;
+    ao:hasMonetaryValue "450000.00"^^xsd:decimal .
+
+### Policy 3: Toronto Auto Insurance
+
+kb:Policy_TOR001 rdf:type ao:InsurancePolicy , ao:AutoInsurance ;
+    rdfs:label "Auto Policy TOR001" ;
+    ao:policyNumber "TOR001" ;
+    ao:effectiveDate "2024-03-15"^^xsd:date ;
+    ao:expirationDate "2025-03-15"^^xsd:date .
+
+kb:Person_Smith_Bailey ao:hasPolicy kb:Policy_TOR001 .
+
+kb:Premium_TOR001 rdf:type ao:Premium ;
+    rdfs:label "Annual Auto Premium for TOR001" ;
+    ao:hasMonetaryValue "1850.00"^^xsd:decimal ;
+    rdfs:comment "Ontario auto insurance premium" .
+
+kb:Deductible_TOR001_Collision rdf:type ao:Deductible ;
+    rdfs:label "Collision Deductible" ;
+    ao:hasMonetaryValue "500.00"^^xsd:decimal .
+
+kb:Deductible_TOR001_Comprehensive rdf:type ao:Deductible ;
+    rdfs:label "Comprehensive Deductible" ;
+    ao:hasMonetaryValue "300.00"^^xsd:decimal .
+
+kb:Limit_TOR001_ThirdParty rdf:type ao:Limit ;
+    rdfs:label "Third Party Liability Limit" ;
+    ao:hasMonetaryValue "1000000.00"^^xsd:decimal ;
+    rdfs:comment "Mandatory minimum in Ontario" .
+
+### Policy 4: Montreal Homeowners
+
+kb:Policy_MTL001 rdf:type ao:InsurancePolicy , ao:HomeownersInsurance ;
+    rdfs:label "Homeowners Policy MTL001" ;
+    ao:policyNumber "MTL001" ;
+    ao:effectiveDate "2024-01-01"^^xsd:date ;
+    ao:expirationDate "2025-01-01"^^xsd:date .
+
+kb:Person_Brown_Drew ao:hasPolicy kb:Policy_MTL001 .
+
+kb:Premium_MTL001 rdf:type ao:Premium ;
+    rdfs:label "Annual Premium for MTL001" ;
+    ao:hasMonetaryValue "1950.00"^^xsd:decimal .
+
+kb:Deductible_MTL001 rdf:type ao:Deductible ;
+    rdfs:label "Deductible for MTL001" ;
+    ao:hasMonetaryValue "1000.00"^^xsd:decimal .
+
+kb:Limit_MTL001_Dwelling rdf:type ao:Limit ;
+    rdfs:label "Dwelling Coverage Limit" ;
+    ao:hasMonetaryValue "550000.00"^^xsd:decimal .
+
+### Policy 5: Vancouver Auto (ICBC)
+
+kb:Policy_VAN001 rdf:type ao:InsurancePolicy , ao:AutoInsurance ;
+    rdfs:label "BC Auto Policy VAN001" ;
+    ao:policyNumber "VAN001" ;
+    ao:effectiveDate "2024-04-01"^^xsd:date ;
+    ao:expirationDate "2025-04-01"^^xsd:date ;
+    rdfs:comment "ICBC basic coverage plus optional coverage" .
+
+kb:Person_Lee_Casey ao:hasPolicy kb:Policy_VAN001 .
+
+kb:Premium_VAN001 rdf:type ao:Premium ;
+    rdfs:label "Annual Premium for VAN001" ;
+    ao:hasMonetaryValue "2100.00"^^xsd:decimal ;
+    rdfs:comment "ICBC basic plus optional" .
+
+### Policy 6: Edmonton Homeowners
+
+kb:Policy_EDM001 rdf:type ao:InsurancePolicy , ao:HomeownersInsurance ;
+    rdfs:label "Homeowners Policy EDM001" ;
+    ao:policyNumber "EDM001" ;
+    ao:effectiveDate "2024-06-01"^^xsd:date ;
+    ao:expirationDate "2025-06-01"^^xsd:date .
+
+kb:Person_Clark_Ian ao:hasPolicy kb:Policy_EDM001 .
+
+kb:Premium_EDM001 rdf:type ao:Premium ;
+    rdfs:label "Annual Premium for EDM001" ;
+    ao:hasMonetaryValue "2250.00"^^xsd:decimal .
+
+kb:Deductible_EDM001 rdf:type ao:Deductible ;
+    rdfs:label "Deductible for EDM001" ;
+    ao:hasMonetaryValue "1500.00"^^xsd:decimal .
+
+kb:Limit_EDM001_Dwelling rdf:type ao:Limit ;
+    rdfs:label "Dwelling Coverage Limit" ;
+    ao:hasMonetaryValue "475000.00"^^xsd:decimal .
+
+### Policy 7: Commercial Property (Regina business)
+
+kb:Policy_REG001 rdf:type ao:InsurancePolicy , ao:PropertyInsurance ;
+    rdfs:label "Commercial Property Policy REG001" ;
+    ao:policyNumber "REG001" ;
+    ao:effectiveDate "2024-01-01"^^xsd:date ;
+    ao:expirationDate "2025-01-01"^^xsd:date ;
+    rdfs:comment "Commercial property insurance for retail business" .
+
+kb:Person_Lewis_Julia ao:hasPolicy kb:Policy_REG001 .
+
+kb:Premium_REG001 rdf:type ao:Premium ;
+    rdfs:label "Annual Premium for REG001" ;
+    ao:hasMonetaryValue "5500.00"^^xsd:decimal ;
+    rdfs:comment "Commercial property premium" .
+
+kb:Deductible_REG001 rdf:type ao:Deductible ;
+    rdfs:label "Deductible for REG001" ;
+    ao:hasMonetaryValue "5000.00"^^xsd:decimal ;
+    rdfs:comment "Commercial deductible" .
+
+kb:Limit_REG001_Building rdf:type ao:Limit ;
+    rdfs:label "Building Coverage Limit" ;
+    ao:hasMonetaryValue "1200000.00"^^xsd:decimal .
+
+kb:Limit_REG001_BusinessInterruption rdf:type ao:Limit ;
+    rdfs:label "Business Interruption Limit" ;
+    ao:hasMonetaryValue "500000.00"^^xsd:decimal .
+
+#################################################################
+#    Risks (Properly Related to Policies)
+#################################################################
+
+kb:Risk_Wildfire_FMM rdf:type ao:PropertyRisk ;
+    rdfs:label "Wildfire Risk - Fort McMurray Property" ;
+    rdfs:comment "Property risk for home in wildfire-prone area" .
+
+kb:Policy_FMM001 ao:covers kb:Risk_Wildfire_FMM .
+
+kb:Risk_Hail_CAL rdf:type ao:PropertyRisk ;
+    rdfs:label "Hail Risk - Calgary Property" ;
+    rdfs:comment "Hail damage risk for Calgary home" .
+
+kb:Policy_CAL001 ao:covers kb:Risk_Hail_CAL .
+
+kb:Risk_Flood_MTL rdf:type ao:PropertyRisk ;
+    rdfs:label "Flood Risk - Montreal Property" ;
+    rdfs:comment "Flood risk from spring runoff" .
+
+kb:Policy_MTL001 ao:covers kb:Risk_Flood_MTL .
+
+kb:Risk_Collision_TOR rdf:type ao:Risk ;
+    rdfs:label "Auto Collision Risk - Toronto" ;
+    rdfs:comment "Collision and comprehensive auto risk" .
+
+kb:Policy_TOR001 ao:covers kb:Risk_Collision_TOR .
+
+kb:Risk_Fire_REG rdf:type ao:PropertyRisk ;
+    rdfs:label "Fire Risk - Commercial Building" ;
+    rdfs:comment "Fire risk for commercial retail building" .
+
+kb:Policy_REG001 ao:covers kb:Risk_Fire_REG .
+
+#################################################################
+#    Claims with Reserves (from catastrophe events)
+#################################################################
+
+### Claim from 2020 Calgary Hailstorm
+
+kb:Claim_CAL001_2020 rdf:type ao:Claim , ao:ReportedClaim , ao:OutstandingClaim ;
+    rdfs:label "Hail Damage Claim CAL001-2020" ;
+    ao:claimNumber "CAL001-H20-001" ;
+    ao:reportingDate "2020-06-15"^^xsd:date ;
+    ao:triggeredBy kb:LossEvent_CalgaryHail2020 ;
+    rdfs:comment "Roof and siding damage from hailstorm" .
+
+kb:Policy_CAL001 ao:hasClaim kb:Claim_CAL001_2020 .
+
+kb:Reserve_CAL001_2020 rdf:type ao:CaseReserve ;
+    rdfs:label "Reserve for Claim CAL001-2020" ;
+    ao:hasMonetaryValue "35000.00"^^xsd:decimal ;
+    rdfs:comment "Reserve for roof replacement and siding repair" .
+
+kb:Claim_CAL001_2020 ao:hasReserve kb:Reserve_CAL001_2020 .
+
+### Claim from 2016 Fort McMurray Wildfire (Total Loss)
+
+kb:Claim_FMM001_2016 rdf:type ao:Claim , ao:ReportedClaim , ao:PaidClaim ;
+    rdfs:label "Wildfire Total Loss Claim FMM001-2016" ;
+    ao:claimNumber "FMM001-WF16-001" ;
+    ao:reportingDate "2016-05-10"^^xsd:date ;
+    ao:triggeredBy kb:LossEvent_FortMcMurray2016 ;
+    rdfs:comment "Total loss of dwelling in Fort McMurray wildfire" .
+
+kb:Policy_FMM001 ao:hasClaim kb:Claim_FMM001_2016 .
+
+kb:Loss_FMM001_2016 rdf:type ao:Loss , ao:UltimateClaimCost ;
+    rdfs:label "Ultimate Loss for FMM001" ;
+    ao:hasSeverity "450000.00"^^xsd:decimal ;
+    rdfs:comment "Total dwelling limit paid" .
+
+kb:Claim_FMM001_2016 ao:hasReserve kb:Loss_FMM001_2016 .
+
+### Claim from 2024 Severe Weather
+
+kb:Claim_EDM001_2024 rdf:type ao:Claim , ao:ReportedClaim , ao:OutstandingClaim ;
+    rdfs:label "Hail Damage Claim EDM001-2024" ;
+    ao:claimNumber "EDM001-H24-001" ;
+    ao:reportingDate "2024-08-08"^^xsd:date ;
+    ao:triggeredBy kb:LossEvent_SevereWeather2024 ;
+    rdfs:comment "Roof damage from severe hailstorm" .
+
+kb:Policy_EDM001 ao:hasClaim kb:Claim_EDM001_2024 .
+
+kb:Reserve_EDM001_2024 rdf:type ao:CaseReserve ;
+    rdfs:label "Reserve for Claim EDM001-2024" ;
+    ao:hasMonetaryValue "28000.00"^^xsd:decimal ;
+    rdfs:comment "Reserve for roof repairs" .
+
+kb:Claim_EDM001_2024 ao:hasReserve kb:Reserve_EDM001_2024 .
+
+### Auto Claim - Toronto
+
+kb:Claim_TOR001_2024 rdf:type ao:Claim , ao:ReportedClaim , ao:PaidClaim ;
+    rdfs:label "Auto Collision Claim TOR001-2024" ;
+    ao:claimNumber "TOR001-COL24-001" ;
+    ao:reportingDate "2024-07-15"^^xsd:date ;
+    rdfs:comment "Rear-end collision in downtown Toronto" .
+
+kb:Policy_TOR001 ao:hasClaim kb:Claim_TOR001_2024 .
+
+kb:Loss_TOR001_2024 rdf:type ao:Loss , ao:UltimateClaimCost ;
+    rdfs:label "Ultimate Loss for TOR001" ;
+    ao:hasSeverity "8500.00"^^xsd:decimal ;
+    rdfs:comment "Vehicle repair costs" .
+
+### Commercial Property Fire Claim
+
+kb:Claim_REG001_2024 rdf:type ao:Claim , ao:ReportedClaim , ao:OutstandingClaim ;
+    rdfs:label "Fire Damage Claim REG001-2024" ;
+    ao:claimNumber "REG001-FIRE24-001" ;
+    ao:reportingDate "2024-09-20"^^xsd:date ;
+    rdfs:comment "Electrical fire causing smoke and water damage" .
+
+kb:Policy_REG001 ao:hasClaim kb:Claim_REG001_2024 .
+
+kb:Reserve_REG001_2024 rdf:type ao:CaseReserve ;
+    rdfs:label "Reserve for Claim REG001-2024" ;
+    ao:hasMonetaryValue "125000.00"^^xsd:decimal ;
+    rdfs:comment "Reserve for building repairs and business interruption" .
+
+kb:Claim_REG001_2024 ao:hasReserve kb:Reserve_REG001_2024 .
+
+#################################################################
+#    IBNR Reserve (Aggregate)
+#################################################################
+
+kb:IBNRReserve_Intact_Auto_2024 rdf:type ao:IBNRReserve ;
+    rdfs:label "IBNR Reserve - Intact Auto 2024" ;
+    ao:hasMonetaryValue "45000000.00"^^xsd:decimal ;
+    rdfs:comment "Incurred but not reported reserve for auto insurance at year-end 2024" .
+
+kb:IBNRReserve_Intact_Property_2024 rdf:type ao:IBNRReserve ;
+    rdfs:label "IBNR Reserve - Intact Property 2024" ;
+    ao:hasMonetaryValue "78000000.00"^^xsd:decimal ;
+    rdfs:comment "IBNR reserve for property insurance including catastrophe events" .
+
+#################################################################
+#    Reinsurance Contracts
+#################################################################
+
+kb:ReinsuranceContract_CAT_2024 rdf:type ao:ReinsuranceContract ;
+    rdfs:label "Catastrophe Excess of Loss Treaty 2024" ;
+    ao:effectiveDate "2024-01-01"^^xsd:date ;
+    ao:expirationDate "2025-01-01"^^xsd:date ;
+    rdfs:comment "Cat XL treaty: $100M xs $50M per occurrence, covering wildfire, earthquake, flood" .
+
+kb:Insurer_Intact ao:hasPolicy kb:ReinsuranceContract_CAT_2024 .
+kb:Reinsurer_MunichRe ao:insures kb:Insurer_Intact .
+
+kb:ReinsuranceContract_CAT_2024 ao:covers kb:CatRisk_Wildfire ,
+                                         kb:CatRisk_Earthquake ,
+                                         kb:CatRisk_Hail .
+
+kb:ReinsuranceContract_Quota_2024 rdf:type ao:ReinsuranceContract ;
+    rdfs:label "Quota Share Treaty 2024" ;
+    ao:effectiveDate "2024-01-01"^^xsd:date ;
+    ao:expirationDate "2025-01-01"^^xsd:date ;
+    rdfs:comment "25% quota share on homeowners business" .
+
+kb:Insurer_Wawanesa ao:hasPolicy kb:ReinsuranceContract_Quota_2024 .
+kb:Reinsurer_SwissRe ao:insures kb:Insurer_Wawanesa .
+
+#################################################################
+#    Data Quality
+#################################################################
+
+kb:DataSource_IBC rdf:type ao:DataSource ;
+    rdfs:label "Insurance Bureau of Canada" ;
+    rdfs:comment "Industry association providing catastrophe loss data" .
+
+kb:ClaimData_2024 rdf:type ao:ClaimData ;
+    rdfs:label "Claim Data for 2024" ;
+    ao:hasDataSource kb:DataSource_IBC ;
+    rdfs:comment "Industry-wide claim statistics" .
+
+kb:DataQuality_ClaimData_2024 rdf:type ao:DataQuality ;
+    rdfs:label "Data Quality Assessment for 2024 Claims" ;
+    ao:completeness "0.92"^^xsd:decimal ;
+    ao:reliability "0.88"^^xsd:decimal ;
+    ao:accuracy "0.85"^^xsd:decimal ;
+    ao:relevance "0.95"^^xsd:decimal ;
+    ao:timeliness "0.90"^^xsd:decimal ;
+    rdfs:comment "Some lag in reporting, particularly for IBNR claims" .
+
+kb:ClaimData_2024 ao:hasDataQuality kb:DataQuality_ClaimData_2024 .
+
+kb:ExposureData_2024 rdf:type ao:ExposureData ;
+    rdfs:label "Exposure Data for 2024" ;
+    rdfs:comment "Dwelling and vehicle exposure data" .
+
+kb:DataQuality_ExposureData_2024 rdf:type ao:DataQuality ;
+    rdfs:label "Data Quality Assessment for 2024 Exposure" ;
+    ao:completeness "0.98"^^xsd:decimal ;
+    ao:reliability "0.95"^^xsd:decimal ;
+    ao:accuracy "0.92"^^xsd:decimal ;
+    ao:relevance "0.98"^^xsd:decimal ;
+    ao:timeliness "0.95"^^xsd:decimal ;
+    rdfs:comment "High quality exposure data from policy administration systems" .
+
+kb:ExposureData_2024 ao:hasDataQuality kb:DataQuality_ExposureData_2024 .
+
+kb:Credibility_AutoPricing rdf:type ao:FullCredibility ;
+    rdfs:label "Full Credibility for Auto Pricing" ;
+    ao:credibilityWeight "1.0"^^xsd:decimal ;
+    ao:credibilityStandard "Limited fluctuation credibility" ;
+    rdfs:comment "Sufficient volume for fully credible rates" .
+
+kb:ExposureData_2024 ao:hasCredibility kb:Credibility_AutoPricing .
+
+#################################################################
+#    Actuarial Activities
+#################################################################
+
+### Pricing Activity
+
+kb:Pricing_Auto_2024 rdf:type ao:Pricing ;
+    rdfs:label "2024 Auto Insurance Pricing Review" ;
+    ao:hasAgent kb:Actuary_ChenM ;
+    ao:usesModel kb:PricingModel_AutoGLM ;
+    ao:basedOnData kb:ClaimData_2024 , kb:ExposureData_2024 ;
+    rdfs:comment "Annual pricing review for personal auto insurance" .
+
+kb:Policy_TOR001 ao:subjectOf kb:Pricing_Auto_2024 .
+
+### Reserving Activity
+
+kb:Reserving_Property_2024Q4 rdf:type ao:Reserving ;
+    rdfs:label "Q4 2024 Property Claim Reserving" ;
+    ao:hasAgent kb:Actuary_PatelR ;
+    ao:usesModel kb:ReservingModel_ChainLadder ;
+    ao:basedOnData kb:ClaimData_2024 ;
+    rdfs:comment "Quarterly reserve adequacy review including catastrophe claims" .
+
+kb:IBNRReserve_Intact_Property_2024 ao:subjectOf kb:Reserving_Property_2024Q4 .
+
+### Catastrophe Modeling Activity
+
+kb:CatModeling_Wildfire_2024 rdf:type ao:ScenarioAnalysis ;
+    rdfs:label "2024 Wildfire Catastrophe Modeling" ;
+    ao:hasAgent kb:Actuary_TremblayS ;
+    ao:usesModel kb:CatModel_Wildfire ;
+    rdfs:comment "Annual update of wildfire risk models incorporating Fort McMurray experience" .
+
+kb:CatScenario_FortMcMurrayType rdf:type ao:CatastropheScenario ;
+    rdfs:label "Fort McMurray-Type Wildfire Scenario" ;
+    rdfs:comment "1-in-200 year wildfire scenario for Alberta boreal forest" ;
+    ao:asopReference "ASOP 39" .
+
+kb:CatModeling_Wildfire_2024 ao:analyzesScenario kb:CatScenario_FortMcMurrayType .
+
+kb:TailRisk_Wildfire rdf:type ao:TailRisk ;
+    rdfs:label "Extreme Wildfire Tail Risk" ;
+    rdfs:comment "Low probability, high severity wildfire events in the tail of the loss distribution" ;
+    ao:asopReference "ASOP 39" .
+
+kb:CatModel_Wildfire ao:models kb:TailRisk_Wildfire .
+
+### Risk Assessment Activity
+
+kb:RiskAssessment_Climate_2024 rdf:type ao:RiskAssessment ;
+    rdfs:label "Climate Risk Assessment 2024" ;
+    ao:hasAgent kb:Actuary_SmithJ ;
+    rdfs:comment "Enterprise risk assessment of climate change impacts on P&C insurance" ;
+    ao:asopReference "ASOP 51" .
+
+kb:RiskIdentification_Climate rdf:type ao:RiskIdentification ;
+    rdfs:label "Climate Risk Identification" ;
+    rdfs:comment "Identification of emerging climate-related risks" ;
+    ao:asopReference "ASOP 51" .
+
+kb:RiskIdentification_Climate ao:identifies kb:CatRisk_Wildfire ,
+                                            kb:CatRisk_Hail .
+
+### Model Validation
+
+kb:ModelValidation_CatModel_2024 rdf:type ao:ModelValidation ;
+    rdfs:label "2024 Catastrophe Model Validation" ;
+    ao:hasAgent kb:Actuary_TremblayS ;
+    ao:validates kb:CatModel_Wildfire ;
+    rdfs:comment "Annual validation of catastrophe models against recent loss experience" ;
+    ao:asopReference "ASOP 56" .
+
+kb:ModelUncertainty_Wildfire rdf:type ao:ModelUncertainty ;
+    rdfs:label "Wildfire Model Uncertainty" ;
+    rdfs:comment "Uncertainty in wildfire frequency and severity projections due to climate change and limited historical data" ;
+    ao:asopReference "ASOP 56" .
+
+kb:CatModel_Wildfire ao:hasModelUncertainty kb:ModelUncertainty_Wildfire .
+
+#################################################################
+#    Financial Metrics
+#################################################################
+
+kb:LossRatio_Intact_2024 rdf:type ao:LossRatio ;
+    rdfs:label "Intact Loss Ratio 2024" ;
+    ao:hasValue "0.68"^^xsd:decimal ;
+    rdfs:comment "Loss ratio of 68% for calendar year 2024" .
+
+kb:Insurer_Intact ao:hasMetric kb:LossRatio_Intact_2024 .
+
+kb:CombinedRatio_Intact_2024 rdf:type ao:CombinedRatio ;
+    rdfs:label "Intact Combined Ratio 2024" ;
+    ao:hasValue "0.95"^^xsd:decimal ;
+    rdfs:comment "Combined ratio of 95% indicating underwriting profit" .
+
+kb:Insurer_Intact ao:hasMetric kb:CombinedRatio_Intact_2024 .
+
+kb:ROE_Intact_2024 rdf:type ao:ReturnOnEquity ;
+    rdfs:label "Intact ROE 2024" ;
+    ao:hasValue "0.12"^^xsd:decimal ;
+    rdfs:comment "Return on equity of 12%" .
+
+kb:Insurer_Intact ao:hasMetric kb:ROE_Intact_2024 .
+
+#################################################################
+#    Professional Practice
+#################################################################
+
+kb:PeerReview_Reserving_2024 rdf:type ao:PeerReview ;
+    rdfs:label "Peer Review of Reserve Analysis" ;
+    ao:reviewedBy kb:Actuary_SmithJ ;
+    rdfs:comment "Peer review of catastrophe reserve adequacy" .
+
+kb:ActuarialReport_Reserves_2024Q4 rdf:type ao:ActuarialReport ;
+    rdfs:label "Q4 2024 Reserve Adequacy Report" ;
+    ao:hasIntendedUser kb:Regulator_OSFI ;
+    rdfs:comment "Statement of actuarial opinion on reserve adequacy" ;
+    ao:asopReference "ASOP 36, ASOP 41" .
+
+kb:Actuary_PatelR ao:communicates kb:ActuarialReport_Reserves_2024Q4 .
+
+kb:PeerReview_Reserving_2024 ao:reviews kb:ActuarialReport_Reserves_2024Q4 .
+
+#################################################################
+#    End of Improved Knowledge Base
+#################################################################
