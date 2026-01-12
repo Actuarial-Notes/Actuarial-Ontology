@@ -34,10 +34,6 @@
 
 ### Natural Perils
 
-kb:Peril_Fire rdf:type ao:NaturalPeril ;
-    rdfs:label "Fire" ;
-    rdfs:comment "Uncontrolled combustion causing property damage" .
-
 kb:Peril_Flood rdf:type ao:NaturalPeril ;
     rdfs:label "Flood" ;
     rdfs:comment "Overflow of water onto normally dry land" .
@@ -83,6 +79,10 @@ kb:Peril_Lightning rdf:type ao:NaturalPeril ;
     rdfs:comment "Electrical discharge during thunderstorms" .
 
 ### Man-made Perils
+
+kb:Peril_Fire rdf:type ao:ManmadePeril ;
+    rdfs:label "Fire" ;
+    rdfs:comment "Structure fires from electrical, cooking, heating equipment, or other man-made causes" .
 
 kb:Peril_Explosion rdf:type ao:ManmadePeril ;
     rdfs:label "Explosion" ;
@@ -389,25 +389,25 @@ kb:Loss_IceStorm1998 rdf:type ao:Loss , ao:UltimateClaimCost ;
 
 kb:LossEvent_IceStorm1998 ao:resultsIn kb:Loss_IceStorm1998 .
 
-### 2024 Severe Weather (Most Recent)
+### 2024 Calgary Hailstorm (Most Recent Major Event)
 
 kb:ThreatEvent_SevereWeather2024 rdf:type ao:ThreatEvent ;
-    rdfs:label "2024 Severe Weather and Hailstorms" ;
+    rdfs:label "2024 Calgary Hailstorm" ;
     ao:occurrenceDate "2024-08-05"^^xsd:date ;
     ao:causedBy kb:Peril_Hail ;
-    rdfs:comment "Series of severe thunderstorms with large hail across Alberta and Ontario" .
+    rdfs:comment "Severe hailstorm with tennis ball-sized hail in Calgary - Canada's costliest hailstorm" .
 
 kb:LossEvent_SevereWeather2024 rdf:type ao:LossEvent ;
-    rdfs:label "2024 Severe Weather Losses" ;
+    rdfs:label "2024 Calgary Hailstorm Losses" ;
     ao:occurrenceDate "2024-08-05"^^xsd:date ;
-    rdfs:comment "Multiple hailstorms causing record property damage" .
+    rdfs:comment "Extensive damage to over 130,000 properties in Calgary area" .
 
 kb:ThreatEvent_SevereWeather2024 ao:precipitates kb:LossEvent_SevereWeather2024 .
 
 kb:Loss_SevereWeather2024 rdf:type ao:Loss , ao:UltimateClaimCost ;
-    rdfs:label "2024 Severe Weather Industry Insured Loss" ;
-    ao:hasSeverity "7100000000.00"^^xsd:decimal ;
-    rdfs:comment "Industry insured loss of $7.1 billion CAD - Canada's costliest severe weather event" .
+    rdfs:label "2024 Calgary Hailstorm Industry Insured Loss" ;
+    ao:hasSeverity "3290000000.00"^^xsd:decimal ;
+    rdfs:comment "Industry insured loss of $3.29 billion CAD - second costliest natural disaster in Canadian history" .
 
 kb:LossEvent_SevereWeather2024 ao:resultsIn kb:Loss_SevereWeather2024 .
 
@@ -725,12 +725,17 @@ kb:Claim_FMM001_2016 rdf:type ao:Claim , ao:ReportedClaim , ao:PaidClaim ;
 
 kb:Policy_FMM001 ao:hasClaim kb:Claim_FMM001_2016 .
 
+kb:Reserve_FMM001_2016 rdf:type ao:CaseReserve ;
+    rdfs:label "Reserve for Wildfire Total Loss FMM001" ;
+    ao:hasMonetaryValue "450000.00"^^xsd:decimal ;
+    rdfs:comment "Reserve for total dwelling loss, paid in full" .
+
+kb:Claim_FMM001_2016 ao:hasReserve kb:Reserve_FMM001_2016 .
+
 kb:Loss_FMM001_2016 rdf:type ao:Loss , ao:UltimateClaimCost ;
     rdfs:label "Ultimate Loss for FMM001" ;
     ao:hasSeverity "450000.00"^^xsd:decimal ;
     rdfs:comment "Total dwelling limit paid" .
-
-kb:Claim_FMM001_2016 ao:hasReserve kb:Loss_FMM001_2016 .
 
 ### Claim from 2024 Severe Weather
 
@@ -759,6 +764,13 @@ kb:Claim_TOR001_2024 rdf:type ao:Claim , ao:ReportedClaim , ao:PaidClaim ;
     rdfs:comment "Rear-end collision in downtown Toronto" .
 
 kb:Policy_TOR001 ao:hasClaim kb:Claim_TOR001_2024 .
+
+kb:Reserve_TOR001_2024 rdf:type ao:CaseReserve ;
+    rdfs:label "Reserve for Auto Claim TOR001" ;
+    ao:hasMonetaryValue "8500.00"^^xsd:decimal ;
+    rdfs:comment "Reserve for vehicle repair, paid in full" .
+
+kb:Claim_TOR001_2024 ao:hasReserve kb:Reserve_TOR001_2024 .
 
 kb:Loss_TOR001_2024 rdf:type ao:Loss , ao:UltimateClaimCost ;
     rdfs:label "Ultimate Loss for TOR001" ;
