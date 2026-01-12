@@ -2,9 +2,9 @@
 
 ## Overview
 
-This document describes the Actuarial Ontology (AO), version 0.6.0-draft. The ontology is written in Turtle (TTL) format and can be opened in Protégé or other OWL ontology editors.
+This document describes the Actuarial Ontology (AO), version 0.7.0-draft. The ontology is written in Turtle (TTL) format and can be opened in Protégé or other OWL ontology editors.
 
-**Current Version (v0.6.0):** All 4 improvement phases have been successfully implemented, achieving 100% competency question answerability:
+**Current Version (v0.7.0):** Comprehensive domain expansion with 126+ new classes and 14+ new properties across 13 critical actuarial domains.
 
 **Phase 4 (v0.5.0)** - Domain expansion with:
 - **ASOP 38/39** - Catastrophe modeling, scenario analysis, and extreme event concepts
@@ -212,6 +212,102 @@ Professional activities:
 - AuditTrail
 - WorkPaper
 
+#### Underwriting (New in v0.7)
+- Underwriting taxonomy:
+  - RiskSelection
+  - RiskClassification
+  - MedicalUnderwriting
+  - FinancialUnderwriting
+- UnderwritingGuidelines, UnderwritingCriteria
+- Risk classifications: PreferredRisk, StandardRisk, SubstandardRisk, DeclinedRisk
+- AdverseSelection, MoralHazard
+
+#### Reinsurance Structures (Expanded in v0.7)
+- Treaty vs. Facultative:
+  - TreatyReinsurance
+  - FacultativeReinsurance
+- Proportional structures:
+  - QuotaShareReinsurance
+  - SurplusReinsurance
+- Non-proportional structures:
+  - ExcessOfLossReinsurance
+  - CatastropheExcessOfLoss
+  - StopLossReinsurance
+- RetentionLimit, ReinsuranceCession, CedingCommission, Retrocession
+
+#### Distribution and Marketing (New in v0.7)
+- Roles: Agent, Broker, ClaimsAdjuster
+- Agent types: CaptiveAgent, IndependentAgent, ManagingGeneralAgent
+- Adjuster types: IndependentAdjuster, PublicAdjuster
+- DistributionChannel, DirectWriter
+
+#### Claims Management (Expanded in v0.7)
+- Activities: ClaimsAdjustment, ClaimsInvestigation, ClaimsSettlement
+- FraudDetection, FraudulentClaim
+- Salvage, Subrogation
+
+#### Policyholder Behavior (New in v0.7)
+- Events: Lapse, Surrender, PolicyWithdrawal
+- Measurements: LapseRate, PersistencyRate, Persistency
+- PolicyLoan
+
+#### Asset-Liability Management (New in v0.7)
+- AssetLiabilityManagement
+- Strategies: DurationMatching, CashFlowMatching, ImmunizationStrategy
+- AssetAllocation
+- Risks: InterestRateRisk, ReinvestmentRisk
+
+#### Life Insurance Specifics (Expanded in v0.7)
+- Values: CashValue, SurrenderValue, NonForfeitureValue
+- Product types: UniversalLifeInsurance, VariableLifeInsurance
+- Policy types: ParticipatingPolicy, NonParticipatingPolicy
+- PolicyDividend
+- Benefits: DeathBenefit, LivingBenefit, AcceleratedDeathBenefit
+- Guarantees: GuaranteedMinimumDeathBenefit
+- Riders: RiderBenefit, WaiverOfPremiumRider
+
+#### Premium and Rating (Expanded in v0.7)
+- Premium types: GrossPremium, NetPremium, LoadedPremium
+- PremiumRate, RatingFactor
+- Rating methods: ExperienceRating, ManualRating, ScheduleRating, RetrospectiveRating
+- LossCost
+- Expenses: ExpenseLoading, AcquisitionExpense, MaintenanceExpense
+
+#### Emerging Risks (New in v0.7)
+- EmergingRisk
+- CyberRisk
+- PandemicRisk
+- ClimateRisk
+- ESGRisk
+- TechnologyRisk
+
+#### Portfolio and Exposure Management (New in v0.7)
+- Portfolio types: InsurancePortfolio, InvestmentPortfolio
+- BookOfBusiness
+- ExposureUnit
+- InForcePolicy
+- PortfolioSegmentation
+
+#### Stochastic and Statistical Modeling (New in v0.7)
+- Model types: StochasticModel, DeterministicModel
+- Techniques: MonteCarloSimulation, Bootstrapping
+- Activities: ScenarioGeneration, StressTesting, SensitivityAnalysis, BackTesting
+
+#### Embedded Value and Appraisal (New in v0.7)
+- EmbeddedValue
+- AppraisalValue
+- ValueOfNewBusiness (VNB)
+- ValueOfInForceBusiness (VIF)
+- MarketConsistentEmbeddedValue (MCEV)
+- EuropeanEmbeddedValue (EEV)
+
+#### Experience Studies (New in v0.7)
+- ExperienceStudy
+- MortalityStudy
+- LapseStudy
+- ExpenseStudy
+- ClaimsExperienceStudy
+
 ## Design Principles Applied
 
 1. **Nouns for Classes**: All classes are single nouns (e.g., "Person", "Risk", "Claim")
@@ -265,7 +361,21 @@ To work with this ontology:
 - ✅ All 4 improvement phases implemented (v0.6.0)
 - ✅ 100% competency question answerability achieved
 - ✅ Foundational alignment with UFO, COVER, and ASOPs complete
-- ✅ Comprehensive domain coverage across all actuarial practice areas
+- ✅ Comprehensive domain expansion (v0.7.0) - added 126+ classes across 13 critical domains:
+  - Underwriting (13 classes) - complete coverage of risk selection and classification
+  - Reinsurance structures (13 classes) - treaty/facultative, proportional/non-proportional
+  - Distribution and marketing (7 classes) - agents, brokers, channels
+  - Claims management (10 classes) - adjustment, fraud, settlement
+  - Policyholder behavior (7 classes) - lapse, surrender, persistency
+  - Asset-liability management (7 classes) - duration matching, immunization
+  - Life insurance specifics (14 classes) - cash values, riders, benefits
+  - Premium and rating (13 classes) - gross/net premium, rating methods
+  - Emerging risks (6 classes) - cyber, pandemic, climate, ESG
+  - Portfolio management (7 classes) - exposure units, segmentation
+  - Stochastic modeling (8 classes) - Monte Carlo, stress testing
+  - Embedded value (6 classes) - MCEV, EEV, VNB, VIF
+  - Experience studies (5 classes) - mortality, lapse, expense studies
+- ✅ Now the most comprehensive actuarial ontology with ~320 classes and ~90 properties
 
 **Future Development:**
 1. **Add Formal Constraints**: Define domain/range restrictions, cardinality constraints, and disjointness axioms
@@ -305,6 +415,25 @@ See the project [README.md](README.md) and [Code of Conduct](Code%20of%20Conduct
 This ontology is released under the MIT License. See [LICENSE](LICENSE) file for details.
 
 ## Version History
+
+- **0.7.0-draft** (2026-01-12): Major domain expansion - comprehensive coverage of actuarial practice
+  - Added underwriting domain: Underwriting, RiskSelection, RiskClassification, MedicalUnderwriting, FinancialUnderwriting, UnderwritingGuidelines, UnderwritingCriteria, AdverseSelection, MoralHazard, PreferredRisk, StandardRisk, SubstandardRisk, DeclinedRisk (13 new classes)
+  - Expanded reinsurance: TreatyReinsurance, FacultativeReinsurance, ProportionalReinsurance, QuotaShareReinsurance, SurplusReinsurance, NonProportionalReinsurance, ExcessOfLossReinsurance, CatastropheExcessOfLoss, StopLossReinsurance, RetentionLimit, ReinsuranceCession, CedingCommission, Retrocession (13 new classes)
+  - Added distribution and marketing: Agent, Broker, DistributionChannel, DirectWriter, CaptiveAgent, IndependentAgent, ManagingGeneralAgent (7 new classes)
+  - Expanded claims management: ClaimsAdjustment, ClaimsInvestigation, ClaimsSettlement, ClaimsAdjuster, IndependentAdjuster, PublicAdjuster, FraudDetection, FraudulentClaim, Salvage, Subrogation (10 new classes)
+  - Added policyholder behavior: Lapse, Surrender, Persistency, LapseRate, PersistencyRate, PolicyWithdrawal, PolicyLoan (7 new classes)
+  - Added asset-liability management: AssetLiabilityManagement, DurationMatching, CashFlowMatching, ImmunizationStrategy, AssetAllocation, InterestRateRisk, ReinvestmentRisk (7 new classes)
+  - Expanded life insurance: CashValue, SurrenderValue, NonForfeitureValue, PolicyDividend, ParticipatingPolicy, NonParticipatingPolicy, UniversalLifeInsurance, VariableLifeInsurance, RiderBenefit, LivingBenefit, DeathBenefit, AcceleratedDeathBenefit, GuaranteedMinimumDeathBenefit, WaiverOfPremiumRider (14 new classes)
+  - Expanded premium and rating: GrossPremium, NetPremium, LoadedPremium, PremiumRate, RatingFactor, ExperienceRating, ManualRating, ScheduleRating, RetrospectiveRating, LossCost, ExpenseLoading, AcquisitionExpense, MaintenanceExpense (13 new classes)
+  - Added emerging risks: EmergingRisk, CyberRisk, PandemicRisk, ClimateRisk, ESGRisk, TechnologyRisk (6 new classes)
+  - Added portfolio management: Portfolio, InsurancePortfolio, InvestmentPortfolio, ExposureUnit, InForcePolicy, BookOfBusiness, PortfolioSegmentation (7 new classes)
+  - Added stochastic modeling: StochasticModel, DeterministicModel, MonteCarloSimulation, ScenarioGeneration, StressTesting, SensitivityAnalysis, BackTesting, Bootstrapping (8 new classes)
+  - Added embedded value: EmbeddedValue, AppraisalValue, ValueOfNewBusiness, ValueOfInForceBusiness, MarketConsistentEmbeddedValue, EuropeanEmbeddedValue (6 new classes)
+  - Added experience studies: ExperienceStudy, MortalityStudy, LapseStudy, ExpenseStudy, ClaimsExperienceStudy (5 new classes)
+  - Added 14 new object properties: underwrites, classifiesAs, sellsThrough, representsInsurer, investigates, settles, cedesTo, assumesFrom, hasExposure, segmentsInto, generatesScenario, containsPolicy, belongsToPortfolio, and domain-specific relationships
+  - Added 8 new data properties: retentionAmount, lapseRate, persistencyRate, cashValueAmount, deathBenefitAmount, loadingPercentage, exposureAmount, embeddedValueAmount
+  - Total: ~320 classes (+126), ~90 object properties (+14), ~30 data properties (+8)
+  - Achieved comprehensive coverage across all major actuarial practice areas
 
 - **0.6.0-draft** (2026-01-12): Competency gap closure - 100% answerability achieved
   - Added `ao:hasMetric` property to enable financial metric and performance measure queries
