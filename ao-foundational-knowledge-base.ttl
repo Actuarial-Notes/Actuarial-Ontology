@@ -8,316 +8,349 @@
 #    Actuarial Ontology - Foundational Knowledge Base
 #################################################################
 #
-#    This knowledge base provides foundational examples demonstrating
-#    the Actuarial Ontology across all major actuarial domains:
-#    - Life Insurance
-#    - Health Insurance
-#    - Property & Casualty Insurance
-#    - Pensions and Annuities
-#    - Risk Management
-#    - Regulatory Compliance
+#    This knowledge base provides foundational examples using REAL
+#    entities to demonstrate the Actuarial Ontology:
+#    - Real insurance companies and reinsurers
+#    - Real regulators and standard-setting bodies
+#    - Real mortality tables and actuarial standards
+#    - Real catastrophe events and modeling firms
+#    - Real accounting and regulatory frameworks
 #
-#    Purpose: Serve as a reference implementation and teaching tool
-#    for understanding actuarial concepts through concrete examples.
+#    Purpose: Serve as a reference implementation demonstrating
+#    how actual industry entities map to the ontology structure.
 #
 #################################################################
 
 #################################################################
-#    Organizations - Insurance Companies
+#    Organizations - Real Insurance Companies
 #################################################################
 
 ### Life Insurance Companies
 
-kb:LifeGuard_Insurance rdf:type ao:Insurer ;
-    rdfs:label "LifeGuard Insurance Company" ;
-    rdfs:comment "Multi-line life insurance company offering term, whole, and universal life products" ;
-    ao:hasAsset kb:LifeGuard_Assets ;
-    ao:hasLiability kb:LifeGuard_Liabilities .
+kb:MetLife rdf:type ao:Insurer ;
+    rdfs:label "MetLife, Inc." ;
+    rdfs:comment "Global life insurance, annuities, employee benefits, and asset management company" ;
+    ao:exposedTo kb:Risk_Mortality , kb:Risk_Longevity , kb:Risk_Market , kb:Risk_Interest_Rate .
 
-kb:Longevity_Life rdf:type ao:Insurer ;
-    rdfs:label "Longevity Life Corporation" ;
-    rdfs:comment "Specialty insurer focused on annuities and longevity risk management" .
+kb:Prudential rdf:type ao:Insurer ;
+    rdfs:label "Prudential Financial, Inc." ;
+    rdfs:comment "Financial services company offering life insurance, annuities, retirement services, and asset management" ;
+    ao:exposedTo kb:Risk_Mortality , kb:Risk_Longevity , kb:Risk_Market .
+
+kb:Northwestern_Mutual rdf:type ao:Insurer ;
+    rdfs:label "Northwestern Mutual" ;
+    rdfs:comment "Mutual life insurance company offering life insurance, disability insurance, and annuities" ;
+    ao:exposedTo kb:Risk_Mortality , kb:Risk_Morbidity .
+
+kb:New_York_Life rdf:type ao:Insurer ;
+    rdfs:label "New York Life Insurance Company" ;
+    rdfs:comment "Mutual life insurance company, largest mutual life insurer in the United States" ;
+    ao:exposedTo kb:Risk_Mortality , kb:Risk_Longevity .
+
+kb:MassMutual rdf:type ao:Insurer ;
+    rdfs:label "Massachusetts Mutual Life Insurance Company" ;
+    rdfs:comment "Mutual life insurance company offering life insurance, disability insurance, annuities, and retirement products" ;
+    ao:exposedTo kb:Risk_Mortality , kb:Risk_Morbidity , kb:Risk_Longevity .
 
 ### Health Insurance Companies
 
-kb:HealthFirst_Corp rdf:type ao:Insurer ;
-    rdfs:label "HealthFirst Corporation" ;
-    rdfs:comment "Major health insurance provider offering individual and group coverage" .
+kb:UnitedHealth_Group rdf:type ao:Insurer ;
+    rdfs:label "UnitedHealth Group" ;
+    rdfs:comment "Diversified health care company providing health insurance and health care services" ;
+    ao:exposedTo kb:Risk_Morbidity , kb:Risk_Pandemic .
+
+kb:Anthem rdf:type ao:Insurer ;
+    rdfs:label "Anthem, Inc." ;
+    rdfs:comment "Health insurance company operating Blue Cross Blue Shield plans" ;
+    ao:exposedTo kb:Risk_Morbidity , kb:Risk_Pandemic .
+
+kb:Cigna rdf:type ao:Insurer ;
+    rdfs:label "Cigna Corporation" ;
+    rdfs:comment "Global health services company providing health insurance and related products" ;
+    ao:exposedTo kb:Risk_Morbidity .
+
+kb:Humana rdf:type ao:Insurer ;
+    rdfs:label "Humana Inc." ;
+    rdfs:comment "Health insurance company focused on Medicare Advantage and employer group plans" ;
+    ao:exposedTo kb:Risk_Morbidity , kb:Risk_Mortality .
 
 ### Property & Casualty Companies
 
-kb:SafeHome_Insurance rdf:type ao:Insurer ;
-    rdfs:label "SafeHome Insurance" ;
-    rdfs:comment "Property and casualty insurer specializing in homeowners and auto insurance" .
+kb:State_Farm rdf:type ao:Insurer ;
+    rdfs:label "State Farm Mutual Automobile Insurance Company" ;
+    rdfs:comment "Mutual insurance company, largest auto and home insurer in the United States" ;
+    ao:exposedTo kb:Risk_Property , kb:Risk_Liability , kb:Risk_Catastrophe , kb:Risk_Climate .
 
-kb:Commercial_Shield rdf:type ao:Insurer ;
-    rdfs:label "Commercial Shield LLC" ;
-    rdfs:comment "Commercial lines insurer focusing on business liability and property coverage" .
+kb:Allstate rdf:type ao:Insurer ;
+    rdfs:label "Allstate Corporation" ;
+    rdfs:comment "Personal lines insurance company offering auto and home insurance" ;
+    ao:exposedTo kb:Risk_Property , kb:Risk_Liability , kb:Risk_Catastrophe .
+
+kb:GEICO rdf:type ao:Insurer ;
+    rdfs:label "Government Employees Insurance Company (GEICO)" ;
+    rdfs:comment "Auto insurance company, subsidiary of Berkshire Hathaway" ;
+    ao:exposedTo kb:Risk_Property , kb:Risk_Liability .
+
+kb:Progressive rdf:type ao:Insurer ;
+    rdfs:label "Progressive Corporation" ;
+    rdfs:comment "Insurance company specializing in auto insurance with usage-based insurance programs" ;
+    ao:exposedTo kb:Risk_Property , kb:Risk_Liability .
+
+kb:Liberty_Mutual rdf:type ao:Insurer ;
+    rdfs:label "Liberty Mutual Insurance Company" ;
+    rdfs:comment "Diversified global insurer offering auto, home, and commercial insurance" ;
+    ao:exposedTo kb:Risk_Property , kb:Risk_Liability , kb:Risk_Catastrophe .
+
+kb:Travelers rdf:type ao:Insurer ;
+    rdfs:label "The Travelers Companies, Inc." ;
+    rdfs:comment "Commercial and personal property casualty insurance company" ;
+    ao:exposedTo kb:Risk_Property , kb:Risk_Liability , kb:Risk_Catastrophe .
+
+kb:Chubb rdf:type ao:Insurer ;
+    rdfs:label "Chubb Limited" ;
+    rdfs:comment "Global property and casualty insurance company serving commercial and personal lines" ;
+    ao:exposedTo kb:Risk_Property , kb:Risk_Liability , kb:Risk_Catastrophe , kb:Risk_Cyber .
 
 ### Reinsurers
 
-kb:Global_Reinsurance rdf:type ao:Reinsurer ;
-    rdfs:label "Global Reinsurance Partners" ;
-    rdfs:comment "International reinsurer providing treaty and facultative reinsurance" .
+kb:Munich_Re rdf:type ao:Reinsurer ;
+    rdfs:label "Munich Reinsurance Company (Munich Re)" ;
+    rdfs:comment "Global reinsurance company, one of the world's largest reinsurers" ;
+    ao:exposedTo kb:Risk_Catastrophe , kb:Risk_Mortality , kb:Risk_Climate .
 
-### Pension Plan Sponsors
+kb:Swiss_Re rdf:type ao:Reinsurer ;
+    rdfs:label "Swiss Reinsurance Company (Swiss Re)" ;
+    rdfs:comment "Global reinsurance company providing reinsurance, insurance, and risk transfer solutions" ;
+    ao:exposedTo kb:Risk_Catastrophe , kb:Risk_Mortality , kb:Risk_Climate , kb:Risk_Pandemic .
 
-kb:TechCorp_Inc rdf:type ao:Organization ;
-    rdfs:label "TechCorp Inc." ;
-    rdfs:comment "Technology company sponsoring defined benefit and defined contribution pension plans" .
+kb:Hannover_Re rdf:type ao:Reinsurer ;
+    rdfs:label "Hannover Rück SE (Hannover Re)" ;
+    rdfs:comment "Reinsurance group providing property & casualty and life & health reinsurance" ;
+    ao:exposedTo kb:Risk_Catastrophe , kb:Risk_Mortality .
 
-#################################################################
-#    Regulators and Standard Setters
-#################################################################
+kb:SCOR rdf:type ao:Reinsurer ;
+    rdfs:label "SCOR SE" ;
+    rdfs:comment "Global reinsurance company offering life and non-life reinsurance" ;
+    ao:exposedTo kb:Risk_Catastrophe , kb:Risk_Mortality , kb:Risk_Longevity .
 
-kb:State_Insurance_Dept rdf:type ao:Regulator ;
-    rdfs:label "State Insurance Department" ;
-    rdfs:comment "State regulatory authority overseeing insurance company operations" .
-
-kb:Federal_Pension_Authority rdf:type ao:Regulator ;
-    rdfs:label "Federal Pension Benefits Authority" ;
-    rdfs:comment "Federal regulator overseeing pension plan compliance" .
-
-#################################################################
-#    Actuaries and Agents
-#################################################################
-
-### Actuaries
-
-kb:Actuary_Sarah_Chen rdf:type ao:Actuary ;
-    rdfs:label "Sarah Chen, FSA, MAAA" ;
-    rdfs:comment "Fellow of the Society of Actuaries specializing in life insurance pricing and valuation" ;
-    ao:manages kb:Risk_Mortality .
-
-kb:Actuary_Michael_Rodriguez rdf:type ao:Actuary ;
-    rdfs:label "Michael Rodriguez, FCAS, MAAA" ;
-    rdfs:comment "Fellow of the Casualty Actuarial Society specializing in property casualty reserving" ;
-    ao:manages kb:Risk_Property .
-
-kb:Actuary_Jennifer_Park rdf:type ao:Actuary ;
-    rdfs:label "Jennifer Park, FSA, EA" ;
-    rdfs:comment "Enrolled Actuary specializing in pension plan valuations" ;
-    ao:manages kb:Risk_Longevity .
-
-kb:Actuary_David_Thompson rdf:type ao:Actuary ;
-    rdfs:label "David Thompson, FSA" ;
-    rdfs:comment "Health actuary specializing in group health insurance pricing" .
-
-### Distribution Agents
-
-kb:Agent_Robert_Williams rdf:type ao:CaptiveAgent ;
-    rdfs:label "Robert Williams" ;
-    rdfs:comment "Captive insurance agent representing LifeGuard Insurance exclusively" ;
-    ao:representsInsurer kb:LifeGuard_Insurance .
-
-kb:Agent_Lisa_Martinez rdf:type ao:IndependentAgent ;
-    rdfs:label "Lisa Martinez" ;
-    rdfs:comment "Independent insurance agent representing multiple carriers" .
-
-kb:Broker_John_Davis rdf:type ao:Broker ;
-    rdfs:label "John Davis Insurance Brokers" ;
-    rdfs:comment "Commercial insurance brokerage firm" .
+kb:RGA rdf:type ao:Reinsurer ;
+    rdfs:label "Reinsurance Group of America (RGA)" ;
+    rdfs:comment "Life and health reinsurance company" ;
+    ao:exposedTo kb:Risk_Mortality , kb:Risk_Morbidity , kb:Risk_Longevity .
 
 #################################################################
-#    Insurance Products
+#    Regulators and Regulatory Bodies
 #################################################################
 
-### Life Insurance Products
+### United States Regulators
 
-kb:Product_Term_Life_20 rdf:type ao:TermLife ;
-    rdfs:label "20-Year Level Term Life Insurance" ;
-    rdfs:comment "Term life insurance policy with level death benefit for 20 years" .
+kb:NAIC rdf:type ao:Regulator ;
+    rdfs:label "National Association of Insurance Commissioners (NAIC)" ;
+    rdfs:comment "US standard-setting and regulatory support organization for state insurance regulators" .
+
+kb:NY_DFS rdf:type ao:Regulator ;
+    rdfs:label "New York State Department of Financial Services (NYDFS)" ;
+    rdfs:comment "New York state financial services regulator overseeing insurance and banking" .
+
+kb:California_DOI rdf:type ao:Regulator ;
+    rdfs:label "California Department of Insurance" ;
+    rdfs:comment "California state insurance regulator" .
+
+kb:Texas_DOI rdf:type ao:Regulator ;
+    rdfs:label "Texas Department of Insurance" ;
+    rdfs:comment "Texas state insurance regulator" .
+
+kb:DOL rdf:type ao:Regulator ;
+    rdfs:label "U.S. Department of Labor" ;
+    rdfs:comment "Federal agency overseeing ERISA compliance for employee benefit plans" .
+
+kb:IRS rdf:type ao:Regulator ;
+    rdfs:label "Internal Revenue Service" ;
+    rdfs:comment "Federal agency overseeing tax qualification of retirement plans" .
+
+kb:PBGC rdf:type ao:Regulator ;
+    rdfs:label "Pension Benefit Guaranty Corporation" ;
+    rdfs:comment "Federal corporation insuring private sector defined benefit pension plans" .
+
+### International Regulators
+
+kb:EIOPA rdf:type ao:Regulator ;
+    rdfs:label "European Insurance and Occupational Pensions Authority" ;
+    rdfs:comment "EU regulatory authority for insurance and occupational pensions" .
+
+kb:PRA rdf:type ao:Regulator ;
+    rdfs:label "Prudential Regulation Authority (UK)" ;
+    rdfs:comment "UK financial services regulator responsible for prudential regulation of insurers" .
+
+kb:BaFin rdf:type ao:Regulator ;
+    rdfs:label "Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin)" ;
+    rdfs:comment "German Federal Financial Supervisory Authority" .
+
+kb:OSFI rdf:type ao:Regulator ;
+    rdfs:label "Office of the Superintendent of Financial Institutions (Canada)" ;
+    rdfs:comment "Canadian federal financial institutions regulator" .
+
+#################################################################
+#    Professional Organizations
+#################################################################
+
+kb:SOA rdf:type ao:Organization ;
+    rdfs:label "Society of Actuaries (SOA)" ;
+    rdfs:comment "Professional organization for actuaries specializing in life insurance, pensions, and health" .
+
+kb:CAS rdf:type ao:Organization ;
+    rdfs:label "Casualty Actuarial Society (CAS)" ;
+    rdfs:comment "Professional organization for actuaries specializing in property and casualty insurance" .
+
+kb:AAA rdf:type ao:Organization ;
+    rdfs:label "American Academy of Actuaries" ;
+    rdfs:comment "Professional association representing all actuaries in the United States" .
+
+kb:CIA rdf:type ao:Organization ;
+    rdfs:label "Canadian Institute of Actuaries" ;
+    rdfs:comment "National organization of the actuarial profession in Canada" .
+
+kb:IFoA rdf:type ao:Organization ;
+    rdfs:label "Institute and Faculty of Actuaries (UK)" ;
+    rdfs:comment "Professional body for actuaries in the United Kingdom" .
+
+kb:IAA rdf:type ao:Organization ;
+    rdfs:label "International Actuarial Association" ;
+    rdfs:comment "Worldwide association of professional actuarial associations" .
+
+#################################################################
+#    Insurance Products - Product Types
+#################################################################
+
+### Life Insurance Product Categories
+
+kb:Product_Term_Life rdf:type ao:TermLife ;
+    rdfs:label "Term Life Insurance" ;
+    rdfs:comment "Life insurance providing coverage for a specified term with no cash value" ;
+    ao:covers kb:Risk_Mortality .
 
 kb:Product_Whole_Life rdf:type ao:WholeLife ;
-    rdfs:label "Participating Whole Life Insurance" ;
-    rdfs:comment "Whole life insurance with cash value accumulation and policy dividends" .
+    rdfs:label "Whole Life Insurance" ;
+    rdfs:comment "Permanent life insurance with level premiums and cash value accumulation" ;
+    ao:covers kb:Risk_Mortality .
 
 kb:Product_Universal_Life rdf:type ao:UniversalLifeInsurance ;
-    rdfs:label "Flexible Premium Universal Life" ;
-    rdfs:comment "Universal life insurance with flexible premiums and adjustable death benefit" .
+    rdfs:label "Universal Life Insurance" ;
+    rdfs:comment "Flexible premium permanent life insurance with adjustable death benefit" ;
+    ao:covers kb:Risk_Mortality .
 
-### Health Insurance Products
+kb:Product_Variable_Universal_Life rdf:type ao:UniversalLifeInsurance ;
+    rdfs:label "Variable Universal Life Insurance" ;
+    rdfs:comment "Universal life insurance with investment options in separate accounts" ;
+    ao:covers kb:Risk_Mortality , kb:Risk_Market .
 
-kb:Product_Group_Health rdf:type ao:HealthInsurance ;
-    rdfs:label "Comprehensive Group Health Insurance" ;
-    rdfs:comment "Group health insurance covering medical, dental, and vision benefits" .
+kb:Product_Indexed_Universal_Life rdf:type ao:UniversalLifeInsurance ;
+    rdfs:label "Indexed Universal Life Insurance" ;
+    rdfs:comment "Universal life with interest crediting linked to equity index performance" ;
+    ao:covers kb:Risk_Mortality , kb:Risk_Market .
 
-kb:Product_Individual_Health rdf:type ao:HealthInsurance ;
-    rdfs:label "Individual Health Plan Bronze" ;
-    rdfs:comment "Individual health insurance plan with bronze level coverage" .
-
-### Property & Casualty Products
-
-kb:Product_Auto_Insurance rdf:type ao:PropertyInsurance ;
-    rdfs:label "Personal Auto Insurance" ;
-    rdfs:comment "Automobile insurance covering liability, collision, and comprehensive perils" .
-
-kb:Product_Homeowners rdf:type ao:PropertyInsurance ;
-    rdfs:label "Homeowners Insurance HO-3" ;
-    rdfs:comment "Homeowners insurance policy providing dwelling and liability coverage" .
-
-kb:Product_Commercial_GL rdf:type ao:CasualtyInsurance ;
-    rdfs:label "Commercial General Liability" ;
-    rdfs:comment "Commercial general liability coverage for business operations" .
-
-### Annuities
+### Annuity Product Categories
 
 kb:Product_Fixed_Annuity rdf:type ao:Annuity ;
-    rdfs:label "Fixed Deferred Annuity" ;
-    rdfs:comment "Deferred annuity with guaranteed fixed interest crediting" .
+    rdfs:label "Fixed Annuity" ;
+    rdfs:comment "Annuity with guaranteed fixed interest rate" ;
+    ao:covers kb:Risk_Longevity , kb:Risk_Interest_Rate .
 
 kb:Product_Variable_Annuity rdf:type ao:Annuity ;
-    rdfs:label "Variable Annuity with GMDB" ;
-    rdfs:comment "Variable annuity with guaranteed minimum death benefit rider" .
+    rdfs:label "Variable Annuity" ;
+    rdfs:comment "Annuity with returns based on underlying investment portfolio performance" ;
+    ao:covers kb:Risk_Longevity , kb:Risk_Market .
 
-### Pension Plans
+kb:Product_Fixed_Indexed_Annuity rdf:type ao:Annuity ;
+    rdfs:label "Fixed Indexed Annuity" ;
+    rdfs:comment "Annuity with returns linked to equity index with downside protection" ;
+    ao:covers kb:Risk_Longevity , kb:Risk_Market .
 
-kb:Product_DB_Pension rdf:type ao:DefinedBenefit ;
-    rdfs:label "TechCorp Defined Benefit Pension Plan" ;
-    rdfs:comment "Traditional defined benefit pension plan with final average pay formula" .
+kb:Product_Immediate_Annuity rdf:type ao:Annuity ;
+    rdfs:label "Single Premium Immediate Annuity (SPIA)" ;
+    rdfs:comment "Annuity providing immediate income stream following single premium payment" ;
+    ao:covers kb:Risk_Longevity .
 
-kb:Product_DC_401k rdf:type ao:DefinedContribution ;
-    rdfs:label "TechCorp 401(k) Plan" ;
-    rdfs:comment "Defined contribution 401(k) plan with employer matching" .
+### Health Insurance Product Categories
 
-#################################################################
-#    Policyholders and Beneficiaries
-#################################################################
+kb:Product_Major_Medical rdf:type ao:HealthInsurance ;
+    rdfs:label "Major Medical Health Insurance" ;
+    rdfs:comment "Comprehensive health insurance covering hospital, medical, and surgical expenses" ;
+    ao:covers kb:Risk_Morbidity .
 
-### Individual Policyholders
+kb:Product_Medicare_Advantage rdf:type ao:HealthInsurance ;
+    rdfs:label "Medicare Advantage (Medicare Part C)" ;
+    rdfs:comment "Medicare coverage provided through private insurance companies" ;
+    ao:covers kb:Risk_Morbidity , kb:Risk_Mortality .
 
-kb:Policyholder_John_Smith rdf:type ao:Policyholder , ao:Person ;
-    rdfs:label "John Smith" ;
-    rdfs:comment "Individual policyholder age 35" ;
-    ao:hasPolicy kb:Policy_Term_Life_001 ;
-    ao:exposedTo kb:Risk_Mortality .
+kb:Product_LTC_Insurance rdf:type ao:HealthInsurance ;
+    rdfs:label "Long-Term Care Insurance" ;
+    rdfs:comment "Insurance covering long-term care services and support" ;
+    ao:covers kb:Risk_Morbidity , kb:Risk_Longevity .
 
-kb:Policyholder_Mary_Johnson rdf:type ao:Policyholder , ao:Person ;
-    rdfs:label "Mary Johnson" ;
-    rdfs:comment "Individual policyholder age 58" ;
-    ao:hasPolicy kb:Policy_Whole_Life_001 ;
-    ao:exposedTo kb:Risk_Mortality .
+kb:Product_Disability_Insurance rdf:type ao:HealthInsurance ;
+    rdfs:label "Disability Income Insurance" ;
+    rdfs:comment "Insurance providing income replacement during disability" ;
+    ao:covers kb:Risk_Morbidity .
 
-kb:Policyholder_Robert_Brown rdf:type ao:Policyholder , ao:Person ;
-    rdfs:label "Robert Brown" ;
-    rdfs:comment "Homeowner and auto policyholder" ;
-    ao:hasPolicy kb:Policy_Auto_001 , kb:Policy_Home_001 ;
-    ao:exposedTo kb:Risk_Property , kb:Risk_Liability .
+### Property & Casualty Product Categories
 
-kb:Policyholder_Emily_Davis rdf:type ao:Policyholder , ao:Person ;
-    rdfs:label "Emily Davis" ;
-    rdfs:comment "Individual health insurance policyholder age 42" ;
-    ao:hasPolicy kb:Policy_Health_001 .
-
-### Annuitant
-
-kb:Annuitant_James_Wilson rdf:type ao:Person ;
-    rdfs:label "James Wilson" ;
-    rdfs:comment "Annuitant receiving retirement income age 67" ;
-    ao:hasPolicy kb:Policy_Fixed_Annuity_001 ;
-    ao:exposedTo kb:Risk_Longevity .
-
-### Beneficiaries
-
-kb:Beneficiary_Jane_Smith rdf:type ao:Beneficiary , ao:Person ;
-    rdfs:label "Jane Smith" ;
-    rdfs:comment "Spouse beneficiary of John Smith's life insurance policy" .
-
-#################################################################
-#    Insurance Policies and Contracts
-#################################################################
-
-### Life Insurance Policies
-
-kb:Policy_Term_Life_001 rdf:type ao:InsurancePolicy , ao:TermLife ;
-    rdfs:label "Term Life Policy #TL-2024-001" ;
-    rdfs:comment "20-year term life policy with $500,000 death benefit" ;
-    ao:policyNumber "TL-2024-001" ;
-    ao:effectiveDate "2024-01-15"^^xsd:date ;
-    ao:expirationDate "2044-01-15"^^xsd:date ;
-    ao:hasMonetaryValue 500000.00 ;
-    ao:covers kb:Risk_Mortality .
-
-kb:Policy_Whole_Life_001 rdf:type ao:InsurancePolicy , ao:WholeLife , ao:ParticipatingPolicy ;
-    rdfs:label "Whole Life Policy #WL-2020-045" ;
-    rdfs:comment "Participating whole life policy with $250,000 death benefit and cash value" ;
-    ao:policyNumber "WL-2020-045" ;
-    ao:effectiveDate "2020-03-01"^^xsd:date ;
-    ao:hasMonetaryValue 250000.00 ;
-    ao:cashValueAmount 18500.00 ;
-    ao:covers kb:Risk_Mortality .
-
-kb:Policy_Universal_Life_001 rdf:type ao:InsurancePolicy , ao:UniversalLifeInsurance ;
-    rdfs:label "Universal Life Policy #UL-2022-123" ;
-    rdfs:comment "Universal life with $1,000,000 death benefit" ;
-    ao:policyNumber "UL-2022-123" ;
-    ao:effectiveDate "2022-06-01"^^xsd:date ;
-    ao:hasMonetaryValue 1000000.00 .
-
-### Health Insurance Policies
-
-kb:Policy_Health_001 rdf:type ao:InsurancePolicy ;
-    rdfs:label "Health Policy #HLT-2025-789" ;
-    rdfs:comment "Individual health insurance policy with $5,000 deductible" ;
-    ao:policyNumber "HLT-2025-789" ;
-    ao:effectiveDate "2025-01-01"^^xsd:date ;
-    ao:expirationDate "2025-12-31"^^xsd:date .
-
-kb:Policy_Group_Health_001 rdf:type ao:InsurancePolicy ;
-    rdfs:label "Group Health Policy #GRP-2024-050" ;
-    rdfs:comment "TechCorp employee group health insurance policy" ;
-    ao:policyNumber "GRP-2024-050" ;
-    ao:effectiveDate "2024-01-01"^^xsd:date ;
-    ao:expirationDate "2024-12-31"^^xsd:date .
-
-### Property & Casualty Policies
-
-kb:Policy_Auto_001 rdf:type ao:InsurancePolicy ;
-    rdfs:label "Auto Policy #AUTO-2025-456" ;
-    rdfs:comment "Personal auto policy with liability and comprehensive coverage" ;
-    ao:policyNumber "AUTO-2025-456" ;
-    ao:effectiveDate "2025-06-15"^^xsd:date ;
-    ao:expirationDate "2026-06-15"^^xsd:date ;
+kb:Product_Personal_Auto rdf:type ao:PropertyInsurance ;
+    rdfs:label "Personal Automobile Insurance" ;
+    rdfs:comment "Insurance covering private passenger vehicles for liability and physical damage" ;
     ao:covers kb:Risk_Property , kb:Risk_Liability .
 
-kb:Policy_Home_001 rdf:type ao:InsurancePolicy ;
-    rdfs:label "Homeowners Policy #HO3-2025-234" ;
-    rdfs:comment "HO-3 homeowners policy with $400,000 dwelling coverage" ;
-    ao:policyNumber "HO3-2025-234" ;
-    ao:effectiveDate "2025-01-01"^^xsd:date ;
-    ao:expirationDate "2026-01-01"^^xsd:date ;
-    ao:hasMonetaryValue 400000.00 ;
+kb:Product_Homeowners rdf:type ao:PropertyInsurance ;
+    rdfs:label "Homeowners Insurance" ;
+    rdfs:comment "Insurance covering residential property and liability" ;
+    ao:covers kb:Risk_Property , kb:Risk_Liability .
+
+kb:Product_Commercial_Property rdf:type ao:PropertyInsurance ;
+    rdfs:label "Commercial Property Insurance" ;
+    rdfs:comment "Insurance covering business property and equipment" ;
     ao:covers kb:Risk_Property .
 
-kb:Policy_Commercial_GL_001 rdf:type ao:InsurancePolicy ;
-    rdfs:label "Commercial GL Policy #CGL-2024-678" ;
-    rdfs:comment "Commercial general liability with $2M/$4M limits" ;
-    ao:policyNumber "CGL-2024-678" ;
-    ao:effectiveDate "2024-07-01"^^xsd:date ;
-    ao:expirationDate "2025-07-01"^^xsd:date ;
+kb:Product_General_Liability rdf:type ao:CasualtyInsurance ;
+    rdfs:label "Commercial General Liability Insurance" ;
+    rdfs:comment "Coverage for business liability exposures" ;
     ao:covers kb:Risk_Liability .
 
-### Annuity Contracts
+kb:Product_Workers_Comp rdf:type ao:CasualtyInsurance ;
+    rdfs:label "Workers Compensation Insurance" ;
+    rdfs:comment "Employer coverage for employee work-related injuries and illnesses" ;
+    ao:covers kb:Risk_Liability , kb:Risk_Morbidity .
 
-kb:Policy_Fixed_Annuity_001 rdf:type ao:InsurancePolicy , ao:Annuity ;
-    rdfs:label "Fixed Annuity Contract #FA-2018-333" ;
-    rdfs:comment "Fixed deferred annuity in payout phase providing monthly income" ;
-    ao:policyNumber "FA-2018-333" ;
-    ao:effectiveDate "2018-12-01"^^xsd:date .
+kb:Product_Professional_Liability rdf:type ao:CasualtyInsurance ;
+    rdfs:label "Professional Liability Insurance (E&O)" ;
+    rdfs:comment "Coverage for professional negligence and errors and omissions" ;
+    ao:covers kb:Risk_Liability .
 
-### Reinsurance Contracts
+kb:Product_Cyber_Insurance rdf:type ao:CasualtyInsurance ;
+    rdfs:label "Cyber Liability Insurance" ;
+    rdfs:comment "Coverage for cyber risks including data breaches and cyber attacks" ;
+    ao:covers kb:Risk_Cyber .
 
-kb:Reinsurance_Treaty_001 rdf:type ao:ReinsuranceContract , ao:TreatyReinsurance , ao:QuotaShareReinsurance ;
-    rdfs:label "Quota Share Treaty 2024" ;
-    rdfs:comment "50% quota share treaty on term life business" ;
-    ao:effectiveDate "2024-01-01"^^xsd:date ;
-    ao:expirationDate "2024-12-31"^^xsd:date .
+### Pension Plan Types
 
-kb:Reinsurance_Cat_XOL_001 rdf:type ao:ReinsuranceContract , ao:CatastropheExcessOfLoss ;
-    rdfs:label "Catastrophe XOL Treaty 2025" ;
-    rdfs:comment "Catastrophe excess of loss treaty: $10M xs $5M" ;
-    ao:effectiveDate "2025-01-01"^^xsd:date ;
-    ao:retentionAmount 5000000.00 .
+kb:Product_DB_Pension rdf:type ao:DefinedBenefit ;
+    rdfs:label "Defined Benefit Pension Plan" ;
+    rdfs:comment "Traditional pension plan with employer-funded retirement benefits based on formula" ;
+    ao:covers kb:Risk_Longevity , kb:Risk_Interest_Rate .
+
+kb:Product_Cash_Balance rdf:type ao:DefinedBenefit ;
+    rdfs:label "Cash Balance Pension Plan" ;
+    rdfs:comment "Hybrid pension plan with defined benefit structure and account-based features" ;
+    ao:covers kb:Risk_Longevity , kb:Risk_Interest_Rate .
+
+kb:Product_401k rdf:type ao:DefinedContribution ;
+    rdfs:label "401(k) Plan" ;
+    rdfs:comment "Defined contribution retirement plan with employee salary deferrals and optional employer match" ;
+    ao:covers kb:Risk_Market .
+
+kb:Product_403b rdf:type ao:DefinedContribution ;
+    rdfs:label "403(b) Plan" ;
+    rdfs:comment "Tax-sheltered retirement plan for employees of public schools and tax-exempt organizations" ;
+    ao:covers kb:Risk_Market .
 
 #################################################################
 #    Risks
@@ -327,21 +360,21 @@ kb:Reinsurance_Cat_XOL_001 rdf:type ao:ReinsuranceContract , ao:CatastropheExces
 
 kb:Risk_Mortality rdf:type ao:MortalityRisk , ao:InsurableRisk ;
     rdfs:label "Mortality Risk" ;
-    rdfs:comment "Risk of death occurring earlier than expected, affecting life insurance" .
+    rdfs:comment "Risk of death occurring earlier than expected, affecting life insurance and annuity death benefits" .
 
 kb:Risk_Longevity rdf:type ao:LongevityRisk , ao:InsurableRisk ;
     rdfs:label "Longevity Risk" ;
-    rdfs:comment "Risk of individuals living longer than expected, affecting annuities and pensions" .
+    rdfs:comment "Risk of individuals living longer than expected, affecting annuity payouts and pension obligations" .
 
 kb:Risk_Morbidity rdf:type ao:MorbidityRisk , ao:InsurableRisk ;
     rdfs:label "Morbidity Risk" ;
-    rdfs:comment "Risk of illness or disability affecting health and disability insurance" .
+    rdfs:comment "Risk of illness, injury, or disability affecting health insurance and disability income products" .
 
 ### Property and Casualty Risks
 
 kb:Risk_Property rdf:type ao:PropertyRisk , ao:InsurableRisk ;
     rdfs:label "Property Damage Risk" ;
-    rdfs:comment "Risk of physical damage to property from various perils" .
+    rdfs:comment "Risk of physical damage to insured property from covered perils" .
 
 kb:Risk_Liability rdf:type ao:LiabilityRisk , ao:InsurableRisk ;
     rdfs:label "Liability Risk" ;
@@ -349,776 +382,669 @@ kb:Risk_Liability rdf:type ao:LiabilityRisk , ao:InsurableRisk ;
 
 kb:Risk_Catastrophe rdf:type ao:CatastropheRisk , ao:InsurableRisk ;
     rdfs:label "Catastrophe Risk" ;
-    rdfs:comment "Risk of extreme events causing widespread property damage" .
+    rdfs:comment "Risk of extreme events causing widespread insured losses across large geographic areas" .
 
 ### Financial Risks
 
 kb:Risk_Market rdf:type ao:MarketRisk ;
     rdfs:label "Market Risk" ;
-    rdfs:comment "Risk of adverse changes in market values of investments" .
+    rdfs:comment "Risk of adverse changes in market values of investments affecting assets and variable products" .
 
 kb:Risk_Interest_Rate rdf:type ao:InterestRateRisk , ao:MarketRisk ;
     rdfs:label "Interest Rate Risk" ;
-    rdfs:comment "Risk of changes in interest rates affecting asset and liability values" .
+    rdfs:comment "Risk of changes in interest rates affecting asset values, liability values, and product profitability" .
 
 kb:Risk_Credit rdf:type ao:CreditRisk ;
     rdfs:label "Credit Risk" ;
-    rdfs:comment "Risk of counterparty default on financial obligations" .
+    rdfs:comment "Risk of counterparty default on bonds, reinsurance recoverables, and other financial obligations" .
 
 kb:Risk_Operational rdf:type ao:OperationalRisk ;
     rdfs:label "Operational Risk" ;
-    rdfs:comment "Risk of loss from inadequate or failed internal processes" .
+    rdfs:comment "Risk of loss from inadequate or failed internal processes, people, systems, or external events" .
+
+kb:Risk_Liquidity rdf:type ao:LiquidityRisk ;
+    rdfs:label "Liquidity Risk" ;
+    rdfs:comment "Risk of inability to meet cash flow obligations when due without incurring unacceptable losses" .
 
 ### Emerging Risks
 
 kb:Risk_Cyber rdf:type ao:CyberRisk , ao:EmergingRisk ;
     rdfs:label "Cyber Risk" ;
-    rdfs:comment "Risk of data breaches, cyber attacks, and technology failures" .
+    rdfs:comment "Risk of data breaches, cyber attacks, ransomware, and technology system failures" .
 
 kb:Risk_Pandemic rdf:type ao:PandemicRisk , ao:EmergingRisk ;
     rdfs:label "Pandemic Risk" ;
-    rdfs:comment "Risk of widespread disease outbreak affecting mortality and morbidity" .
+    rdfs:comment "Risk of widespread disease outbreak affecting mortality, morbidity, and business operations" .
 
 kb:Risk_Climate rdf:type ao:ClimateRisk , ao:EmergingRisk ;
     rdfs:label "Climate Change Risk" ;
-    rdfs:comment "Risk of increased frequency and severity of weather-related events" .
+    rdfs:comment "Risk of increased frequency and severity of weather-related events due to climate change" .
 
 #################################################################
-#    Perils
+#    Perils - Real Categories
 #################################################################
 
 ### Natural Perils
 
 kb:Peril_Hurricane rdf:type ao:NaturalPeril ;
-    rdfs:label "Hurricane" ;
-    rdfs:comment "Tropical cyclone with sustained winds exceeding 74 mph" .
+    rdfs:label "Hurricane / Tropical Cyclone" ;
+    rdfs:comment "Tropical storm system with sustained winds of 74 mph or greater causing wind, storm surge, and flood damage" .
 
 kb:Peril_Earthquake rdf:type ao:NaturalPeril ;
     rdfs:label "Earthquake" ;
-    rdfs:comment "Seismic activity causing ground shaking and structural damage" .
+    rdfs:comment "Seismic ground shaking causing structural damage and ground failure" .
 
 kb:Peril_Flood rdf:type ao:NaturalPeril ;
     rdfs:label "Flood" ;
-    rdfs:comment "Overflow of water onto normally dry land" .
+    rdfs:comment "Overflow of water onto normally dry land from rivers, storm surge, or heavy rainfall" .
 
 kb:Peril_Wildfire rdf:type ao:NaturalPeril ;
     rdfs:label "Wildfire" ;
-    rdfs:comment "Uncontrolled fire in wildland areas" .
+    rdfs:comment "Uncontrolled fire in wildland-urban interface areas" .
 
 kb:Peril_Tornado rdf:type ao:NaturalPeril ;
     rdfs:label "Tornado" ;
-    rdfs:comment "Violently rotating column of air touching the ground" .
+    rdfs:comment "Violently rotating column of air extending from thunderstorm to ground" .
 
-kb:Peril_Hail rdf:type ao:NaturalPeril ;
-    rdfs:label "Hailstorm" ;
-    rdfs:comment "Precipitation in the form of ice pellets causing property damage" .
+kb:Peril_Severe_Convective_Storm rdf:type ao:NaturalPeril ;
+    rdfs:label "Severe Convective Storm (Hail/Wind)" ;
+    rdfs:comment "Thunderstorm producing damaging hail, straight-line winds, or tornadoes" .
 
 kb:Peril_Winter_Storm rdf:type ao:NaturalPeril ;
     rdfs:label "Winter Storm" ;
-    rdfs:comment "Severe winter weather including heavy snow and ice" .
+    rdfs:comment "Severe winter weather including heavy snow, ice, and freezing temperatures" .
+
+kb:Peril_Tsunami rdf:type ao:NaturalPeril ;
+    rdfs:label "Tsunami" ;
+    rdfs:comment "Ocean wave caused by underwater earthquake, landslide, or volcanic eruption" .
 
 ### Man-made Perils
 
 kb:Peril_Fire rdf:type ao:ManmadePeril ;
-    rdfs:label "Fire" ;
-    rdfs:comment "Fire originating from man-made causes" .
+    rdfs:label "Fire (Non-wildfire)" ;
+    rdfs:comment "Structure fires from electrical, cooking, heating equipment, or arson" .
+
+kb:Peril_Water_Damage rdf:type ao:ManmadePeril ;
+    rdfs:label "Water Damage" ;
+    rdfs:comment "Water damage from burst pipes, appliance failures, or roof leaks" .
 
 kb:Peril_Theft rdf:type ao:ManmadePeril ;
-    rdfs:label "Theft" ;
+    rdfs:label "Theft / Burglary" ;
     rdfs:comment "Unauthorized taking of property" .
 
 kb:Peril_Vandalism rdf:type ao:ManmadePeril ;
     rdfs:label "Vandalism" ;
-    rdfs:comment "Willful destruction or damage to property" .
+    rdfs:comment "Willful or malicious damage to property" .
 
-kb:Peril_Water_Damage rdf:type ao:ManmadePeril ;
-    rdfs:label "Water Damage" ;
-    rdfs:comment "Water damage from plumbing failures or appliance malfunctions" .
-
-#################################################################
-#    Events
-#################################################################
-
-### Loss Events
-
-kb:Event_Death_2024_001 rdf:type ao:LossEvent ;
-    rdfs:label "Death Event - January 2024" ;
-    rdfs:comment "Sudden death of insured from natural causes" ;
-    ao:occurrenceDate "2024-01-20"^^xsd:date ;
-    ao:resultsIn kb:Loss_Death_001 .
-
-kb:Event_Auto_Accident_2025_001 rdf:type ao:LossEvent ;
-    rdfs:label "Auto Accident - March 2025" ;
-    rdfs:comment "Multi-vehicle collision on highway" ;
-    ao:occurrenceDate "2025-03-15"^^xsd:date ;
-    ao:causedBy kb:Peril_Auto_Collision ;
-    ao:resultsIn kb:Loss_Auto_001 .
-
-kb:Event_House_Fire_2025_001 rdf:type ao:LossEvent ;
-    rdfs:label "House Fire - April 2025" ;
-    rdfs:comment "Residential fire causing partial structure damage" ;
-    ao:occurrenceDate "2025-04-08"^^xsd:date ;
-    ao:causedBy kb:Peril_Fire ;
-    ao:resultsIn kb:Loss_Fire_001 .
-
-kb:Event_Hurricane_2025 rdf:type ao:LossEvent , ao:ExtremeEvent ;
-    rdfs:label "Hurricane Disaster - August 2025" ;
-    rdfs:comment "Category 4 hurricane affecting coastal region" ;
-    ao:occurrenceDate "2025-08-22"^^xsd:date ;
-    ao:causedBy kb:Peril_Hurricane ;
-    ao:resultsIn kb:Loss_Hurricane_001 .
-
-kb:Event_Medical_Treatment_2025_001 rdf:type ao:LossEvent ;
-    rdfs:label "Medical Treatment Event" ;
-    rdfs:comment "Hospital admission for surgery" ;
-    ao:occurrenceDate "2025-02-10"^^xsd:date ;
-    ao:resultsIn kb:Loss_Medical_001 .
-
-### Claim Events
-
-kb:ClaimEvent_Term_Life_001 rdf:type ao:ClaimEvent ;
-    rdfs:label "Claim Event - Term Life Death Claim" ;
-    rdfs:comment "Death claim filed on term life policy" ;
-    ao:occurrenceDate "2024-01-25"^^xsd:date .
-
-kb:ClaimEvent_Auto_001 rdf:type ao:ClaimEvent ;
-    rdfs:label "Claim Event - Auto Collision" ;
-    rdfs:comment "Auto claim filed for vehicle damage" ;
-    ao:occurrenceDate "2025-03-16"^^xsd:date .
-
-### Auto Collision Peril (Man-made)
-
-kb:Peril_Auto_Collision rdf:type ao:ManmadePeril ;
-    rdfs:label "Auto Collision" ;
-    rdfs:comment "Vehicle collision causing property damage" .
+kb:Peril_Terrorism rdf:type ao:ManmadePeril ;
+    rdfs:label "Terrorism" ;
+    rdfs:comment "Violent acts intended to create fear or intimidation" .
 
 #################################################################
-#    Losses
+#    Historical Catastrophe Events
 #################################################################
 
-kb:Loss_Death_001 rdf:type ao:Loss ;
-    rdfs:label "Death Benefit Loss" ;
-    rdfs:comment "Loss from term life insurance death claim" ;
-    ao:hasMonetaryValue 500000.00 ;
-    ao:hasSeverity 500000.00 .
+kb:Event_Hurricane_Katrina rdf:type ao:LossEvent , ao:ExtremeEvent ;
+    rdfs:label "Hurricane Katrina (2005)" ;
+    rdfs:comment "Category 5 Atlantic hurricane, costliest natural disaster in US history with over $125B in insured losses" ;
+    ao:occurrenceDate "2005-08-29"^^xsd:date ;
+    ao:causedBy kb:Peril_Hurricane .
 
-kb:Loss_Auto_001 rdf:type ao:Loss ;
-    rdfs:label "Auto Collision Loss" ;
-    rdfs:comment "Vehicle repair and liability loss from auto accident" ;
-    ao:hasMonetaryValue 18500.00 ;
-    ao:hasSeverity 18500.00 .
+kb:Event_Hurricane_Sandy rdf:type ao:LossEvent , ao:ExtremeEvent ;
+    rdfs:label "Hurricane Sandy (2012)" ;
+    rdfs:comment "Atlantic hurricane causing widespread damage to Mid-Atlantic and Northeastern US with $19B in insured losses" ;
+    ao:occurrenceDate "2012-10-29"^^xsd:date ;
+    ao:causedBy kb:Peril_Hurricane .
 
-kb:Loss_Fire_001 rdf:type ao:Loss ;
-    rdfs:label "Fire Damage Loss" ;
-    rdfs:comment "Property damage from residential fire" ;
-    ao:hasMonetaryValue 125000.00 ;
-    ao:hasSeverity 125000.00 .
+kb:Event_Hurricane_Harvey rdf:type ao:LossEvent , ao:ExtremeEvent ;
+    rdfs:label "Hurricane Harvey (2017)" ;
+    rdfs:comment "Category 4 hurricane causing catastrophic flooding in Houston with $30B+ in insured losses" ;
+    ao:occurrenceDate "2017-08-25"^^xsd:date ;
+    ao:causedBy kb:Peril_Hurricane .
 
-kb:Loss_Hurricane_001 rdf:type ao:Loss ;
-    rdfs:label "Hurricane Catastrophe Loss" ;
-    rdfs:comment "Aggregate losses from hurricane event across portfolio" ;
-    ao:hasMonetaryValue 45000000.00 ;
-    ao:hasSeverity 45000000.00 .
+kb:Event_Hurricane_Ian rdf:type ao:LossEvent , ao:ExtremeEvent ;
+    rdfs:label "Hurricane Ian (2022)" ;
+    rdfs:comment "Category 4 hurricane striking Southwest Florida with $50B+ in insured losses" ;
+    ao:occurrenceDate "2022-09-28"^^xsd:date ;
+    ao:causedBy kb:Peril_Hurricane .
 
-kb:Loss_Medical_001 rdf:type ao:Loss ;
-    rdfs:label "Medical Treatment Loss" ;
-    rdfs:comment "Hospital and surgical costs" ;
-    ao:hasMonetaryValue 32000.00 .
+kb:Event_Northridge_Earthquake rdf:type ao:LossEvent , ao:ExtremeEvent ;
+    rdfs:label "Northridge Earthquake (1994)" ;
+    rdfs:comment "Magnitude 6.7 earthquake in Los Angeles area with $15B+ in insured losses" ;
+    ao:occurrenceDate "1994-01-17"^^xsd:date ;
+    ao:causedBy kb:Peril_Earthquake .
 
-#################################################################
-#    Claims
-#################################################################
+kb:Event_September_11 rdf:type ao:LossEvent , ao:ExtremeEvent ;
+    rdfs:label "September 11 Terrorist Attacks (2001)" ;
+    rdfs:comment "Terrorist attacks in New York and Washington resulting in $40B+ in insured losses" ;
+    ao:occurrenceDate "2001-09-11"^^xsd:date ;
+    ao:causedBy kb:Peril_Terrorism .
 
-### Reported and Paid Claims
+kb:Event_COVID_19_Pandemic rdf:type ao:LossEvent , ao:ExtremeEvent ;
+    rdfs:label "COVID-19 Pandemic (2020-present)" ;
+    rdfs:comment "Global pandemic affecting mortality, morbidity, and business interruption losses" ;
+    ao:occurrenceDate "2020-03-11"^^xsd:date ;
+    ao:causedBy kb:Peril_Pandemic .
 
-kb:Claim_Term_Life_001 rdf:type ao:Claim , ao:ReportedClaim , ao:PaidClaim ;
-    rdfs:label "Term Life Death Claim #CLM-TL-2024-001" ;
-    rdfs:comment "Paid death claim on term life policy" ;
-    ao:claimNumber "CLM-TL-2024-001" ;
-    ao:reportingDate "2024-01-25"^^xsd:date ;
-    ao:triggeredBy kb:ClaimEvent_Term_Life_001 ;
-    ao:hasMonetaryValue 500000.00 ;
-    ao:hasClaim kb:Policy_Term_Life_001 .
+kb:Peril_Pandemic rdf:type ao:NaturalPeril ;
+    rdfs:label "Pandemic Disease" ;
+    rdfs:comment "Widespread outbreak of infectious disease affecting large populations" .
 
-kb:Claim_Auto_001 rdf:type ao:Claim , ao:ReportedClaim , ao:PaidClaim ;
-    rdfs:label "Auto Collision Claim #CLM-AUTO-2025-123" ;
-    rdfs:comment "Settled auto claim for vehicle damage and liability" ;
-    ao:claimNumber "CLM-AUTO-2025-123" ;
-    ao:reportingDate "2025-03-16"^^xsd:date ;
-    ao:triggeredBy kb:ClaimEvent_Auto_001 ;
-    ao:hasMonetaryValue 18500.00 .
-
-kb:Claim_Fire_001 rdf:type ao:Claim , ao:ReportedClaim , ao:OutstandingClaim ;
-    rdfs:label "Fire Damage Claim #CLM-HO-2025-089" ;
-    rdfs:comment "Outstanding fire damage claim under investigation" ;
-    ao:claimNumber "CLM-HO-2025-089" ;
-    ao:reportingDate "2025-04-10"^^xsd:date ;
-    ao:hasMonetaryValue 125000.00 ;
-    ao:hasReserve kb:Reserve_Case_Fire_001 .
-
-kb:Claim_Medical_001 rdf:type ao:Claim , ao:ReportedClaim , ao:PaidClaim ;
-    rdfs:label "Medical Claim #CLM-HLT-2025-456" ;
-    rdfs:comment "Paid medical claim for hospital services" ;
-    ao:claimNumber "CLM-HLT-2025-456" ;
-    ao:reportingDate "2025-02-12"^^xsd:date ;
-    ao:hasMonetaryValue 32000.00 .
-
-### IBNR Claims
-
-kb:Claim_IBNR_Auto_2025 rdf:type ao:Claim , ao:IncurredButNotReported ;
-    rdfs:label "IBNR Reserve - Auto 2025" ;
-    rdfs:comment "Incurred but not reported claims for auto line of business" ;
-    ao:hasReserve kb:Reserve_IBNR_Auto_2025 .
-
-kb:Claim_IBNR_Home_2025 rdf:type ao:Claim , ao:IncurredButNotReported ;
-    rdfs:label "IBNR Reserve - Homeowners 2025" ;
-    rdfs:comment "Incurred but not reported claims for homeowners line" ;
-    ao:hasReserve kb:Reserve_IBNR_Home_2025 .
+kb:Event_Camp_Fire rdf:type ao:LossEvent , ao:ExtremeEvent ;
+    rdfs:label "Camp Fire (2018)" ;
+    rdfs:comment "Deadliest and most destructive wildfire in California history with $12B+ in insured losses" ;
+    ao:occurrenceDate "2018-11-08"^^xsd:date ;
+    ao:causedBy kb:Peril_Wildfire .
 
 #################################################################
-#    Reserves
+#    Real Mortality Tables and Actuarial Standards
 #################################################################
 
-### Case Reserves
+### Mortality Tables
 
-kb:Reserve_Case_Fire_001 rdf:type ao:Reserve , ao:CaseReserve ;
-    rdfs:label "Case Reserve - Fire Claim" ;
-    rdfs:comment "Case reserve for outstanding fire damage claim" ;
-    ao:hasMonetaryValue 125000.00 .
-
-### IBNR Reserves
-
-kb:Reserve_IBNR_Auto_2025 rdf:type ao:Reserve , ao:IBNRReserve ;
-    rdfs:label "IBNR Reserve - Auto 2025" ;
-    rdfs:comment "IBNR reserve for auto line of business as of Q1 2025" ;
-    ao:hasMonetaryValue 2500000.00 .
-
-kb:Reserve_IBNR_Home_2025 rdf:type ao:Reserve , ao:IBNRReserve ;
-    rdfs:label "IBNR Reserve - Homeowners 2025" ;
-    rdfs:comment "IBNR reserve for homeowners line as of Q1 2025" ;
-    ao:hasMonetaryValue 1800000.00 .
-
-kb:Reserve_Life_Policy rdf:type ao:Reserve ;
-    rdfs:label "Life Insurance Policy Reserves" ;
-    rdfs:comment "Policy reserves for in-force life insurance contracts" ;
-    ao:hasMonetaryValue 125000000.00 .
-
-kb:Reserve_Pension_DB rdf:type ao:Reserve ;
-    rdfs:label "DB Pension Plan Reserves" ;
-    rdfs:comment "Actuarial reserves for defined benefit pension obligations" ;
-    ao:hasMonetaryValue 85000000.00 .
-
-#################################################################
-#    Financial Assets and Liabilities
-#################################################################
-
-### Assets
-
-kb:LifeGuard_Assets rdf:type ao:Asset ;
-    rdfs:label "LifeGuard Insurance Assets" ;
-    rdfs:comment "Investment portfolio backing insurance liabilities" ;
-    ao:hasMonetaryValue 500000000.00 .
-
-### Liabilities
-
-kb:LifeGuard_Liabilities rdf:type ao:Liability ;
-    rdfs:label "LifeGuard Insurance Liabilities" ;
-    rdfs:comment "Insurance policy reserves and claims liabilities" ;
-    ao:hasMonetaryValue 450000000.00 .
-
-### Capital
-
-kb:Capital_Economic rdf:type ao:EconomicCapital ;
-    rdfs:label "LifeGuard Economic Capital" ;
-    rdfs:comment "Economic capital held to cover unexpected losses at 99.5% confidence" ;
-    ao:hasMonetaryValue 75000000.00 .
-
-kb:Capital_Regulatory rdf:type ao:RegulatoryCapital , ao:RiskBasedCapital ;
-    rdfs:label "LifeGuard Risk-Based Capital" ;
-    rdfs:comment "Risk-based capital meeting regulatory requirements" ;
-    ao:hasMonetaryValue 60000000.00 .
-
-#################################################################
-#    Premiums
-#################################################################
-
-kb:Premium_Term_Life_001 rdf:type ao:Premium , ao:GrossPremium ;
-    rdfs:label "Term Life Annual Premium" ;
-    rdfs:comment "Annual premium for 20-year term life policy" ;
-    ao:hasMonetaryValue 850.00 .
-
-kb:Premium_Auto_001 rdf:type ao:Premium ;
-    rdfs:label "Auto Policy Semi-Annual Premium" ;
-    rdfs:comment "Semi-annual premium for auto insurance" ;
-    ao:hasMonetaryValue 725.00 .
-
-kb:Premium_Home_001 rdf:type ao:Premium ;
-    rdfs:label "Homeowners Annual Premium" ;
-    rdfs:comment "Annual premium for homeowners insurance" ;
-    ao:hasMonetaryValue 1450.00 .
-
-kb:Premium_Group_Health rdf:type ao:Premium ;
-    rdfs:label "Group Health Monthly Premium" ;
-    rdfs:comment "Monthly group health insurance premium per employee" ;
-    ao:hasMonetaryValue 625.00 .
-
-#################################################################
-#    Actuarial Activities
-#################################################################
-
-### Pricing Activities
-
-kb:Activity_Pricing_Term_Life rdf:type ao:Pricing ;
-    rdfs:label "Term Life Insurance Pricing" ;
-    rdfs:comment "Annual pricing review for term life insurance products" ;
-    ao:hasAgent kb:Actuary_Sarah_Chen ;
-    ao:usesModel kb:Model_Mortality_Table ;
-    ao:producesEstimate kb:Estimate_Term_Premium .
-
-kb:Activity_Pricing_Auto rdf:type ao:Pricing ;
-    rdfs:label "Auto Insurance Pricing" ;
-    rdfs:comment "Pricing analysis for personal auto insurance using GLM" ;
-    ao:hasAgent kb:Actuary_Michael_Rodriguez ;
-    ao:usesModel kb:Model_GLM_Auto .
-
-### Reserving Activities
-
-kb:Activity_Reserving_Auto rdf:type ao:Reserving ;
-    rdfs:label "Auto Loss Reserving" ;
-    rdfs:comment "Quarterly loss reserve analysis for auto line of business" ;
-    ao:hasAgent kb:Actuary_Michael_Rodriguez ;
-    ao:usesModel kb:Model_Chain_Ladder ;
-    ao:basedOnData kb:Data_Auto_Claims ;
-    ao:producesEstimate kb:Estimate_IBNR_Auto .
-
-kb:Activity_Reserving_Workers_Comp rdf:type ao:Reserving ;
-    rdfs:label "Workers Compensation Reserving" ;
-    rdfs:comment "Annual reserve analysis for long-tail workers compensation claims" ;
-    ao:hasAgent kb:Actuary_Michael_Rodriguez ;
-    ao:usesModel kb:Model_LDF_Triangle .
-
-### Valuation Activities
-
-kb:Activity_Valuation_Life rdf:type ao:Valuation ;
-    rdfs:label "Life Insurance Valuation" ;
-    rdfs:comment "Annual statutory valuation of life insurance liabilities" ;
-    ao:hasAgent kb:Actuary_Sarah_Chen ;
-    ao:basedOnData kb:Data_Life_Inforce .
-
-kb:Activity_Valuation_Pension rdf:type ao:Valuation ;
-    rdfs:label "Pension Plan Valuation" ;
-    rdfs:comment "Annual actuarial valuation of defined benefit pension plan" ;
-    ao:hasAgent kb:Actuary_Jennifer_Park ;
-    ao:usesModel kb:Model_Mortality_Table ;
-    ao:basedOnData kb:Data_Pension_Census .
-
-### Experience Analysis
-
-kb:Activity_Experience_Mortality rdf:type ao:ExperienceAnalysis , ao:MortalityStudy ;
-    rdfs:label "Mortality Experience Study" ;
-    rdfs:comment "Five-year mortality experience study for term life products" ;
-    ao:hasAgent kb:Actuary_Sarah_Chen ;
-    ao:basedOnData kb:Data_Life_Claims .
-
-kb:Activity_Experience_Lapse rdf:type ao:ExperienceAnalysis , ao:LapseStudy ;
-    rdfs:label "Lapse Rate Experience Study" ;
-    rdfs:comment "Annual lapse rate study for universal life products" ;
-    ao:hasAgent kb:Actuary_Sarah_Chen ;
-    ao:basedOnData kb:Data_Life_Inforce .
-
-### Capital Modeling
-
-kb:Activity_Capital_Modeling rdf:type ao:CapitalModeling ;
-    rdfs:label "Economic Capital Model" ;
-    rdfs:comment "Annual economic capital modeling using internal model" ;
-    ao:hasAgent kb:Actuary_Sarah_Chen ;
-    ao:usesModel kb:Model_Economic_Capital .
-
-### Risk Assessment
-
-kb:Activity_Risk_Assessment_Cat rdf:type ao:RiskAssessment ;
-    rdfs:label "Catastrophe Risk Assessment" ;
-    rdfs:comment "Annual catastrophe risk assessment for property portfolio" ;
-    ao:hasAgent kb:Actuary_Michael_Rodriguez ;
-    ao:usesModel kb:Model_Catastrophe ;
-    ao:hasSubject kb:Risk_Catastrophe .
-
-#################################################################
-#    Actuarial Models
-#################################################################
-
-### Mortality Models
-
-kb:Model_Mortality_Table rdf:type ao:MortalityTable ;
+kb:Table_2017_CSO rdf:type ao:MortalityTable ;
     rdfs:label "2017 Commissioners Standard Ordinary (CSO) Mortality Table" ;
-    rdfs:comment "Standard mortality table for life insurance reserving and pricing" .
+    rdfs:comment "NAIC-adopted mortality table for life insurance statutory reserves and non-forfeiture values in the US" .
 
-### Pricing Models
+kb:Table_2012_IAM rdf:type ao:MortalityTable ;
+    rdfs:label "2012 Individual Annuity Mortality (IAM) Table" ;
+    rdfs:comment "SOA mortality table for individual annuity reserves and pricing" .
 
-kb:Model_GLM_Auto rdf:type ao:PricingModel , ao:GeneralizedLinearModel ;
-    rdfs:label "Auto Insurance GLM Pricing Model" ;
-    rdfs:comment "Generalized linear model for auto insurance rating" ;
-    ao:basedOnData kb:Data_Auto_Claims , kb:Data_Auto_Exposure .
+kb:Table_RP_2014 rdf:type ao:MortalityTable ;
+    rdfs:label "RP-2014 Mortality Tables" ;
+    rdfs:comment "SOA mortality tables for pension plan valuations with separate tables for employees and healthy annuitants" .
+
+kb:Table_RP_2021 rdf:type ao:MortalityTable ;
+    rdfs:label "RP-2021 Mortality Tables" ;
+    rdfs:comment "SOA mortality tables reflecting updated pension mortality experience" .
+
+kb:Table_VBT_2015 rdf:type ao:MortalityTable ;
+    rdfs:label "2015 Valuation Basic Table (VBT)" ;
+    rdfs:comment "SOA base mortality table for principle-based reserves under VM-20" .
+
+kb:Scale_MP_2021 rdf:type ao:MortalityImprovementScale ;
+    rdfs:label "Mortality Improvement Scale MP-2021" ;
+    rdfs:comment "SOA mortality improvement scale projecting future mortality improvements" .
+
+kb:Scale_MP_2014 rdf:type ao:MortalityImprovementScale ;
+    rdfs:label "Mortality Improvement Scale MP-2014" ;
+    rdfs:comment "SOA mortality improvement scale for generational projections" .
+
+### Life Insurance Actuarial Standards
+
+kb:VM_20 rdf:type ao:ActuarialStandard ;
+    rdfs:label "Valuation Manual VM-20" ;
+    rdfs:comment "NAIC requirements for principle-based reserves for life insurance products" .
+
+kb:VM_21 rdf:type ao:ActuarialStandard ;
+    rdfs:label "Valuation Manual VM-21" ;
+    rdfs:comment "NAIC requirements for principle-based reserves for variable annuities" .
+
+kb:AG_43 rdf:type ao:ActuarialStandard ;
+    rdfs:label "Actuarial Guideline XLIII (AG 43)" ;
+    rdfs:comment "NAIC guideline for variable annuity reserves (predecessor to VM-21)" .
+
+kb:ASOP_No_2 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 2 - Nonguaranteed Elements" ;
+    rdfs:comment "AAA actuarial standard of practice for nonguaranteed elements in life insurance" .
+
+kb:ASOP_No_7 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 7 - Analysis of Life, Health, or Property/Casualty Insurer Cash Flows" ;
+    rdfs:comment "AAA standard for cash flow analysis and projections" .
+
+kb:ASOP_No_11 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 11 - Financial Statement Treatment of Reinsurance" ;
+    rdfs:comment "AAA standard for reinsurance in financial statements" .
+
+kb:ASOP_No_22 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 22 - Statements of Actuarial Opinion Based on Asset Adequacy Analysis" ;
+    rdfs:comment "AAA standard for asset adequacy analysis opinions" .
+
+kb:ASOP_No_52 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 52 - Principle-Based Reserves for Life Products" ;
+    rdfs:comment "AAA standard for application of principle-based reserves under VM-20" .
+
+### P&C Reserving Standards
+
+kb:ASOP_No_43 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 43 - Property/Casualty Unpaid Claim Estimates" ;
+    rdfs:comment "AAA standard for estimating property and casualty unpaid claims and claim adjustment expenses" .
+
+kb:ASOP_No_36 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 36 - Statements of Actuarial Opinion Regarding P&C Loss and LAE Reserves" ;
+    rdfs:comment "AAA standard for P&C reserve opinions" .
+
+### Pension Standards
+
+kb:ASOP_No_4 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 4 - Measuring Pension Obligations and Determining Pension Plan Costs" ;
+    rdfs:comment "AAA standard for pension actuarial valuations" .
+
+kb:ASOP_No_27 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 27 - Selection of Economic Assumptions for Measuring Pension Obligations" ;
+    rdfs:comment "AAA standard for selecting discount rates and other economic assumptions" .
+
+kb:ASOP_No_35 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 35 - Selection of Demographic Assumptions for Pension Valuations" ;
+    rdfs:comment "AAA standard for mortality, turnover, and retirement assumptions" .
+
+### Universal Standards
+
+kb:ASOP_No_1 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 1 - Introductory ASOP" ;
+    rdfs:comment "AAA introductory standard defining applicability and compliance requirements" .
+
+kb:ASOP_No_41 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 41 - Actuarial Communications" ;
+    rdfs:comment "AAA standard for actuarial communications and documentation" .
+
+kb:ASOP_No_56 rdf:type ao:ActuarialStandard ;
+    rdfs:label "ASOP No. 56 - Modeling" ;
+    rdfs:comment "AAA standard for designing, developing, and using models" .
+
+#################################################################
+#    Accounting and Regulatory Standards
+#################################################################
+
+### Accounting Standards
+
+kb:IFRS_17 rdf:type ao:AccountingStandard , ao:IFRS17 ;
+    rdfs:label "IFRS 17 Insurance Contracts" ;
+    rdfs:comment "International financial reporting standard for insurance contracts effective 2023" .
+
+kb:US_GAAP rdf:type ao:AccountingStandard , ao:GAAP ;
+    rdfs:label "US GAAP - Generally Accepted Accounting Principles" ;
+    rdfs:comment "US accounting standards for financial reporting" .
+
+kb:ASC_944 rdf:type ao:AccountingStandard , ao:GAAP ;
+    rdfs:label "ASC 944 - Financial Services - Insurance" ;
+    rdfs:comment "US GAAP codification for insurance accounting" .
+
+kb:LDTI rdf:type ao:AccountingStandard , ao:GAAP ;
+    rdfs:label "Long-Duration Targeted Improvements (LDTI) / ASU 2018-12" ;
+    rdfs:comment "US GAAP updates for long-duration insurance contracts effective 2023" .
+
+kb:Statutory_Accounting rdf:type ao:AccountingStandard ;
+    rdfs:label "Statutory Accounting Principles (SAP)" ;
+    rdfs:comment "NAIC statutory accounting standards for insurance regulatory reporting" .
+
+kb:SSAP_No_51 rdf:type ao:AccountingStandard ;
+    rdfs:label "SSAP No. 51 - Life Contracts" ;
+    rdfs:comment "NAIC statutory accounting for life insurance contracts" .
+
+kb:SSAP_No_54 rdf:type ao:AccountingStandard ;
+    rdfs:label "SSAP No. 54 - Individual and Group Accident and Health Contracts" ;
+    rdfs:comment "NAIC statutory accounting for health insurance" .
+
+kb:SSAP_No_55 rdf:type ao:AccountingStandard ;
+    rdfs:label "SSAP No. 55 - Unpaid Claims, Losses and Loss Adjustment Expenses" ;
+    rdfs:comment "NAIC statutory accounting for P&C claim liabilities" .
+
+### Regulatory Frameworks
+
+kb:Solvency_II rdf:type ao:RegulatoryFramework ;
+    rdfs:label "Solvency II" ;
+    rdfs:comment "EU regulatory framework for insurance and reinsurance companies" .
+
+kb:Requirement_SCR rdf:type ao:SolvencyCapitalRequirement ;
+    rdfs:label "Solvency Capital Requirement (SCR)" ;
+    rdfs:comment "Solvency II required capital level corresponding to 99.5% VaR over 1 year" .
+
+kb:Requirement_MCR rdf:type ao:MinimumCapitalRequirement ;
+    rdfs:label "Minimum Capital Requirement (MCR)" ;
+    rdfs:comment "Solvency II minimum capital threshold below which regulatory intervention occurs" .
+
+kb:NAIC_RBC rdf:type ao:RegulatoryFramework , ao:RiskBasedCapital ;
+    rdfs:label "NAIC Risk-Based Capital (RBC)" ;
+    rdfs:comment "US regulatory capital framework based on company risk profile" .
+
+kb:C1_Risk rdf:type ao:RiskComponent ;
+    rdfs:label "C-1 Risk - Asset Risk" ;
+    rdfs:comment "RBC component for affiliated and unaffiliated investment risk" .
+
+kb:C2_Risk rdf:type ao:RiskComponent ;
+    rdfs:label "C-2 Risk - Insurance Risk" ;
+    rdfs:comment "RBC component for mortality/morbidity and underwriting risk" .
+
+kb:C3_Risk rdf:type ao:RiskComponent ;
+    rdfs:label "C-3 Risk - Interest Rate Risk" ;
+    rdfs:comment "RBC component for asset-liability mismatch and interest rate risk" .
+
+kb:C4_Risk rdf:type ao:RiskComponent ;
+    rdfs:label "C-4 Risk - Business Risk" ;
+    rdfs:comment "RBC component for general business risk" .
+
+kb:ORSA_Framework rdf:type ao:RegulatoryFramework , ao:ORSA ;
+    rdfs:label "Own Risk and Solvency Assessment (ORSA)" ;
+    rdfs:comment "NAIC enterprise risk management and capital assessment framework" .
+
+kb:PBR_Framework rdf:type ao:RegulatoryFramework ;
+    rdfs:label "Principle-Based Reserving (PBR)" ;
+    rdfs:comment "NAIC framework for principle-based statutory reserves using VM-20 and VM-21" .
+
+kb:ERISA rdf:type ao:RegulatoryFramework ;
+    rdfs:label "Employee Retirement Income Security Act (ERISA)" ;
+    rdfs:comment "US federal law governing private employer benefit plans" .
+
+#################################################################
+#    Catastrophe Modeling Firms and Models
+#################################################################
+
+kb:AIR_Worldwide rdf:type ao:Organization ;
+    rdfs:label "AIR Worldwide" ;
+    rdfs:comment "Catastrophe modeling firm providing risk modeling software and consulting (Verisk subsidiary)" .
+
+kb:RMS rdf:type ao:Organization ;
+    rdfs:label "Risk Management Solutions (RMS)" ;
+    rdfs:comment "Catastrophe modeling firm providing risk models and analytics (Moody's subsidiary)" .
+
+kb:CoreLogic rdf:type ao:Organization ;
+    rdfs:label "CoreLogic" ;
+    rdfs:comment "Provider of property data and catastrophe risk modeling" .
+
+kb:KCC rdf:type ao:Organization ;
+    rdfs:label "Karen Clark & Company (KCC)" ;
+    rdfs:comment "Catastrophe modeling firm specializing in realistic disaster scenarios" .
+
+kb:Model_RMS_US_Hurricane rdf:type ao:CatastropheModel ;
+    rdfs:label "RMS North America Hurricane Model" ;
+    rdfs:comment "Probabilistic catastrophe model for hurricane wind, storm surge, and precipitation-induced flooding" ;
+    ao:usesModel kb:Model_Frequency_Hurricane , kb:Model_Severity_Hurricane .
+
+kb:Model_AIR_US_Earthquake rdf:type ao:CatastropheModel ;
+    rdfs:label "AIR U.S. Earthquake Model" ;
+    rdfs:comment "Probabilistic catastrophe model for earthquake ground shaking and liquefaction" ;
+    ao:usesModel kb:Model_Frequency_Earthquake , kb:Model_Severity_Earthquake .
+
+kb:Model_Frequency_Hurricane rdf:type ao:FrequencyModel ;
+    rdfs:label "Hurricane Frequency Model" ;
+    rdfs:comment "Stochastic model of hurricane occurrence rates by region" .
+
+kb:Model_Severity_Hurricane rdf:type ao:SeverityModel ;
+    rdfs:label "Hurricane Severity Model" ;
+    rdfs:comment "Damage functions and vulnerability curves for hurricane-related perils" .
+
+kb:Model_Frequency_Earthquake rdf:type ao:FrequencyModel ;
+    rdfs:label "Earthquake Frequency Model" ;
+    rdfs:comment "Seismic hazard model based on fault systems and historical seismicity" .
+
+kb:Model_Severity_Earthquake rdf:type ao:SeverityModel ;
+    rdfs:label "Earthquake Severity Model" ;
+    rdfs:comment "Damage functions based on building characteristics and ground motion intensity" .
+
+#################################################################
+#    Actuarial Models and Methods
+#################################################################
 
 ### Reserving Models
 
 kb:Model_Chain_Ladder rdf:type ao:ReservingModel , ao:ChainLadderMethod ;
-    rdfs:label "Chain Ladder Reserving Model" ;
-    rdfs:comment "Chain ladder development method for IBNR reserve estimation" ;
-    ao:basedOnData kb:Data_LDF_Triangle .
+    rdfs:label "Chain Ladder Method" ;
+    rdfs:comment "Loss development method using age-to-age factors to project ultimate claims" .
 
-kb:Model_LDF_Triangle rdf:type ao:ReservingModel , ao:LossDevelopmentTriangle ;
-    rdfs:label "Loss Development Triangle" ;
-    rdfs:comment "Loss development triangle for long-tail lines of business" .
+kb:Model_Bornhuetter_Ferguson rdf:type ao:ReservingModel ;
+    rdfs:label "Bornhuetter-Ferguson Method" ;
+    rdfs:comment "Reserving method combining expected loss ratios with reported claim development" .
 
-### Capital Models
+kb:Model_Cape_Cod rdf:type ao:ReservingModel ;
+    rdfs:label "Cape Cod Method" ;
+    rdfs:comment "Credibility-weighted reserving method deriving expected losses from historical data" .
 
-kb:Model_Economic_Capital rdf:type ao:CapitalModel , ao:InternalModel , ao:StochasticModel ;
-    rdfs:label "Economic Capital Internal Model" ;
-    rdfs:comment "Stochastic internal model for economic capital calculation" ;
-    ao:usesModel kb:Model_Monte_Carlo .
+kb:Model_Frequency_Severity rdf:type ao:ReservingModel ;
+    rdfs:label "Frequency-Severity Method" ;
+    rdfs:comment "Reserving approach separately modeling claim counts and severity distributions" .
 
-### Catastrophe Models
+### Pricing Models
 
-kb:Model_Catastrophe rdf:type ao:CatastropheModel ;
-    rdfs:label "Hurricane Catastrophe Model" ;
-    rdfs:comment "Probabilistic catastrophe model for hurricane risk" ;
-    ao:usesModel kb:Model_Frequency , kb:Model_Severity .
+kb:Model_GLM rdf:type ao:PricingModel , ao:GeneralizedLinearModel ;
+    rdfs:label "Generalized Linear Model (GLM)" ;
+    rdfs:comment "Statistical regression model for insurance pricing and risk classification" .
 
-kb:Model_Frequency rdf:type ao:FrequencyModel ;
-    rdfs:label "Hurricane Frequency Model" ;
-    rdfs:comment "Model for frequency of hurricane events by region" .
-
-kb:Model_Severity rdf:type ao:SeverityModel ;
-    rdfs:label "Hurricane Severity Model" ;
-    rdfs:comment "Model for severity of hurricane losses" .
+kb:Model_GBM rdf:type ao:PricingModel ;
+    rdfs:label "Gradient Boosting Machine (GBM)" ;
+    rdfs:comment "Machine learning ensemble model for predictive pricing and classification" .
 
 ### Stochastic Models
 
 kb:Model_Monte_Carlo rdf:type ao:MonteCarloSimulation , ao:StochasticModel ;
-    rdfs:label "Monte Carlo Simulation Engine" ;
-    rdfs:comment "Monte Carlo simulation for stochastic projections" .
+    rdfs:label "Monte Carlo Simulation" ;
+    rdfs:comment "Stochastic simulation technique using random sampling for risk quantification" .
+
+kb:Model_Nested_Stochastic rdf:type ao:StochasticModel ;
+    rdfs:label "Nested Stochastic Modeling" ;
+    rdfs:comment "Two-level stochastic modeling for variable annuity guarantees and complex products" .
+
+### Economic Scenario Generators
+
+kb:Model_ESG rdf:type ao:StochasticModel ;
+    rdfs:label "Economic Scenario Generator (ESG)" ;
+    rdfs:comment "Model generating stochastic scenarios for interest rates, equity returns, and economic variables" .
+
+kb:Model_AAA_ESG rdf:type ao:StochasticModel ;
+    rdfs:label "American Academy of Actuaries Economic Scenario Generator" ;
+    rdfs:comment "AAA-developed ESG for regulatory and internal modeling applications" .
 
 #################################################################
-#    Data Sources
+#    Actuarial Activities - General Categories
 #################################################################
 
-kb:Data_Auto_Claims rdf:type ao:Data , ao:ClaimData ;
-    rdfs:label "Auto Insurance Claims Data" ;
-    rdfs:comment "Historical auto insurance claims experience data 2020-2025" .
+kb:Activity_Pricing rdf:type ao:Pricing ;
+    rdfs:label "Insurance Pricing and Ratemaking" ;
+    rdfs:comment "Actuarial process of determining premium rates for insurance products" .
 
-kb:Data_Auto_Exposure rdf:type ao:Data , ao:ExposureData ;
-    rdfs:label "Auto Insurance Exposure Data" ;
-    rdfs:comment "Auto insurance exposure data by rating characteristics" .
+kb:Activity_Reserving rdf:type ao:Reserving ;
+    rdfs:label "Loss Reserving and Claims Analysis" ;
+    rdfs:comment "Actuarial process of estimating unpaid claim liabilities" .
 
-kb:Data_Life_Claims rdf:type ao:Data , ao:ClaimData ;
-    rdfs:label "Life Insurance Claims Data" ;
-    rdfs:comment "Life insurance death claims data for mortality studies" .
+kb:Activity_Valuation rdf:type ao:Valuation ;
+    rdfs:label "Insurance Liability Valuation" ;
+    rdfs:comment "Actuarial process of measuring insurance liabilities for financial reporting" .
 
-kb:Data_Life_Inforce rdf:type ao:Data ;
-    rdfs:label "Life Insurance In-Force Data" ;
-    rdfs:comment "In-force life insurance policy data including cash values and face amounts" .
+kb:Activity_Capital_Modeling rdf:type ao:CapitalModeling ;
+    rdfs:label "Economic and Regulatory Capital Modeling" ;
+    rdfs:comment "Actuarial process of quantifying required capital for risk management and regulatory compliance" .
 
-kb:Data_Pension_Census rdf:type ao:Data ;
-    rdfs:label "Pension Plan Census Data" ;
-    rdfs:comment "Employee census data for pension plan valuation" .
+kb:Activity_Experience_Studies rdf:type ao:ExperienceAnalysis ;
+    rdfs:label "Experience Studies and Assumption Setting" ;
+    rdfs:comment "Analysis of actual vs expected experience to set or update actuarial assumptions" .
 
-kb:Data_LDF_Triangle rdf:type ao:Data ;
-    rdfs:label "Loss Development Triangle Data" ;
-    rdfs:comment "Incremental and cumulative loss development data" .
-
-kb:Data_Premium_Auto rdf:type ao:Data , ao:PremiumData ;
-    rdfs:label "Auto Premium Data" ;
-    rdfs:comment "Earned premium data for auto insurance" .
-
-#################################################################
-#    Estimates and Assumptions
-#################################################################
-
-kb:Estimate_Term_Premium rdf:type ao:Estimate ;
-    rdfs:label "Term Life Premium Estimate" ;
-    rdfs:comment "Estimated premium rate for $500K 20-year term life policy age 35" ;
-    ao:hasMonetaryValue 850.00 .
-
-kb:Estimate_IBNR_Auto rdf:type ao:Estimate ;
-    rdfs:label "IBNR Reserve Estimate - Auto" ;
-    rdfs:comment "Estimated IBNR reserve for auto line as of Q1 2025" ;
-    ao:hasMonetaryValue 2500000.00 .
-
-kb:Assumption_Interest_Rate rdf:type ao:Assumption ;
-    rdfs:label "Discount Rate Assumption" ;
-    rdfs:comment "Long-term interest rate assumption for pension valuation" ;
-    ao:hasValue 5.5 .
-
-kb:Assumption_Mortality_Improvement rdf:type ao:Assumption ;
-    rdfs:label "Mortality Improvement Assumption" ;
-    rdfs:comment "Annual mortality improvement rate assumption" ;
-    ao:hasValue 1.5 .
-
-#################################################################
-#    Financial Metrics
-#################################################################
-
-kb:Metric_Loss_Ratio_Auto rdf:type ao:LossRatio ;
-    rdfs:label "Auto Loss Ratio 2024" ;
-    rdfs:comment "Loss ratio for auto line of business in 2024" ;
-    ao:hasValue 68.5 .
-
-kb:Metric_Expense_Ratio rdf:type ao:ExpenseRatio ;
-    rdfs:label "Expense Ratio 2024" ;
-    rdfs:comment "Expense ratio for SafeHome Insurance in 2024" ;
-    ao:hasValue 28.2 .
-
-kb:Metric_Combined_Ratio rdf:type ao:CombinedRatio ;
-    rdfs:label "Combined Ratio 2024" ;
-    rdfs:comment "Combined ratio for SafeHome Insurance in 2024" ;
-    ao:hasValue 96.7 .
-
-kb:Metric_ROE rdf:type ao:ReturnOnEquity ;
-    rdfs:label "Return on Equity 2024" ;
-    rdfs:comment "Return on equity for LifeGuard Insurance in 2024" ;
-    ao:hasValue 12.8 .
-
-#################################################################
-#    Regulatory and Compliance
-#################################################################
-
-### Regulatory Requirements
-
-kb:Requirement_RBC rdf:type ao:RegulatoryRequirement , ao:RiskBasedCapital ;
-    rdfs:label "Risk-Based Capital Requirement" ;
-    rdfs:comment "State insurance department RBC requirement" ;
-    ao:hasMonetaryValue 45000000.00 .
-
-kb:Requirement_SCR rdf:type ao:SolvencyCapitalRequirement ;
-    rdfs:label "Solvency Capital Requirement" ;
-    rdfs:comment "Solvency II SCR for EU operations" ;
-    ao:hasMonetaryValue 65000000.00 .
-
-### Accounting Standards
-
-kb:Standard_IFRS17 rdf:type ao:AccountingStandard , ao:IFRS17 ;
-    rdfs:label "IFRS 17 Insurance Contracts" ;
-    rdfs:comment "International financial reporting standard for insurance contracts" .
-
-kb:Standard_US_GAAP rdf:type ao:AccountingStandard , ao:GAAP ;
-    rdfs:label "US GAAP" ;
-    rdfs:comment "Generally Accepted Accounting Principles in the United States" .
-
-### Regulatory Reporting
-
-kb:Report_Statutory_Annual rdf:type ao:RegulatoryReport ;
-    rdfs:label "Annual Statutory Financial Statement 2024" ;
-    rdfs:comment "Annual statutory financial statement filed with state insurance department" ;
-    ao:reportingDate "2025-03-01"^^xsd:date .
-
-kb:Report_ORSA rdf:type ao:RegulatoryReport , ao:ORSA ;
-    rdfs:label "Own Risk and Solvency Assessment 2024" ;
-    rdfs:comment "ORSA report describing enterprise risk management and capital adequacy" ;
-    ao:reportingDate "2025-05-01"^^xsd:date .
-
-#################################################################
-#    Professional Practice
-#################################################################
-
-kb:Communication_Pricing_Memo rdf:type ao:ActuarialCommunication ;
-    rdfs:label "Pricing Memorandum - Term Life 2024" ;
-    rdfs:comment "Actuarial communication documenting term life pricing assumptions and methods" ;
-    ao:hasAgent kb:Actuary_Sarah_Chen .
-
-kb:Opinion_Qualified rdf:type ao:ActuarialOpinion ;
-    rdfs:label "Statement of Actuarial Opinion - Reserves 2024" ;
-    rdfs:comment "Qualified actuarial opinion on adequacy of loss reserves" ;
-    ao:hasAgent kb:Actuary_Michael_Rodriguez ;
-    ao:reportingDate "2025-02-28"^^xsd:date .
-
-kb:Review_Peer_Capital_Model rdf:type ao:PeerReview ;
-    rdfs:label "Peer Review - Economic Capital Model" ;
-    rdfs:comment "Independent peer review of internal capital model" ;
-    ao:reportingDate "2024-12-15"^^xsd:date .
-
-#################################################################
-#    Portfolios and Books of Business
-#################################################################
-
-kb:Portfolio_Life_Insurance rdf:type ao:InsurancePortfolio ;
-    rdfs:label "Life Insurance Portfolio" ;
-    rdfs:comment "LifeGuard's in-force life insurance portfolio" ;
-    ao:containsPolicy kb:Policy_Term_Life_001 , kb:Policy_Whole_Life_001 , kb:Policy_Universal_Life_001 .
-
-kb:Portfolio_Auto rdf:type ao:InsurancePortfolio ;
-    rdfs:label "Personal Auto Portfolio" ;
-    rdfs:comment "SafeHome's personal auto insurance book of business" ;
-    ao:containsPolicy kb:Policy_Auto_001 .
-
-kb:Book_Commercial_Lines rdf:type ao:BookOfBusiness ;
-    rdfs:label "Commercial Lines Book of Business" ;
-    rdfs:comment "Commercial Shield's commercial property and casualty book" ;
-    ao:containsPolicy kb:Policy_Commercial_GL_001 .
-
-#################################################################
-#    Scenario Analysis and Stress Testing
-#################################################################
-
-kb:Scenario_Pandemic rdf:type ao:CatastropheScenario ;
-    rdfs:label "Pandemic Mortality Scenario" ;
-    rdfs:comment "Stress scenario modeling 1-in-200 year pandemic mortality event" .
-
-kb:Activity_Stress_Testing rdf:type ao:StressTesting ;
-    rdfs:label "2025 Capital Stress Testing" ;
-    rdfs:comment "Annual stress testing of capital adequacy under adverse scenarios" ;
-    ao:hasAgent kb:Actuary_Sarah_Chen ;
-    ao:usesModel kb:Model_Economic_Capital .
-
-kb:Activity_Scenario_Analysis rdf:type ao:ScenarioAnalysis ;
-    rdfs:label "Interest Rate Scenario Analysis" ;
-    rdfs:comment "Analysis of interest rate risk under multiple economic scenarios" ;
-    ao:hasAgent kb:Actuary_Jennifer_Park .
-
-#################################################################
-#    Underwriting
-#################################################################
-
-kb:Activity_Underwriting_Life rdf:type ao:Underwriting , ao:MedicalUnderwriting ;
-    rdfs:label "Life Insurance Medical Underwriting" ;
-    rdfs:comment "Medical underwriting process for large face amount life insurance applications" .
-
-kb:Criteria_Preferred_Risk rdf:type ao:UnderwritingCriteria ;
-    rdfs:label "Preferred Risk Underwriting Criteria" ;
-    rdfs:comment "Criteria for preferred risk classification in term life insurance" .
-
-kb:Risk_Class_Preferred rdf:type ao:PreferredRisk ;
-    rdfs:label "Preferred Risk Class" ;
-    rdfs:comment "Best risk classification for non-smokers in excellent health" .
-
-kb:Risk_Class_Standard rdf:type ao:StandardRisk ;
-    rdfs:label "Standard Risk Class" ;
-    rdfs:comment "Standard risk classification for average mortality risk" .
-
-#################################################################
-#    Asset-Liability Management
-#################################################################
+kb:Activity_Product_Development rdf:type ao:ProductDevelopment ;
+    rdfs:label "Insurance Product Development" ;
+    rdfs:comment "Design and development of new insurance products and features" .
 
 kb:Activity_ALM rdf:type ao:AssetLiabilityManagement ;
-    rdfs:label "Asset-Liability Management - Life Operations" ;
-    rdfs:comment "Ongoing ALM for life insurance operations managing interest rate risk" ;
-    ao:hasAgent kb:Actuary_Sarah_Chen .
+    rdfs:label "Asset-Liability Management (ALM)" ;
+    rdfs:comment "Management of asset-liability risks including interest rate and cash flow matching" .
+
+kb:Activity_Reinsurance_Pricing rdf:type ao:Pricing ;
+    rdfs:label "Reinsurance Pricing and Structuring" ;
+    rdfs:comment "Actuarial analysis for reinsurance treaty pricing and structure optimization" .
+
+#################################################################
+#    Reinsurance Structures
+#################################################################
+
+kb:Treaty_Quota_Share rdf:type ao:ReinsuranceContract , ao:TreatyReinsurance , ao:QuotaShareReinsurance ;
+    rdfs:label "Quota Share Reinsurance Treaty" ;
+    rdfs:comment "Proportional reinsurance where reinsurer assumes fixed percentage of all policies" .
+
+kb:Treaty_Surplus_Share rdf:type ao:ReinsuranceContract , ao:TreatyReinsurance ;
+    rdfs:label "Surplus Share Reinsurance Treaty" ;
+    rdfs:comment "Proportional reinsurance where reinsurer assumes amounts exceeding ceding company retention" .
+
+kb:Treaty_Excess_of_Loss rdf:type ao:ReinsuranceContract , ao:ExcessOfLoss ;
+    rdfs:label "Excess of Loss Reinsurance Treaty" ;
+    rdfs:comment "Non-proportional reinsurance covering losses exceeding specified retention level" .
+
+kb:Treaty_Cat_XOL rdf:type ao:ReinsuranceContract , ao:CatastropheExcessOfLoss ;
+    rdfs:label "Catastrophe Excess of Loss Treaty" ;
+    rdfs:comment "Excess of loss coverage for catastrophic events affecting multiple policies" .
+
+kb:Treaty_Stop_Loss rdf:type ao:ReinsuranceContract ;
+    rdfs:label "Stop Loss Reinsurance Treaty" ;
+    rdfs:comment "Aggregate excess of loss coverage protecting against adverse loss ratio experience" .
+
+kb:Facultative_Reinsurance rdf:type ao:ReinsuranceContract , ao:FacultativeReinsurance ;
+    rdfs:label "Facultative Reinsurance" ;
+    rdfs:comment "Case-by-case reinsurance for individual large or unusual risks" .
+
+#################################################################
+#    Risk Management Techniques
+#################################################################
 
 kb:Strategy_Duration_Matching rdf:type ao:DurationMatching ;
     rdfs:label "Duration Matching Strategy" ;
-    rdfs:comment "Investment strategy to match asset and liability durations" .
+    rdfs:comment "ALM strategy matching duration of assets and liabilities to hedge interest rate risk" .
 
 kb:Strategy_Cash_Flow_Matching rdf:type ao:CashFlowMatching ;
-    rdfs:label "Cash Flow Matching - Fixed Annuities" ;
-    rdfs:comment "Dedicated portfolio strategy matching annuity payment cash flows" .
+    rdfs:label "Cash Flow Matching Strategy" ;
+    rdfs:comment "ALM strategy constructing dedicated asset portfolio to match liability cash flows" .
+
+kb:Strategy_Immunization rdf:type ao:AssetLiabilityManagement ;
+    rdfs:label "Portfolio Immunization" ;
+    rdfs:comment "ALM strategy protecting against interest rate movements through duration and convexity matching" .
+
+kb:Strategy_Dynamic_Hedging rdf:type ao:AssetLiabilityManagement ;
+    rdfs:label "Dynamic Hedging Program" ;
+    rdfs:comment "Active hedging program using derivatives to manage variable annuity guarantee risks" .
 
 #################################################################
-#    Embedded Value
+#    Capital and Solvency Measures
 #################################################################
 
-kb:Value_Embedded rdf:type ao:EmbeddedValue , ao:MarketConsistentEmbeddedValue ;
-    rdfs:label "Market Consistent Embedded Value 2024" ;
-    rdfs:comment "MCEV for LifeGuard's life insurance operations as of year-end 2024" ;
-    ao:embeddedValueAmount 185000000.00 .
+kb:Capital_Economic rdf:type ao:EconomicCapital ;
+    rdfs:label "Economic Capital" ;
+    rdfs:comment "Internal measure of capital required to support risks at specified confidence level" .
 
-kb:Value_New_Business rdf:type ao:ValueOfNewBusiness ;
-    rdfs:label "Value of New Business 2024" ;
-    rdfs:comment "VNB from new life insurance policies issued in 2024" ;
-    ao:embeddedValueAmount 12500000.00 .
+kb:Capital_Regulatory rdf:type ao:RegulatoryCapital ;
+    rdfs:label "Regulatory Capital" ;
+    rdfs:comment "Capital required to meet regulatory solvency standards" .
 
-kb:Value_Inforce rdf:type ao:ValueOfInForceBusiness ;
-    rdfs:label "Value of In-Force Business 2024" ;
-    rdfs:comment "VIF from existing in-force life insurance portfolio" ;
-    ao:embeddedValueAmount 172500000.00 .
+kb:Capital_Rating_Agency rdf:type ao:RatingAgencyCapital ;
+    rdfs:label "Rating Agency Capital" ;
+    rdfs:comment "Capital level required to achieve target rating from rating agencies" .
 
-#################################################################
-#    Policyholder Behavior
-#################################################################
+kb:Ratio_RBC rdf:type ao:RiskBasedCapital ;
+    rdfs:label "RBC Ratio" ;
+    rdfs:comment "Ratio of Total Adjusted Capital to Authorized Control Level RBC" .
 
-kb:Event_Lapse_2024_Q4 rdf:type ao:Lapse ;
-    rdfs:label "Policy Lapse Event Q4 2024" ;
-    rdfs:comment "Lapse of universal life policy due to non-payment of premium" ;
-    ao:occurrenceDate "2024-10-15"^^xsd:date .
-
-kb:Metric_Lapse_Rate rdf:type ao:LapseRate ;
-    rdfs:label "Universal Life Lapse Rate 2024" ;
-    rdfs:comment "Annual lapse rate for universal life products in 2024" ;
-    ao:lapseRate 4.2 .
-
-kb:Metric_Persistency rdf:type ao:PersistencyRate ;
-    rdfs:label "Term Life Persistency Rate 2024" ;
-    rdfs:comment "13-month persistency rate for newly issued term life policies" ;
-    ao:persistencyRate 87.5 .
+kb:Ratio_SCR_Coverage rdf:type ao:SolvencyCapitalRequirement ;
+    rdfs:label "SCR Coverage Ratio" ;
+    rdfs:comment "Ratio of eligible own funds to Solvency Capital Requirement under Solvency II" .
 
 #################################################################
-#    Reinsurance Relationships
+#    Rating Agencies
 #################################################################
 
-# Cession relationship
-kb:LifeGuard_Insurance ao:cedesTo kb:Global_Reinsurance .
-kb:Global_Reinsurance ao:assumesFrom kb:LifeGuard_Insurance .
+kb:AM_Best rdf:type ao:Organization ;
+    rdfs:label "A.M. Best Company" ;
+    rdfs:comment "Credit rating agency specializing in insurance industry financial strength ratings" .
 
-# Reinsurance contract coverage
-kb:Reinsurance_Treaty_001 ao:covers kb:Risk_Mortality .
+kb:SP_Global rdf:type ao:Organization ;
+    rdfs:label "S&P Global Ratings" ;
+    rdfs:comment "Credit rating agency providing insurance financial strength and credit ratings" .
 
-#################################################################
-#    Insurance Relationships
-#################################################################
+kb:Moodys rdf:type ao:Organization ;
+    rdfs:label "Moody's Investors Service" ;
+    rdfs:comment "Credit rating agency providing insurance financial strength ratings" .
 
-# Insurer-Insured relationships
-kb:LifeGuard_Insurance ao:insures kb:Policyholder_John_Smith .
-kb:LifeGuard_Insurance ao:insures kb:Policyholder_Mary_Johnson .
-kb:SafeHome_Insurance ao:insures kb:Policyholder_Robert_Brown .
-kb:HealthFirst_Corp ao:insures kb:Policyholder_Emily_Davis .
-kb:Longevity_Life ao:insures kb:Annuitant_James_Wilson .
-
-# Policy-Claim relationships
-kb:Policy_Term_Life_001 ao:hasClaim kb:Claim_Term_Life_001 .
-kb:Policy_Auto_001 ao:hasClaim kb:Claim_Auto_001 .
-kb:Policy_Home_001 ao:hasClaim kb:Claim_Fire_001 .
+kb:Fitch rdf:type ao:Organization ;
+    rdfs:label "Fitch Ratings" ;
+    rdfs:comment "Credit rating agency providing insurer financial strength and credit ratings" .
 
 #################################################################
-#    Risk Management Relationships
+#    Enterprise Risk Management
 #################################################################
 
-# Risk exposure
-kb:LifeGuard_Insurance ao:exposedTo kb:Risk_Mortality , kb:Risk_Longevity , kb:Risk_Market , kb:Risk_Interest_Rate .
-kb:SafeHome_Insurance ao:exposedTo kb:Risk_Property , kb:Risk_Liability , kb:Risk_Catastrophe , kb:Risk_Cyber .
-kb:TechCorp_Inc ao:exposedTo kb:Risk_Longevity , kb:Risk_Interest_Rate .
+kb:ERM_Framework rdf:type ao:EnterpriseRiskManagement ;
+    rdfs:label "Enterprise Risk Management Framework" ;
+    rdfs:comment "Comprehensive framework for identifying, assessing, and managing enterprise risks" .
 
-# Risk management
-kb:LifeGuard_Insurance ao:manages kb:Risk_Mortality .
-kb:SafeHome_Insurance ao:manages kb:Risk_Catastrophe .
+kb:Risk_Appetite_Framework rdf:type ao:RiskAppetite ;
+    rdfs:label "Risk Appetite Framework" ;
+    rdfs:comment "Framework defining types and levels of risk organization is willing to accept" .
 
-#################################################################
-#    Model-Data Relationships
-#################################################################
-
-# Additional model-data relationships
-kb:Model_GLM_Auto ao:basedOnData kb:Data_Premium_Auto .
-kb:Activity_Experience_Mortality ao:producesEstimate kb:Assumption_Mortality_Improvement .
+kb:Risk_Culture rdf:type ao:RiskCulture ;
+    rdfs:label "Risk Culture" ;
+    rdfs:comment "Organizational values, beliefs, and behaviors regarding risk management" .
 
 #################################################################
-#    Portfolio Relationships
+#    Professional Credentials
 #################################################################
 
-# Portfolio containment
-kb:Policy_Auto_001 ao:belongsToPortfolio kb:Portfolio_Auto .
-kb:Policy_Home_001 ao:belongsToPortfolio kb:Book_Commercial_Lines .
+kb:Credential_FSA rdf:type ao:Credential ;
+    rdfs:label "Fellow of the Society of Actuaries (FSA)" ;
+    rdfs:comment "SOA fellowship credential for life, health, pension, and investment actuaries" .
+
+kb:Credential_FCAS rdf:type ao:Credential ;
+    rdfs:label "Fellow of the Casualty Actuarial Society (FCAS)" ;
+    rdfs:comment "CAS fellowship credential for property and casualty actuaries" .
+
+kb:Credential_MAAA rdf:type ao:Credential ;
+    rdfs:label "Member of the American Academy of Actuaries (MAAA)" ;
+    rdfs:comment "AAA membership demonstrating commitment to professionalism and US practice standards" .
+
+kb:Credential_EA rdf:type ao:Credential ;
+    rdfs:label "Enrolled Actuary (EA)" ;
+    rdfs:comment "US credential for actuaries performing pension valuations under ERISA" .
+
+kb:Credential_FCIA rdf:type ao:Credential ;
+    rdfs:label "Fellow of the Canadian Institute of Actuaries (FCIA)" ;
+    rdfs:comment "CIA fellowship credential for Canadian actuaries" .
+
+kb:Credential_FIA rdf:type ao:Credential ;
+    rdfs:label "Fellow of the Institute of Actuaries (FIA)" ;
+    rdfs:comment "UK actuarial fellowship credential" .
+
+kb:Credential_CERA rdf:type ao:Credential ;
+    rdfs:label "Chartered Enterprise Risk Analyst (CERA)" ;
+    rdfs:comment "IAA global credential in enterprise risk management" .
 
 #################################################################
-#    Activity-Subject Relationships
+#    Data and Information Sources
 #################################################################
 
-# Actuarial activity subjects
-kb:Actuary_Sarah_Chen ao:hasSubject kb:Activity_Pricing_Term_Life .
-kb:Actuary_Michael_Rodriguez ao:hasSubject kb:Activity_Reserving_Auto .
-kb:Actuary_Jennifer_Park ao:hasSubject kb:Activity_Valuation_Pension .
+kb:Data_NAIC_Experience rdf:type ao:Data ;
+    rdfs:label "NAIC Industry Experience Data" ;
+    rdfs:comment "Industry-wide insurance experience data collected and published by NAIC" .
 
-# Metric tracking
-kb:Portfolio_Auto ao:hasMetric kb:Metric_Loss_Ratio_Auto .
-kb:SafeHome_Insurance ao:hasMetric kb:Metric_Combined_Ratio , kb:Metric_Expense_Ratio .
-kb:LifeGuard_Insurance ao:hasMetric kb:Metric_ROE .
+kb:Data_ISO_Loss_Costs rdf:type ao:Data ;
+    rdfs:label "ISO Loss Cost Data" ;
+    rdfs:comment "Industry loss cost data and rating information from Insurance Services Office (Verisk)" .
+
+kb:Data_SOA_Mortality_Studies rdf:type ao:Data ;
+    rdfs:label "SOA Mortality and Experience Studies" ;
+    rdfs:comment "Life insurance and annuity experience studies published by SOA" .
+
+kb:Data_CAS_Loss_Triangles rdf:type ao:Data ;
+    rdfs:label "CAS Historical Loss Development Data" ;
+    rdfs:comment "Historical loss development triangles and industry benchmarks" .
+
+#################################################################
+#    Relationships and Connections
+#################################################################
+
+# Professional Organization - Standards
+kb:AAA ao:publishes kb:ASOP_No_1 , kb:ASOP_No_41 , kb:ASOP_No_43 .
+kb:SOA ao:publishes kb:Table_2017_CSO , kb:Table_2012_IAM , kb:Table_RP_2014 , kb:Table_RP_2021 , kb:Table_VBT_2015 .
+kb:SOA ao:publishes kb:Scale_MP_2021 , kb:Scale_MP_2014 .
+
+# Regulator - Framework
+kb:NAIC ao:publishes kb:VM_20 , kb:VM_21 , kb:AG_43 , kb:NAIC_RBC , kb:Statutory_Accounting .
+kb:EIOPA ao:publishes kb:Solvency_II .
+
+# Reinsurer - Ceding Company relationships (examples)
+kb:Munich_Re ao:assumesFrom kb:State_Farm , kb:MetLife .
+kb:Swiss_Re ao:assumesFrom kb:Prudential , kb:Allstate .
+
+# Product - Risk coverage
+kb:Product_Term_Life ao:covers kb:Risk_Mortality .
+kb:Product_Fixed_Annuity ao:covers kb:Risk_Longevity , kb:Risk_Interest_Rate .
+kb:Product_Personal_Auto ao:covers kb:Risk_Property , kb:Risk_Liability .
+
+# Model - Standard/Framework
+kb:Model_RMS_US_Hurricane ao:usesModel kb:Model_Monte_Carlo .
+kb:Model_AIR_US_Earthquake ao:usesModel kb:Model_Monte_Carlo .
 
 #################################################################
 # End of Foundational Knowledge Base
