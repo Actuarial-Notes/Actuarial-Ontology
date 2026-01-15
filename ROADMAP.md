@@ -1,661 +1,741 @@
 # Actuarial Ontology Development Roadmap
 
-**Version:** 1.0
+**Version:** 2.0
 **Last Updated:** January 2026
 **Current Ontology Version:** 0.7.0
 
-This roadmap outlines the strategic development plan for the Actuarial Ontology project, organized into multiple phases with clear objectives and deliverables.
+---
+
+## Vision
+
+**Empower actuaries with AI agents capable of performing actuarial tasks.**
+
+The ontology is not the end goal - it's foundational infrastructure. The real goal is AI systems that can assist actuaries with:
+
+- Risk Assessment
+- Pricing
+- Reserving
+- Valuation
+- Investment
+- Capital Modelling
+- Regulatory Compliance
+- Product Development
+
+This roadmap prioritizes capabilities that directly enable AI-powered actuarial work.
 
 ---
 
-## Executive Summary
+## Why an Ontology for AI?
 
-The Actuarial Ontology has achieved significant maturity with 301 classes, 110 properties, and 100% competency question answerability. This roadmap charts the path from a well-structured knowledge representation to a comprehensive, industry-standard semantic framework with validation, tooling, and broad adoption.
+Large Language Models are powerful but lack:
 
-### Development Phases Overview
+1. **Domain precision** - "claim" means different things in different contexts
+2. **Structured reasoning** - actuarial calculations require formal relationships
+3. **Verifiable outputs** - AI work must be auditable and validated
+4. **Knowledge grounding** - reducing hallucination through factual anchoring
 
-| Phase | Focus Area | Key Outcomes |
-|-------|-----------|--------------|
-| **Phase 1** | Validation & Constraints | SHACL shapes, axioms, data quality rules |
-| **Phase 2** | Knowledge Base Expansion | Life, Health, Pensions knowledge bases |
-| **Phase 3** | Tooling & Integration | SPARQL library, FIBO mapping, APIs |
-| **Phase 4** | Advanced Semantics | Reasoning rules, property chains, inference |
-| **Phase 5** | Internationalization | Multi-language support, jurisdictional variants |
-| **Phase 6** | Community & Governance | Standards body engagement, governance model |
-
----
-
-## Phase 1: Validation & Formal Constraints
-
-**Objective:** Establish robust data quality validation and formal semantic constraints to ensure knowledge base consistency and correctness.
-
-### 1.1 SHACL Shape Development
-
-**Goal:** Create comprehensive SHACL (Shapes Constraint Language) shapes for all major classes.
-
-#### Deliverables:
-
-1. **Core Entity Shapes**
-   - `InsuranceCompanyShape` - Required properties (name, regulatoryID), cardinality constraints
-   - `InsuredEntityShape` - Policyholder validation rules
-   - `ActuaryShape` - Professional qualification constraints
-   - `PolicyShape` - Required coverage, premium, and date validations
-
-2. **Financial Shapes**
-   - `ClaimShape` - Amount validation, date sequence constraints (occurrence < reporting < settlement)
-   - `ReserveShape` - Non-negative amounts, reserve type classification
-   - `PremiumShape` - Premium component validations (gross >= net)
-   - `MetricShape` - Ratio bounds (e.g., combined ratio typically 0-200%)
-
-3. **Risk Shapes**
-   - `RiskShape` - Risk classification validation
-   - `CatastropheEventShape` - Location, severity, peril type requirements
-   - `ExposureShape` - Exposure unit and value constraints
-
-4. **Regulatory Shapes**
-   - `RegulatoryReportShape` - Filing date, jurisdiction, format requirements
-   - `CapitalRequirementShape` - SCR/MCR relationship constraints
-
-#### Implementation Structure:
-```
-/shapes/
-  core-shapes.ttl          # Core entity shapes
-  financial-shapes.ttl     # Financial and claims shapes
-  risk-shapes.ttl          # Risk management shapes
-  regulatory-shapes.ttl    # Compliance shapes
-  product-shapes.ttl       # Insurance product shapes
-```
-
-### 1.2 OWL Axiom Enhancement
-
-**Goal:** Add formal OWL axioms for logical consistency and reasoning support.
-
-#### Deliverables:
-
-1. **Disjointness Axioms**
-   - `InsurableRisk disjointWith UninsurableRisk`
-   - `ProportionalReinsurance disjointWith NonProportionalReinsurance`
-   - `DefinedBenefit disjointWith DefinedContribution`
-   - `PaidClaim disjointWith OutstandingClaim`
-   - Product type disjointness (Life vs P&C vs Health)
-
-2. **Cardinality Constraints**
-   - `Policy hasInsurer exactly 1 InsuranceCompany`
-   - `Claim hasPolicy exactly 1 Policy`
-   - `InsuranceCompany hasRegulator min 1 Regulator`
-
-3. **Domain/Range Refinements**
-   - Strengthen existing property constraints
-   - Add inverse property definitions where missing
-   - Define functional properties (e.g., `policyNumber`)
-
-4. **Class Equivalence & Subsumption**
-   - Define equivalent class expressions where appropriate
-   - Establish complete subclass hierarchies
-
-### 1.3 Data Quality Rules
-
-**Goal:** Implement ASOP 23-aligned data quality validation rules.
-
-#### Deliverables:
-
-1. **Completeness Rules**
-   - Required field validation per entity type
-   - Reference data completeness checks
-
-2. **Consistency Rules**
-   - Cross-entity consistency validation
-   - Temporal consistency (date sequences)
-   - Hierarchical consistency (portfolio → policy → claim)
-
-3. **Reasonableness Rules**
-   - Range checks for financial values
-   - Statistical outlier detection rules
-   - Premium-to-exposure ratio bounds
+The Actuarial Ontology provides:
+- **Unambiguous vocabulary** for AI to understand actuarial concepts
+- **Formal relationships** enabling structured reasoning
+- **Validation schemas** to verify AI outputs are correct
+- **Knowledge graphs** for retrieval-augmented generation (RAG)
 
 ---
 
-## Phase 2: Knowledge Base Expansion
+## Development Phases
 
-**Objective:** Develop comprehensive knowledge bases across all major actuarial domains beyond the existing Canadian P&C example.
-
-### 2.1 Life Insurance Knowledge Base
-
-**Goal:** Create a detailed life insurance knowledge base demonstrating life-specific concepts.
-
-#### Deliverables:
-
-1. **Product Instances**
-   - Term life policies (10, 20, 30-year terms)
-   - Whole life with dividend illustrations
-   - Universal life with COI and crediting rates
-   - Variable life with separate account structures
-   - Index-linked products
-
-2. **Mortality & Longevity Data**
-   - Sample mortality tables (SOA tables)
-   - Age/gender/smoker classification examples
-   - Improvement scale illustrations
-
-3. **Policyholder Behavior**
-   - Lapse rate examples by duration
-   - Surrender value calculations
-   - Policy loan utilization patterns
-
-4. **Reserves & Valuation**
-   - Statutory reserve calculations
-   - GAAP/IFRS 17 reserve examples
-   - Embedded value demonstrations
-
-5. **Life-Specific Scenarios**
-   - New business pricing examples
-   - In-force management illustrations
-   - Reinsurance arrangements (YRT, coinsurance)
-
-### 2.2 Health Insurance Knowledge Base
-
-**Goal:** Develop health insurance domain coverage including medical, disability, and long-term care.
-
-#### Deliverables:
-
-1. **Product Types**
-   - Medical expense insurance
-   - Disability income (short-term, long-term)
-   - Long-term care insurance
-   - Critical illness coverage
-   - Supplemental health products
-
-2. **Claims & Utilization**
-   - Medical claims with diagnosis codes
-   - Disability claim duration patterns
-   - Long-term care benefit triggers
-
-3. **Morbidity Data**
-   - Incidence rate examples
-   - Continuance/termination rates
-   - Recovery and mortality in disabled state
-
-4. **Healthcare-Specific Concepts**
-   - Provider networks
-   - Managed care arrangements
-   - Prescription drug coverage tiers
-
-### 2.3 Pension & Retirement Knowledge Base
-
-**Goal:** Cover employer-sponsored retirement plans and individual retirement products.
-
-#### Deliverables:
-
-1. **Plan Types**
-   - Defined benefit plans (final average, career average)
-   - Defined contribution plans (401k, 403b equivalents)
-   - Cash balance plans
-   - Hybrid arrangements
-
-2. **Actuarial Valuations**
-   - Funding valuations with sample assumptions
-   - Accounting valuations (ASC 715, IAS 19)
-   - Asset-liability studies
-
-3. **Participant Data**
-   - Census data examples
-   - Service and compensation patterns
-   - Benefit accrual illustrations
-
-4. **Regulatory Examples**
-   - Funding requirement calculations
-   - PBGC premium illustrations
-   - Disclosure requirements
-
-### 2.4 Reinsurance Knowledge Base
-
-**Goal:** Detailed reinsurance structures and transactions.
-
-#### Deliverables:
-
-1. **Treaty Structures**
-   - Quota share with sliding scale commissions
-   - Surplus treaties with line limits
-   - Excess of loss with reinstatement provisions
-   - Aggregate stop loss
-
-2. **Retrocession**
-   - Retrocession arrangements
-   - Catastrophe bond structures
-   - Industry loss warranties
-
-3. **Financial Analysis**
-   - Ceding commission calculations
-   - Loss corridor provisions
-   - Profit commission mechanics
+| Phase | Focus | Outcome |
+|-------|-------|---------|
+| **Phase 1** | AI Task Frameworks | Agents can perform core actuarial tasks |
+| **Phase 2** | Knowledge Infrastructure | RAG-ready knowledge bases with validation |
+| **Phase 3** | Tool Ecosystem | Function calling, APIs, software integration |
+| **Phase 4** | Production Deployment | Enterprise-ready with governance |
+| **Phase 5** | Advanced Capabilities | Autonomous workflows, multi-agent systems |
 
 ---
 
-## Phase 3: Tooling & Integration
+## Phase 1: AI Task Frameworks
 
-**Objective:** Develop practical tools and integrate with external standards to maximize ontology utility.
+**Objective:** Define how AI agents perform specific actuarial tasks using the ontology.
 
-### 3.1 SPARQL Query Library
+### 1.1 Task Ontology Extension
 
-**Goal:** Create a comprehensive library of reusable SPARQL queries for common actuarial analyses.
+Define the structure of actuarial tasks AI agents can perform:
+
+```turtle
+ao:ActuarialTask a owl:Class ;
+    rdfs:subClassOf ao:Activity ;
+    rdfs:comment "A task an AI agent can perform to assist actuaries" .
+
+ao:hasInput a owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialTask ;
+    rdfs:comment "Data or knowledge required to perform the task" .
+
+ao:hasOutput a owl:ObjectProperty ;
+    rdfs:domain ao:ActuarialTask ;
+    rdfs:comment "Deliverable produced by the task" .
+
+ao:requiresJudgment a owl:DatatypeProperty ;
+    rdfs:domain ao:ActuarialTask ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment "Whether task requires human actuarial judgment" .
+```
+
+#### Core Task Definitions
+
+| Task | Inputs | Outputs | Requires Judgment |
+|------|--------|---------|-------------------|
+| **RiskAssessmentTask** | ExposureData, HistoricalLosses | RiskProfile, RiskScore | Yes |
+| **PricingTask** | RiskProfile, ExpenseAssumptions, TargetReturn | PremiumIndication | Yes |
+| **ReservingTask** | ClaimsTriangle, DevelopmentPatterns | ReserveEstimate, RangeOfEstimates | Yes |
+| **ValuationTask** | PolicyData, Assumptions, Discount Rates | LiabilityEstimate | Yes |
+| **ExperienceStudyTask** | ExposureData, ClaimsData | MortalityRates, LapseRates | No |
+| **DataValidationTask** | RawData, DataQualityRules | ValidationReport, CleanedData | No |
+| **RegulatoryReportTask** | FinancialData, ReportingRules | FilingDocument | Partial |
+| **ModelValidationTask** | Model, TestData, Benchmarks | ValidationReport | Yes |
+
+### 1.2 Prompt Templates
+
+Create ontology-grounded prompt templates for each task:
+
+```markdown
+## Reserve Estimation Prompt Template
+
+You are an actuarial AI assistant. Using the Actuarial Ontology definitions:
+
+**Task:** ao:ReservingTask
+**Context:** {knowledge_base_context}
+
+**Inputs provided:**
+- Claims Triangle: {claims_data}
+- Development Patterns: {development_factors}
+- Line of Business: {lob} (ao:LineOfBusiness)
+
+**Required Output (ao:ReserveEstimate):**
+1. Point estimate with method used
+2. Range of reasonable estimates
+3. Key assumptions (ao:Assumption)
+4. Data limitations (ao:DataLimitation per ASOP 23)
+5. Uncertainty assessment (ao:ModelUncertainty per ASOP 56)
+
+**Constraints:**
+- Use terminology from ao: namespace
+- Reference applicable ASOPs
+- Flag items requiring ao:ProfessionalJudgment
+```
 
 #### Deliverables:
+- `/prompts/risk-assessment.md`
+- `/prompts/pricing.md`
+- `/prompts/reserving.md`
+- `/prompts/valuation.md`
+- `/prompts/experience-study.md`
+- `/prompts/data-validation.md`
+- `/prompts/regulatory-reporting.md`
+- `/prompts/model-validation.md`
 
-1. **Risk Analysis Queries**
-   - Exposure aggregation by peril type
-   - Risk concentration analysis
-   - Correlated risk identification
-   - Emerging risk detection
+### 1.3 Output Schemas
 
-2. **Financial Queries**
-   - Loss ratio calculation by line of business
-   - Reserve adequacy analysis
-   - Premium trend analysis
-   - Combined ratio decomposition
+Define JSON schemas for AI outputs that map to ontology classes:
 
-3. **Claims Queries**
-   - Claims triangle generation
-   - Large loss identification
-   - Claims development patterns
-   - IBNR estimation support
-
-4. **Regulatory Queries**
-   - Capital requirement calculation
-   - Solvency ratio monitoring
-   - Compliance status reporting
-
-5. **Portfolio Queries**
-   - Portfolio composition analysis
-   - Concentration risk assessment
-   - Retention analysis
-
-#### Implementation Structure:
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReserveEstimate",
+  "description": "AI-generated reserve estimate per ao:ReserveEstimate",
+  "type": "object",
+  "properties": {
+    "pointEstimate": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "currency": { "type": "string" },
+        "method": {
+          "type": "string",
+          "enum": ["ChainLadder", "BornhuetterFerguson", "CapeCod", "FrequencySeverity"]
+        },
+        "asOfDate": { "type": "string", "format": "date" }
+      },
+      "required": ["value", "currency", "method", "asOfDate"]
+    },
+    "rangeOfEstimates": {
+      "type": "object",
+      "properties": {
+        "low": { "type": "number" },
+        "high": { "type": "number" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": { "type": "string" },
+          "asopReference": { "type": "string" },
+          "sensitivity": { "type": "string", "enum": ["low", "medium", "high"] }
+        }
+      }
+    },
+    "dataLimitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Per ASOP 23 data quality requirements"
+    },
+    "uncertaintyAssessment": {
+      "type": "string",
+      "description": "Per ASOP 56 model uncertainty requirements"
+    },
+    "judgmentItems": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Items flagged for human actuarial review"
+    }
+  },
+  "required": ["pointEstimate", "assumptions", "judgmentItems"]
+}
 ```
-/queries/
-  risk-analysis/
-    exposure-aggregation.rq
-    concentration-analysis.rq
-    correlated-risks.rq
-  financial-analysis/
-    loss-ratio.rq
-    combined-ratio.rq
-    premium-trends.rq
-  claims-analysis/
-    triangle-generation.rq
-    development-patterns.rq
-    large-loss-identification.rq
-  regulatory/
-    capital-requirements.rq
-    solvency-monitoring.rq
-  portfolio/
-    composition.rq
-    concentration.rq
-```
-
-### 3.2 External Ontology Mapping
-
-**Goal:** Establish formal mappings to major financial and industry ontologies.
 
 #### Deliverables:
+- `/schemas/reserve-estimate.json`
+- `/schemas/risk-assessment.json`
+- `/schemas/premium-indication.json`
+- `/schemas/experience-study-results.json`
+- `/schemas/validation-report.json`
 
-1. **FIBO (Financial Industry Business Ontology) Mapping**
-   - Map core financial concepts
-   - Align legal entity representations
-   - Connect contract structures
-   - Harmonize temporal concepts
+### 1.4 Human-in-the-Loop Workflows
 
-2. **Schema.org Alignment**
-   - Map organizations and people
-   - Connect product concepts
-   - Enable web discoverability
+Define where human actuarial judgment is required:
 
-3. **Insurance Industry Standards**
-   - ACORD data model alignment
-   - NAIC reporting taxonomy mapping
-   - Lloyd's market standards connection
-
-4. **Risk Standards**
-   - COSO ERM framework alignment
-   - ISO 31000 risk management concepts
-   - Basel framework connections (operational risk)
-
-#### Implementation:
 ```
-/mappings/
-  fibo-mapping.ttl
-  schema-org-mapping.ttl
-  acord-mapping.ttl
-  naic-mapping.ttl
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   AI Agent      │────▶│  Judgment Gate  │────▶│    Actuary      │
+│   (Task Exec)   │     │  (ao:requires   │     │   (Review &     │
+│                 │     │   Judgment=true)│     │    Approve)     │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+         │                                               │
+         │              ┌─────────────────┐              │
+         └─────────────▶│   Final Output  │◀─────────────┘
+                        │  (Validated &   │
+                        │   Documented)   │
+                        └─────────────────┘
 ```
 
-### 3.3 API & Application Support
+**Automatic (No Judgment Required):**
+- Data extraction and cleaning
+- Standard calculations (loss ratios, development factors)
+- Report formatting
+- Compliance checklist verification
 
-**Goal:** Enable programmatic access and application integration.
-
-#### Deliverables:
-
-1. **REST API Specification**
-   - OpenAPI/Swagger specification
-   - Query endpoint definitions
-   - CRUD operations for knowledge base management
-
-2. **Python Library**
-   - RDFLib-based utilities
-   - Query helper functions
-   - Knowledge base population tools
-
-3. **Visualization Tools**
-   - Ontology browser configuration
-   - Network visualization templates
-   - Dashboard components
-
-4. **Integration Examples**
-   - Jupyter notebook tutorials
-   - Sample applications
-   - CI/CD pipeline templates
+**Human Review Required:**
+- Assumption selection
+- Method selection for non-standard situations
+- Professional judgment on uncertainty
+- Sign-off on regulatory filings
+- Deviation from standards (ASOP 41)
 
 ---
 
-## Phase 4: Advanced Semantics
+## Phase 2: Knowledge Infrastructure
 
-**Objective:** Implement sophisticated reasoning capabilities and advanced ontological constructs.
+**Objective:** Build RAG-ready knowledge bases that ground AI responses in verified actuarial knowledge.
 
-### 4.1 Reasoning Rules
+### 2.1 Chunking Strategy for RAG
 
-**Goal:** Develop inference rules for automated knowledge derivation.
+Structure knowledge for optimal retrieval:
 
-#### Deliverables:
-
-1. **Risk Classification Rules**
-   - Automatic risk categorization based on characteristics
-   - Insurability determination
-   - Risk correlation inference
-
-2. **Financial Rules**
-   - Reserve adequacy inference
-   - Solvency status determination
-   - Profitability classification
-
-3. **Compliance Rules**
-   - Regulatory requirement determination
-   - Compliance status inference
-   - Deadline calculations
-
-4. **Temporal Rules**
-   - Policy status derivation (active, expired, cancelled)
-   - Claim status transitions
-   - Reporting period calculations
-
-### 4.2 Property Chains
-
-**Goal:** Define complex relationships through property composition.
-
-#### Deliverables:
-
-1. **Transitive Relationships**
-   - `isReinsuredBy` transitivity through retrocession
-   - `exposedTo` through portfolio membership
-   - `regulatedBy` through jurisdictional hierarchy
-
-2. **Composite Properties**
-   - `hasUltimateLoss` = `hasClaim` o `hasUltimateCost`
-   - `isAffectedByPeril` = `hasPolicy` o `covers` o `hasPeril`
-
-### 4.3 Advanced OWL Constructs
-
-**Goal:** Leverage OWL 2 capabilities for richer semantics.
-
-#### Deliverables:
-
-1. **Qualified Cardinality Restrictions**
-   - "Policy with at least 2 named insureds"
-   - "Reinsurance treaty with exactly 1 cedent"
-
-2. **Self Restrictions**
-   - Captive insurer definitions
-   - Self-insurance constructs
-
-3. **Keys and Identification**
-   - Policy identification axioms
-   - Claim uniqueness constraints
-   - Entity resolution rules
-
-4. **Negative Property Assertions**
-   - Exclusion modeling
-   - Non-coverage declarations
-
----
-
-## Phase 5: Internationalization
-
-**Objective:** Extend the ontology for global applicability with multi-language and multi-jurisdictional support.
-
-### 5.1 Multi-Language Support
-
-**Goal:** Add labels and definitions in major languages.
-
-#### Deliverables:
-
-1. **Primary Languages**
-   - French (Canadian French priority)
-   - Spanish
-   - German
-   - Japanese
-   - Mandarin Chinese
-
-2. **Implementation Approach**
-   - `rdfs:label` with language tags
-   - `rdfs:comment` translations
-   - `skos:prefLabel` / `skos:altLabel` for terminology variants
-
-3. **Translation Workflow**
-   - Professional actuarial translator engagement
-   - Terminology validation with local actuarial societies
-   - Ongoing maintenance process
-
-### 5.2 Jurisdictional Variants
-
-**Goal:** Model jurisdiction-specific regulatory and practice variations.
-
-#### Deliverables:
-
-1. **Regulatory Frameworks**
-   - US (state-based regulation, NAIC)
-   - EU (Solvency II, EIOPA)
-   - UK (PRA, FCA post-Brexit)
-   - Canada (OSFI, provincial regulators)
-   - Australia (APRA)
-   - Japan (FSA)
-
-2. **Accounting Standards**
-   - US GAAP
-   - IFRS 17
-   - Local GAAP variants
-
-3. **Professional Standards**
-   - US ASOPs (current alignment)
-   - UK TMPs (Technical Memoranda)
-   - Canadian Standards of Practice
-   - IAA International Standards
-
-4. **Implementation Approach**
-   - Modular jurisdiction files
-   - Inheritance from core concepts
-   - Clear jurisdiction tagging
-
-#### Structure:
 ```
-/jurisdictions/
-  us/
-    us-regulatory.ttl
-    us-gaap.ttl
-    us-asop.ttl
-  eu/
-    solvency2.ttl
-    ifrs17.ttl
-    eiopa-guidelines.ttl
-  uk/
-    uk-regulatory.ttl
-    uk-tmps.ttl
-  canada/
-    canada-regulatory.ttl
-    canada-standards.ttl
+/knowledge-base/
+  /concepts/           # Ontology class definitions (small chunks)
+    mortality-risk.md
+    loss-ratio.md
+    ibnr-reserve.md
+  /methods/            # Actuarial methods (medium chunks)
+    chain-ladder.md
+    bornhuetter-ferguson.md
+    mortality-table-construction.md
+  /standards/          # ASOP summaries (medium chunks)
+    asop-23-data-quality.md
+    asop-41-communications.md
+    asop-56-modeling.md
+  /examples/           # Worked examples (large chunks)
+    auto-liability-reserving.md
+    term-life-pricing.md
+  /regulations/        # Regulatory requirements
+    solvency-ii-overview.md
+    ifrs-17-overview.md
+```
+
+### 2.2 Knowledge Base Expansion
+
+Priority order based on AI task enablement:
+
+| Priority | Knowledge Base | Enables Tasks |
+|----------|---------------|---------------|
+| 1 | **Reserving Methods KB** | ReservingTask, ModelValidationTask |
+| 2 | **Pricing Methods KB** | PricingTask, RiskAssessmentTask |
+| 3 | **ASOP Reference KB** | All tasks (compliance grounding) |
+| 4 | **Life Insurance KB** | Life-specific pricing, valuation |
+| 5 | **Health Insurance KB** | Health-specific tasks |
+| 6 | **Regulatory KB** | RegulatoryReportTask |
+
+#### Reserving Methods KB Content:
+- Chain Ladder method with worked examples
+- Bornhuetter-Ferguson with credibility weighting
+- Cape Cod method
+- Frequency-Severity approaches
+- Stochastic reserving (bootstrap, Mack)
+- Selection criteria and when to use each
+
+### 2.3 Validation Layer (SHACL)
+
+SHACL shapes serve AI output validation:
+
+```turtle
+ao:ReserveEstimateShape a sh:NodeShape ;
+    sh:targetClass ao:ReserveEstimate ;
+    sh:property [
+        sh:path ao:hasMonetaryValue ;
+        sh:minCount 1 ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:message "Reserve estimate must have non-negative monetary value"
+    ] ;
+    sh:property [
+        sh:path ao:hasAssumption ;
+        sh:minCount 1 ;
+        sh:message "Reserve estimate must document assumptions per ASOP 41"
+    ] ;
+    sh:property [
+        sh:path ao:asOfDate ;
+        sh:minCount 1 ;
+        sh:datatype xsd:date ;
+        sh:message "Reserve estimate must have valuation date"
+    ] .
+```
+
+**Purpose:** When AI generates a reserve estimate, validate it conforms to professional standards before presenting to actuary.
+
+### 2.4 Embedding Strategy
+
+Generate embeddings optimized for actuarial retrieval:
+
+```python
+# Conceptual approach
+embedding_config = {
+    "model": "text-embedding-3-large",
+    "chunk_strategy": {
+        "concepts": {"size": 200, "overlap": 50},
+        "methods": {"size": 500, "overlap": 100},
+        "examples": {"size": 1000, "overlap": 200}
+    },
+    "metadata": {
+        "ontology_class": "ao:ChainLadderMethod",
+        "applicable_tasks": ["ReservingTask"],
+        "asop_references": ["ASOP 43"],
+        "practice_area": ["P&C"]
+    }
+}
 ```
 
 ---
 
-## Phase 6: Community & Governance
+## Phase 3: Tool Ecosystem
 
-**Objective:** Build sustainable community engagement and governance structures for long-term ontology evolution.
+**Objective:** Enable AI agents to execute actuarial calculations and integrate with existing tools.
 
-### 6.1 Standards Body Engagement
+### 3.1 Function Calling Definitions
 
-**Goal:** Gain recognition and adoption from actuarial professional organizations.
+Define tools AI agents can invoke:
 
-#### Deliverables:
+```json
+{
+  "name": "calculate_loss_development_factors",
+  "description": "Calculate age-to-age loss development factors from a claims triangle",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "triangle": {
+        "type": "array",
+        "description": "Claims triangle as 2D array [accident_period][development_period]"
+      },
+      "method": {
+        "type": "string",
+        "enum": ["volume_weighted", "simple_average", "medial"],
+        "default": "volume_weighted"
+      },
+      "exclude_high_low": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": ["triangle"]
+  }
+}
+```
 
-1. **Society of Actuaries (SOA)**
-   - Present at annual meetings
-   - Publish in actuarial journals
-   - Engage with technology section
+#### Core Tools:
+| Tool | Purpose |
+|------|---------|
+| `calculate_loss_development_factors` | Development factor selection |
+| `project_ultimate_losses` | Apply factors to project ultimates |
+| `calculate_ibnr` | IBNR = Ultimate - Paid |
+| `calculate_loss_ratio` | Loss ratio computation |
+| `apply_trend_factors` | Trend loss data |
+| `calculate_present_value` | Discount cash flows |
+| `generate_mortality_rates` | Extract rates from tables |
+| `run_experience_study` | A/E analysis |
+| `validate_against_shacl` | Validate outputs |
 
-2. **Casualty Actuarial Society (CAS)**
-   - Connect with research initiatives
-   - Engage with automation/AI working groups
+### 3.2 MCP Server Implementation
 
-3. **International Actuarial Association (IAA)**
-   - Present at international congress
-   - Engage with ISAP development
+Build a Model Context Protocol server for actuarial tools:
 
-4. **ACORD**
-   - Propose alignment with ACORD standards
-   - Participate in data standards initiatives
+```
+/mcp-server/
+  server.py              # MCP server implementation
+  tools/
+    reserving.py         # Reserving calculations
+    pricing.py           # Pricing calculations
+    experience.py        # Experience studies
+    validation.py        # SHACL validation
+  resources/
+    ontology.py          # Serve ontology as resource
+    knowledge_base.py    # Serve KB for RAG
+```
 
-### 6.2 Governance Model
+This enables Claude and other AI systems to:
+- Query the ontology for definitions
+- Retrieve relevant knowledge base content
+- Execute actuarial calculations
+- Validate outputs against SHACL shapes
 
-**Goal:** Establish formal governance for ontology evolution.
+### 3.3 Software Integration
 
-#### Deliverables:
+Priority integrations for actuary workflows:
 
-1. **Governance Structure**
-   - Technical steering committee
-   - Domain working groups (Life, P&C, Health, Pensions)
-   - Release management process
+| Integration | Purpose | Approach |
+|-------------|---------|----------|
+| **Excel/VBA** | Most actuaries work in Excel | COM add-in, Office Scripts |
+| **Python** | Growing adoption, modeling | pip package |
+| **R** | Statistical analysis | CRAN package |
+| **Jupyter** | Documentation, analysis | Kernel extension |
+| **Actuarial Platforms** | Enterprise systems | API adapters |
 
-2. **Contribution Guidelines**
-   - Change proposal process
-   - Review and approval workflow
-   - Version control procedures
+#### Python Package Structure:
+```python
+from actuarial_ontology import (
+    # Knowledge access
+    get_definition,      # "What is IBNR?"
+    get_relationships,   # "What risks affect life insurance?"
 
-3. **Maintenance Procedures**
-   - Deprecation policy
-   - Backward compatibility guidelines
-   - Migration support
+    # Task execution
+    ReservingTask,
+    PricingTask,
 
-### 6.3 Education & Adoption
+    # Validation
+    validate_output,
 
-**Goal:** Enable broad adoption through education and support.
+    # RAG support
+    get_relevant_context,
+    embed_query
+)
 
-#### Deliverables:
+# Example usage
+task = ReservingTask(
+    claims_triangle=data,
+    line_of_business="auto_liability"
+)
+result = task.execute(ai_model="claude-3-opus")
+validation = validate_output(result, "ReserveEstimateShape")
+```
 
-1. **Educational Materials**
-   - Video tutorials
-   - Interactive exercises
-   - Certification program concept
+### 3.4 SPARQL for AI Context
 
-2. **Case Studies**
-   - Implementation success stories
-   - ROI documentation
-   - Best practice guides
+Pre-built queries AI uses to gather context:
 
-3. **Support Infrastructure**
-   - Discussion forums
-   - FAQ documentation
-   - Implementation consulting network
+```sparql
+# Get all risks that affect a given product type
+PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
+
+SELECT ?risk ?riskType ?description
+WHERE {
+    ?product a ao:TermLifeInsurance .
+    ?product ao:exposedTo ?risk .
+    ?risk a ?riskType .
+    ?risk rdfs:comment ?description .
+    ?riskType rdfs:subClassOf* ao:Risk .
+}
+```
+
+```sparql
+# Get applicable ASOPs for a task
+SELECT ?asop ?title ?relevance
+WHERE {
+    ao:ReservingTask ao:governedBy ?asop .
+    ?asop rdfs:label ?title .
+    ?asop ao:relevanceNote ?relevance .
+}
+```
+
+---
+
+## Phase 4: Production Deployment
+
+**Objective:** Enterprise-ready deployment with appropriate governance and controls.
+
+### 4.1 Actuarial AI Governance
+
+Align with professional standards:
+
+**ASOP 56 (Modeling) Compliance:**
+- Document AI model selection rationale
+- Validate AI outputs against known results
+- Assess AI model limitations
+- Maintain audit trail of AI-assisted work
+
+**ASOP 41 (Communications) Compliance:**
+- Disclose use of AI assistance
+- Document AI limitations
+- Identify items requiring professional judgment
+- Enable actuarial sign-off workflow
+
+**Governance Framework:**
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    AI Governance Layer                       │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+│  │   Access    │  │   Audit     │  │  Disclosure │         │
+│  │   Control   │  │   Logging   │  │  Management │         │
+│  └─────────────┘  └─────────────┘  └─────────────┘         │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
+│  │   Output    │  │  Judgment   │  │   Version   │         │
+│  │  Validation │  │   Routing   │  │   Control   │         │
+│  └─────────────┘  └─────────────┘  └─────────────┘         │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 4.2 Deployment Patterns
+
+**Pattern 1: Copilot Mode**
+- AI assists actuary in real-time
+- Human reviews all outputs
+- Lowest risk, immediate value
+
+**Pattern 2: Draft Mode**
+- AI generates initial work product
+- Human reviews and edits
+- Higher productivity, maintained oversight
+
+**Pattern 3: Automation Mode**
+- AI handles routine tasks end-to-end
+- Human spot-checks and exceptions
+- Highest efficiency, requires mature validation
+
+### 4.3 Quality Assurance
+
+**Backtesting Framework:**
+- Compare AI outputs to historical actuary work
+- Measure accuracy, identify systematic biases
+- Continuous improvement feedback loop
+
+**Benchmark Suite:**
+- Standard test cases with known answers
+- CAS exam problems
+- SOA case studies
+- Real-world anonymized examples
+
+---
+
+## Phase 5: Advanced Capabilities
+
+**Objective:** Expand AI capabilities toward more autonomous actuarial work.
+
+### 5.1 Multi-Agent Workflows
+
+Complex actuarial projects as agent orchestration:
+
+```
+Product Development Workflow:
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│   Market     │────▶│    Risk      │────▶│   Pricing    │
+│   Research   │     │  Assessment  │     │   Agent      │
+│   Agent      │     │    Agent     │     │              │
+└──────────────┘     └──────────────┘     └──────────────┘
+                                                  │
+┌──────────────┐     ┌──────────────┐             │
+│  Regulatory  │◀────│   Product    │◀────────────┘
+│   Review     │     │   Design     │
+│   Agent      │     │   Agent      │
+└──────────────┘     └──────────────┘
+```
+
+### 5.2 Reasoning Capabilities
+
+Enable formal reasoning over knowledge:
+
+**Inference Examples:**
+- If Product has MortalityRisk AND no reinsurance → Flag concentration risk
+- If Reserve < 70th percentile historical → Flag potential inadequacy
+- If Assumption changed > 10% from prior → Require documentation
+
+**Property Chains:**
+```turtle
+# Infer indirect risk exposure
+ao:hasIndirectExposure owl:propertyChainAxiom (
+    ao:reinsures
+    ao:exposedTo
+) .
+
+# Portfolio inherits policy risks
+ao:portfolioExposedTo owl:propertyChainAxiom (
+    ao:containsPolicy
+    ao:exposedTo
+) .
+```
+
+### 5.3 Continuous Learning
+
+**Feedback Integration:**
+- Capture actuary corrections to AI outputs
+- Identify common error patterns
+- Update prompts and knowledge base
+- Improve task-specific fine-tuning
+
+**Knowledge Expansion:**
+- Extract knowledge from new ASOPs
+- Incorporate regulatory changes
+- Add emerging risk concepts
+- Update from industry publications
 
 ---
 
 ## Implementation Priorities
 
-### Immediate Priorities (Next Release - v0.8.0)
+### Immediate (v0.8.0)
+1. **Task ontology extension** - Define 8 core actuarial tasks
+2. **Reserving prompt template** - Most common task
+3. **Reserve estimate schema** - Output validation
+4. **Basic MCP server** - Enable tool calling
 
-1. **SHACL Core Shapes** - Essential validation for existing knowledge base
-2. **Disjointness Axioms** - Logical consistency foundation
-3. **Life Insurance KB** - Expand domain coverage
-4. **SPARQL Query Templates** - Immediate utility for users
+### Near-term (v0.9.0)
+1. **Pricing and valuation templates** - Expand task coverage
+2. **SHACL validation shapes** - Output quality assurance
+3. **Reserving methods KB** - RAG content
+4. **Python package alpha** - Developer access
 
-### Medium-Term Priorities (v0.9.0 - v1.0.0)
+### Medium-term (v1.0.0)
+1. **Full task coverage** - All 8+ tasks operational
+2. **Production MCP server** - Enterprise-ready
+3. **Excel integration** - Actuary workflow
+4. **Governance framework** - ASOP compliance
 
-1. **Complete SHACL Coverage** - All major classes validated
-2. **Health & Pensions KBs** - Full domain coverage
-3. **FIBO Mapping** - Industry standard alignment
-4. **Python Library** - Programmatic access
-
-### Long-Term Priorities (v1.0.0+)
-
-1. **Reasoning Rules** - Automated inference
-2. **Multi-Language** - Global accessibility
-3. **Jurisdictional Variants** - International applicability
-4. **Governance Model** - Sustainable evolution
+### Long-term (v2.0.0)
+1. **Multi-agent workflows** - Complex projects
+2. **Reasoning rules** - Automated inference
+3. **Continuous learning** - Self-improvement
+4. **Industry adoption** - Standards recognition
 
 ---
 
 ## Success Metrics
 
-### Technical Metrics
-- SHACL shape coverage: 100% of major classes
-- Knowledge base instances: 1000+ across all domains
-- SPARQL query library: 50+ production queries
-- External mappings: 4+ major ontologies
+### AI Effectiveness
+| Metric | Target |
+|--------|--------|
+| Task completion accuracy | >95% (vs actuary benchmark) |
+| Time savings per task | >50% reduction |
+| Judgment items correctly flagged | >99% |
+| False positive rate | <5% |
 
-### Adoption Metrics
-- GitHub stars: 500+
-- Active contributors: 20+
-- Production implementations: 10+
-- Academic citations: 25+
+### Adoption
+| Metric | Target |
+|--------|--------|
+| Actuaries using AI tools | 1,000+ |
+| Tasks completed with AI assist | 100,000+ |
+| Organizations deployed | 50+ |
+| Integration downloads | 10,000+ |
 
-### Quality Metrics
-- Competency question answerability: Maintain 100%
-- Validation error rate: <1% on new submissions
-- Documentation completeness: 100% for public APIs
-- Test coverage: 95%+ for validation rules
+### Quality
+| Metric | Target |
+|--------|--------|
+| SHACL validation pass rate | >98% |
+| Actuary override rate | <10% |
+| Audit findings | 0 critical |
+| User satisfaction | >4.5/5 |
 
 ---
 
-## Version History
+## Comparison: Traditional vs AI-First Approach
 
-| Version | Milestone | Key Deliverables |
-|---------|-----------|------------------|
-| 0.8.0 | Validation | Core SHACL shapes, disjointness axioms |
-| 0.9.0 | Expansion | Life & Health KBs, SPARQL library |
-| 0.10.0 | Integration | FIBO mapping, Python library |
-| 1.0.0 | Production | Full validation, all domains, governance |
-| 1.1.0 | International | Multi-language, jurisdictional variants |
-| 2.0.0 | Reasoning | Advanced inference, property chains |
+| Aspect | Traditional Ontology | AI-First Ontology |
+|--------|---------------------|-------------------|
+| **Primary user** | Semantic web developers | Actuaries via AI |
+| **Success metric** | Completeness, consistency | Task completion, accuracy |
+| **Validation** | Logical consistency | Output correctness |
+| **Knowledge bases** | Comprehensive coverage | Task-relevant depth |
+| **Tooling** | SPARQL endpoints | Function calling, MCP |
+| **Documentation** | Technical reference | Prompt templates |
+
+---
+
+## Repository Structure
+
+```
+/actuarial-ontology/
+  actuarial-ontology.ttl       # Core ontology
+
+  /tasks/                       # Phase 1: Task frameworks
+    task-ontology.ttl          # Task class definitions
+    /prompts/                  # Prompt templates
+    /schemas/                  # Output JSON schemas
+
+  /knowledge-base/             # Phase 2: RAG content
+    /concepts/
+    /methods/
+    /standards/
+    /examples/
+
+  /shapes/                     # Validation
+    output-shapes.ttl          # AI output validation
+
+  /mcp-server/                 # Phase 3: Tools
+    server.py
+    /tools/
+
+  /packages/                   # Integrations
+    /python/
+    /excel/
+
+  /governance/                 # Phase 4: Enterprise
+    asop-compliance.md
+    audit-requirements.md
+```
 
 ---
 
 ## Contributing
 
-We welcome contributions to help achieve this roadmap. Key areas where help is needed:
+Priority contribution areas:
 
-1. **Domain Expertise** - Actuaries to review and validate concepts
-2. **Technical Development** - SHACL shapes, SPARQL queries, tooling
-3. **Translation** - Multi-language label and definition translation
-4. **Testing** - Knowledge base population and validation
-5. **Documentation** - Tutorials, examples, case studies
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
+1. **Prompt Engineering** - Improve task prompts
+2. **Knowledge Content** - Add methods, examples
+3. **Tool Development** - MCP tools, integrations
+4. **Validation** - Test cases, benchmarks
+5. **Domain Expertise** - Review AI outputs for accuracy
 
 ---
 
-## Contact & Resources
+## Summary
 
-- **Repository:** https://github.com/Actuarial-Notes/Actuarial-Ontology
-- **Issues:** GitHub Issues for bug reports and feature requests
-- **Discussions:** GitHub Discussions for questions and ideas
-- **License:** MIT License
+This roadmap shifts focus from building a complete ontology to **building AI systems that empower actuaries**. The ontology is essential infrastructure, but the measure of success is:
+
+> Can an actuary use AI to complete their work faster, more accurately, and with appropriate professional oversight?
+
+Every phase, every deliverable should be evaluated against this question.
 
 ---
 
-*This roadmap is a living document and will be updated as the project evolves.*
+*This roadmap is a living document aligned with the vision of empowering actuaries with AI.*
