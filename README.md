@@ -3,25 +3,28 @@ An open source ontology for the domain of actuarial science, and the schema behi
 [Actuarial Notes Wiki](https://github.com/ActuarialNotes/Actuarial-Notes-Wiki) and its Actuarial
 Coworker agent.
 
-**Status: 0.7.1, being rebuilt.** A [foundations review](docs/ontology-review.md) found that the
-0.7 draft is a broad glossary, not yet a schema that data can be held in. Version 0.8 will be a
-smaller core built to a set of [competency questions](docs/competency-questions.md), Canadian
-property and casualty insurance first.
+**Status: 0.8.0.** A small core built to a set of
+[competency questions](docs/competency-questions.md), Canadian property and casualty insurance
+first. The 52 priority 1 questions each have a query that CI runs against records transcribed from the
+wiki's sourced pages, plus one synthetic analysis.
 
-| File | What it is |
+| Path | What it is |
 |---|---|
-| [`actuarial-ontology.ttl`](actuarial-ontology.ttl) | The ontology (OWL, Turtle): 303 classes, 110 properties |
-| [`docs/competency-questions.md`](docs/competency-questions.md) | The questions the 0.8 core must answer (draft) |
-| [`docs/ontology-review.md`](docs/ontology-review.md) | The review of 0.7.0: findings, target shape, roadmap |
-| [`examples/canadian-pc-example.ttl`](examples/canadian-pc-example.ttl) | Example instances used by the checks. Unsourced and partly invented; not a knowledge base |
-| [`tools/check.py`](tools/check.py) | The checks CI runs |
+| [`ontology/`](ontology/) | The ontology (OWL, Turtle) in five modules: core, institutions, regulation, actuarial work, events. 38 classes, 59 properties |
+| [`lists/`](lists/) | The controlled lists: jurisdictions, lines of business, roles, quantity kinds, units, statuses, perils |
+| [`vocabulary/`](vocabulary/) | The glossary (SKOS): 306 terms |
+| [`shapes/`](shapes/) | SHACL shapes that validate records |
+| [`tests/`](tests/) | A query and expected result per question, and the fixtures they run on |
+| [`docs/model.md`](docs/model.md) | How the model is put together |
+| [`docs/competency-questions.md`](docs/competency-questions.md) | The requirements: what the ontology must answer |
+| [`docs/ontology-review.md`](docs/ontology-review.md) | The review of 0.7 that led to this version |
 | [`CHANGELOG.md`](CHANGELOG.md) | Version history |
 | [`Project Guide.md`](Project%20Guide.md) | How the ontology is developed |
 
 To check a change:
 
 ```bash
-pip install rdflib owlrl
+pip install rdflib owlrl pyshacl
 ```
 
 ```bash

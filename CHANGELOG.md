@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.8.0 (2026-11-23)
+
+A rebuild. The ontology is now a small core that answers a tested set of competency questions,
+and the 0.7 class tree is a glossary.
+
+- **Replaced:** `actuarial-ontology.ttl` (303 classes, 110 properties) with five modules in
+  `ontology/`: 38 classes and 59 properties, each needed by a priority 1 question in
+  `docs/competency-questions.md`. Every 0.7 IRI is retired; 0.7 was a draft and nothing depended
+  on it.
+- **Added:** three patterns in place of the old class tree: every number is an observation with
+  its source; a role is a dated relationship, not a type; a document has editions, and a fact
+  points at a place in one. See `docs/model.md`.
+- **Added:** `lists/`, the controlled lists (jurisdictions, lines of business, role types,
+  quantity kinds, units, statuses, perils), carrying the wiki's own spellings as notations.
+- **Added:** `vocabulary/`, the glossary in SKOS: 286 terms carried over from 0.7 with their
+  draft definitions, and 20 hand-written ones, including one term per sense of "claim", "loss",
+  "policy" and "risk".
+- **Added:** `shapes/shapes.ttl`, SHACL shapes for every record type.
+- **Added:** `tests/`: 55 queries for the 52 priority 1 questions, with expected results, on a
+  fixture transcribed from sourced pages of the Actuarial Notes Wiki, a fixture generated from its
+  calculators, and a small synthetic one.
+- **Changed:** `tools/check.py` now also validates the fixtures against the shapes, runs every
+  query, and fails on a term no question uses.
+- **Removed:** `examples/canadian-pc-example.ttl`.
+
 ## 0.7.1 (2026-11-23)
 
 A repair release after the foundations review (`docs/ontology-review.md`). No new terms beyond

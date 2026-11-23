@@ -82,7 +82,8 @@ invented policy, claim or analysis, kept in a separate fixture.
 
 ## 3. The questions
 
-Counts: 87 questions, 52 at priority 1.
+Counts: 87 questions, 52 at priority 1. **All 52 are built and tested in 0.8.0**; each has a
+query in `tests/queries/` named for its identifier. Priority 2 and 3 questions have no test yet.
 
 ### 3.1 Foundations (FD)
 
@@ -91,27 +92,27 @@ data.
 
 | ID | Question | Type | Answer | Pri | Test case |
 |---|---|---|---|---|---|
-| FD1 | Is [activity] in scope? | S | yes/no | 1 | ratemaking (yes); pension valuation (no) |
+| FD1 | Is [activity] in scope? | S | yes/no | 1 | pension valuation; ratemaking |
 | FD2 | Which senses does the term [term] have? | F | list | 1 | "claim" |
-| FD3 | Which category is [sense of a term]: party, contract, document, event, observation, activity or method? | F | value | 1 | each sense of "claim", "loss", "reserve", "premium", "risk" |
-| FD4 | Is [type] a role? | M | yes/no | 1 | Insured, Insurer, Regulator (yes); Organization (no) |
+| FD3 | Which category is [sense of a term]: party, contract, document, event, observation, activity or method? | F | value | 1 | each sense of "claim", "loss", "reserve", "premium" and "policy" |
+| FD4 | Is [type] a role? | M | yes/no | 1 | Insurer; Organization |
 | FD5 | Which kinds of party can hold [role]? | M | list | 1 | Policyholder |
-| FD6 | Is [type] a status of another type? | M | yes/no | 1 | paid claim, in-force policy |
-| FD7 | Can one thing be both [type] and [type]? | F | yes/no | 1 | Person and Organization; Event and Document |
-| FD8 | Is [named thing] an individual or a class? | F | value | 1 | IFRS 17; the 2024 MCT guideline; reserve valuation |
+| FD6 | Is [type] a status of another type? | M | yes/no | 1 | paid claim |
+| FD7 | Can one thing be both [type] and [type]? | F | yes/no | 1 | Event and Document; Person and Organization |
+| FD8 | Is [named thing] an individual or a class? | F | value | 1 | the 2024 MCT guideline; Guideline |
 | FD9 | Which sources define [term]? | V | list | 2 | "claim liabilities" |
 | FD10 | How does [source] define [term]? | V | value | 2 | one source from FD9 |
-| FD11 | Which terms are synonyms of [term]? | V | list | 1 | "unpaid claim liability" |
+| FD11 | Which terms are synonyms of [term]? | V | list | 1 | "development technique" |
 | FD12 | Which concept page defines [term]? | V | value | 1 | "IBNR" |
 
 ### 3.2 Institutions (IN)
 
 | ID | Question | Type | Answer | Pri | Test case |
 |---|---|---|---|---|---|
-| IN1 | Which body regulates [organization] for [regulatory domain] in [jurisdiction]? | V | value | 1 | Intact Insurance, solvency, Canada |
-| IN2 | Is [organization] federally regulated? | V | yes/no | 1 | Wawanesa Mutual |
-| IN3 | Which bodies publish [quantity kind] for [line] in [jurisdiction]? | V | list | 1 | loss trend benchmarks, private passenger auto, Ontario |
-| IN4 | Which jurisdictions does [body]'s authority cover? | V | list | 1 | GISA |
+| IN1 | Which body regulates [organization] for [regulatory domain] in [jurisdiction]? | V | value | 1 | Intact Insurance Company, solvency, Canada |
+| IN2 | Is [organization] federally regulated? | V | yes/no | 1 | The Wawanesa Mutual Insurance Company |
+| IN3 | Which bodies publish [quantity kind] for [line] in [jurisdiction]? | V | list | 1 | loss trend, private passenger automobile, Ontario |
+| IN4 | Which jurisdictions does [body]'s authority cover? | V | list | 1 | FSRA (the wiki states no territory for GISA, the case first drafted) |
 | IN5 | Which organizations belong to [group]? | V | list | 2 | Intact Financial Corporation |
 | IN6 | Which organization acquired [organization]? | V | value | 2 | RSA Canada |
 | IN7 | On what date did [acquisition] close? | V | value | 3 | the RSA acquisition |
@@ -123,14 +124,14 @@ data.
 | ID | Question | Type | Answer | Pri | Test case |
 |---|---|---|---|---|---|
 | RG1 | Which normative documents issued by [issuer] are in force on [date]? | V | list | 1 | OSFI, 2026-01-01 |
-| RG2 | Which normative documents apply to [role] in [jurisdiction] for [regulatory domain] on [date]? | V | list | 1 | federally regulated P&C insurer, Canada, solvency, 2026-01-01 |
-| RG3 | Which edition of [document] is in force on [date]? | V | value | 1 | OSFI's MCT guideline, 2023-06-30 |
+| RG2 | Which normative documents apply to [role] in [jurisdiction] for [regulatory domain] on [date]? | V | list | 1 | insurer, Canada, solvency, 2026-01-01 |
+| RG3 | Which edition of [document] is in force on [date]? | V | value | 1 | OSFI's MCT guideline, 2024-06-30 (the wiki gives the 2023 edition no dates, so a 2023 date cannot be tested) |
 | RG4 | Which document replaced [document edition]? | V | value | 1 | MCT guideline, 2023 edition |
 | RG5 | From what date is [document edition] effective? | V | value | 1 | MCT guideline, 2024 edition |
-| RG6 | Which body approves rates for [line] in [jurisdiction]? | V | value | 1 | private passenger auto, Alberta |
-| RG7 | Which filing rules apply to a rate filing for [line] in [jurisdiction] on [date]? | V | list | 1 | private passenger auto, Alberta, 2026-01-01 |
-| RG8 | Which standards of practice apply to [activity] in [jurisdiction]? | R | list | 1 | P&C ratemaking, Canada |
-| RG9 | Where in [document edition] is [requirement] stated? | V | value (locator) | 1 | MCT guideline 2024, supervisory target ratio |
+| RG6 | Which body approves rates for [line] in [jurisdiction]? | V | value | 1 | private passenger automobile, Alberta |
+| RG7 | Which filing rules apply to a rate filing for [line] in [jurisdiction] on [date]? | V | list | 1 | private passenger automobile, Alberta, 2026-01-01 |
+| RG8 | Which standards of practice apply to [activity] in [jurisdiction]? | R | list | 1 | ratemaking, Canada |
+| RG9 | Where in [document edition] is [requirement] stated? | V | value (locator) | 1 | MCT guideline 2024, supervisory target MCT ratio |
 | RG10 | Which rating variables are prohibited for [line] in [jurisdiction] on [date]? | V | list | 2 | private passenger auto, Ontario, 2026-01-01 |
 | RG11 | Which regulatory changes affected [line] in [jurisdiction] between [date] and [date], in date order? | V | list | 2 | personal auto, Ontario, 2010 to 2025 |
 | RG12 | Which disclosure requirements does [standard] place on [work product type]? | R | list | 2 | a CIA standard, a rate filing's actuarial report |
@@ -141,13 +142,13 @@ data.
 
 | ID | Question | Type | Answer | Pri | Test case |
 |---|---|---|---|---|---|
-| FG1 | What [quantity kind] did [organization] report for [period]? | V | value | 1 | MCT ratio, one insurer, one quarter of OSFI's PC4 return |
-| FG2 | What is the [quantity kind] in [document edition] for [line]? | V | value | 1 | ULAE factor, GISA's Ontario PPA factors (2025) |
-| FG3 | What value of [quantity kind] does [body] prescribe for [line] in [jurisdiction], effective [date]? | V | value | 1 | profit provision, AIRB, private passenger auto, Alberta |
-| FG4 | At which locator (document edition, then page, table or cell) is [figure] stated? | V | value | 1 | the figure from FG2 |
-| FG5 | In what unit is [figure] stated? | V | value | 1 | the figure from FG3 |
-| FG6 | On which basis is [figure] stated (accident, policy or calendar year; gross or net; written or earned)? | V | value | 1 | one loss ratio from a filed return |
-| FG7 | What is the fact-check status of [figure]? | V | value | 1 | the figure from FG3 |
+| FG1 | What [quantity kind] did [organization] report for [period]? | V | value | 1 | MCT ratio, Intact Insurance Company, the quarter ending 2025-12-31 |
+| FG2 | What is the [quantity kind] in [document edition] for [line]? | V | value | 1 | ULAE factor, GISA's 2025 exhibit, private passenger automobile (one value per accident year held) |
+| FG3 | What value of [quantity kind] does [body] prescribe for [line] in [jurisdiction], effective [date]? | V | value | 1 | profit provision, AIRB, private passenger automobile, Alberta, 2026-10-01 |
+| FG4 | At which locator (document edition, then page, table or cell) is [figure] stated? | V | value | 1 | GISA's ULAE factor for accident year 2025 |
+| FG5 | In what unit is [figure] stated? | V | value | 1 | the AIRB's profit provision |
+| FG6 | On which basis is [figure] stated (accident, policy or calendar year; gross or net; written or earned)? | V | value | 1 | GISA's ULAE factor for accident year 2025 (the wiki holds no filed loss ratio, the case first drafted) |
+| FG7 | What is the fact-check status of [figure]? | V | value | 1 | the AIRB's profit provision |
 | FG8 | Which figures come from a document edition that has been replaced? | V | list | 1 | the whole fixture |
 | FG9 | What were [organization]'s [quantity kind] values for each period from [period] to [period]? | V | list | 2 | combined ratio, one insurer, five years |
 | FG10 | Which organizations reported [quantity kind] below [threshold] for [period]? | V | list | 2 | MCT ratio, 200%, one quarter |
@@ -161,15 +162,15 @@ second describes one piece of work and what it rests on.
 
 | ID | Question | Type | Answer | Pri | Test case |
 |---|---|---|---|---|---|
-| WK1 | What is the exposure base for [line]? | V | value | 1 | private passenger auto |
-| WK2 | Which steps make up [method], in order? | R | list | 1 | the loss ratio method of rate indication |
-| WK3 | Which quantity kinds does [method] take as input? | R | list | 1 | Bornhuetter-Ferguson |
-| WK4 | Which quantity kind does [method] produce? | R | value | 1 | Bornhuetter-Ferguson |
+| WK1 | What is the exposure base for [line]? | V | value | 1 | private passenger automobile (the wiki states it for personal automobile, the wider line) |
+| WK2 | Which steps make up [method], in order? | R | list | 1 | the ratemaking chain |
+| WK3 | Which quantity kinds does [method] take as input? | R | list | 1 | Bornhuetter-Ferguson Method |
+| WK4 | Which quantity kind does [method] produce? | R | value | 1 | Bornhuetter-Ferguson Method |
 | WK5 | Which methods produce [quantity kind]? | R | list | 1 | ultimate claims |
-| WK6 | Which tools implement [method]? | R | list | 1 | Bornhuetter-Ferguson |
-| WK7 | Which tools accept [quantity kind] as an input? | R | list | 1 | annual loss trend |
+| WK6 | Which tools implement [method]? | R | list | 1 | Bornhuetter-Ferguson Method |
+| WK7 | Which tools accept [quantity kind] as an input? | R | list | 1 | loss trend |
 | WK8 | Which tools can supply an input of [tool]? | R | list | 1 | Trend Factor |
-| WK9 | Which components make up [quantity kind]? | R | list | 1 | total unpaid claims |
+| WK9 | Which components make up [quantity kind]? | R | list | 1 | unpaid claims |
 | WK10 | Which period bases can a claim be assigned on? | S | list | 2 | (accident, policy, report, calendar year) |
 | WK11 | Which methods estimate [quantity kind] from [data kind]? | R | list | 2 | credibility, claim counts |
 
@@ -177,20 +178,20 @@ second describes one piece of work and what it rests on.
 
 | ID | Question | Type | Answer | Pri | Test case |
 |---|---|---|---|---|---|
-| WK12 | Which assumptions does [analysis] use? | V | list | 1 | synthetic rate indication |
-| WK13 | What is the source of [assumption]? | V | value | 1 | one assumption from WK12 |
-| WK14 | Was [assumption] prescribed, published or selected? | V | value | 1 | one assumption from WK12 |
-| WK15 | Who selected [assumption]? | V | value | 1 | a selected assumption from WK12 |
+| WK12 | Which assumptions does [analysis] use? | V | list | 1 | the synthetic rate indication |
+| WK13 | What is the source of [assumption]? | V | value | 1 | the AIRB's profit provision |
+| WK14 | Was [assumption] prescribed, published or selected? | V | value | 1 | each assumption of the synthetic rate indication |
+| WK15 | Who selected [assumption]? | V | value | 1 | the synthetic selected trend |
 | WK16 | What rationale is recorded for [assumption]? | V | value | 2 | the same |
-| WK17 | Which analyses use [assumption]? | V | list | 1 | a published trend benchmark |
-| WK18 | Which data sets did [analysis] use? | V | list | 1 | synthetic |
-| WK19 | Which method did [analysis] use for [step]? | V | value | 1 | synthetic, development to ultimate |
+| WK17 | Which analyses use [assumption]? | V | list | 1 | the AIRB's profit provision |
+| WK18 | Which data sets did [analysis] use? | V | list | 1 | the synthetic rate indication |
+| WK19 | Which method did [analysis] use for [step]? | V | value | 1 | the synthetic rate indication, the last step of the ratemaking chain |
 | WK20 | Which development factors did [analysis] apply? | V | list | 2 | synthetic |
 | WK21 | From which date to which date was [trend factor] applied? | V | value | 2 | synthetic |
 | WK22 | What is the complement of credibility in [analysis]? | V | value | 2 | synthetic |
 | WK23 | Which expense provisions enter [indication]? | V | list | 2 | synthetic |
 | WK24 | Which triangles exist for [segment] at [valuation date]? | V | list | 2 | synthetic |
-| WK25 | Which analysis produced [estimate]? | V | value | 1 | synthetic |
+| WK25 | Which analysis produced [estimate]? | V | value | 1 | the synthetic indicated rate change |
 | WK26 | Who reviewed [work product]? | V | list | 2 | synthetic |
 | WK27 | Which rate filing contains [indication]? | V | value | 3 | synthetic |
 | WK28 | With which body was [filing] filed? | V | value | 3 | synthetic |
@@ -199,10 +200,10 @@ second describes one piece of work and what it rests on.
 
 | ID | Question | Type | Answer | Pri | Test case |
 |---|---|---|---|---|---|
-| EV1 | Which catastrophe events occurred in [jurisdiction] between [date] and [date]? | V | list | 1 | Alberta, 2013 to 2024 |
-| EV2 | Which peril caused [event]? | V | value | 1 | 2020 Calgary hailstorm |
-| EV3 | What insured-loss estimates exist for [event]? | V | list | 1 | 2016 Fort McMurray wildfire |
-| EV4 | Which body published [estimate]? | V | value | 1 | one estimate from EV3 |
+| EV1 | Which catastrophe events occurred in [jurisdiction] between [date] and [date]? | V | list | 1 | Ontario, 2025-01-01 to 2025-12-31 (the wiki's catastrophe pages cover Ontario and Quebec, not Alberta, the case first drafted) |
+| EV2 | Which peril caused [event]? | V | value | 1 | the Ontario and Quebec ice storm of March 2025 |
+| EV3 | What insured-loss estimates exist for [event]? | V | list | 1 | the Ontario and Quebec ice storm of March 2025 |
+| EV4 | Which body published [estimate]? | V | value | 1 | the final estimate for the ice storm |
 | EV5 | As of what date was [estimate] made? | V | value | 2 | the same |
 | EV6 | Which lines of business did [event] affect? | V | list | 2 | 2024 Calgary hailstorm |
 | EV7 | Which regulatory changes followed from [event]? | V | list | 3 | one sourced case from the wiki |
@@ -257,16 +258,25 @@ question is taken up.
 
 ## 6. From question to test
 
-Each question becomes three files in `tests/`: the query (`.rq`), the fixture it runs on, and the
-expected result. CI runs all of them, and adds two checks on the set as a whole:
+Each priority 1 question has a query in `tests/queries/<ID>.rq` and its expected result in
+`tests/expected/<ID>.txt`. A question tested on two cases has a second file (`FD1-no`). The
+queries run on three fixtures in `tests/fixtures/`:
 
-- **Presuppositions.** Every class and property a query names exists in the ontology, and the
-  property connects those classes.
-- **Coverage.** Every class and property in the ontology is named by at least one query. A term
-  no question uses is removed or the question that needs it is written.
+| Fixture | Holds | Source |
+|---|---|---|
+| `wiki.ttl` | Organizations, documents and editions, filed and published figures, one catastrophe event, method inputs and outputs | Transcribed from pages of the Actuarial Notes Wiki; each record names its page |
+| `tools.ttl` | The calculators, their methods, hand-offs and chains | Generated from the wiki's calculator engine |
+| `synthetic.ttl` | One invented rate indication | Invented, in its own namespace, for the questions about a single analysis |
 
-Foundational and metaproperty questions (FD) run against the ontology alone. The rest run
-against the fixture.
+`python3 tools/check.py` runs every query and compares, and adds two checks on the set as a
+whole:
+
+- **Presuppositions.** Every class and property a query names exists in the ontology.
+- **Coverage.** Every class and property in the ontology is named by a query, or is the domain
+  or range of a property that is. A term no question uses fails the build.
+
+Some test cases differ from the ones first drafted, because the fixture holds only what the wiki
+states: the test case column says where and why.
 
 ---
 

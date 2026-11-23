@@ -1,0 +1,5 @@
+sense
+claim (amount)
+claim (claim file)
+claim (demand for payment)
+claim (insured occurrence)

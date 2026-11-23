@@ -1,0 +1,27 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Role types, regulatory domains and activity types.
+
+ao:InsurerRole a ao:RoleType ; rdfs:label "Insurer"@en ; ao:playableBy ao:Organization .
+ao:ReinsurerRole a ao:RoleType ; rdfs:label "Reinsurer"@en ; ao:playableBy ao:Organization .
+ao:RegulatorRole a ao:RoleType ; rdfs:label "Regulator"@en ; ao:playableBy ao:Organization .
+ao:RateApprovalAuthorityRole a ao:RoleType ; rdfs:label "Rate approval authority"@en ; ao:playableBy ao:Organization .
+ao:StatisticalAgencyRole a ao:RoleType ; rdfs:label "Statistical agency"@en ; ao:playableBy ao:Organization .
+ao:ProfessionalBodyRole a ao:RoleType ; rdfs:label "Professional body"@en ; ao:playableBy ao:Organization .
+ao:InsuredRole a ao:RoleType ; rdfs:label "Insured"@en ; ao:playableBy ao:Organization , ao:Person .
+ao:PolicyholderRole a ao:RoleType ; rdfs:label "Policyholder"@en ; ao:playableBy ao:Organization , ao:Person .
+ao:ActuaryRole a ao:RoleType ; rdfs:label "Actuary"@en ; ao:playableBy ao:Person .
+
+ao:Solvency a ao:RegulatoryDomain ; rdfs:label "Solvency"@en ; skos:notation "solvency" .
+ao:RateRegulation a ao:RegulatoryDomain ; rdfs:label "Rate regulation"@en ; skos:notation "product_regulation" .
+ao:MarketConduct a ao:RegulatoryDomain ; rdfs:label "Market conduct"@en ; skos:notation "market_conduct" .
+ao:Statistics a ao:RegulatoryDomain ; rdfs:label "Statistics"@en ; skos:notation "statistics" .
+ao:ProfessionalPractice a ao:RegulatoryDomain ; rdfs:label "Professional practice"@en .
+
+# A kind of work not listed here is out of scope for this version.
+ao:Ratemaking a ao:ActivityType ; rdfs:label "Ratemaking"@en .
+ao:Reserving a ao:ActivityType ; rdfs:label "Reserving"@en .
+ao:CapitalAssessment a ao:ActivityType ; rdfs:label "Capital assessment"@en .

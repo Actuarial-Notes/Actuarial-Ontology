@@ -1,0 +1,37 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix an: <http://actuarialnotes.com/data/> .
+@prefix syn: <http://actuarialnotes.com/data/synthetic/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# SYNTHETIC. Everything in the syn: namespace is invented, to give the
+# questions about one analysis something to run on. No person, insurer,
+# data set or figure here is real. The assumptions it borrows from the
+# an: namespace are real and are defined in wiki.ttl.
+
+syn:actuary-1 a ao:Person ;
+    rdfs:label "Synthetic actuary"@en .
+
+syn:data-1 a ao:DataSet ;
+    rdfs:label "Synthetic private passenger premium and claims, accident years 2021 to 2025"@en .
+
+syn:indication-1 a ao:Analysis ;
+    rdfs:label "Synthetic Alberta private passenger rate indication"@en ;
+    ao:usesData syn:data-1 ;
+    ao:usesAssumption an:obs-airb-profit-2026 , an:obs-airb-total-expense-2026 ,
+        an:obs-airb-ulae-2026 , syn:obs-trend-1 .
+
+syn:obs-trend-1 a ao:Observation ;
+    rdfs:label "Selected annual loss trend"@en ;
+    ao:quantityKind ao:LossTrend ; ao:numericValue 5.0 ; ao:unit ao:Percent ;
+    ao:provenanceStatus ao:Selected ; ao:selectedBy syn:actuary-1 .
+
+syn:application-1 a ao:MethodApplication ;
+    ao:partOfAnalysis syn:indication-1 ;
+    ao:forStep an:chain-ratemaking-step-7 ;
+    ao:usedMethod an:method-loss-ratio-method .
+
+syn:obs-indication-1 a ao:Observation ;
+    rdfs:label "Indicated rate change"@en ;
+    ao:quantityKind ao:IndicatedRateChange ; ao:numericValue 3.2 ; ao:unit ao:Percent ;
+    ao:provenanceStatus ao:Estimated ; ao:producedBy syn:indication-1 .

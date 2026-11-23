@@ -1,0 +1,3 @@
+period	value
+Accident year 2024	1.1198
+Accident year 2025	1.1189

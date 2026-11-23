@@ -1,0 +1,5 @@
+assumption	status
+Profit provision (pre-tax, maximum)	Prescribed
+Selected annual loss trend	Selected
+Total expenses	Published
+ULAE	Published

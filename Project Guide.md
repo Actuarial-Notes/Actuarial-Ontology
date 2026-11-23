@@ -59,7 +59,7 @@ Every term has:
   verb phrases for properties);
 - a **definition** of the form "An A is a B that C", where B is the parent and C is what sets it
   apart: *A square is a rectangle that has equal side lengths*;
-- the **source** of the definition, with its section;
+- for a glossary term, the **source** of the definition, with its section;
 - **synonyms** and abbreviations, where practice uses them;
 - an IRI that is **never renamed**. A retired term is marked `owl:deprecated` and points to its
   replacement.
@@ -68,6 +68,7 @@ Every term has:
 ## 4. Process
 1. Start from a competency question. If none needs the change, it does not go in the core.
 2. Make the change with its test: a query for the question and the expected result on a fixture.
+   [docs/model.md](docs/model.md) has the steps.
 3. Run the checks (`python3 tools/check.py`). CI runs them on every pull request.
 4. Add a line to [CHANGELOG.md](CHANGELOG.md).
 5. Fixtures use real, cited facts. Anything invented for shape (a policy, a claim) is in a
@@ -80,7 +81,7 @@ answer the questions, take the smaller one.
 ## 5. Software
 All open source and free.
 - **Language**: OWL 2 in Turtle; SHACL for validation; SPARQL for tests
-- **Checks**: Python with `rdflib` and `owlrl`
+- **Checks**: Python with `rdflib`, `owlrl` and `pyshacl`
 - **Editor**: any text editor, or [Protégé](https://protege.stanford.edu/)
 
 

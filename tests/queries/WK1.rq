@@ -1,0 +1,13 @@
+# WK1: What is the exposure base for [line]?
+# Test case: private passenger automobile (the wiki states it for personal automobile, the wider line)
+
+PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
+PREFIX an: <http://actuarialnotes.com/data/>
+PREFIX syn: <http://actuarialnotes.com/data/synthetic/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?base WHERE { ao:PrivatePassengerAuto ao:broaderLine* ?line . ?line ao:exposureBase/rdfs:label ?base }

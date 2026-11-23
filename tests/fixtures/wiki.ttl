@@ -1,0 +1,442 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix an: <http://actuarialnotes.com/data/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Real records, transcribed by hand from pages of the Actuarial Notes Wiki
+# at commit 58275f71. Every record names the wiki page it was read from
+# (ao:wikiPage) and carries that page's fact-check status on the day.
+# Nothing here is from memory: a fact the page does not state is absent.
+# This file stands in for the export the wiki will generate (roadmap,
+# phase 3); when that exists, this file is replaced by its output.
+
+#################################################################
+#    Organizations
+#################################################################
+
+an:osfi a ao:Organization ;
+    rdfs:label "Office of the Superintendent of Financial Institutions"@en ;
+    ao:authorityCovers ao:CA ;
+    ao:wikiPage "Resources/Books/OSFI MCT.md" .
+
+an:airb a ao:Organization ;
+    rdfs:label "Automobile Insurance Rate Board"@en ;
+    ao:authorityCovers ao:CA-AB ;
+    ao:wikiPage "Resources/Regulation/AIRB Filing Guidelines (2025).md" .
+
+an:fsra a ao:Organization ;
+    rdfs:label "Financial Services Regulatory Authority of Ontario"@en ;
+    ao:authorityCovers ao:CA-ON ;
+    ao:wikiPage "Resources/Benchmarks/FSRA Private Passenger Automobile Loss Trend Benchmarks (2025).md" .
+
+an:gisa a ao:Organization ;
+    rdfs:label "General Insurance Statistical Agency"@en ;
+    ao:wikiPage "Resources/Data/GISA AUTO1005-ON Actual Loss Ratio Exhibit (2025).md" .
+
+an:cia a ao:Organization ;
+    rdfs:label "Canadian Institute of Actuaries"@en ;
+    ao:wikiPage "Resources/Books/CIA CSOP.md" .
+
+an:catiq a ao:Organization ;
+    rdfs:label "Catastrophe Indices and Quantification Inc."@en ;
+    ao:wikiPage "Resources/Reports/CatIQ Ice Storm Final Loss Estimate (2026).md" .
+
+# Insurers, named as OSFI's PC4 return names them.
+an:intact-insurance a ao:Organization ;
+    rdfs:label "Intact Insurance Company"@en ;
+    ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+an:wawanesa-mutual a ao:Organization ;
+    rdfs:label "The Wawanesa Mutual Insurance Company"@en ;
+    ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+an:definity-insurance a ao:Organization ;
+    rdfs:label "Definity Insurance Company"@en ;
+    ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+
+#################################################################
+#    Supervision and roles
+#################################################################
+#
+#    An insurer in OSFI's PC4 return is a federally regulated insurer
+#    that files its Minimum Capital Test with OSFI.
+
+an:sup-osfi-intact a ao:Supervision ;
+    ao:supervisor an:osfi ; ao:supervised an:intact-insurance ;
+    ao:regulatoryDomain ao:Solvency ; ao:inJurisdiction ao:CA ;
+    ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+an:sup-osfi-wawanesa a ao:Supervision ;
+    ao:supervisor an:osfi ; ao:supervised an:wawanesa-mutual ;
+    ao:regulatoryDomain ao:Solvency ; ao:inJurisdiction ao:CA ;
+    ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+an:sup-osfi-definity a ao:Supervision ;
+    ao:supervisor an:osfi ; ao:supervised an:definity-insurance ;
+    ao:regulatoryDomain ao:Solvency ; ao:inJurisdiction ao:CA ;
+    ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+
+# "Section 602 of the Insurance Act and the Automobile Insurance Premiums
+# Regulation require insurers to obtain approval for a new or revised rating
+# program", for private passenger vehicles and other than PPV.
+an:role-airb-rate-approval a ao:RoleAssignment ;
+    ao:heldBy an:airb ; ao:roleType ao:RateApprovalAuthorityRole ;
+    ao:inJurisdiction ao:CA-AB ; ao:forLine ao:Automobile ;
+    ao:wikiPage "Resources/Regulation/AIRB Filing Guidelines (2025).md" .
+
+#################################################################
+#    Normative documents
+#################################################################
+
+an:doc-osfi-mct a ao:Guideline ;
+    rdfs:label "Minimum Capital Test"@en ;
+    ao:issuedBy an:osfi ;
+    ao:appliesToRole ao:InsurerRole ;
+    ao:inJurisdiction ao:CA ; ao:forLine ao:PropertyAndCasualty ;
+    ao:regulatoryDomain ao:Solvency ;
+    ao:appliesToActivity ao:CapitalAssessment ;
+    ao:wikiPage "Resources/Books/OSFI MCT.md" .
+
+an:ed-osfi-mct-2024 a ao:DocumentEdition ;
+    rdfs:label "Minimum Capital Test, Guideline A, 2024"@en ;
+    ao:editionOf an:doc-osfi-mct ;
+    ao:effectiveFrom "2024-01-01"^^xsd:date ;
+    ao:replaces an:ed-osfi-mct-2023 ;
+    ao:sourceUrl "https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/minimum-capital-test-guideline-2024"^^xsd:anyURI ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Resources/Books/OSFI MCT.md" .
+
+# The wiki says only that MCT 2024 "built on MCT 2023"; it gives the 2023
+# guideline no dates, so none are given here.
+an:ed-osfi-mct-2023 a ao:DocumentEdition ;
+    rdfs:label "Minimum Capital Test, 2023"@en ;
+    ao:editionOf an:doc-osfi-mct ;
+    ao:wikiPage "Resources/Books/OSFI MCT.md" .
+
+an:loc-osfi-mct-2024-1-2-1 a ao:Locator ;
+    ao:inEdition an:ed-osfi-mct-2024 ;
+    ao:locatorText "1.2.1 MCT supervisory capital ratio for federally regulated insurers" .
+
+an:req-mct-supervisory-target a ao:Requirement ;
+    rdfs:label "Supervisory target MCT ratio"@en ;
+    ao:statedAt an:loc-osfi-mct-2024-1-2-1 ;
+    ao:wikiPage "Assumptions/OSFI MCT Capital Ratios (2024).md" .
+
+an:doc-cia-sop a ao:StandardOfPractice ;
+    rdfs:label "Standards of Practice"@en ;
+    ao:issuedBy an:cia ;
+    ao:inJurisdiction ao:CA ;
+    ao:regulatoryDomain ao:ProfessionalPractice ;
+    ao:appliesToActivity ao:Ratemaking ;
+    ao:wikiPage "Resources/Books/CIA CSOP.md" .
+
+an:ed-cia-sop-2026-04 a ao:DocumentEdition ;
+    rdfs:label "Standards of Practice, effective April 1, 2026"@en ;
+    ao:editionOf an:doc-cia-sop ;
+    ao:effectiveFrom "2026-04-01"^^xsd:date ;
+    ao:sourceUrl "https://www.cia-ica.ca/publications/226011e/"^^xsd:anyURI ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Resources/Books/CIA CSOP.md" .
+
+an:loc-cia-sop-2600 a ao:Locator ;
+    ao:inEdition an:ed-cia-sop-2026-04 ;
+    ao:locatorText "Section 2600, Ratemaking: Property and Casualty Insurance" ;
+    ao:appliesToActivity ao:Ratemaking .
+
+an:doc-airb-filing-guidelines a ao:FilingRule ;
+    rdfs:label "Filing Guidelines for Change in Rates & Rating Programs"@en ;
+    ao:issuedBy an:airb ;
+    ao:appliesToRole ao:InsurerRole ;
+    ao:inJurisdiction ao:CA-AB ; ao:forLine ao:Automobile ;
+    ao:regulatoryDomain ao:RateRegulation ;
+    ao:appliesToActivity ao:Ratemaking ;
+    ao:wikiPage "Resources/Regulation/AIRB Filing Guidelines (2025).md" .
+
+an:ed-airb-filing-guidelines-2025-10 a ao:DocumentEdition ;
+    rdfs:label "Filing Guidelines, effective October 1, 2025"@en ;
+    ao:editionOf an:doc-airb-filing-guidelines ;
+    ao:effectiveFrom "2025-10-01"^^xsd:date ;
+    ao:sourceUrl "https://www.airbfordrivers.ca/wp-content/uploads/2026/06/Filing-Guidelines-October-1-2025.pdf"^^xsd:anyURI ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Resources/Regulation/AIRB Filing Guidelines (2025).md" .
+
+#################################################################
+#    Published sources of figures
+#################################################################
+
+an:doc-airb-annual-review a ao:Document ;
+    rdfs:label "AIRB Annual Review Report"@en ;
+    ao:issuedBy an:airb ;
+    ao:inJurisdiction ao:CA-AB ; ao:forLine ao:PrivatePassengerAuto ;
+    ao:reportsQuantityKind ao:LossTrend , ao:ProfitProvision , ao:ULAEFactor ,
+        ao:FixedExpenseProvision , ao:VariableExpenseProvision , ao:TotalExpenseProvision ;
+    ao:wikiPage "Resources/Reports/AIRB Annual Review Report (2026).md" .
+
+an:ed-airb-annual-review-2026 a ao:DocumentEdition ;
+    rdfs:label "2026 Annual Review"@en ;
+    ao:editionOf an:doc-airb-annual-review ;
+    ao:effectiveFrom "2026-10-01"^^xsd:date ;
+    ao:sourceUrl "https://www.airbfordrivers.ca/wp-content/uploads/2026/09/Annual-Review-Report-2026.pdf"^^xsd:anyURI ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Assumptions/AIRB Expense and Profit Benchmarks (2026).md" .
+
+an:loc-airb-2026-expenses a ao:Locator ;
+    ao:inEdition an:ed-airb-annual-review-2026 ;
+    ao:locatorText "Operating Expenses & ULAE, AIRB Selections (p. 7)" .
+an:loc-airb-2026-profit a ao:Locator ;
+    ao:inEdition an:ed-airb-annual-review-2026 ;
+    ao:locatorText "Profit (p. 7)" .
+
+an:doc-gisa-auto1005-on a ao:Document ;
+    rdfs:label "Actual Loss Ratio Exhibit: Private Passenger Automobile Excluding Farmers, Ontario (AUTO1005-ON)"@en ;
+    ao:issuedBy an:gisa ;
+    ao:inJurisdiction ao:CA-ON ; ao:forLine ao:PrivatePassengerAuto ;
+    ao:reportsQuantityKind ao:ULAEFactor , ao:CumulativeDevelopmentFactor ;
+    ao:wikiPage "Resources/Data/GISA AUTO1005-ON Actual Loss Ratio Exhibit (2025).md" .
+
+an:ed-gisa-auto1005-on-2025 a ao:DocumentEdition ;
+    rdfs:label "2025 Actual Loss Ratio Exhibit, Bulletin No. 2026-34"@en ;
+    ao:editionOf an:doc-gisa-auto1005-on ;
+    ao:sourceUrl "https://www.gisa.ca/Documents/View/6325"^^xsd:anyURI ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Assumptions/GISA Ontario PPA ULAE Factors (2025).md" .
+
+an:loc-gisa-2025-ulae a ao:Locator ;
+    ao:inEdition an:ed-gisa-auto1005-on-2025 ;
+    ao:locatorText "Notes to Users, Other Factors, 1. Unallocated Loss Adjustment Expense Factors (p. 12)" .
+
+# The wiki has this document's shape and none of its figures, so there
+# are no observations from it.
+an:doc-fsra-ppa-trends a ao:Document ;
+    rdfs:label "Ontario Private Passenger Automobile Annual Review"@en ;
+    ao:issuedBy an:fsra ;
+    ao:inJurisdiction ao:CA-ON ; ao:forLine ao:PrivatePassengerAuto ;
+    ao:reportsQuantityKind ao:LossTrend ;
+    ao:wikiPage "Resources/Benchmarks/FSRA Private Passenger Automobile Loss Trend Benchmarks (2025).md" .
+
+an:ed-fsra-ppa-trends-2025 a ao:DocumentEdition ;
+    rdfs:label "Annual Review Based on Industry Data as of December 31, 2024"@en ;
+    ao:editionOf an:doc-fsra-ppa-trends ;
+    ao:effectiveFrom "2025-12-11"^^xsd:date ;
+    ao:sourceUrl "https://www.fsrao.ca/industry/auto-insurance/regulatory-framework/guidance-auto-insurance/ontario-private-passenger-automobile-annual-review-based-industry-data-december-31-2024-0"^^xsd:anyURI ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Resources/Benchmarks/FSRA Private Passenger Automobile Loss Trend Benchmarks (2025).md" .
+
+an:doc-osfi-pc4 a ao:Document ;
+    rdfs:label "PC4 - P&C Minimum Capital Test and Branch Adequacy of Assets Test"@en ;
+    ao:issuedBy an:osfi ;
+    ao:inJurisdiction ao:CA ; ao:forLine ao:PropertyAndCasualty ;
+    ao:reportsQuantityKind ao:MCTRatio ;
+    ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+
+an:ed-osfi-pc4-2025q3 a ao:DocumentEdition ;
+    rdfs:label "PC4, 2025 Q3"@en ;
+    ao:editionOf an:doc-osfi-pc4 ;
+    ao:sourceUrl "https://open.canada.ca/data/en/dataset/4c6c515f-7c44-4bb6-ab56-c5f79f75f705"^^xsd:anyURI ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+an:ed-osfi-pc4-2025q4 a ao:DocumentEdition ;
+    rdfs:label "PC4, 2025 Q4"@en ;
+    ao:editionOf an:doc-osfi-pc4 ;
+    ao:sourceUrl "https://open.canada.ca/data/en/dataset/4c6c515f-7c44-4bb6-ab56-c5f79f75f705"^^xsd:anyURI ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+
+an:loc-osfi-pc4-2025q3-ratio a ao:Locator ;
+    ao:inEdition an:ed-osfi-pc4-2025q3 ;
+    ao:locatorText "Page 10.00, line 140, column 01 (P100014001)" .
+an:loc-osfi-pc4-2025q4-ratio a ao:Locator ;
+    ao:inEdition an:ed-osfi-pc4-2025q4 ;
+    ao:locatorText "Page 10.00, line 140, column 01 (P100014001)" .
+
+# CatIQ's estimates for one event are a series: each one takes the place
+# of the one before.
+an:doc-catiq-ice-storm-2025-estimate a ao:Document ;
+    rdfs:label "CatIQ industry loss estimate, Ontario and Quebec ice storm of March 2025"@en ;
+    ao:issuedBy an:catiq ;
+    ao:reportsQuantityKind ao:InsuredLoss ;
+    ao:wikiPage "Resources/Reports/CatIQ Ice Storm Final Loss Estimate (2026).md" .
+
+an:ed-catiq-ice-storm-2025-six-month a ao:DocumentEdition ;
+    rdfs:label "Six-month estimate"@en ;
+    ao:editionOf an:doc-catiq-ice-storm-2025-estimate ;
+    ao:wikiPage "Resources/Reports/CatIQ Ice Storm Final Loss Estimate (2026).md" .
+
+an:ed-catiq-ice-storm-2025-final a ao:DocumentEdition ;
+    rdfs:label "Fifth and final estimate"@en ;
+    ao:editionOf an:doc-catiq-ice-storm-2025-estimate ;
+    ao:replaces an:ed-catiq-ice-storm-2025-six-month ;
+    ao:sourceUrl "https://public.catiq.com/2026/03/31/cad-466m-catiq-discloses-final-industry-loss-estimate-for-the-ontario-and-quebec-ice-storm-of-march-2025/"^^xsd:anyURI ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Resources/Reports/CatIQ Ice Storm Final Loss Estimate (2026).md" .
+
+an:loc-catiq-ice-storm-2025-six-month a ao:Locator ;
+    ao:inEdition an:ed-catiq-ice-storm-2025-six-month ;
+    ao:locatorText "News release" .
+an:loc-catiq-ice-storm-2025-final a ao:Locator ;
+    ao:inEdition an:ed-catiq-ice-storm-2025-final ;
+    ao:locatorText "News release" .
+
+#################################################################
+#    Events
+#################################################################
+
+an:ev-on-qc-ice-storm-2025 a ao:CatastropheEvent ;
+    rdfs:label "Ontario and Quebec ice storm of March 2025"@en ;
+    ao:startDate "2025-03-28"^^xsd:date ;
+    ao:endDate "2025-03-31"^^xsd:date ;
+    ao:inJurisdiction ao:CA-ON , ao:CA-QC ;
+    ao:causedByPeril ao:IceStorm ;
+    ao:wikiPage "Resources/Reports/CatIQ Ice Storm Final Loss Estimate (2026).md" .
+
+#################################################################
+#    Observations
+#################################################################
+
+# OSFI's prescribed ratios (Assumptions/OSFI MCT Capital Ratios (2024).md)
+
+an:obs-mct-supervisory-target a ao:Observation ;
+    rdfs:label "Supervisory target MCT ratio"@en ;
+    ao:quantityKind ao:SupervisoryTargetMCTRatio ;
+    ao:numericValue 150.0 ; ao:unit ao:Percent ;
+    ao:provenanceStatus ao:Prescribed ;
+    ao:inJurisdiction ao:CA ; ao:forLine ao:PropertyAndCasualty ;
+    ao:effectiveFrom "2024-01-01"^^xsd:date ;
+    ao:statedAt an:loc-osfi-mct-2024-1-2-1 ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Assumptions/OSFI MCT Capital Ratios (2024).md" .
+
+an:obs-mct-minimum a ao:Observation ;
+    rdfs:label "Minimum MCT ratio"@en ;
+    ao:quantityKind ao:MinimumMCTRatio ;
+    ao:numericValue 100.0 ; ao:unit ao:Percent ;
+    ao:provenanceStatus ao:Prescribed ;
+    ao:inJurisdiction ao:CA ; ao:forLine ao:PropertyAndCasualty ;
+    ao:effectiveFrom "2024-01-01"^^xsd:date ;
+    ao:statedAt an:loc-osfi-mct-2024-1-2-1 ;
+    ao:factCheckStatus ao:Unverified ;
+    ao:wikiPage "Assumptions/OSFI MCT Capital Ratios (2024).md" .
+
+# Filed MCT ratios (quiz/src/lib/tools/data/filings/osfi-pc4-summary.json,
+# described on Resources/Data/OSFI/Property and Casualty.md)
+
+an:period-2025q3 a ao:Period ; rdfs:label "2025 Q3"@en ;
+    ao:periodStart "2025-07-01"^^xsd:date ; ao:periodEnd "2025-09-30"^^xsd:date .
+an:period-2025q4 a ao:Period ; rdfs:label "2025 Q4"@en ;
+    ao:periodStart "2025-10-01"^^xsd:date ; ao:periodEnd "2025-12-31"^^xsd:date .
+
+an:obs-mct-intact-2025q3 a ao:Observation ;
+    ao:about an:intact-insurance ; ao:quantityKind ao:MCTRatio ;
+    ao:numericValue 192.39 ; ao:unit ao:Percent ; ao:forPeriod an:period-2025q3 ;
+    ao:provenanceStatus ao:Reported ; ao:statedAt an:loc-osfi-pc4-2025q3-ratio ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+an:obs-mct-intact-2025q4 a ao:Observation ;
+    ao:about an:intact-insurance ; ao:quantityKind ao:MCTRatio ;
+    ao:numericValue 192.25 ; ao:unit ao:Percent ; ao:forPeriod an:period-2025q4 ;
+    ao:provenanceStatus ao:Reported ; ao:statedAt an:loc-osfi-pc4-2025q4-ratio ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+an:obs-mct-wawanesa-2025q3 a ao:Observation ;
+    ao:about an:wawanesa-mutual ; ao:quantityKind ao:MCTRatio ;
+    ao:numericValue 280.79 ; ao:unit ao:Percent ; ao:forPeriod an:period-2025q3 ;
+    ao:provenanceStatus ao:Reported ; ao:statedAt an:loc-osfi-pc4-2025q3-ratio ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+an:obs-mct-wawanesa-2025q4 a ao:Observation ;
+    ao:about an:wawanesa-mutual ; ao:quantityKind ao:MCTRatio ;
+    ao:numericValue 290.1 ; ao:unit ao:Percent ; ao:forPeriod an:period-2025q4 ;
+    ao:provenanceStatus ao:Reported ; ao:statedAt an:loc-osfi-pc4-2025q4-ratio ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+an:obs-mct-definity-2025q3 a ao:Observation ;
+    ao:about an:definity-insurance ; ao:quantityKind ao:MCTRatio ;
+    ao:numericValue 210.94 ; ao:unit ao:Percent ; ao:forPeriod an:period-2025q3 ;
+    ao:provenanceStatus ao:Reported ; ao:statedAt an:loc-osfi-pc4-2025q3-ratio ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+an:obs-mct-definity-2025q4 a ao:Observation ;
+    ao:about an:definity-insurance ; ao:quantityKind ao:MCTRatio ;
+    ao:numericValue 201.62 ; ao:unit ao:Percent ; ao:forPeriod an:period-2025q4 ;
+    ao:provenanceStatus ao:Reported ; ao:statedAt an:loc-osfi-pc4-2025q4-ratio ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Resources/Data/OSFI/Property and Casualty.md" .
+
+# GISA's Ontario ULAE factors (Assumptions/GISA Ontario PPA ULAE Factors (2025).md)
+
+an:period-ay2024 a ao:Period ; rdfs:label "Accident year 2024"@en ;
+    ao:periodStart "2024-01-01"^^xsd:date ; ao:periodEnd "2024-12-31"^^xsd:date .
+an:period-ay2025 a ao:Period ; rdfs:label "Accident year 2025"@en ;
+    ao:periodStart "2025-01-01"^^xsd:date ; ao:periodEnd "2025-12-31"^^xsd:date .
+
+an:obs-gisa-ulae-on-ay2024 a ao:Observation ;
+    rdfs:label "ULAE factor, accident year 2024"@en ;
+    ao:quantityKind ao:ULAEFactor ; ao:numericValue 1.1198 ; ao:unit ao:Factor ;
+    ao:forPeriod an:period-ay2024 ; ao:basis ao:AccidentYearBasis ;
+    ao:inJurisdiction ao:CA-ON ; ao:forLine ao:PrivatePassengerAuto ;
+    ao:provenanceStatus ao:Published ; ao:statedAt an:loc-gisa-2025-ulae ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Assumptions/GISA Ontario PPA ULAE Factors (2025).md" .
+an:obs-gisa-ulae-on-ay2025 a ao:Observation ;
+    rdfs:label "ULAE factor, accident year 2025"@en ;
+    ao:quantityKind ao:ULAEFactor ; ao:numericValue 1.1189 ; ao:unit ao:Factor ;
+    ao:forPeriod an:period-ay2025 ; ao:basis ao:AccidentYearBasis ;
+    ao:inJurisdiction ao:CA-ON ; ao:forLine ao:PrivatePassengerAuto ;
+    ao:provenanceStatus ao:Published ; ao:statedAt an:loc-gisa-2025-ulae ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Assumptions/GISA Ontario PPA ULAE Factors (2025).md" .
+
+# The AIRB's benchmarks (Assumptions/AIRB Expense and Profit Benchmarks (2026).md)
+
+an:obs-airb-profit-2026 a ao:Observation ;
+    rdfs:label "Profit provision (pre-tax, maximum)"@en ;
+    ao:quantityKind ao:ProfitProvision ; ao:numericValue 6.0 ; ao:unit ao:Percent ;
+    ao:inJurisdiction ao:CA-AB ; ao:forLine ao:PrivatePassengerAuto ;
+    ao:provenanceStatus ao:Prescribed ; ao:effectiveFrom "2026-10-01"^^xsd:date ;
+    ao:statedAt an:loc-airb-2026-profit ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Assumptions/AIRB Expense and Profit Benchmarks (2026).md" .
+an:obs-airb-total-expense-2026 a ao:Observation ;
+    rdfs:label "Total expenses"@en ;
+    ao:quantityKind ao:TotalExpenseProvision ; ao:numericValue 27.8 ; ao:unit ao:Percent ;
+    ao:inJurisdiction ao:CA-AB ; ao:forLine ao:PrivatePassengerAuto ;
+    ao:provenanceStatus ao:Published ; ao:effectiveFrom "2026-10-01"^^xsd:date ;
+    ao:statedAt an:loc-airb-2026-expenses ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Assumptions/AIRB Expense and Profit Benchmarks (2026).md" .
+an:obs-airb-ulae-2026 a ao:Observation ;
+    rdfs:label "ULAE"@en ;
+    ao:quantityKind ao:ULAEFactor ; ao:numericValue 1.094 ; ao:unit ao:Factor ;
+    ao:inJurisdiction ao:CA-AB ; ao:forLine ao:PrivatePassengerAuto ;
+    ao:provenanceStatus ao:Published ; ao:effectiveFrom "2026-10-01"^^xsd:date ;
+    ao:statedAt an:loc-airb-2026-expenses ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Assumptions/AIRB Expense and Profit Benchmarks (2026).md" .
+
+# CatIQ's estimates for the ice storm
+
+an:obs-ice-storm-2025-six-month a ao:Observation ;
+    rdfs:label "Insured loss, six-month estimate"@en ;
+    ao:about an:ev-on-qc-ice-storm-2025 ; ao:quantityKind ao:InsuredLoss ;
+    ao:numericValue 490000000.0 ; ao:unit ao:CAD ; ao:asOfDate "2025-09-30"^^xsd:date ;
+    ao:provenanceStatus ao:Published ; ao:statedAt an:loc-catiq-ice-storm-2025-six-month ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Resources/Reports/CatIQ Ice Storm Final Loss Estimate (2026).md" .
+an:obs-ice-storm-2025-final a ao:Observation ;
+    rdfs:label "Insured loss, fifth and final estimate"@en ;
+    ao:about an:ev-on-qc-ice-storm-2025 ; ao:quantityKind ao:InsuredLoss ;
+    ao:numericValue 466000000.0 ; ao:unit ao:CAD ; ao:asOfDate "2026-03-31"^^xsd:date ;
+    ao:provenanceStatus ao:Published ; ao:statedAt an:loc-catiq-ice-storm-2025-final ;
+    ao:factCheckStatus ao:Unverified ; ao:wikiPage "Resources/Reports/CatIQ Ice Storm Final Loss Estimate (2026).md" .
+
+#################################################################
+#    Methods and exposure bases
+#################################################################
+
+# Concepts/Exposure Base.md, table: "Personal automobile | Earned car-years"
+an:exposure-earned-car-years a ao:ExposureBase ;
+    rdfs:label "Earned car-years"@en ;
+    ao:wikiPage "Concepts/Exposure Base.md" .
+ao:PersonalAuto ao:exposureBase an:exposure-earned-car-years .
+
+# What each method takes and gives, as its concept page's opening states it.
+# The methods themselves are declared in tools.ttl.
+an:method-bornhuetter-ferguson-method
+    ao:takesInput ao:ReportedClaims , ao:ExpectedClaims , ao:CumulativeDevelopmentFactor ;
+    ao:produces ao:UltimateClaims ;
+    ao:wikiPage "Concepts/Bornhuetter-Ferguson Method.md" .
+an:method-chain-ladder-method
+    ao:takesInput ao:CumulativeDevelopmentFactor ;
+    ao:produces ao:UltimateClaims ;
+    ao:wikiPage "Concepts/Chain Ladder Method.md" .
+an:method-expected-loss-method
+    ao:takesInput ao:ExpectedClaims ;
+    ao:produces ao:UltimateClaims ;
+    ao:wikiPage "Concepts/Expected Loss Method.md" .
+an:method-benktander-method
+    ao:produces ao:UltimateClaims ;
+    ao:wikiPage "Concepts/Benktander Method.md" .

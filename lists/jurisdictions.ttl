@@ -1,0 +1,25 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Jurisdictions. Codes are ISO 3166-1 and 3166-2, the form the wiki's
+# frontmatter already uses (jurisdiction: "CA-ON").
+
+ao:NationalLevel a ao:JurisdictionLevel ; rdfs:label "National"@en .
+ao:SubnationalLevel a ao:JurisdictionLevel ; rdfs:label "Subnational"@en .
+
+ao:CA a ao:Jurisdiction ; rdfs:label "Canada"@en ; ao:isoCode "CA" ; ao:jurisdictionLevel ao:NationalLevel .
+ao:CA-AB a ao:Jurisdiction ; rdfs:label "Alberta"@en ; ao:isoCode "CA-AB" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-BC a ao:Jurisdiction ; rdfs:label "British Columbia"@en ; ao:isoCode "CA-BC" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-MB a ao:Jurisdiction ; rdfs:label "Manitoba"@en ; ao:isoCode "CA-MB" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-NB a ao:Jurisdiction ; rdfs:label "New Brunswick"@en ; ao:isoCode "CA-NB" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-NL a ao:Jurisdiction ; rdfs:label "Newfoundland and Labrador"@en ; ao:isoCode "CA-NL" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-NS a ao:Jurisdiction ; rdfs:label "Nova Scotia"@en ; ao:isoCode "CA-NS" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-NT a ao:Jurisdiction ; rdfs:label "Northwest Territories"@en ; ao:isoCode "CA-NT" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-NU a ao:Jurisdiction ; rdfs:label "Nunavut"@en ; ao:isoCode "CA-NU" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-ON a ao:Jurisdiction ; rdfs:label "Ontario"@en ; ao:isoCode "CA-ON" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-PE a ao:Jurisdiction ; rdfs:label "Prince Edward Island"@en ; ao:isoCode "CA-PE" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-QC a ao:Jurisdiction ; rdfs:label "Quebec"@en ; ao:isoCode "CA-QC" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-SK a ao:Jurisdiction ; rdfs:label "Saskatchewan"@en ; ao:isoCode "CA-SK" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+ao:CA-YT a ao:Jurisdiction ; rdfs:label "Yukon"@en ; ao:isoCode "CA-YT" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .

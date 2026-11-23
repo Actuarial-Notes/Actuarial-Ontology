@@ -1,0 +1,2 @@
+edition
+Minimum Capital Test, Guideline A, 2024

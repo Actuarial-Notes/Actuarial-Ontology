@@ -1,0 +1,143 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix aosh: <http://actuarialnotes.com/ontology/actuarial/shapes#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# What a record must have to be accepted. OWL says what the terms mean;
+# these shapes are what rejects a bad record.
+
+aosh:Observation a sh:NodeShape ;
+    sh:targetClass ao:Observation ;
+    sh:property [ sh:path ao:quantityKind ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:QuantityKind ;
+        sh:message "An observation names exactly one quantity kind from the list." ] ;
+    sh:property [ sh:path ao:numericValue ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:decimal ;
+        sh:message "An observation has exactly one decimal value." ] ;
+    sh:property [ sh:path ao:unit ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:Unit ;
+        sh:message "An observation has exactly one unit from the list." ] ;
+    sh:property [ sh:path ao:provenanceStatus ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:ProvenanceStatus ;
+        sh:message "An observation says how its value came to be." ] ;
+    sh:property [ sh:path ao:forPeriod ; sh:maxCount 1 ; sh:class ao:Period ] ;
+    sh:property [ sh:path ao:basis ; sh:maxCount 1 ; sh:class ao:Basis ] ;
+    sh:property [ sh:path ao:statedAt ; sh:class ao:Locator ] ;
+    sh:property [ sh:path ao:inJurisdiction ; sh:class ao:Jurisdiction ] ;
+    sh:property [ sh:path ao:forLine ; sh:class ao:LineOfBusiness ] ;
+    sh:property [ sh:path ao:factCheckStatus ; sh:maxCount 1 ; sh:class ao:FactCheckStatus ] ;
+    # A value somebody else stated must say where; a value an analyst chose
+    # must say who chose it; an estimate must say which analysis made it.
+    sh:or (
+        [ sh:property [ sh:path ao:provenanceStatus ; sh:in ( ao:Prescribed ao:Published ao:Reported ) ] ;
+          sh:property [ sh:path ao:statedAt ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path ao:provenanceStatus ; sh:hasValue ao:Selected ] ;
+          sh:property [ sh:path ao:selectedBy ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path ao:provenanceStatus ; sh:hasValue ao:Estimated ] ;
+          sh:property [ sh:path ao:producedBy ; sh:minCount 1 ] ]
+    ) ;
+    sh:message "A prescribed, published or reported value needs a locator; a selected value needs who selected it; an estimate needs the analysis that produced it." .
+
+aosh:Document a sh:NodeShape ;
+    sh:targetClass ao:Document ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path ao:issuedBy ; sh:minCount 1 ; sh:class ao:Organization ;
+        sh:message "A document names the organization that issues it." ] ;
+    sh:property [ sh:path ao:inJurisdiction ; sh:class ao:Jurisdiction ] ;
+    sh:property [ sh:path ao:forLine ; sh:class ao:LineOfBusiness ] ;
+    sh:property [ sh:path ao:reportsQuantityKind ; sh:class ao:QuantityKind ] .
+
+aosh:NormativeDocument a sh:NodeShape ;
+    sh:targetClass ao:NormativeDocument ;
+    sh:property [ sh:path ao:inJurisdiction ; sh:minCount 1 ;
+        sh:message "A normative document names the jurisdiction it applies in." ] ;
+    sh:property [ sh:path ao:regulatoryDomain ; sh:minCount 1 ; sh:class ao:RegulatoryDomain ] ;
+    sh:property [ sh:path ao:appliesToRole ; sh:class ao:RoleType ] ;
+    sh:property [ sh:path ao:appliesToActivity ; sh:class ao:ActivityType ] .
+
+aosh:DocumentEdition a sh:NodeShape ;
+    sh:targetClass ao:DocumentEdition ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path ao:editionOf ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:Document ;
+        sh:message "An edition belongs to exactly one document." ] ;
+    sh:property [ sh:path ao:effectiveFrom ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+    sh:property [ sh:path ao:effectiveTo ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+    sh:property [ sh:path ao:replaces ; sh:class ao:DocumentEdition ] ;
+    sh:property [ sh:path ao:sourceUrl ; sh:datatype xsd:anyURI ] .
+
+aosh:Locator a sh:NodeShape ;
+    sh:targetClass ao:Locator ;
+    sh:property [ sh:path ao:inEdition ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:DocumentEdition ] ;
+    sh:property [ sh:path ao:locatorText ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+aosh:Requirement a sh:NodeShape ;
+    sh:targetClass ao:Requirement ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path ao:statedAt ; sh:minCount 1 ; sh:class ao:Locator ;
+        sh:message "A requirement says where it is stated." ] .
+
+aosh:Period a sh:NodeShape ;
+    sh:targetClass ao:Period ;
+    sh:property [ sh:path ao:periodStart ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+    sh:property [ sh:path ao:periodEnd ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:date ] .
+
+aosh:Party a sh:NodeShape ;
+    sh:targetClass ao:Party ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] .
+
+aosh:RoleAssignment a sh:NodeShape ;
+    sh:targetClass ao:RoleAssignment ;
+    sh:property [ sh:path ao:heldBy ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:Party ] ;
+    sh:property [ sh:path ao:roleType ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:RoleType ] ;
+    sh:property [ sh:path ao:inJurisdiction ; sh:class ao:Jurisdiction ] ;
+    sh:property [ sh:path ao:forLine ; sh:class ao:LineOfBusiness ] .
+
+aosh:Supervision a sh:NodeShape ;
+    sh:targetClass ao:Supervision ;
+    sh:property [ sh:path ao:supervisor ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:Organization ] ;
+    sh:property [ sh:path ao:supervised ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:Organization ] ;
+    sh:property [ sh:path ao:regulatoryDomain ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:RegulatoryDomain ] ;
+    sh:property [ sh:path ao:inJurisdiction ; sh:minCount 1 ; sh:class ao:Jurisdiction ] .
+
+aosh:CatastropheEvent a sh:NodeShape ;
+    sh:targetClass ao:CatastropheEvent ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path ao:startDate ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+    sh:property [ sh:path ao:endDate ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:date ] ;
+    sh:property [ sh:path ao:inJurisdiction ; sh:minCount 1 ; sh:class ao:Jurisdiction ] ;
+    sh:property [ sh:path ao:causedByPeril ; sh:minCount 1 ; sh:class ao:Peril ] .
+
+aosh:Method a sh:NodeShape ;
+    sh:targetClass ao:Method ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path ao:hasStep ; sh:class ao:Step ] ;
+    sh:property [ sh:path ao:takesInput ; sh:class ao:QuantityKind ] ;
+    sh:property [ sh:path ao:produces ; sh:class ao:QuantityKind ] .
+
+aosh:Step a sh:NodeShape ;
+    sh:targetClass ao:Step ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path ao:stepOrder ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:integer ] .
+
+aosh:Tool a sh:NodeShape ;
+    sh:targetClass ao:Tool ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path ao:toolId ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path ao:implements ; sh:class ao:Method ] ;
+    sh:property [ sh:path ao:takesInput ; sh:class ao:QuantityKind ] ;
+    sh:property [ sh:path ao:handsOffTo ; sh:class ao:Tool ] .
+
+aosh:Analysis a sh:NodeShape ;
+    sh:targetClass ao:Analysis ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path ao:usesAssumption ; sh:class ao:Observation ] ;
+    sh:property [ sh:path ao:usesData ; sh:class ao:DataSet ] .
+
+aosh:MethodApplication a sh:NodeShape ;
+    sh:targetClass ao:MethodApplication ;
+    sh:property [ sh:path ao:partOfAnalysis ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:Analysis ] ;
+    sh:property [ sh:path ao:forStep ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:Step ] ;
+    sh:property [ sh:path ao:usedMethod ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ao:Method ] .
+
+aosh:Term a sh:NodeShape ;
+    sh:targetClass skos:Concept ;
+    sh:property [ sh:path skos:prefLabel ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "A term has exactly one preferred label." ] .

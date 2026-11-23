@@ -1,0 +1,16 @@
+# FG2: What is the [quantity kind] in [document edition] for [line]?
+# Test case: ULAE factor, GISA's 2025 exhibit, private passenger automobile (one value per accident year held)
+
+PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
+PREFIX an: <http://actuarialnotes.com/data/>
+PREFIX syn: <http://actuarialnotes.com/data/synthetic/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?period ?value WHERE {
+  ?o ao:quantityKind ao:ULAEFactor ; ao:forLine ao:PrivatePassengerAuto ; ao:numericValue ?value ;
+     ao:statedAt/ao:inEdition an:ed-gisa-auto1005-on-2025 ; ao:forPeriod/rdfs:label ?period .
+}

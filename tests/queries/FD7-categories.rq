@@ -1,0 +1,13 @@
+# FD7: Can one thing be both [type] and [type]?
+# Test case: Event and Document. The query asks whether the two are disjoint, so true means no.
+
+PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
+PREFIX an: <http://actuarialnotes.com/data/>
+PREFIX syn: <http://actuarialnotes.com/data/synthetic/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ASK { ?d a owl:AllDisjointClasses ; owl:members/rdf:rest*/rdf:first ao:Event , ao:Document }

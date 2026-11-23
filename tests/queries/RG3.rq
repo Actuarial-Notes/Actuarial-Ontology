@@ -1,0 +1,20 @@
+# RG3: Which edition of [document] is in force on [date]?
+# Test case: OSFI's MCT guideline, 2024-06-30 (the wiki gives the 2023 edition no dates, so a 2023 date cannot be tested)
+
+PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
+PREFIX an: <http://actuarialnotes.com/data/>
+PREFIX syn: <http://actuarialnotes.com/data/synthetic/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?edition WHERE {
+  ?ed rdfs:label ?edition .
+  ?ed ao:editionOf an:doc-osfi-mct ; ao:effectiveFrom ?from .
+  FILTER (?from <= "2024-06-30"^^xsd:date)
+  OPTIONAL { ?ed ao:effectiveTo ?to }
+  FILTER (!bound(?to) || ?to >= "2024-06-30"^^xsd:date)
+  FILTER NOT EXISTS { ?later ao:replaces ?ed ; ao:effectiveFrom ?laterFrom . FILTER (?laterFrom <= "2024-06-30"^^xsd:date) }
+}

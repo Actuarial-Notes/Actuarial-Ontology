@@ -1,0 +1,8 @@
+order	step
+1	Earned Premium
+2	On-Level Factors
+3	Trend Fit or Frequency × Severity Trend
+4	Trend Factor or Two-Step Loss Trend
+5	Expense Ratios
+6	Permissible Loss Ratio
+7	Loss Ratio Method or Pure Premium Method

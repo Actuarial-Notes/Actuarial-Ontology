@@ -1,0 +1,48 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://actuarialnotes.com/ontology/actuarial/institutions> a owl:Ontology ;
+    dcterms:title "Actuarial Ontology: institutions"@en ;
+    dcterms:description "Who supervises whom, for what, and where; and which bodies publish which quantities."@en ;
+    owl:imports <http://actuarialnotes.com/ontology/actuarial/core> ;
+    owl:versionInfo "0.8.0" .
+
+ao:RegulatoryDomain a owl:Class ;
+    rdfs:label "Regulatory domain"@en ;
+    rdfs:comment "A regulatory domain is a subject of supervision, such as solvency, rate regulation or market conduct. Listed in lists/roles.ttl."@en .
+
+ao:Supervision a owl:Class ;
+    rdfs:label "Supervision"@en ;
+    rdfs:comment "A supervision is the fact that one organization oversees another for one regulatory domain in one jurisdiction."@en .
+
+ao:supervisor a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Supervision ;
+    rdfs:range ao:Organization ;
+    rdfs:label "supervisor"@en ;
+    rdfs:comment "Relates a supervision to the organization that oversees."@en .
+
+ao:supervised a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Supervision ;
+    rdfs:range ao:Organization ;
+    rdfs:label "supervised"@en ;
+    rdfs:comment "Relates a supervision to the organization that is overseen."@en .
+
+ao:regulatoryDomain a owl:ObjectProperty ;
+    rdfs:range ao:RegulatoryDomain ;
+    rdfs:label "has regulatory domain"@en ;
+    rdfs:comment "Relates a supervision or a normative document to the subject of supervision it concerns."@en .
+
+ao:authorityCovers a owl:ObjectProperty ;
+    rdfs:domain ao:Organization ;
+    rdfs:range ao:Jurisdiction ;
+    rdfs:label "authority covers"@en ;
+    rdfs:comment "Relates a public body to a jurisdiction its mandate extends over."@en .
+
+ao:reportsQuantityKind a owl:ObjectProperty ;
+    rdfs:domain ao:Document ;
+    rdfs:range ao:QuantityKind ;
+    rdfs:label "reports quantity kind"@en ;
+    rdfs:comment "Relates a document to a quantity kind it publishes values of."@en .

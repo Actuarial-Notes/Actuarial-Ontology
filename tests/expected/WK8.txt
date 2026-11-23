@@ -1,0 +1,4 @@
+tool
+Frequency × Severity Trend
+Price Index
+Trend Fit

@@ -1,0 +1,135 @@
+@prefix aog: <http://actuarialnotes.com/ontology/actuarial/glossary#> .
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Hand-written terms.
+#
+# 1. Overloaded words. A word used in several senses gets one concept per
+#    sense. Every sense carries the bare word as skos:altLabel, so asking for
+#    the senses of "claim" finds them all, and ao:senseCategory says which
+#    top-level category things in that sense belong to. The definitions here
+#    are this ontology's working definitions; a sourced definition from each
+#    standard-setter is a later question (FD9, FD10).
+# 2. Statuses. A term that names a state of a thing points to the thing with
+#    ao:statusOf. It is a value on the thing, never a class.
+# 3. Synonyms the wiki's concept pages state in their opening sentence.
+
+#################################################################
+#    Overloaded words
+#################################################################
+
+aog:claim-demand a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "claim (demand for payment)"@en ; skos:altLabel "claim"@en ;
+    skos:definition "A claim, in this sense, is an event in which an insured or a third party asks an insurer for payment under an insurance contract."@en ;
+    ao:senseCategory ao:Event .
+
+aog:claim-occurrence a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "claim (insured occurrence)"@en ; skos:altLabel "claim"@en ;
+    skos:definition "A claim, in this sense, is an event that causes a loss an insurance contract covers, whether or not payment has yet been asked for. It is the sense counted in claim frequency."@en ;
+    ao:senseCategory ao:Event .
+
+aog:claim-file a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "claim (claim file)"@en ; skos:altLabel "claim"@en ;
+    skos:definition "A claim, in this sense, is a document: the insurer's record of one demand for payment and how it was handled. It is the sense that is opened, closed and reopened."@en ;
+    ao:senseCategory ao:Document .
+
+aog:claim-amount a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "claim (amount)"@en ; skos:altLabel "claim"@en , "claims"@en ;
+    skos:definition "A claim, in this sense, is an observation: an amount paid or payable on demands for payment, as in reported claims or ultimate claims."@en ;
+    ao:senseCategory ao:Observation .
+
+aog:loss-event a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "loss (event)"@en ; skos:altLabel "loss"@en ;
+    skos:definition "A loss, in this sense, is an event in which something of value is damaged, destroyed or taken."@en ;
+    ao:senseCategory ao:Event .
+
+aog:loss-amount a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "loss (amount)"@en ; skos:altLabel "loss"@en , "losses"@en ;
+    skos:definition "A loss, in this sense, is an observation: the amount an insurer pays or expects to pay on claims, as in incurred losses or a loss ratio."@en ;
+    ao:senseCategory ao:Observation .
+
+aog:reserve a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "reserve"@en ;
+    skos:definition "A reserve is an observation: an estimate, at a valuation date, of an amount an insurer still owes, such as its unpaid claims."@en ;
+    ao:senseCategory ao:Observation .
+
+aog:premium a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "premium"@en ;
+    skos:definition "A premium is an observation: the amount charged for insurance coverage over a period, counted as written, earned, unearned or in force."@en ;
+    ao:senseCategory ao:Observation .
+
+aog:policy-contract a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "policy (insurance contract)"@en ; skos:altLabel "policy"@en ;
+    skos:definition "A policy, in this sense, is a contract in which an insurer agrees to pay for specified losses of an insured in return for a premium."@en ;
+    ao:senseCategory ao:Contract .
+
+aog:policy-form a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "policy (policy form)"@en ; skos:altLabel "policy"@en ;
+    skos:definition "A policy, in this sense, is a document: the standard wording that sets out the coverages, conditions and exclusions of a kind of insurance contract."@en ;
+    ao:senseCategory ao:Document .
+
+# "Risk" has senses this version gives no category to; they wait for the
+# modules that need them.
+aog:risk-chance a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "risk (chance of loss)"@en ; skos:altLabel "risk"@en ;
+    skos:definition "Risk, in this sense, is the possibility that an outcome will be worse than expected."@en .
+
+aog:risk-subject a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "risk (insured subject)"@en ; skos:altLabel "risk"@en ;
+    skos:definition "A risk, in this sense, is the person or thing that is insured, as in a preferred risk or a count of risks written."@en .
+
+aog:risk-measure a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "risk (measure)"@en ; skos:altLabel "risk"@en ;
+    skos:definition "Risk, in this sense, is an observation: a number that measures how uncertain an outcome is, such as a variance or a value at risk."@en ;
+    ao:senseCategory ao:Observation .
+
+#################################################################
+#    Statuses
+#################################################################
+
+aog:paid-claim a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "paid claim"@en ;
+    skos:definition "A paid claim is a claim file on which payment has been made."@en ;
+    ao:statusOf aog:claim-file .
+
+aog:in-force-policy a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "in-force policy"@en ;
+    skos:definition "An in-force policy is an insurance contract whose coverage is in effect on a given date."@en ;
+    ao:statusOf aog:policy-contract .
+
+#################################################################
+#    Terms and synonyms taken from the wiki's concept pages
+#################################################################
+
+aog:ibnr a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "IBNR"@en ; skos:altLabel "incurred but not reported"@en ;
+    skos:definition "IBNR, incurred but not reported, is the provision for claims that have occurred but are not yet in an insurer's reported claims."@en ;
+    dcterms:source "Actuarial Notes Wiki, Concepts/IBNR.md" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/IBNR"^^xsd:anyURI ;
+    ao:senseCategory ao:Observation .
+
+aog:chain-ladder-method a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "Chain Ladder Method"@en ; skos:altLabel "development technique"@en ;
+    dcterms:source "Actuarial Notes Wiki, Concepts/Chain Ladder Method.md" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Chain+Ladder+Method"^^xsd:anyURI ;
+    ao:senseCategory ao:Method .
+
+aog:expected-loss-method a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "Expected Loss Method"@en ; skos:altLabel "expected claims technique"@en ;
+    dcterms:source "Actuarial Notes Wiki, Concepts/Expected Loss Method.md" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Expected+Loss+Method"^^xsd:anyURI ;
+    ao:senseCategory ao:Method .
+
+aog:cape-cod-method a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "Cape Cod Method"@en ; skos:altLabel "Stanard-Bühlmann method"@en ;
+    dcterms:source "Actuarial Notes Wiki, Concepts/Cape Cod Method.md" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Cape+Cod+Method"^^xsd:anyURI ;
+    ao:senseCategory ao:Method .
+
+aog:benktander-method a skos:Concept ; skos:inScheme aog:scheme ;
+    skos:prefLabel "Benktander Method"@en ; skos:altLabel "iterated Bornhuetter-Ferguson method"@en ;
+    dcterms:source "Actuarial Notes Wiki, Concepts/Benktander Method.md" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Benktander+Method"^^xsd:anyURI ;
+    ao:senseCategory ao:Method .

@@ -1,0 +1,3 @@
+tool
+Trend Factor
+Two-Step Loss Trend

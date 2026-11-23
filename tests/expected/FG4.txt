@@ -1,0 +1,2 @@
+document	edition	locator	url
+Actual Loss Ratio Exhibit: Private Passenger Automobile Excluding Farmers, Ontario (AUTO1005-ON)	2025 Actual Loss Ratio Exhibit, Bulletin No. 2026-34	Notes to Users, Other Factors, 1. Unallocated Loss Adjustment Expense Factors (p. 12)	https://www.gisa.ca/Documents/View/6325

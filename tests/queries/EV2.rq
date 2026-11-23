@@ -1,0 +1,13 @@
+# EV2: Which peril caused [event]?
+# Test case: the Ontario and Quebec ice storm of March 2025
+
+PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
+PREFIX an: <http://actuarialnotes.com/data/>
+PREFIX syn: <http://actuarialnotes.com/data/synthetic/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?peril WHERE { an:ev-on-qc-ice-storm-2025 ao:causedByPeril/rdfs:label ?peril }

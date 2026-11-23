@@ -1,0 +1,11 @@
+sense	category
+claim (amount)	ao:Observation
+claim (claim file)	ao:Document
+claim (demand for payment)	ao:Event
+claim (insured occurrence)	ao:Event
+loss (amount)	ao:Observation
+loss (event)	ao:Event
+policy (insurance contract)	ao:Contract
+policy (policy form)	ao:Document
+premium	ao:Observation
+reserve	ao:Observation

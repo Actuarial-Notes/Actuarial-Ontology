@@ -11,7 +11,12 @@ the ontology is the schema that data is validated against and exported through.
 This document describes 0.7.0 as it was reviewed. File names and line numbers refer to that
 version (commit `8854b35`).
 
-**Since the review (0.7.1):** Phase 0 of the roadmap is done. F1 and F2 are fixed, CI is in place
+**Since the review (0.8.0):** Phases 1 and 2 are done too: the questions were agreed, and the
+ontology was rebuilt as a small core with lists, a glossary, shapes and tests (see
+[model.md](model.md) and the changelog). Still open from section 9: a resolvable IRI, French
+labels, sourced glossary definitions, and all of phases 3 and 4.
+
+**Earlier (0.7.1):** Phase 0 of the roadmap is done. F1 and F2 are fixed, CI is in place
 (`tools/check.py`), the original knowledge base and the three outdated documents are removed, and
 the example data is now `examples/canadian-pc-example.ttl`. The maintainer chose to shrink the
 core (decision 1). The questions in section 5 are superseded by
