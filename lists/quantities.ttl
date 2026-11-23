@@ -8,6 +8,8 @@
 # (scripts/assumption_vocab.json in the wiki).
 
 # Capital
+ao:CapitalFactor a ao:QuantityKind ; rdfs:label "Capital factor"@en ; skos:notation "capital-factor" .
+ao:ConfidenceLevel a ao:QuantityKind ; rdfs:label "Confidence level"@en ; skos:notation "confidence-level" .
 ao:MCTRatio a ao:QuantityKind ; rdfs:label "MCT ratio"@en ; skos:notation "capital-ratio" .
 ao:SupervisoryTargetMCTRatio a ao:QuantityKind ; rdfs:label "Supervisory target MCT ratio"@en ; skos:notation "capital-ratio" .
 ao:MinimumMCTRatio a ao:QuantityKind ; rdfs:label "Minimum MCT ratio"@en ; skos:notation "capital-ratio" .
@@ -21,6 +23,8 @@ ao:ProfitProvision a ao:QuantityKind ; rdfs:label "Profit provision"@en ; skos:n
 ao:ULAEFactor a ao:QuantityKind ; rdfs:label "ULAE factor"@en ; skos:notation "ulae-factor" .
 ao:ExpectedLossRatio a ao:QuantityKind ; rdfs:label "Expected loss ratio"@en ; skos:notation "loss-ratio" .
 ao:DiscountRate a ao:QuantityKind ; rdfs:label "Discount rate"@en ; skos:notation "discount-rate" .
+ao:ReformFactor a ao:QuantityKind ; rdfs:label "Reform factor"@en ; skos:notation "reform-factor" .
+ao:CatastropheLoad a ao:QuantityKind ; rdfs:label "Catastrophe load"@en ; skos:notation "cat-load" .
 ao:IndicatedRateChange a ao:QuantityKind ; rdfs:label "Indicated rate change"@en .
 
 # Reserving
@@ -28,12 +32,16 @@ ao:ReportedClaims a ao:QuantityKind ; rdfs:label "Reported claims"@en .
 ao:PaidClaims a ao:QuantityKind ; rdfs:label "Paid claims"@en .
 ao:ExpectedClaims a ao:QuantityKind ; rdfs:label "Expected claims"@en .
 ao:CumulativeDevelopmentFactor a ao:QuantityKind ; rdfs:label "Cumulative development factor"@en ; skos:notation "development-factor" .
+ao:TailFactor a ao:QuantityKind ; rdfs:label "Tail factor"@en ; skos:notation "tail-factor" .
 ao:UltimateClaims a ao:QuantityKind ; rdfs:label "Ultimate claims"@en .
 ao:CaseOutstanding a ao:QuantityKind ; rdfs:label "Case outstanding"@en .
 ao:IBNR a ao:QuantityKind ; rdfs:label "IBNR"@en .
 # Concepts/Unpaid Claims.md: "Unpaid Claims = Case Outstanding + IBNR"
 ao:UnpaidClaims a ao:QuantityKind ; rdfs:label "Unpaid claims"@en ;
     ao:hasComponent ao:CaseOutstanding , ao:IBNR .
+
+# Life
+ao:MortalityRatio a ao:QuantityKind ; rdfs:label "Mortality ratio"@en ; skos:notation "mortality-ratio" .
 
 # Events
 ao:InsuredLoss a ao:QuantityKind ; rdfs:label "Insured loss"@en .

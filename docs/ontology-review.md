@@ -11,7 +11,12 @@ the ontology is the schema that data is validated against and exported through.
 This document describes 0.7.0 as it was reviewed. File names and line numbers refer to that
 version (commit `8854b35`).
 
-**Since the review (0.8.0):** Phases 1 and 2 are done too: the questions were agreed, and the
+**Since the review (0.8.1):** Step 13 of section 9 is done. The lists now cover the wiki's
+document types and every jurisdiction, line and assumption kind its pages use, they are published
+as `lists/lists.json`, and the wiki's resource, assumption and timeline lints read a copy of it.
+Institution types are published as notations on the role types, but no wiki lint checks one yet.
+
+**Earlier (0.8.0):** Phases 1 and 2 are done too: the questions were agreed, and the
 ontology was rebuilt as a small core with lists, a glossary, shapes and tests (see
 [model.md](model.md) and the changelog). Still open from section 9: a resolvable IRI, French
 labels, sourced glossary definitions, and all of phases 3 and 4.

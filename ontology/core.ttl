@@ -11,7 +11,7 @@
     dcterms:description "The types every module shares: parties and the roles they hold, jurisdictions, lines of business, documents and their editions, and observations."@en ;
     dcterms:license <https://opensource.org/licenses/MIT> ;
     dcterms:modified "2026-11-23"^^xsd:date ;
-    owl:versionInfo "0.8.0" .
+    owl:versionInfo "0.8.1" .
 
 #################################################################
 #    Top-level categories

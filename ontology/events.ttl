@@ -8,7 +8,7 @@
     dcterms:title "Actuarial Ontology: events"@en ;
     dcterms:description "Catastrophe events: when, where and by what peril. Loss estimates for an event are observations about it."@en ;
     owl:imports <http://actuarialnotes.com/ontology/actuarial/core> ;
-    owl:versionInfo "0.8.0" .
+    owl:versionInfo "0.8.1" .
 
 ao:CatastropheEvent a owl:Class ;
     rdfs:subClassOf ao:Event ;

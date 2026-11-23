@@ -19,9 +19,16 @@ ao:PrivatePassengerAuto a ao:LineOfBusiness ; rdfs:label "Private passenger auto
 ao:CommercialAuto a ao:LineOfBusiness ; rdfs:label "Commercial automobile"@en ; ao:broaderLine ao:Automobile ;
     skos:notation "Auto-Commercial" , "commercial_auto" .
 
-ao:Property a ao:LineOfBusiness ; rdfs:label "Property"@en ; ao:broaderLine ao:PropertyAndCasualty .
+ao:Property a ao:LineOfBusiness ; rdfs:label "Property"@en ; ao:broaderLine ao:PropertyAndCasualty ; skos:notation "Property" .
 ao:PersonalProperty a ao:LineOfBusiness ; rdfs:label "Personal property"@en ; ao:broaderLine ao:Property ; skos:notation "personal_property" .
 ao:CommercialProperty a ao:LineOfBusiness ; rdfs:label "Commercial property"@en ; ao:broaderLine ao:Property ; skos:notation "commercial_property" .
 
 ao:Liability a ao:LineOfBusiness ; rdfs:label "Liability"@en ; ao:broaderLine ao:PropertyAndCasualty ; skos:notation "liability" .
-ao:AccidentAndSickness a ao:LineOfBusiness ; rdfs:label "Accident and sickness"@en ; ao:broaderLine ao:PropertyAndCasualty ; skos:notation "accident_sickness" .
+ao:AccidentAndSickness a ao:LineOfBusiness ; rdfs:label "Accident and sickness"@en ; ao:broaderLine ao:PropertyAndCasualty ; skos:notation "Accident-Sickness" , "accident_sickness" .
+
+# Outside the first scope (property and casualty), listed because the wiki's
+# dated pages name them. They have no sub-lines yet.
+ao:Life a ao:LineOfBusiness ; rdfs:label "Life"@en ; skos:notation "Life" .
+ao:Health a ao:LineOfBusiness ; rdfs:label "Health"@en ; skos:notation "Health" .
+ao:Pensions a ao:LineOfBusiness ; rdfs:label "Pensions"@en ; skos:notation "Pensions" .
+ao:FinancialLines a ao:LineOfBusiness ; rdfs:label "Financial lines"@en ; skos:notation "Financial Lines" .

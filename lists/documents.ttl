@@ -1,0 +1,61 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Document types: what kind of published work a document is. skos:notation
+# is the `Type:` a wiki resource page carries. One value per kind, not per
+# publisher's name for it.
+#
+# This is a SKOS scheme, not a class of the core: no competency question
+# asks about a document's type yet. Where the core has a class for the same
+# kind, rdfs:seeAlso names it.
+
+ao:DocumentType a skos:ConceptScheme ; rdfs:label "Document types"@en .
+
+ao:TextbookType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Textbook"@en ; skos:notation "Textbook" ;
+    skos:definition "A published book."@en .
+ao:CasebookType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Casebook"@en ; skos:notation "Casebook" ;
+    skos:definition "A book of cases with commentary."@en .
+ao:StudyNoteType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Study Note"@en ; skos:notation "Study Note" ;
+    skos:definition "A study note written for an examining body's syllabus."@en .
+ao:MonographType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Monograph"@en ; skos:notation "Monograph" ;
+    skos:definition "A title in a society's monograph series."@en .
+ao:CourseType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Course"@en ; skos:notation "Course" ;
+    skos:definition "An online course, read through its published syllabus."@en .
+ao:SyllabusType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Syllabus"@en ; skos:notation "Syllabus" ;
+    skos:definition "An examining body's syllabus, when it is itself the source."@en .
+ao:PaperType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Paper"@en ; skos:notation "Paper" ;
+    skos:definition "A journal, forum, research or working-party paper, or an article."@en .
+ao:ReportType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Report"@en ; skos:notation "Report" ;
+    skos:definition "A government, committee, consultant or research report."@en .
+ao:EducationalNoteType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Educational Note"@en ; skos:notation "Educational Note" ;
+    skos:definition "An educational note of a professional body."@en .
+ao:StandardofPracticeType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Standard of Practice"@en ; skos:notation "Standard of Practice" ;
+    skos:definition "A professional body's standard of practice."@en ; rdfs:seeAlso ao:StandardOfPractice .
+ao:StatementofPrinciplesType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Statement of Principles"@en ; skos:notation "Statement of Principles" ;
+    skos:definition "A professional body's statement of principles."@en .
+ao:AccountingStandardType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Accounting Standard"@en ; skos:notation "Accounting Standard" ;
+    skos:definition "A standard of an accounting standard-setter."@en .
+ao:GuidelineType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Guideline"@en ; skos:notation "Guideline" ;
+    skos:definition "A regulator's guideline or guidance."@en ; rdfs:seeAlso ao:Guideline .
+ao:RegulatoryReturnType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Regulatory Return"@en ; skos:notation "Regulatory Return" ;
+    skos:definition "The forms of a return filed with a regulator."@en .
+ao:InstructionsType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Instructions"@en ; skos:notation "Instructions" ;
+    skos:definition "Filing instructions, a return's instructions or filing guidelines."@en .
+ao:LegislationType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Legislation"@en ; skos:notation "Legislation" ;
+    skos:definition "A statute or a regulation made under one."@en .
+ao:CaseLawType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Case Law"@en ; skos:notation "Case Law" ;
+    skos:definition "Court decisions, compiled."@en .
+ao:CodeofConductType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Code of Conduct"@en ; skos:notation "Code of Conduct" ;
+    skos:definition "A code of conduct."@en .
+ao:GuideType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Guide"@en ; skos:notation "Guide" ;
+    skos:definition "A guide to a plan or program, for policyholders or insurers."@en .
+ao:GlossaryType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Glossary"@en ; skos:notation "Glossary" ;
+    skos:definition "A glossary."@en .
+ao:ReferenceSheetType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Reference Sheet"@en ; skos:notation "Reference Sheet" ;
+    skos:definition "A reference page the wiki wrote itself."@en .
+ao:DatasetType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Dataset"@en ; skos:notation "Dataset" ;
+    skos:definition "A published table or statistical series."@en .
+ao:BenchmarkType a skos:Concept ; skos:inScheme ao:DocumentType ; skos:prefLabel "Benchmark"@en ; skos:notation "Benchmark" ;
+    skos:definition "Benchmarks published by a regulator or an industry body."@en .

@@ -11,6 +11,7 @@ import collections
 import glob
 import os
 import re
+import subprocess
 import sys
 
 import owlrl
@@ -195,6 +196,12 @@ while changed:  # a class is covered if a subclass of it is
             changed = True
 for term in sorted((classes | properties) - covered):
     errors.append(f"{name(term)} is used by no competency question")
+
+# 11. lists/lists.json, the form the wiki reads, is current with lists/*.ttl.
+export = subprocess.run([sys.executable, "tools/export_lists.py", "--check"], capture_output=True, text=True)
+for line in export.stdout.splitlines():
+    if line.startswith("ERROR: "):
+        errors.append(line[len("ERROR: "):])
 
 questions = {os.path.basename(p)[:-3].split("-")[0] for p in QUERIES}
 print(f"{len(classes)} classes, {len(properties)} properties, {len(listed)} listed individuals, "

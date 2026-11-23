@@ -4,12 +4,19 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # Role types, regulatory domains and activity types.
+# skos:notation on a role type is a spelling the wiki uses for a kind of
+# institution: the research tables' AgentType (federal_regulator) and the
+# source catalogue's EntityCategory (regulator). The wiki's other categories
+# (standards, industry-data, consulting, media) name no single role here.
 
-ao:InsurerRole a ao:RoleType ; rdfs:label "Insurer"@en ; ao:playableBy ao:Organization .
+ao:InsurerRole a ao:RoleType ; rdfs:label "Insurer"@en ; ao:playableBy ao:Organization ;
+    skos:notation "insurer" , "public_insurer" , "federally_incorporated_insurer" , "province_incorporated_insurer" .
 ao:ReinsurerRole a ao:RoleType ; rdfs:label "Reinsurer"@en ; ao:playableBy ao:Organization .
-ao:RegulatorRole a ao:RoleType ; rdfs:label "Regulator"@en ; ao:playableBy ao:Organization .
+ao:RegulatorRole a ao:RoleType ; rdfs:label "Regulator"@en ; ao:playableBy ao:Organization ;
+    skos:notation "regulator" , "federal_regulator" , "provincial_regulator" .
 ao:RateApprovalAuthorityRole a ao:RoleType ; rdfs:label "Rate approval authority"@en ; ao:playableBy ao:Organization .
-ao:StatisticalAgencyRole a ao:RoleType ; rdfs:label "Statistical agency"@en ; ao:playableBy ao:Organization .
+ao:StatisticalAgencyRole a ao:RoleType ; rdfs:label "Statistical agency"@en ; ao:playableBy ao:Organization ;
+    skos:notation "industry_bureau" .
 ao:ProfessionalBodyRole a ao:RoleType ; rdfs:label "Professional body"@en ; ao:playableBy ao:Organization .
 ao:InsuredRole a ao:RoleType ; rdfs:label "Insured"@en ; ao:playableBy ao:Organization , ao:Person .
 ao:PolicyholderRole a ao:RoleType ; rdfs:label "Policyholder"@en ; ao:playableBy ao:Organization , ao:Person .
