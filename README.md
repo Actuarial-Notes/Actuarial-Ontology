@@ -1,11 +1,34 @@
 # Actuarial Ontology (AO)
-Welcome! This is the home of an open source project to develop **an ontology for the domain of actuarial science**.
-- [Actuarial Ontology (.ttl)](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/actuarial-ontology.ttl)
-- [Documentation](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/AO-Documentation.md)
+An open source ontology for the domain of actuarial science, and the schema behind the
+[Actuarial Notes Wiki](https://github.com/ActuarialNotes/Actuarial-Notes-Wiki) and its Actuarial
+Coworker agent.
 
-**Example** [Canadian P&C Insurance Knowledge Base.ttl](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/canadian-pc-insurance-knowledge-base.ttl)
+**Status: 0.7.1, being rebuilt.** A [foundations review](docs/ontology-review.md) found that the
+0.7 draft is a broad glossary, not yet a schema that data can be held in. Version 0.8 will be a
+smaller core built to a set of [competency questions](docs/competency-questions.md), Canadian
+property and casualty insurance first.
 
-👉 Check out our [Project Guide](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Project%20Guide.md) and [Code of Conduct](https://github.com/Actuarial-Notes/Actuarial-Ontology/blob/main/Code%20of%20Conduct.md) if you're interested in contributing!
+| File | What it is |
+|---|---|
+| [`actuarial-ontology.ttl`](actuarial-ontology.ttl) | The ontology (OWL, Turtle): 303 classes, 110 properties |
+| [`docs/competency-questions.md`](docs/competency-questions.md) | The questions the 0.8 core must answer (draft) |
+| [`docs/ontology-review.md`](docs/ontology-review.md) | The review of 0.7.0: findings, target shape, roadmap |
+| [`examples/canadian-pc-example.ttl`](examples/canadian-pc-example.ttl) | Example instances used by the checks. Unsourced and partly invented; not a knowledge base |
+| [`tools/check.py`](tools/check.py) | The checks CI runs |
+| [`CHANGELOG.md`](CHANGELOG.md) | Version history |
+| [`Project Guide.md`](Project%20Guide.md) | How the ontology is developed |
+
+To check a change:
+
+```bash
+pip install rdflib owlrl
+```
+
+```bash
+python3 tools/check.py
+```
+
+See the [Code of Conduct](Code%20of%20Conduct.md) if you'd like to contribute.
 
 ---
 
@@ -55,10 +78,10 @@ Developping an actuarial ontology would begin with deconstructing the language i
 ### 2. Knowledge Base
 With an ontology in place, real-world entities can then be modelled to produce a knowledge base. The [**🧠 Actuarial Notes Wiki**](https://wiki.actuarialnotes.com/Actuarial+Notes+Wiki) is a knowledge base founded on the Actuarial Ontology.
 
-A knowledge base is used to answer queries about the real world. "Competency Questions" are used to test ontologies and illustrate the kinds of questions that a knowledge base built on that ontology should be able to answer.
-- "Which companies acquired Royal Sun Alliance (RSA)?"
-- "Is this rating model compliant with regulations in California?"
-- "What is the impact on our loss ratio from the 2021 Calgary, Alberta hail storm?"
+A knowledge base is used to answer queries about the real world. "Competency questions" are used to test an ontology: they are the questions a knowledge base built on it should be able to answer. Ours are in [docs/competency-questions.md](docs/competency-questions.md). For example:
+- "Which organization acquired RSA Canada?"
+- "Which filing rules apply to a rate filing for private passenger auto in Alberta?"
+- "What insured-loss estimates exist for the 2020 Calgary hailstorm?"
 
 
 ### 3. Artificial Intelligence

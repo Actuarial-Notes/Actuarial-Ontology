@@ -8,8 +8,14 @@ Scope agreed for the review: the ontology is the foundation of the Actuarial Cow
 Canadian P&C first; the wiki's markdown frontmatter stays the source of truth for instances, and
 the ontology is the schema that data is validated against and exported through.
 
-Nothing in the ontology was changed. The scripts that produced the numbers are in
-`tools/review/`; run them from the repo root.
+This document describes 0.7.0 as it was reviewed. File names and line numbers refer to that
+version (commit `8854b35`).
+
+**Since the review (0.7.1):** Phase 0 of the roadmap is done. F1 and F2 are fixed, CI is in place
+(`tools/check.py`), the original knowledge base and the three outdated documents are removed, and
+the example data is now `examples/canadian-pc-example.ttl`. The maintainer chose to shrink the
+core (decision 1). The questions in section 5 are superseded by
+[competency-questions.md](competency-questions.md), which restates them one question at a time.
 
 ---
 

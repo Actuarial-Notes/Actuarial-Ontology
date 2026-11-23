@@ -11,10 +11,10 @@
     dcterms:title "Actuarial Ontology"@en ;
     dcterms:description "An ontology for the domain of actuarial science - the discipline of measuring and managing financial risk."@en ;
     dcterms:created "2026-01-10"^^xsd:date ;
-    dcterms:modified "2026-01-12"^^xsd:date ;
+    dcterms:modified "2026-11-23"^^xsd:date ;
     dcterms:license <https://opensource.org/licenses/MIT> ;
-    owl:versionInfo "0.7.0-draft" ;
-    rdfs:comment "This ontology defines core concepts, relationships, and practices in actuarial science across insurance, pensions, investment, and risk management domains. Aligned with UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk), and ASOPs (Actuarial Standards of Practice). Version 0.7 adds comprehensive domain expansions including underwriting, reinsurance structures, distribution, claims management, policyholder behavior, ALM, life insurance specifics, premium/rating, emerging risks, portfolio management, stochastic modeling, embedded value, and experience studies - expanding from 194 to ~320 classes and from 76 to ~90 object properties."@en .
+    owl:versionInfo "0.7.1" ;
+    rdfs:comment "This ontology defines concepts and relationships in actuarial science across insurance, pensions, investment and risk management, drawing on UFO (Unified Foundational Ontology), COVER (Common Ontology of Value and Risk) and the ASOPs (Actuarial Standards of Practice). Version 0.7.1 is a repair release of 0.7.0; see CHANGELOG.md. A smaller core is planned for 0.8; see docs/ontology-review.md."@en .
 
 #################################################################
 #    Annotation Properties
@@ -1826,7 +1826,7 @@ ao:Retrocession rdf:type owl:Class ;
 
 ### Distribution and Marketing
 
-ao:Agent rdf:type owl:Class ;
+ao:InsuranceAgent rdf:type owl:Class ;
     rdfs:subClassOf ao:Person ;
     rdfs:label "Insurance Agent"@en ;
     rdfs:comment "A role played by a person who sells insurance on behalf of one or more insurers. Agents may be captive (representing one insurer) or independent (representing multiple insurers)."@en ;
@@ -1850,17 +1850,17 @@ ao:DirectWriter rdf:type owl:Class ;
     rdfs:comment "An insurer that sells insurance directly to customers without using independent agents or brokers."@en .
 
 ao:CaptiveAgent rdf:type owl:Class ;
-    rdfs:subClassOf ao:Agent ;
+    rdfs:subClassOf ao:InsuranceAgent ;
     rdfs:label "Captive Agent"@en ;
     rdfs:comment "An agent who represents and sells products exclusively for one insurance company."@en .
 
 ao:IndependentAgent rdf:type owl:Class ;
-    rdfs:subClassOf ao:Agent ;
+    rdfs:subClassOf ao:InsuranceAgent ;
     rdfs:label "Independent Agent"@en ;
     rdfs:comment "An agent who represents and sells products from multiple insurance companies."@en .
 
 ao:ManagingGeneralAgent rdf:type owl:Class ;
-    rdfs:subClassOf ao:Agent ;
+    rdfs:subClassOf ao:InsuranceAgent ;
     rdfs:label "Managing General Agent (MGA)"@en ;
     rdfs:comment "An agent with authority to underwrite and bind coverage on behalf of insurers. MGAs typically have broader authority than standard agents."@en .
 
@@ -2310,7 +2310,7 @@ ao:sellsThrough rdf:type owl:ObjectProperty ;
     rdfs:comment "Relates an insurer to the distribution channels it uses to market and sell products."@en .
 
 ao:representsInsurer rdf:type owl:ObjectProperty ;
-    rdfs:domain ao:Agent ;
+    rdfs:domain ao:InsuranceAgent ;
     rdfs:range ao:Insurer ;
     rdfs:label "represents insurer"@en ;
     rdfs:comment "Relates an agent to an insurer they represent in selling insurance."@en .

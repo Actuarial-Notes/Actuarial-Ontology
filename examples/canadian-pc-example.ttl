@@ -5,26 +5,17 @@
 @prefix kb: <http://example.org/knowledge-base/> .
 
 #################################################################
-#    Canadian P&C Insurance Knowledge Base (Improved)
+#    Canadian P&C example data
 #################################################################
 #
-#    This knowledge base demonstrates property and casualty insurance
-#    concepts in the Canadian market, properly aligned with the
-#    Actuarial Ontology.
+#    Example instances used to exercise the ontology in CI.
 #
-#    Key improvements over original:
-#    - Fixed ontology property usage (insures, hasPolicy, causedBy)
-#    - Classified perils as Natural vs Man-made
-#    - Added insurance product types
-#    - Added premium information
-#    - Added claim reserves
-#    - Added coverage details (deductibles, limits)
-#    - Added actuaries and actuarial activities
-#    - Added catastrophe models
-#    - Added regulators
-#    - Added reinsurance relationships
-#    - Added data quality metadata
-#    - Properly modeled threat/loss event chains
+#    This is NOT a knowledge base. The insurers, regulators and
+#    catastrophe events are real, but the figures attached to them
+#    carry no source, and every person, policy, claim, premium,
+#    reserve, model and report here is invented. Do not cite it.
+#    It will be replaced by a fixture exported from the Actuarial
+#    Notes Wiki (docs/ontology-review.md, section 9).
 #
 #################################################################
 
@@ -992,7 +983,7 @@ kb:Insurer_Intact ao:hasMetric kb:ROE_Intact_2024 .
 
 kb:PeerReview_Reserving_2024 rdf:type ao:PeerReview ;
     rdfs:label "Peer Review of Reserve Analysis" ;
-    ao:reviewedBy kb:Actuary_SmithJ ;
+    ao:hasAgent kb:Actuary_SmithJ ;
     rdfs:comment "Peer review of catastrophe reserve adequacy" .
 
 kb:ActuarialReport_Reserves_2024Q4 rdf:type ao:ActuarialReport ;
