@@ -14,7 +14,8 @@ the rename below.
   activity and a communication).
 - **Added:** `tools/check.py` and a CI workflow: undeclared terms, duplicate declarations and
   labels, subclass cycles, and disjointness after OWL 2 RL inference.
-- **Added:** `docs/competency-questions.md`, the draft questions the 0.8 core will be built to.
+- **Added:** `docs/competency-questions.md`, the requirements and draft competency questions
+  (87, typed and prioritized, in seven modules) that 0.8 will be built to.
 - **Removed:** the original Canadian P&C knowledge base, which used a different namespace and
   never referenced the ontology. The second one is now `examples/canadian-pc-example.ttl`,
   marked as unsourced example data.
