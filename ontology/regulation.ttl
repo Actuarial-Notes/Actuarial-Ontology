@@ -8,7 +8,7 @@
     dcterms:title "Actuarial Ontology: regulation and standards"@en ;
     dcterms:description "Documents that bind: who they apply to, where, for what, and from when."@en ;
     owl:imports <http://actuarialnotes.com/ontology/actuarial/institutions> ;
-    owl:versionInfo "0.8.0" .
+    owl:versionInfo "0.8.1" .
 
 ao:NormativeDocument a owl:Class ;
     rdfs:subClassOf ao:Document ;

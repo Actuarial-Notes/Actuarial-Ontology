@@ -3,7 +3,7 @@ An open source ontology for the domain of actuarial science, and the schema behi
 [Actuarial Notes Wiki](https://github.com/ActuarialNotes/Actuarial-Notes-Wiki) and its Actuarial
 Coworker agent.
 
-**Status: 0.8.0.** A small core built to a set of
+**Status: 0.8.1.** A small core built to a set of
 [competency questions](docs/competency-questions.md), Canadian property and casualty insurance
 first. The 52 priority 1 questions each have a query that CI runs against records transcribed from the
 wiki's sourced pages, plus one synthetic analysis.
@@ -11,7 +11,7 @@ wiki's sourced pages, plus one synthetic analysis.
 | Path | What it is |
 |---|---|
 | [`ontology/`](ontology/) | The ontology (OWL, Turtle) in five modules: core, institutions, regulation, actuarial work, events. 38 classes, 59 properties |
-| [`lists/`](lists/) | The controlled lists: jurisdictions, lines of business, roles, quantity kinds, units, statuses, perils |
+| [`lists/`](lists/) | The controlled lists: jurisdictions, lines of business, roles, document types, quantity kinds, units, statuses, perils. `lists/lists.json` is the same lists as JSON, which the wiki's lint scripts read |
 | [`vocabulary/`](vocabulary/) | The glossary (SKOS): 306 terms |
 | [`shapes/`](shapes/) | SHACL shapes that validate records |
 | [`tests/`](tests/) | A query and expected result per question, and the fixtures they run on |

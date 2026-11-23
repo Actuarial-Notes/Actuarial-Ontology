@@ -8,7 +8,7 @@
     dcterms:title "Actuarial Ontology: actuarial work"@en ;
     dcterms:description "Methods, the steps and tools that carry them out, and one analysis with the assumptions, data and methods it rests on."@en ;
     owl:imports <http://actuarialnotes.com/ontology/actuarial/core> ;
-    owl:versionInfo "0.8.0" .
+    owl:versionInfo "0.8.1" .
 
 #################################################################
 #    Methods and tools

@@ -4,10 +4,12 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # Jurisdictions. Codes are ISO 3166-1 and 3166-2, the form the wiki's
-# frontmatter already uses (jurisdiction: "CA-ON").
+# frontmatter already uses (jurisdiction: "CA-ON"). skos:notation is a
+# spelling the wiki uses that is not the ISO code.
 
 ao:NationalLevel a ao:JurisdictionLevel ; rdfs:label "National"@en .
 ao:SubnationalLevel a ao:JurisdictionLevel ; rdfs:label "Subnational"@en .
+ao:InternationalLevel a ao:JurisdictionLevel ; rdfs:label "International"@en .
 
 ao:CA a ao:Jurisdiction ; rdfs:label "Canada"@en ; ao:isoCode "CA" ; ao:jurisdictionLevel ao:NationalLevel .
 ao:CA-AB a ao:Jurisdiction ; rdfs:label "Alberta"@en ; ao:isoCode "CA-AB" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
@@ -23,3 +25,9 @@ ao:CA-PE a ao:Jurisdiction ; rdfs:label "Prince Edward Island"@en ; ao:isoCode "
 ao:CA-QC a ao:Jurisdiction ; rdfs:label "Quebec"@en ; ao:isoCode "CA-QC" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
 ao:CA-SK a ao:Jurisdiction ; rdfs:label "Saskatchewan"@en ; ao:isoCode "CA-SK" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
 ao:CA-YT a ao:Jurisdiction ; rdfs:label "Yukon"@en ; ao:isoCode "CA-YT" ; ao:jurisdictionLevel ao:SubnationalLevel ; ao:partOfJurisdiction ao:CA .
+
+# Outside the first scope (Canada), listed because the wiki's dated pages name them.
+ao:US a ao:Jurisdiction ; rdfs:label "United States"@en ; ao:isoCode "US" ; ao:jurisdictionLevel ao:NationalLevel .
+ao:GB a ao:Jurisdiction ; rdfs:label "United Kingdom"@en ; ao:isoCode "GB" ; ao:jurisdictionLevel ao:NationalLevel ; skos:notation "UK" .
+# A standard set for every country that adopts it (IFRS 17). It has no ISO code.
+ao:International a ao:Jurisdiction ; rdfs:label "International"@en ; ao:jurisdictionLevel ao:InternationalLevel ; skos:notation "Global" .
