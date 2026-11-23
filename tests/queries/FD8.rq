@@ -1,0 +1,17 @@
+# FD8: Is [named thing] an individual or a class?
+# Test case: the 2024 MCT guideline; Guideline
+
+PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
+PREFIX an: <http://actuarialnotes.com/data/>
+PREFIX syn: <http://actuarialnotes.com/data/synthetic/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?thing ?kind WHERE {
+  VALUES ?x { an:ed-osfi-mct-2024 ao:Guideline }
+  ?x rdfs:label ?thing .
+  BIND (IF(EXISTS { ?x a owl:Class }, "class", "individual") AS ?kind)
+}

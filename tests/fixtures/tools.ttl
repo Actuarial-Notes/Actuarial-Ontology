@@ -1,0 +1,240 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix an: <http://actuarialnotes.com/data/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# The Actuarial Notes calculators, their methods, hand-offs and chains.
+#
+# GENERATED, do not edit. Read from the Actuarial Notes Wiki at commit 58275f71:
+#   quiz/api/_tools/engine.js   (engine 0.1.0): each tool's id, name, method concepts,
+#                               hand-offs (`next`) and bank inputs (`bank`)
+#   quiz/src/lib/toolChains.ts  the reserving and ratemaking chains
+# Tools in the reserving, ratemaking, credibility, capital and data areas only.
+# A tool implements the first concept of its spec whose name ends in "Method".
+# A step is labelled with the names of the tools that carry it out; several
+# names on one step are alternatives.
+
+an:method-benktander-method a ao:Method ;
+    rdfs:label "Benktander Method"@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Benktander+Method"^^xsd:anyURI .
+
+an:method-bornhuetter-ferguson-method a ao:Method ;
+    rdfs:label "Bornhuetter-Ferguson Method"@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Bornhuetter-Ferguson+Method"^^xsd:anyURI .
+
+an:method-cape-cod-method a ao:Method ;
+    rdfs:label "Cape Cod Method"@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Cape+Cod+Method"^^xsd:anyURI .
+
+an:method-chain-ladder-method a ao:Method ;
+    rdfs:label "Chain Ladder Method"@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Chain+Ladder+Method"^^xsd:anyURI .
+
+an:method-expected-loss-method a ao:Method ;
+    rdfs:label "Expected Loss Method"@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Expected+Loss+Method"^^xsd:anyURI .
+
+an:method-loss-ratio-method a ao:Method ;
+    rdfs:label "Loss Ratio Method"@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Loss+Ratio+Method"^^xsd:anyURI .
+
+an:method-parallelogram-method a ao:Method ;
+    rdfs:label "Parallelogram Method"@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Parallelogram+Method"^^xsd:anyURI .
+
+an:method-pure-premium-method a ao:Method ;
+    rdfs:label "Pure Premium Method"@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Pure+Premium+Method"^^xsd:anyURI .
+
+an:tool-data-life-table a ao:Tool ;
+    rdfs:label "Life Table"@en ;
+    ao:toolId "data.life_table" .
+
+an:tool-data-price-index a ao:Tool ;
+    rdfs:label "Price Index"@en ;
+    ao:toolId "data.price_index" ;
+    ao:handsOffTo an:tool-ratemaking-trend-fit ;
+    ao:handsOffTo an:tool-ratemaking-trend-factor .
+
+an:tool-data-yield-curve a ao:Tool ;
+    rdfs:label "Yield Curve"@en ;
+    ao:toolId "data.yield_curve" .
+
+an:tool-data-insurer-return a ao:Tool ;
+    rdfs:label "Insurer Return"@en ;
+    ao:toolId "data.insurer_return" ;
+    ao:handsOffTo an:tool-capital-mct-ratio .
+
+an:tool-reserving-ratio-triangle a ao:Tool ;
+    rdfs:label "Ratio Triangle"@en ;
+    ao:toolId "reserving.ratio_triangle" .
+
+an:tool-reserving-age-to-age-factors a ao:Tool ;
+    rdfs:label "Age-to-Age Factors"@en ;
+    ao:toolId "reserving.age_to_age_factors" ;
+    ao:handsOffTo an:tool-reserving-development-to-ultimate .
+
+an:tool-reserving-development-to-ultimate a ao:Tool ;
+    rdfs:label "Development to Ultimate"@en ;
+    ao:toolId "reserving.development_to_ultimate" ;
+    ao:handsOffTo an:tool-reserving-chain-ladder ;
+    ao:handsOffTo an:tool-reserving-bornhuetter-ferguson ;
+    ao:handsOffTo an:tool-reserving-benktander ;
+    ao:handsOffTo an:tool-reserving-cape-cod .
+
+an:tool-reserving-chain-ladder a ao:Tool ;
+    rdfs:label "Chain Ladder"@en ;
+    ao:toolId "reserving.chain_ladder" ;
+    ao:implements an:method-chain-ladder-method .
+
+an:tool-reserving-expected-claims a ao:Tool ;
+    rdfs:label "Expected Claims"@en ;
+    ao:toolId "reserving.expected_claims" ;
+    ao:implements an:method-expected-loss-method ;
+    ao:takesInput ao:ExpectedLossRatio ;
+    ao:handsOffTo an:tool-reserving-bornhuetter-ferguson ;
+    ao:handsOffTo an:tool-reserving-benktander .
+
+an:tool-reserving-bornhuetter-ferguson a ao:Tool ;
+    rdfs:label "Bornhuetter-Ferguson"@en ;
+    ao:toolId "reserving.bornhuetter_ferguson" ;
+    ao:implements an:method-bornhuetter-ferguson-method .
+
+an:tool-reserving-benktander a ao:Tool ;
+    rdfs:label "Benktander"@en ;
+    ao:toolId "reserving.benktander" ;
+    ao:implements an:method-benktander-method .
+
+an:tool-reserving-cape-cod a ao:Tool ;
+    rdfs:label "Cape Cod"@en ;
+    ao:toolId "reserving.cape_cod" ;
+    ao:implements an:method-cape-cod-method .
+
+an:tool-ratemaking-earned-premium a ao:Tool ;
+    rdfs:label "Earned Premium"@en ;
+    ao:toolId "ratemaking.earned_premium" .
+
+an:tool-ratemaking-on-level-factors a ao:Tool ;
+    rdfs:label "On-Level Factors"@en ;
+    ao:toolId "ratemaking.on_level_factors" ;
+    ao:implements an:method-parallelogram-method .
+
+an:tool-ratemaking-trend-fit a ao:Tool ;
+    rdfs:label "Trend Fit"@en ;
+    ao:toolId "ratemaking.trend_fit" ;
+    ao:handsOffTo an:tool-ratemaking-trend-factor .
+
+an:tool-ratemaking-combined-trend a ao:Tool ;
+    rdfs:label "Frequency × Severity Trend"@en ;
+    ao:toolId "ratemaking.combined_trend" ;
+    ao:handsOffTo an:tool-ratemaking-trend-factor .
+
+an:tool-ratemaking-trend-factor a ao:Tool ;
+    rdfs:label "Trend Factor"@en ;
+    ao:toolId "ratemaking.trend_factor" ;
+    ao:takesInput ao:LossTrend ;
+    ao:handsOffTo an:tool-ratemaking-two-step-trend .
+
+an:tool-ratemaking-two-step-trend a ao:Tool ;
+    rdfs:label "Two-Step Loss Trend"@en ;
+    ao:toolId "ratemaking.two_step_trend" ;
+    ao:takesInput ao:LossTrend .
+
+an:tool-ratemaking-expense-ratios a ao:Tool ;
+    rdfs:label "Expense Ratios"@en ;
+    ao:toolId "ratemaking.expense_ratios" ;
+    ao:handsOffTo an:tool-ratemaking-loss-ratio-method ;
+    ao:handsOffTo an:tool-ratemaking-permissible-loss-ratio .
+
+an:tool-ratemaking-permissible-loss-ratio a ao:Tool ;
+    rdfs:label "Permissible Loss Ratio"@en ;
+    ao:toolId "ratemaking.permissible_loss_ratio" ;
+    ao:takesInput ao:FixedExpenseProvision ;
+    ao:takesInput ao:VariableExpenseProvision ;
+    ao:takesInput ao:ProfitProvision ;
+    ao:handsOffTo an:tool-ratemaking-loss-ratio-method .
+
+an:tool-ratemaking-loss-ratio-method a ao:Tool ;
+    rdfs:label "Loss Ratio Method"@en ;
+    ao:toolId "ratemaking.loss_ratio_method" ;
+    ao:implements an:method-loss-ratio-method ;
+    ao:takesInput ao:FixedExpenseProvision ;
+    ao:takesInput ao:VariableExpenseProvision ;
+    ao:takesInput ao:ProfitProvision .
+
+an:tool-ratemaking-pure-premium-method a ao:Tool ;
+    rdfs:label "Pure Premium Method"@en ;
+    ao:toolId "ratemaking.pure_premium_method" ;
+    ao:implements an:method-pure-premium-method ;
+    ao:takesInput ao:FixedExpenseProvision ;
+    ao:takesInput ao:VariableExpenseProvision ;
+    ao:takesInput ao:ProfitProvision .
+
+an:tool-credibility-full-credibility-standard a ao:Tool ;
+    rdfs:label "Full Credibility Standard"@en ;
+    ao:toolId "credibility.full_credibility_standard" ;
+    ao:handsOffTo an:tool-credibility-partial-credibility .
+
+an:tool-credibility-partial-credibility a ao:Tool ;
+    rdfs:label "Partial Credibility"@en ;
+    ao:toolId "credibility.partial_credibility" .
+
+an:tool-credibility-buhlmann-credibility a ao:Tool ;
+    rdfs:label "Bühlmann Credibility"@en ;
+    ao:toolId "credibility.buhlmann_credibility" .
+
+an:tool-capital-mct-ratio a ao:Tool ;
+    rdfs:label "MCT Ratio"@en ;
+    ao:toolId "capital.mct_ratio" .
+
+an:chain-reserving a ao:Method ;
+    rdfs:label "Reserving chain"@en ;
+    ao:hasStep an:chain-reserving-step-1 , an:chain-reserving-step-2 , an:chain-reserving-step-3 , an:chain-reserving-step-4 .
+
+an:chain-reserving-step-1 a ao:Step ;
+    rdfs:label "Ratio Triangle"@en ;
+    ao:stepOrder 1 .
+
+an:chain-reserving-step-2 a ao:Step ;
+    rdfs:label "Age-to-Age Factors"@en ;
+    ao:stepOrder 2 .
+
+an:chain-reserving-step-3 a ao:Step ;
+    rdfs:label "Development to Ultimate"@en ;
+    ao:stepOrder 3 .
+
+an:chain-reserving-step-4 a ao:Step ;
+    rdfs:label "Chain Ladder or Expected Claims or Bornhuetter-Ferguson or Benktander or Cape Cod"@en ;
+    ao:stepOrder 4 .
+
+an:chain-ratemaking a ao:Method ;
+    rdfs:label "Ratemaking chain"@en ;
+    ao:hasStep an:chain-ratemaking-step-1 , an:chain-ratemaking-step-2 , an:chain-ratemaking-step-3 , an:chain-ratemaking-step-4 , an:chain-ratemaking-step-5 , an:chain-ratemaking-step-6 , an:chain-ratemaking-step-7 .
+
+an:chain-ratemaking-step-1 a ao:Step ;
+    rdfs:label "Earned Premium"@en ;
+    ao:stepOrder 1 .
+
+an:chain-ratemaking-step-2 a ao:Step ;
+    rdfs:label "On-Level Factors"@en ;
+    ao:stepOrder 2 .
+
+an:chain-ratemaking-step-3 a ao:Step ;
+    rdfs:label "Trend Fit or Frequency × Severity Trend"@en ;
+    ao:stepOrder 3 .
+
+an:chain-ratemaking-step-4 a ao:Step ;
+    rdfs:label "Trend Factor or Two-Step Loss Trend"@en ;
+    ao:stepOrder 4 .
+
+an:chain-ratemaking-step-5 a ao:Step ;
+    rdfs:label "Expense Ratios"@en ;
+    ao:stepOrder 5 .
+
+an:chain-ratemaking-step-6 a ao:Step ;
+    rdfs:label "Permissible Loss Ratio"@en ;
+    ao:stepOrder 6 .
+
+an:chain-ratemaking-step-7 a ao:Step ;
+    rdfs:label "Loss Ratio Method or Pure Premium Method"@en ;
+    ao:stepOrder 7 .

@@ -1,0 +1,46 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://actuarialnotes.com/ontology/actuarial/regulation> a owl:Ontology ;
+    dcterms:title "Actuarial Ontology: regulation and standards"@en ;
+    dcterms:description "Documents that bind: who they apply to, where, for what, and from when."@en ;
+    owl:imports <http://actuarialnotes.com/ontology/actuarial/institutions> ;
+    owl:versionInfo "0.8.0" .
+
+ao:NormativeDocument a owl:Class ;
+    rdfs:subClassOf ao:Document ;
+    rdfs:label "Normative document"@en ;
+    rdfs:comment "A normative document is a document that sets rules its addressees are expected to follow."@en .
+
+ao:Guideline a owl:Class ;
+    rdfs:subClassOf ao:NormativeDocument ;
+    rdfs:label "Guideline"@en ;
+    rdfs:comment "A guideline is a normative document in which a regulator sets out what it expects of the organizations it supervises."@en .
+
+ao:StandardOfPractice a owl:Class ;
+    rdfs:subClassOf ao:NormativeDocument ;
+    rdfs:label "Standard of practice"@en ;
+    rdfs:comment "A standard of practice is a normative document in which a professional body sets out how its members are to carry out their work."@en .
+
+ao:FilingRule a owl:Class ;
+    rdfs:subClassOf ao:NormativeDocument ;
+    rdfs:label "Filing rule"@en ;
+    rdfs:comment "A filing rule is a normative document in which a rate regulator sets out what a rate filing must contain and how it is submitted."@en .
+
+ao:Requirement a owl:Class ;
+    rdfs:label "Requirement"@en ;
+    rdfs:comment "A requirement is one rule that a normative document states at a particular place."@en .
+
+ao:appliesToRole a owl:ObjectProperty ;
+    rdfs:domain ao:NormativeDocument ;
+    rdfs:range ao:RoleType ;
+    rdfs:label "applies to role"@en ;
+    rdfs:comment "Relates a normative document to a role type whose holders it binds."@en .
+
+ao:appliesToActivity a owl:ObjectProperty ;
+    rdfs:range ao:ActivityType ;
+    rdfs:label "applies to activity"@en ;
+    rdfs:comment "Relates a normative document, or a place in one, to a type of work it governs."@en .

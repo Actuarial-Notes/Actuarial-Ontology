@@ -1,0 +1,5 @@
+assumption	value
+Profit provision (pre-tax, maximum)	6.0
+Selected annual loss trend	5.0
+Total expenses	27.8
+ULAE	1.094

@@ -1,0 +1,3 @@
+component
+Case outstanding
+IBNR

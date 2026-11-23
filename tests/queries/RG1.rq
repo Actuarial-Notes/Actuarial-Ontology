@@ -1,0 +1,20 @@
+# RG1: Which normative documents issued by [issuer] are in force on [date]?
+# Test case: OSFI, 2026-01-01
+
+PREFIX ao: <http://actuarialnotes.com/ontology/actuarial#>
+PREFIX an: <http://actuarialnotes.com/data/>
+PREFIX syn: <http://actuarialnotes.com/data/synthetic/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?document WHERE {
+  ?d a/rdfs:subClassOf* ao:NormativeDocument ; ao:issuedBy an:osfi ; rdfs:label ?document .
+  ?ed ao:editionOf ?d ; ao:effectiveFrom ?from .
+  FILTER (?from <= "2026-01-01"^^xsd:date)
+  OPTIONAL { ?ed ao:effectiveTo ?to }
+  FILTER (!bound(?to) || ?to >= "2026-01-01"^^xsd:date)
+  FILTER NOT EXISTS { ?later ao:replaces ?ed ; ao:effectiveFrom ?laterFrom . FILTER (?laterFrom <= "2026-01-01"^^xsd:date) }
+}

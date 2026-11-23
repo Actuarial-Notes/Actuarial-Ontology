@@ -1,0 +1,66 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Quantity kinds, units, bases, statuses and perils.
+# skos:notation on a quantity kind is the Assumptions Bank's `Kind`
+# (scripts/assumption_vocab.json in the wiki).
+
+# Capital
+ao:MCTRatio a ao:QuantityKind ; rdfs:label "MCT ratio"@en ; skos:notation "capital-ratio" .
+ao:SupervisoryTargetMCTRatio a ao:QuantityKind ; rdfs:label "Supervisory target MCT ratio"@en ; skos:notation "capital-ratio" .
+ao:MinimumMCTRatio a ao:QuantityKind ; rdfs:label "Minimum MCT ratio"@en ; skos:notation "capital-ratio" .
+
+# Ratemaking
+ao:LossTrend a ao:QuantityKind ; rdfs:label "Loss trend"@en ; skos:notation "trend" .
+ao:FixedExpenseProvision a ao:QuantityKind ; rdfs:label "Fixed expense provision"@en ; skos:notation "fixed-expense" .
+ao:VariableExpenseProvision a ao:QuantityKind ; rdfs:label "Variable expense provision"@en ; skos:notation "variable-expense" .
+ao:TotalExpenseProvision a ao:QuantityKind ; rdfs:label "Total expense provision"@en ; skos:notation "total-expense" .
+ao:ProfitProvision a ao:QuantityKind ; rdfs:label "Profit provision"@en ; skos:notation "profit-provision" .
+ao:ULAEFactor a ao:QuantityKind ; rdfs:label "ULAE factor"@en ; skos:notation "ulae-factor" .
+ao:ExpectedLossRatio a ao:QuantityKind ; rdfs:label "Expected loss ratio"@en ; skos:notation "loss-ratio" .
+ao:DiscountRate a ao:QuantityKind ; rdfs:label "Discount rate"@en ; skos:notation "discount-rate" .
+ao:IndicatedRateChange a ao:QuantityKind ; rdfs:label "Indicated rate change"@en .
+
+# Reserving
+ao:ReportedClaims a ao:QuantityKind ; rdfs:label "Reported claims"@en .
+ao:PaidClaims a ao:QuantityKind ; rdfs:label "Paid claims"@en .
+ao:ExpectedClaims a ao:QuantityKind ; rdfs:label "Expected claims"@en .
+ao:CumulativeDevelopmentFactor a ao:QuantityKind ; rdfs:label "Cumulative development factor"@en ; skos:notation "development-factor" .
+ao:UltimateClaims a ao:QuantityKind ; rdfs:label "Ultimate claims"@en .
+ao:CaseOutstanding a ao:QuantityKind ; rdfs:label "Case outstanding"@en .
+ao:IBNR a ao:QuantityKind ; rdfs:label "IBNR"@en .
+# Concepts/Unpaid Claims.md: "Unpaid Claims = Case Outstanding + IBNR"
+ao:UnpaidClaims a ao:QuantityKind ; rdfs:label "Unpaid claims"@en ;
+    ao:hasComponent ao:CaseOutstanding , ao:IBNR .
+
+# Events
+ao:InsuredLoss a ao:QuantityKind ; rdfs:label "Insured loss"@en .
+
+ao:Percent a ao:Unit ; rdfs:label "percent"@en ; skos:notation "%" .
+ao:Factor a ao:Unit ; rdfs:label "factor"@en ; skos:notation "factor" .
+ao:CAD a ao:Unit ; rdfs:label "Canadian dollars"@en ; skos:notation "CAD" .
+ao:USD a ao:Unit ; rdfs:label "US dollars"@en ; skos:notation "USD" .
+
+ao:AccidentYearBasis a ao:Basis ; rdfs:label "Accident year"@en .
+ao:PolicyYearBasis a ao:Basis ; rdfs:label "Policy year"@en .
+ao:CalendarYearBasis a ao:Basis ; rdfs:label "Calendar year"@en .
+
+ao:Prescribed a ao:ProvenanceStatus ; rdfs:label "Prescribed"@en ; rdfs:comment "Set by an authority; the party using it has no choice of value."@en .
+ao:Published a ao:ProvenanceStatus ; rdfs:label "Published"@en ; rdfs:comment "Stated by a source as a finding or a benchmark."@en .
+ao:Reported a ao:ProvenanceStatus ; rdfs:label "Reported"@en ; rdfs:comment "Filed by the party it is about."@en .
+ao:Selected a ao:ProvenanceStatus ; rdfs:label "Selected"@en ; rdfs:comment "Chosen by an analyst."@en .
+ao:Estimated a ao:ProvenanceStatus ; rdfs:label "Estimated"@en ; rdfs:comment "Derived by an analysis."@en .
+
+# The wiki's verification statuses (docs/verification.md).
+ao:Unverified a ao:FactCheckStatus ; rdfs:label "Unverified"@en ; skos:notation "unverified" .
+ao:InReview a ao:FactCheckStatus ; rdfs:label "In review"@en ; skos:notation "in_review" .
+ao:Verified a ao:FactCheckStatus ; rdfs:label "Verified"@en ; skos:notation "verified" .
+ao:Disputed a ao:FactCheckStatus ; rdfs:label "Disputed"@en ; skos:notation "disputed" .
+ao:Stale a ao:FactCheckStatus ; rdfs:label "Stale"@en ; skos:notation "stale" .
+
+ao:IceStorm a ao:Peril ; rdfs:label "Ice storm"@en .
+ao:Hail a ao:Peril ; rdfs:label "Hail"@en .
+ao:Wildfire a ao:Peril ; rdfs:label "Wildfire"@en .
+ao:Flood a ao:Peril ; rdfs:label "Flood"@en .

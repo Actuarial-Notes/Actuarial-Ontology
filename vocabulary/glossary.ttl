@@ -1,0 +1,1755 @@
+@prefix aog: <http://actuarialnotes.com/ontology/actuarial/glossary#> .
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# The glossary: actuarial terms that need a definition but that no competency
+# question asks about the instances of. A term moves into an ontology module
+# when a question needs it.
+#
+# GENERATED once, on 2026-11-23, from two sources:
+#   - 286 of the classes of Actuarial Ontology 0.7.1 (label, definition, parent,
+#     ASOP reference). These definitions are the 0.7 draft's own wording and
+#     have not been checked against a source.
+#   - the Actuarial Notes Wiki at commit 58275f71: where a concept page has the
+#     same name, its address (ao:definedOnPage). The wiki's `aliases` are
+#     link-text variants, not synonyms, so they are not carried over.
+# Nine overloaded terms (claim, loss, reserve, premium, policy and others) are
+# defined by hand in terms.ttl instead.
+# Edit by hand from here on.
+
+aog:scheme a skos:ConceptScheme ;
+    dcterms:title "Actuarial Ontology glossary"@en .
+
+aog:AcceleratedDeathBenefit a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Accelerated Death Benefit"@en ;
+    skos:definition "A rider that allows early payment of part of the death benefit if the insured becomes terminally ill."@en ;
+    skos:broader aog:LivingBenefit .
+
+aog:AccountingStandard a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Accounting Standard"@en ;
+    skos:definition "A standard for financial reporting and accounting."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Accounting+Standards"^^xsd:anyURI .
+
+aog:AcquisitionExpense a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Acquisition Expense"@en ;
+    skos:definition "Expenses incurred in acquiring new business, including commissions, underwriting costs, and marketing expenses."@en ;
+    skos:broader aog:ExpenseLoading .
+
+aog:ActuarialActivity a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Actuarial Activity"@en ;
+    skos:definition "An activity performed by actuaries in measuring and managing financial risk."@en .
+
+aog:ActuarialCommunication a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Actuarial Communication"@en ;
+    skos:definition "A written, electronic, or oral communication issued by an actuary with respect to actuarial services. Includes reports, opinions, presentations, and other work products (ASOP 41)."@en ;
+    dcterms:source "ASOP 41" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Actuarial+Communication"^^xsd:anyURI .
+
+aog:ActuarialModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Actuarial Model"@en ;
+    skos:definition "A mathematical or statistical model used in actuarial work."@en .
+
+aog:ActuarialOpinion a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Actuarial Opinion"@en ;
+    skos:definition "A formal statement by an actuary expressing professional judgment regarding the adequacy of reserves, adequacy of capital, or other actuarial matters (ASOP 41)."@en ;
+    skos:broader aog:ActuarialCommunication ;
+    dcterms:source "ASOP 41" .
+
+aog:ActuarialReport a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Actuarial Report"@en ;
+    skos:definition "A formal written actuarial communication documenting actuarial services, findings, and recommendations (ASOP 41)."@en ;
+    skos:broader aog:ActuarialCommunication ;
+    dcterms:source "ASOP 41" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Actuarial+Report"^^xsd:anyURI .
+
+aog:ActuarialStandard a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Actuarial Standard"@en ;
+    skos:definition "A professional standard of practice for actuaries."@en .
+
+aog:Actuary a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Actuary"@en ;
+    skos:definition "A role played by a person who is a professional in actuarial science, measuring and managing financial risk. A person can become or cease to be an actuary."@en ;
+    skos:broader aog:Person ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Actuary"^^xsd:anyURI .
+
+aog:AdverseSelection a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Adverse Selection"@en ;
+    skos:definition "A phenomenon where individuals with higher risk are more likely to purchase or retain insurance coverage, leading to worse-than-expected claims experience. Also known as antiselection."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Adverse+Selection"^^xsd:anyURI .
+
+aog:Annuity a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Annuity"@en ;
+    skos:definition "A financial product that provides a stream of payments over time."@en ;
+    skos:broader aog:InsuranceProduct .
+
+aog:AppointedActuary a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Appointed Actuary"@en ;
+    skos:definition "A role played by an actuary who is appointed by an organization or designated by a regulator to provide specific actuarial opinions, typically regarding reserve adequacy."@en ;
+    skos:broader aog:Actuary ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Appointed+Actuary"^^xsd:anyURI .
+
+aog:AppraisalValue a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Appraisal Value"@en ;
+    skos:definition "The estimated market value of an insurance company or block of business. Appraisal value typically includes embedded value plus value of future new business."@en ;
+    skos:broader aog:Measurement .
+
+aog:Asset a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Asset"@en ;
+    skos:definition "A resource with economic value owned by an entity."@en ;
+    skos:broader aog:FinancialInstrument .
+
+aog:AssetAllocation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Asset Allocation"@en ;
+    skos:definition "The process of dividing investments among different asset categories such as stocks, bonds, and cash to balance risk and return objectives."@en ;
+    skos:broader aog:ActuarialActivity ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Asset+Allocation"^^xsd:anyURI .
+
+aog:AssetLiabilityManagement a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Asset-Liability Management (ALM)"@en ;
+    skos:definition "The practice of managing assets and liabilities together to control risk arising from mismatches in duration, cash flows, or other characteristics. ALM is critical for insurers and pension plans."@en ;
+    skos:broader aog:ActuarialActivity ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Asset-Liability+Management"^^xsd:anyURI .
+
+aog:Assumption a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Assumption"@en ;
+    skos:definition "A proposition taken to be true for the purpose of analysis or modeling."@en .
+
+aog:AssumptionSetting a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Assumption Setting"@en ;
+    skos:definition "The process of establishing assumptions for use in actuarial analysis and modeling. Assumptions should be reasonable and appropriate for the intended purpose (ASOP 56)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 56" .
+
+aog:AuditTrail a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Audit Trail"@en ;
+    skos:definition "A documented record of the steps, decisions, and rationale in actuarial work. An audit trail enables others to understand and reproduce the work, facilitating review, verification, and regulatory compliance."@en .
+
+aog:AutoInsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Auto Insurance"@en ;
+    skos:definition "An insurance product that covers vehicles."@en ;
+    skos:broader aog:PropertyInsurance .
+
+aog:BackTesting a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Back Testing"@en ;
+    skos:definition "The process of testing a model by comparing its predictions against historical actual results. Back testing validates model accuracy and identifies potential improvements."@en ;
+    skos:broader aog:ActuarialActivity .
+
+aog:Belief a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Belief"@en ;
+    skos:definition "A mental moment representing an agent's acceptance of a proposition as true. Beliefs inform decision-making and risk assessment (UFO-C)."@en .
+
+aog:Beneficiary a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Beneficiary"@en ;
+    skos:definition "A role played by an agent that receives benefits from an insurance policy or pension."@en .
+
+aog:BookOfBusiness a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Book of Business"@en ;
+    skos:definition "The total collection of policies or accounts managed by an agent, broker, or insurer."@en ;
+    skos:broader aog:Portfolio .
+
+aog:Bootstrapping a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Bootstrapping"@en ;
+    skos:definition "A statistical method that uses resampling with replacement from historical data to estimate distributions and confidence intervals."@en ;
+    skos:broader aog:StochasticModel .
+
+aog:Broker a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Insurance Broker"@en ;
+    skos:definition "A role played by a person who represents insurance buyers and arranges coverage from insurers. Brokers act on behalf of the insured rather than the insurer."@en ;
+    skos:broader aog:Person .
+
+aog:Capital a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Capital"@en ;
+    skos:definition "Financial resources available to support operations and absorb losses."@en ;
+    skos:broader aog:Asset ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Capital"^^xsd:anyURI .
+
+aog:CapitalModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Capital Model"@en ;
+    skos:definition "A model used to assess capital requirements and risk."@en ;
+    skos:broader aog:ActuarialModel .
+
+aog:CapitalModeling a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Capital Modeling"@en ;
+    skos:definition "The process of modeling capital requirements and risk exposures."@en ;
+    skos:broader aog:ActuarialActivity .
+
+aog:CapitalRequirement a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Capital Requirement"@en ;
+    skos:definition "A regulatory requirement specifying the minimum amount of capital an insurance entity must hold. Capital requirements are designed to ensure solvency and protect policyholders."@en ;
+    skos:broader aog:RegulatoryRequirement .
+
+aog:CaptiveAgent a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Captive Agent"@en ;
+    skos:definition "An agent who represents and sells products exclusively for one insurance company."@en ;
+    skos:broader aog:InsuranceAgent .
+
+aog:CaseReserve a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Case Reserve"@en ;
+    skos:definition "A reserve for a specific reported claim."@en ;
+    skos:broader aog:ClaimReserve ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Case+Reserves"^^xsd:anyURI .
+
+aog:CashFlowMatching a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Cash Flow Matching"@en ;
+    skos:definition "An ALM strategy that aligns the timing of asset cash flows with liability cash flows to ensure sufficient funds are available when needed."@en ;
+    skos:broader aog:AssetLiabilityManagement ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Cash+Flow+Matching"^^xsd:anyURI .
+
+aog:CashValue a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Cash Value"@en ;
+    skos:definition "The savings component of permanent life insurance policies that accumulates over time. Cash value can be borrowed against or withdrawn."@en ;
+    skos:broader aog:Asset .
+
+aog:CasualtyInsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Casualty Insurance"@en ;
+    skos:definition "An insurance product that covers liability risks."@en ;
+    skos:broader aog:InsuranceProduct .
+
+aog:CatastropheExcessOfLoss a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Catastrophe Excess of Loss"@en ;
+    skos:definition "Excess of loss reinsurance specifically covering catastrophic events that affect multiple policies simultaneously."@en ;
+    skos:broader aog:ExcessOfLossReinsurance .
+
+aog:CatastropheModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Catastrophe Model"@en ;
+    skos:definition "A model for estimating the frequency and severity of catastrophic events and their resulting losses. Catastrophe models typically combine hazard, vulnerability, and financial modules to estimate loss distributions (ASOP 38)."@en ;
+    skos:broader aog:ActuarialModel ;
+    dcterms:source "ASOP 38" .
+
+aog:CatastropheRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Catastrophe Risk"@en ;
+    skos:definition "A risk of loss from extreme events affecting many insureds simultaneously."@en ;
+    skos:broader aog:InsurableRisk ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Catastrophe+Risk"^^xsd:anyURI .
+
+aog:CatastropheScenario a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Catastrophe Scenario"@en ;
+    skos:definition "A specific hypothetical or historical catastrophic event used for analysis. Examples include a magnitude 7.5 earthquake in Los Angeles or a Category 5 hurricane making landfall in Miami (ASOP 39)."@en ;
+    dcterms:source "ASOP 39" .
+
+aog:CedingCommission a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Ceding Commission"@en ;
+    skos:definition "A payment from reinsurer to ceding insurer to cover acquisition costs and other expenses. Ceding commissions are typically a percentage of ceded premiums."@en .
+
+aog:ClaimData a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Claim Data"@en ;
+    skos:definition "Data about insurance claims."@en ;
+    skos:broader aog:Data .
+
+aog:ClaimEvent a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Claim Event"@en ;
+    skos:definition "An event that triggers an insurance claim. A specific type of loss event that activates insurance coverage."@en .
+
+aog:ClaimReserve a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Claim Reserve"@en ;
+    skos:definition "A reserve established for estimated claim payments."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Claim+Reserve"^^xsd:anyURI .
+
+aog:ClaimsAdjuster a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Claims Adjuster"@en ;
+    skos:definition "A role played by a person who investigates and settles insurance claims. Adjusters evaluate damages, verify coverage, and determine settlement amounts."@en ;
+    skos:broader aog:Person .
+
+aog:ClaimsAdjustment a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Claims Adjustment"@en ;
+    skos:definition "The process of investigating, evaluating, and settling insurance claims. Claims adjustment determines coverage applicability and appropriate payment amounts."@en .
+
+aog:ClaimsExperienceStudy a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Claims Experience Study"@en ;
+    skos:definition "An experience study analyzing claim frequency, severity, and development patterns."@en ;
+    skos:broader aog:ExperienceStudy .
+
+aog:ClaimsInvestigation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Claims Investigation"@en ;
+    skos:definition "The process of gathering and analyzing information about a claim to verify its validity and determine the extent of the insurer's liability."@en ;
+    skos:broader aog:ClaimsAdjustment .
+
+aog:ClaimsSettlement a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Claims Settlement"@en ;
+    skos:definition "The process of resolving a claim through payment, denial, or other disposition. Settlement concludes the claims handling process."@en .
+
+aog:ClimateRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Climate Risk"@en ;
+    skos:definition "The risk of losses from climate change and its effects, including increased frequency and severity of natural disasters, changing weather patterns, and environmental transitions."@en ;
+    skos:broader aog:EmergingRisk ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Climate+Risk"^^xsd:anyURI .
+
+aog:CombinedRatio a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Combined Ratio"@en ;
+    skos:definition "The sum of loss ratio and expense ratio."@en ;
+    skos:broader aog:FinancialMeasurement ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Combined+Ratio"^^xsd:anyURI .
+
+aog:Commitment a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Commitment"@en ;
+    skos:definition "A social moment that binds an agent to a course of action. Commitments create obligations and expectations (UFO-C)."@en .
+
+aog:ContractualServiceMargin a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Contractual Service Margin (CSM)"@en ;
+    skos:definition "Under IFRS 17, the CSM represents the unearned profit of a group of insurance contracts that will be recognized as revenue over the coverage period. The CSM is a component of the carrying amount of insurance contract liabilities."@en ;
+    skos:broader aog:Liability ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Contractual+Service+Margin"^^xsd:anyURI .
+
+aog:Coverage a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Coverage"@en ;
+    skos:definition "The scope of protection provided by an insurance policy."@en .
+
+aog:Credibility a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Credibility"@en ;
+    skos:definition "A measure of the predictive value or weight given to a body of data in forming estimates. Credibility reflects the degree of confidence that a set of data can be used to predict future outcomes (ASOP 25)."@en ;
+    dcterms:source "ASOP 25" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Credibility"^^xsd:anyURI .
+
+aog:CreditRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Credit Risk"@en ;
+    skos:definition "A risk that a borrower will default on their obligations."@en ;
+    skos:broader aog:Risk ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Credit+Risk"^^xsd:anyURI .
+
+aog:CyberRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Cyber Risk"@en ;
+    skos:definition "The risk of losses from cyber attacks, data breaches, system failures, or other technology-related incidents. Cyber risk is a growing concern for insurers and insureds."@en ;
+    skos:broader aog:EmergingRisk .
+
+aog:Data a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Data"@en ;
+    skos:definition "Information collected and used for analysis."@en .
+
+aog:DataDeficiency a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Data Deficiency"@en ;
+    skos:definition "An inadequacy in the data that may include missing data, insufficient volume, lack of relevance, or poor quality (ASOP 23)."@en ;
+    skos:broader aog:DataLimitation ;
+    dcterms:source "ASOP 23" .
+
+aog:DataInconsistency a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Data Inconsistency"@en ;
+    skos:definition "A lack of uniformity or coherence in data, which may indicate errors or changes in data collection methods (ASOP 23)."@en ;
+    skos:broader aog:DataLimitation ;
+    dcterms:source "ASOP 23" .
+
+aog:DataLimitation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Data Limitation"@en ;
+    skos:definition "A constraint, deficiency, or issue affecting the usefulness or reliability of data for actuarial analysis. Actuaries should identify and disclose material data limitations (ASOP 23)."@en ;
+    dcterms:source "ASOP 23" .
+
+aog:DataQuality a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Data Quality"@en ;
+    skos:definition "An assessment of the appropriateness, reliability, and limitations of data for a specific purpose. Data quality is a critical consideration in actuarial work (ASOP 23)."@en ;
+    dcterms:source "ASOP 23" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Data+Quality"^^xsd:anyURI .
+
+aog:DataSource a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Data Source"@en ;
+    skos:definition "The origin or provider of data. Understanding the data source helps assess data quality and reliability (ASOP 23)."@en ;
+    dcterms:source "ASOP 23" .
+
+aog:DeathBenefit a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Death Benefit"@en ;
+    skos:definition "The amount payable by a life insurance policy upon the death of the insured. The death benefit is the primary purpose of life insurance."@en .
+
+aog:DeclinedRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Declined Risk"@en ;
+    skos:definition "A risk that has been rejected for insurance coverage because it does not meet underwriting criteria or is deemed uninsurable."@en .
+
+aog:Deductible a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Deductible"@en ;
+    skos:definition "An amount that the insured must pay before insurance coverage applies."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Deductible"^^xsd:anyURI .
+
+aog:DefinedBenefitPension a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Defined Benefit Pension"@en ;
+    skos:definition "A pension that guarantees a specific benefit amount based on salary and service."@en ;
+    skos:broader aog:Pension .
+
+aog:DefinedContributionPension a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Defined Contribution Pension"@en ;
+    skos:definition "A pension where the benefit depends on contributions and investment returns."@en ;
+    skos:broader aog:Pension .
+
+aog:DeterministicModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Deterministic Model"@en ;
+    skos:definition "A model that produces a single outcome for a given set of inputs without randomness. Deterministic models are simpler but do not capture uncertainty."@en ;
+    skos:broader aog:ActuarialModel .
+
+aog:Deviation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Deviation"@en ;
+    skos:definition "A departure from guidance in an Actuarial Standard of Practice. When an actuary deviates from guidance in an applicable ASOP, the actuary should disclose the deviation and provide the reason for it in accordance with ASOP 41."@en .
+
+aog:DirectWriter a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Direct Writer"@en ;
+    skos:definition "An insurer that sells insurance directly to customers without using independent agents or brokers."@en ;
+    skos:broader aog:Insurer .
+
+aog:Disclosure a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Disclosure"@en ;
+    skos:definition "Information that an actuary must disclose in an actuarial communication per professional standards. Includes data limitations, assumptions, methods, reliance on others, etc. (ASOP 41)."@en ;
+    dcterms:source "ASOP 41" .
+
+aog:Disposition a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Disposition"@en ;
+    skos:definition "A tendency or capacity of an endurant to produce certain effects under specific conditions. Dispositions are moments that can manifest as events (UFO/COVER)."@en .
+
+aog:DistributionChannel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Distribution Channel"@en ;
+    skos:definition "A method or pathway through which insurance products are sold to customers. Examples include agents, brokers, direct sales, and digital platforms."@en .
+
+aog:DurationMatching a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Duration Matching"@en ;
+    skos:definition "An ALM strategy that matches the duration of assets with the duration of liabilities to minimize interest rate risk."@en ;
+    skos:broader aog:AssetLiabilityManagement ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Duration+Matching"^^xsd:anyURI .
+
+aog:ESGRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "ESG Risk"@en ;
+    skos:definition "Risks related to environmental, social, and governance factors. ESG risks encompass climate change, social inequality, corporate governance failures, and related issues."@en ;
+    skos:broader aog:EmergingRisk .
+
+aog:EconomicCapital a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Economic Capital"@en ;
+    skos:definition "The amount of capital needed to remain solvent at a given risk tolerance."@en ;
+    skos:broader aog:Capital ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Economic+Capital"^^xsd:anyURI .
+
+aog:EmbeddedValue a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Embedded Value (EV)"@en ;
+    skos:definition "A measure of the value of in-force life insurance business, consisting of adjusted net worth plus the present value of future profits. Embedded value is used to assess insurer value and performance."@en ;
+    skos:broader aog:Measurement ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Embedded+Value"^^xsd:anyURI .
+
+aog:EmergingRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Emerging Risk"@en ;
+    skos:definition "A risk that is newly developing or changing in ways that may materially affect insurers. Emerging risks require ongoing monitoring and assessment."@en ;
+    skos:broader aog:Risk ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Emerging+Risk"^^xsd:anyURI .
+
+aog:EnterpriseRiskManagement a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Enterprise Risk Management"@en ;
+    skos:definition "A comprehensive, integrated approach to managing all risks across an organization. ERM considers interdependencies among risks and aligns risk management with strategic objectives (ASOP 58)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 58" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Enterprise+Risk+Management"^^xsd:anyURI .
+
+aog:Estimate a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Estimate"@en ;
+    skos:definition "An approximation or best judgment of a quantity."@en ;
+    skos:broader aog:Measurement .
+
+aog:EuropeanEmbeddedValue a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "European Embedded Value (EEV)"@en ;
+    skos:definition "An embedded value framework developed by the CFO Forum using market-consistent principles. EEV standardizes embedded value reporting across European insurers."@en ;
+    skos:broader aog:EmbeddedValue .
+
+aog:ExcessOfLossReinsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Excess of Loss Reinsurance"@en ;
+    skos:definition "A non-proportional reinsurance agreement where the reinsurer covers losses exceeding a specified retention limit up to a maximum amount."@en ;
+    skos:broader aog:NonProportionalReinsurance .
+
+aog:Exclusion a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Exclusion"@en ;
+    skos:definition "A provision that eliminates coverage for specific risks or circumstances."@en .
+
+aog:ExpenseLoading a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Expense Loading"@en ;
+    skos:definition "An amount added to net premium to cover operating expenses, commissions, taxes, and profit. Expense loadings convert net premiums to gross premiums."@en .
+
+aog:ExpenseRatio a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Expense Ratio"@en ;
+    skos:definition "The ratio of expenses to premiums."@en ;
+    skos:broader aog:FinancialMeasurement ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Expense+Ratio"^^xsd:anyURI .
+
+aog:ExpenseStudy a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Expense Study"@en ;
+    skos:definition "An experience study analyzing operating expenses to support expense assumption setting and allocation."@en ;
+    skos:broader aog:ExperienceStudy .
+
+aog:ExperienceAnalysis a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Experience Analysis"@en ;
+    skos:definition "The process of analyzing historical data to understand past performance."@en ;
+    skos:broader aog:ActuarialActivity .
+
+aog:ExperienceRating a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Experience Rating"@en ;
+    skos:definition "A pricing method that adjusts premiums based on the insured's own loss experience. Experience rating is common in group insurance and large commercial accounts."@en ;
+    skos:broader aog:Pricing ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Experience+Rating"^^xsd:anyURI .
+
+aog:ExperienceStudy a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Experience Study"@en ;
+    skos:definition "A systematic analysis of historical experience data to understand actual versus expected results. Experience studies inform assumption setting and pricing."@en ;
+    skos:broader aog:ExperienceAnalysis ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Experience+Study"^^xsd:anyURI .
+
+aog:ExposureData a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Exposure Data"@en ;
+    skos:definition "Data about units of exposure to risk."@en ;
+    skos:broader aog:Data .
+
+aog:ExposureUnit a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Exposure Unit"@en ;
+    skos:definition "A measure of the extent of risk exposure used as a basis for premium calculation. Examples include car-years for auto insurance, life-years for life insurance, or property values for property insurance."@en .
+
+aog:ExtremeEvent a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Extreme Event"@en ;
+    skos:definition "An event with unusually high severity or low frequency, typically located in the tail of the loss distribution (ASOP 39)."@en ;
+    dcterms:source "ASOP 39" .
+
+aog:FacultativeReinsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Facultative Reinsurance"@en ;
+    skos:definition "A reinsurance agreement covering a single risk or policy on a case-by-case basis. Both the ceding insurer and reinsurer have the option to accept or decline each risk individually."@en ;
+    skos:broader aog:ReinsuranceContract ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Facultative+Reinsurance"^^xsd:anyURI .
+
+aog:FinancialInstrument a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Financial Instrument"@en ;
+    skos:definition "A tradable asset or contract that has monetary value."@en .
+
+aog:FinancialMeasurement a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Financial Measurement"@en ;
+    skos:definition "A measurement of a financial quantity."@en ;
+    skos:broader aog:Measurement .
+
+aog:FinancialUnderwriting a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Financial Underwriting"@en ;
+    skos:definition "The process of assessing an applicant's financial situation to determine appropriate insurance coverage amounts and ensure insurable interest."@en ;
+    skos:broader aog:Underwriting .
+
+aog:FraudDetection a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Fraud Detection"@en ;
+    skos:definition "The process of identifying potentially fraudulent insurance claims or applications through investigation and analysis."@en .
+
+aog:FraudulentClaim a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Fraudulent Claim"@en ;
+    skos:definition "A claim that involves misrepresentation or deception for the purpose of obtaining insurance benefits to which the claimant is not entitled."@en ; .
+
+aog:FrequencyModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Frequency Model"@en ;
+    skos:definition "A component of catastrophe modeling that estimates how often catastrophic events occur. Frequency models use historical data and scientific knowledge about hazard occurrence (ASOP 38)."@en ;
+    skos:broader aog:CatastropheModel ;
+    dcterms:source "ASOP 38" .
+
+aog:FullCredibility a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Full Credibility"@en ;
+    skos:definition "A credibility level indicating that a body of data is sufficient to be given complete weight in forming an estimate, without need for supplemental data or smoothing (ASOP 25)."@en ;
+    skos:broader aog:Credibility ;
+    dcterms:source "ASOP 25" .
+
+aog:GAAP a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "GAAP"@en ;
+    skos:definition "Generally Accepted Accounting Principles."@en ;
+    skos:broader aog:AccountingStandard ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/GAAP"^^xsd:anyURI .
+
+aog:GeneralizedLinearModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Generalized Linear Model (GLM)"@en ;
+    skos:definition "A statistical model that extends linear regression for insurance pricing."@en ;
+    skos:broader aog:PricingModel ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Generalized+Linear+Model"^^xsd:anyURI .
+
+aog:Goal a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Goal"@en ;
+    skos:definition "A desired state of affairs or outcome that an agent intends to achieve. Goals are intentional moments (UFO-C)."@en .
+
+aog:GrossPremium a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Gross Premium"@en ;
+    skos:definition "The total premium charged to the policyholder, including all loadings for expenses, profit, and contingencies."@en ; .
+
+aog:GuaranteedMinimumDeathBenefit a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Guaranteed Minimum Death Benefit (GMDB)"@en ;
+    skos:definition "A guarantee in variable annuities and variable life insurance that the death benefit will not fall below a specified minimum regardless of investment performance."@en ;
+    skos:broader aog:DeathBenefit ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Guaranteed+Minimum+Death+Benefit"^^xsd:anyURI .
+
+aog:HealthInsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Health Insurance"@en ;
+    skos:definition "An insurance product that covers medical expenses."@en ;
+    skos:broader aog:InsuranceProduct ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Health+Insurance"^^xsd:anyURI .
+
+aog:HomeownersInsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Homeowners Insurance"@en ;
+    skos:definition "An insurance product that covers residential property and related liabilities."@en ;
+    skos:broader aog:PropertyInsurance .
+
+aog:IBNRReserve a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "IBNR Reserve"@en ;
+    skos:definition "A reserve for incurred but not reported claims."@en ;
+    skos:broader aog:ClaimReserve .
+
+aog:IFRS17 a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "IFRS 17"@en ;
+    skos:definition "International Financial Reporting Standard 17 for insurance contracts."@en ;
+    skos:broader aog:AccountingStandard ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/IFRS+17"^^xsd:anyURI .
+
+aog:IdiosyncraticRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Idiosyncratic Risk"@en ;
+    skos:definition "A risk that is specific to a particular entity or asset, not affecting the broader system."@en .
+
+aog:ImmunizationStrategy a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Immunization Strategy"@en ;
+    skos:definition "An ALM approach that protects a portfolio against interest rate risk by matching duration and convexity of assets and liabilities."@en ;
+    skos:broader aog:AssetLiabilityManagement .
+
+aog:IndependentAdjuster a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Independent Adjuster"@en ;
+    skos:definition "A claims adjuster who works on a contract basis for multiple insurance companies rather than as an employee of a single insurer."@en ;
+    skos:broader aog:ClaimsAdjuster .
+
+aog:IndependentAgent a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Independent Agent"@en ;
+    skos:definition "An agent who represents and sells products from multiple insurance companies."@en ;
+    skos:broader aog:InsuranceAgent .
+
+aog:InsurableRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Insurable Risk"@en ;
+    skos:definition "A risk classification for risks that meet criteria for insurance coverage (random, fortuitous, measurable, definable, etc.). Can apply to any of the three COVER facets."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Insurable+Risk"^^xsd:anyURI .
+
+aog:InsuranceAgent a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Insurance Agent"@en ;
+    skos:definition "A role played by a person who sells insurance on behalf of one or more insurers. Agents may be captive (representing one insurer) or independent (representing multiple insurers)."@en ;
+    skos:broader aog:Person .
+
+aog:InsurancePortfolio a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Insurance Portfolio"@en ;
+    skos:definition "A collection of insurance policies grouped for management and analysis purposes. Insurance portfolios may be segmented by product, geography, or other characteristics."@en ;
+    skos:broader aog:Portfolio ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Insurance+Portfolio"^^xsd:anyURI .
+
+aog:InsuranceProduct a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Insurance Product"@en ;
+    skos:definition "A type of insurance offering that provides coverage for specific risks."@en .
+
+aog:Insured a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Insured"@en ;
+    skos:definition "A role played by an agent that has insurance coverage. An agent can become insured or lose insurance status."@en .
+
+aog:Insurer a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Insurer"@en ;
+    skos:definition "A role played by an organization that provides insurance coverage. An organization can start or stop being an insurer."@en ;
+    skos:broader aog:Organization ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Insurer"^^xsd:anyURI .
+
+aog:IntendedUser a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Intended User"@en ;
+    skos:definition "A role played by an agent identified by the actuary as able to rely on the actuarial communication. Communications should be appropriate for the intended user (ASOP 41)."@en ;
+    dcterms:source "ASOP 41" .
+
+aog:Intention a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Intention"@en ;
+    skos:definition "A mental moment directed at achieving a goal. Intentions represent an agent's commitment to pursue a particular course of action (UFO-C)."@en .
+
+aog:InterestRateRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Interest Rate Risk"@en ;
+    skos:definition "The risk of losses due to changes in interest rates. Interest rate risk affects the value of both assets and liabilities."@en ;
+    skos:broader aog:MarketRisk ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Interest+Rate+Risk"^^xsd:anyURI .
+
+aog:InternalModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Internal Model"@en ;
+    skos:definition "A risk measurement system developed by an insurer to calculate capital requirements based on its own risk profile. Under Solvency II, internal models require regulatory approval and must meet standards for use, statistical quality, calibration, profit and loss attribution, validation, and documentation."@en ;
+    skos:broader aog:ActuarialModel .
+
+aog:InvestmentPortfolio a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Investment Portfolio"@en ;
+    skos:definition "A collection of investment assets held by an entity. Investment portfolios are managed to achieve return objectives while controlling risk."@en ;
+    skos:broader aog:Portfolio .
+
+aog:Investor a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Investor"@en ;
+    skos:definition "A role played by an agent that allocates capital with the expectation of future returns."@en .
+
+aog:Lapse a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Lapse"@en ;
+    skos:definition "The termination of an insurance policy due to non-payment of premiums. A lapsed policy ceases to provide coverage."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Lapse"^^xsd:anyURI .
+
+aog:LapseRate a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Lapse Rate"@en ;
+    skos:definition "The proportion of policies that terminate due to non-payment of premiums during a specified period. Lapse rate is a key metric for policy experience analysis."@en ;
+    skos:broader aog:Measurement .
+
+aog:LapseStudy a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Lapse Study"@en ;
+    skos:definition "An experience study analyzing policy termination and persistency patterns."@en ;
+    skos:broader aog:ExperienceStudy .
+
+aog:Liability a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Liability"@en ;
+    skos:definition "A financial obligation owed by an entity."@en ;
+    skos:broader aog:FinancialInstrument .
+
+aog:LiabilityRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Liability Risk"@en ;
+    skos:definition "A risk of being held legally responsible for harm or damages."@en ;
+    skos:broader aog:InsurableRisk .
+
+aog:LifeInsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Life Insurance"@en ;
+    skos:definition "An insurance product that pays benefits upon the death of the insured."@en ;
+    skos:broader aog:InsuranceProduct ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Life+Insurance"^^xsd:anyURI .
+
+aog:Limit a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Limit"@en ;
+    skos:definition "The maximum amount an insurer will pay under a policy."@en .
+
+aog:LivingBenefit a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Living Benefit"@en ;
+    skos:definition "A benefit payable while the insured is still alive, typically triggered by critical illness, chronic illness, or long-term care needs."@en ;
+    skos:broader aog:RiderBenefit .
+
+aog:LoadedPremium a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Loaded Premium"@en ;
+    skos:definition "Premium that includes loadings for expenses, profit, contingencies, and other factors beyond the net premium."@en ; .
+
+aog:LongevityRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Longevity Risk"@en ;
+    skos:definition "A risk associated with people living longer than expected."@en ;
+    skos:broader aog:InsurableRisk ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Longevity+Risk"^^xsd:anyURI .
+
+aog:LossCost a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Loss Cost"@en ;
+    skos:definition "The expected losses per unit of exposure, excluding expense loadings. Loss costs form the basis for net premiums."@en ;
+    skos:broader aog:Measurement ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Loss+Cost"^^xsd:anyURI .
+
+aog:LossDevelopmentTriangle a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Loss Development Triangle"@en ;
+    skos:definition "A tabular representation of loss development over time."@en ;
+    skos:broader aog:ActuarialModel .
+
+aog:LossEvent a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Loss Event"@en ;
+    skos:definition "An event that results in financial loss and undermines the objectives of a risk subject. Loss events are precipitated by threat events (COVER)."@en .
+
+aog:LossRatio a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Loss Ratio"@en ;
+    skos:definition "The ratio of losses to premiums."@en ;
+    skos:broader aog:FinancialMeasurement ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Loss+Ratio"^^xsd:anyURI .
+
+aog:MaintenanceExpense a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Maintenance Expense"@en ;
+    skos:definition "Ongoing expenses of maintaining policies in force, including administration, billing, and policy service costs."@en ;
+    skos:broader aog:ExpenseLoading .
+
+aog:ManagingGeneralAgent a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Managing General Agent (MGA)"@en ;
+    skos:definition "An agent with authority to underwrite and bind coverage on behalf of insurers. MGAs typically have broader authority than standard agents."@en ;
+    skos:broader aog:InsuranceAgent .
+
+aog:ManmadePeril a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Man-made Peril"@en ;
+    skos:definition "A peril caused by human actions (e.g., fire, theft, terrorism)."@en ;
+    skos:broader aog:Peril .
+
+aog:ManualRating a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Manual Rating"@en ;
+    skos:definition "A pricing method that uses standard rate tables based on classification factors rather than individual experience."@en ;
+    skos:broader aog:Pricing .
+
+aog:MarketConsistentEmbeddedValue a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Market Consistent Embedded Value (MCEV)"@en ;
+    skos:definition "An embedded value calculation using market-consistent assumptions and stochastic modeling. MCEV provides a more market-aligned valuation than traditional embedded value."@en ;
+    skos:broader aog:EmbeddedValue .
+
+aog:MarketRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Market Risk"@en ;
+    skos:definition "A risk of losses due to changes in market prices or rates."@en ;
+    skos:broader aog:Risk ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Market+Risk"^^xsd:anyURI .
+
+aog:Measurement a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Measurement"@en ;
+    skos:definition "A quantification of a property or characteristic. Measurements are moments that inhere in entities (UFO)."@en .
+
+aog:MedicalUnderwriting a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Medical Underwriting"@en ;
+    skos:definition "The process of evaluating health risks for life and health insurance. Medical underwriting assesses medical history, current health status, lifestyle factors, and other health-related information."@en ;
+    skos:broader aog:Underwriting .
+
+aog:MinimumCapitalRequirement a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Minimum Capital Requirement (MCR)"@en ;
+    skos:definition "The minimum level of capital below which policyholders and beneficiaries would be exposed to an unacceptable level of risk. Under Solvency II, the MCR represents a lower threshold that triggers ultimate supervisory action."@en ;
+    skos:broader aog:CapitalRequirement .
+
+aog:ModelCalibration a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Model Calibration"@en ;
+    skos:definition "The process of adjusting model parameters to ensure model outputs align with observed data or expert judgment (ASOP 56)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 56" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Model+Calibration"^^xsd:anyURI .
+
+aog:ModelDocumentation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Model Documentation"@en ;
+    skos:definition "The process of recording information about a model's design, development, testing, and appropriate use (ASOP 56)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 56" .
+
+aog:ModelRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Model Risk"@en ;
+    skos:definition "The risk of adverse consequences from decisions based on incorrect or misused model outputs and reports. Model risk can arise from errors in model design, implementation, or application (ASOP 56)."@en ;
+    skos:broader aog:Risk ;
+    dcterms:source "ASOP 56" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Model+Risk"^^xsd:anyURI .
+
+aog:ModelUncertainty a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Model Uncertainty"@en ;
+    skos:definition "Uncertainty in model outputs arising from limitations in model structure, parameter values, or assumptions. Model uncertainty should be considered when using model results for decision-making (ASOP 56)."@en ;
+    dcterms:source "ASOP 56" .
+
+aog:ModelValidation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Model Validation"@en ;
+    skos:definition "The process of evaluating whether a model is appropriate for its intended purpose. Validation assesses model conceptual soundness, data quality, implementation correctness, and ongoing performance (ASOP 56)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 56" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Model+Validation"^^xsd:anyURI .
+
+aog:MonteCarloSimulation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Monte Carlo Simulation"@en ;
+    skos:definition "A computational technique that uses repeated random sampling to model uncertainty and estimate probability distributions of outcomes. Monte Carlo methods are widely used in capital modeling and risk assessment."@en ;
+    skos:broader aog:StochasticModel .
+
+aog:MoralHazard a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Moral Hazard"@en ;
+    skos:definition "A situation where insurance coverage changes behavior, leading to increased risk or claims. Moral hazard occurs when insured parties take more risks because they are protected from consequences."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Moral+Hazard"^^xsd:anyURI .
+
+aog:MorbidityRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Morbidity Risk"@en ;
+    skos:definition "A risk associated with illness or disability."@en ;
+    skos:broader aog:InsurableRisk .
+
+aog:MortalityRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Mortality Risk"@en ;
+    skos:definition "A risk associated with death occurring sooner than expected."@en ;
+    skos:broader aog:InsurableRisk .
+
+aog:MortalityStudy a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Mortality Study"@en ;
+    skos:definition "An experience study analyzing death rates and mortality patterns in an insured population."@en ;
+    skos:broader aog:ExperienceStudy .
+
+aog:MortalityTable a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Mortality Table"@en ;
+    skos:definition "A table showing death rates by age and other characteristics."@en ;
+    skos:broader aog:ActuarialModel .
+
+aog:NaturalPeril a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Natural Peril"@en ;
+    skos:definition "A peril caused by natural forces (e.g., earthquake, hurricane, flood)."@en ;
+    skos:broader aog:Peril .
+
+aog:NetPremium a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Net Premium"@en ;
+    skos:definition "The portion of premium needed to cover expected claims costs without any loadings for expenses or profit. Also called pure premium or risk premium."@en ; .
+
+aog:NoCredibility a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "No Credibility"@en ;
+    skos:definition "A credibility level indicating that a body of data has insufficient predictive value to be used directly in forming estimates (ASOP 25)."@en ;
+    skos:broader aog:Credibility ;
+    dcterms:source "ASOP 25" .
+
+aog:NonForfeitureValue a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Non-Forfeiture Value"@en ;
+    skos:definition "The guaranteed benefits available to a policyholder who stops paying premiums on a permanent life insurance policy. Non-forfeiture options include cash surrender, reduced paid-up insurance, or extended term insurance."@en ;
+    skos:broader aog:CashValue .
+
+aog:NonParticipatingPolicy a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Non-Participating Policy"@en ;
+    skos:definition "A life insurance policy that does not pay dividends. Non-participating policies typically have lower premiums than participating policies."@en ;
+    skos:broader aog:LifeInsurance .
+
+aog:NonProportionalReinsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Non-Proportional Reinsurance"@en ;
+    skos:definition "A reinsurance structure where the reinsurer pays only when losses exceed a specified threshold. Also known as excess of loss reinsurance."@en ;
+    skos:broader aog:ReinsuranceContract .
+
+aog:ORSA a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Own Risk and Solvency Assessment (ORSA)"@en ;
+    skos:definition "A requirement under Solvency II and similar frameworks for insurers to assess their overall solvency needs, considering their risk profile and business strategy. The ORSA is a key component of enterprise risk management."@en ;
+    skos:broader aog:ActuarialActivity .
+
+aog:ObjectAtRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Object at Risk"@en ;
+    skos:definition "An object that can be affected by threat or loss events. Objects whose value may be undermined (COVER)."@en .
+
+aog:Obligation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Obligation"@en ;
+    skos:definition "A social moment that binds an agent to perform a specific action or refrain from it. Obligations arise from commitments and social relationships (UFO-C)."@en .
+
+aog:OperationalRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Operational Risk"@en ;
+    skos:definition "A risk of loss from inadequate or failed processes, people, or systems."@en ;
+    skos:broader aog:Risk ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Operational+Risk"^^xsd:anyURI .
+
+aog:Organization a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Organization"@en ;
+    skos:definition "A structured group of people with a collective goal. This is a kind - an organization maintains this identity throughout its existence."@en .
+
+aog:OutstandingClaim a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Outstanding Claim"@en ;
+    skos:definition "A phase - a claim that has been reported but not yet fully settled. A claim can transition to paid status (UFO phase)."@en ;
+    skos:broader aog:ReportedClaim .
+
+aog:PandemicRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Pandemic Risk"@en ;
+    skos:definition "The risk of widespread disease outbreaks affecting large populations. Pandemic risk has significant implications for mortality, morbidity, and business interruption."@en ;
+    skos:broader aog:EmergingRisk .
+
+aog:ParameterSelection a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Parameter Selection"@en ;
+    skos:definition "The process of choosing appropriate values for model parameters based on data analysis, expert judgment, or other relevant information (ASOP 56)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 56" .
+
+aog:PartialCredibility a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Partial Credibility"@en ;
+    skos:definition "A credibility level indicating that a body of data should be given partial weight, typically combined with other data sources or prior estimates to form a final estimate (ASOP 25)."@en ;
+    skos:broader aog:Credibility ;
+    dcterms:source "ASOP 25" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Partial+Credibility"^^xsd:anyURI .
+
+aog:ParticipatingPolicy a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Participating Policy"@en ;
+    skos:definition "A life insurance policy that entitles the policyholder to receive policy dividends. Participating policies share in the insurer's favorable experience."@en ;
+    skos:broader aog:LifeInsurance .
+
+aog:PeerReview a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Peer Review"@en ;
+    skos:definition "A review of actuarial work by another qualified actuary to assess its quality, appropriateness, and compliance with professional standards. Peer review helps ensure work quality and provides independent verification of actuarial conclusions."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Peer+Review"^^xsd:anyURI .
+
+aog:Pension a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Pension"@en ;
+    skos:definition "A retirement plan that provides income to beneficiaries."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Pension"^^xsd:anyURI .
+
+aog:Peril a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Peril"@en ;
+    skos:definition "A specific cause of loss or damage (e.g., fire, flood, theft). Perils are sources that can trigger threat events."@en .
+
+aog:Persistency a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Persistency"@en ;
+    skos:definition "The rate at which policies remain in force over time. Persistency measures the continuation of insurance coverage and is the opposite of lapse."@en ;
+    skos:broader aog:Measurement .
+
+aog:PersistencyRate a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Persistency Rate"@en ;
+    skos:definition "The proportion of policies that remain in force over a specified period. Persistency rate measures policy retention."@en ;
+    skos:broader aog:Measurement .
+
+aog:Person a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Person"@en ;
+    skos:definition "A human individual. This is a kind - a person cannot cease to be a person while existing."@en .
+
+aog:PolicyCommitment a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Policy Commitment"@en ;
+    skos:definition "An insurer's commitment to pay benefits under specified conditions. The binding obligation created by an insurance policy (UFO-C)."@en ;
+    skos:broader aog:Commitment .
+
+aog:PolicyDividend a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Policy Dividend"@en ;
+    skos:definition "A return of premium to policyholders of participating life insurance policies. Dividends represent the insurer's favorable experience in mortality, investment returns, and expenses."@en .
+
+aog:PolicyLoan a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Policy Loan"@en ;
+    skos:definition "A loan made by an insurer to a policyholder using the policy's cash value as collateral. Policy loans accrue interest and reduce the death benefit if not repaid."@en .
+
+aog:PolicyObligation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Policy Obligation"@en ;
+    skos:definition "An obligation arising from an insurance policy, such as the policyholder's obligation to pay premiums or the insurer's obligation to pay claims."@en ;
+    skos:broader aog:Obligation .
+
+aog:PolicyWithdrawal a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Policy Withdrawal"@en ;
+    skos:definition "A partial or full withdrawal of cash value from a life insurance policy. Withdrawals reduce the policy's death benefit and cash value."@en .
+
+aog:Policyholder a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Policyholder"@en ;
+    skos:definition "A role played by an agent that holds an insurance policy. This is a subrole of Insured."@en ;
+    skos:broader aog:Insured ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Policyholder"^^xsd:anyURI .
+
+aog:Portfolio a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Portfolio"@en ;
+    skos:definition "A collection of insurance policies, investments, or risks managed as a group. Portfolios are analyzed for aggregate risk, profitability, and performance."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Portfolio"^^xsd:anyURI .
+
+aog:PortfolioSegmentation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Portfolio Segmentation"@en ;
+    skos:definition "The process of dividing a portfolio into homogeneous groups for analysis, pricing, or risk management purposes."@en ;
+    skos:broader aog:ActuarialActivity .
+
+aog:PreferredRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Preferred Risk"@en ;
+    skos:definition "A risk classification for applicants with better-than-average risk characteristics who qualify for lower premium rates."@en .
+
+aog:PremiumData a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Premium Data"@en ;
+    skos:definition "Data about insurance premiums."@en ;
+    skos:broader aog:Data .
+
+aog:PremiumRate a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Premium Rate"@en ;
+    skos:definition "The premium amount per unit of exposure or coverage. Rates are used to calculate total premiums based on policy characteristics."@en .
+
+aog:Pricing a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Pricing"@en ;
+    skos:definition "The process of determining appropriate premium rates for insurance products."@en ;
+    skos:broader aog:ActuarialActivity .
+
+aog:PricingModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Pricing Model"@en ;
+    skos:definition "A model used to determine insurance premium rates."@en ;
+    skos:broader aog:ActuarialModel .
+
+aog:ProductDevelopment a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Product Development"@en ;
+    skos:definition "The process of designing and developing new insurance products."@en ;
+    skos:broader aog:ActuarialActivity .
+
+aog:ProfessionalJudgment a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Professional Judgment"@en ;
+    skos:definition "An actuary's reasoned opinion or conclusion based on their professional knowledge, training, and experience. Professional judgment involves weighing available evidence, considering alternatives, and making informed decisions when faced with uncertainty or incomplete information."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Professional+Judgment"^^xsd:anyURI .
+
+aog:PropertyInsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Property Insurance"@en ;
+    skos:definition "An insurance product that covers damage to property."@en ;
+    skos:broader aog:InsuranceProduct ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Property+Insurance"^^xsd:anyURI .
+
+aog:PropertyRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Property Risk"@en ;
+    skos:definition "A risk of loss or damage to physical property."@en ;
+    skos:broader aog:InsurableRisk .
+
+aog:ProportionalReinsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Proportional Reinsurance"@en ;
+    skos:definition "A reinsurance structure where premiums and losses are shared between insurer and reinsurer in agreed proportions. Also known as quota share or participating reinsurance."@en ;
+    skos:broader aog:ReinsuranceContract .
+
+aog:PublicAdjuster a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Public Adjuster"@en ;
+    skos:definition "A claims adjuster hired by policyholders to represent their interests in the claims settlement process."@en ;
+    skos:broader aog:ClaimsAdjuster .
+
+aog:QualityControl a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Quality Control"@en ;
+    skos:definition "Systematic procedures to ensure actuarial work meets quality standards. Quality control may include checking calculations, reviewing assumptions, validating models, and documenting work."@en .
+
+aog:QuantitativeRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Quantitative Risk"@en ;
+    skos:definition "A numerical measure or magnitude of risk, typically expressed as probability × severity or similar metrics (COVER). This is risk as a number."@en ;
+    skos:broader aog:Measurement .
+
+aog:QuotaShareReinsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Quota Share Reinsurance"@en ;
+    skos:definition "A proportional reinsurance agreement where the reinsurer assumes a fixed percentage of all policies in a portfolio, sharing premiums and losses in the same proportion."@en ;
+    skos:broader aog:ProportionalReinsurance .
+
+aog:RatingFactor a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Rating Factor"@en ;
+    skos:definition "A characteristic or variable used to differentiate premiums among insureds. Rating factors reflect differences in expected losses and may include age, location, coverage amount, or other risk indicators."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Rating+Factors"^^xsd:anyURI .
+
+aog:Regulation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Regulation"@en ;
+    skos:definition "A rule or directive made and maintained by a regulatory authority."@en .
+
+aog:Regulator a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Regulator"@en ;
+    skos:definition "A role played by an organization that oversees and enforces regulations in the insurance or financial industry."@en ;
+    skos:broader aog:Organization .
+
+aog:RegulatoryApproval a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Regulatory Approval"@en ;
+    skos:definition "A formal authorization or permission granted by a regulatory authority. Regulatory approvals may be required for new products, rate changes, mergers and acquisitions, or changes to internal models."@en .
+
+aog:RegulatoryCapital a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Regulatory Capital"@en ;
+    skos:definition "The minimum capital required by regulators."@en ;
+    skos:broader aog:Capital ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Regulatory+Capital"^^xsd:anyURI .
+
+aog:RegulatoryReport a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Regulatory Report"@en ;
+    skos:definition "A formal report submitted to regulatory authorities as required by law or regulation. Examples include annual statements, quarterly financial reports, and special regulatory filings."@en ;
+    skos:broader aog:ActuarialCommunication .
+
+aog:RegulatoryReporting a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Regulatory Reporting"@en ;
+    skos:definition "The activity of preparing and submitting required reports to regulatory authorities. Regulatory reporting ensures compliance with regulatory requirements and provides regulators with information to monitor the financial health of insurance entities."@en ;
+    skos:broader aog:ActuarialActivity ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Regulatory+Reporting"^^xsd:anyURI .
+
+aog:RegulatoryRequirement a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Regulatory Requirement"@en ;
+    skos:definition "A specific requirement imposed by a regulation or regulatory authority. Regulatory requirements may relate to capital adequacy, reserving, reporting, governance, or other aspects of insurance operations."@en .
+
+aog:ReinsuranceCession a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Reinsurance Cession"@en ;
+    skos:definition "The transfer of risk from a ceding insurer to a reinsurer. A cession represents the portion of risk passed to the reinsurer under a reinsurance agreement."@en .
+
+aog:ReinsuranceContract a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Reinsurance Contract"@en ;
+    skos:definition "A contract where one insurer transfers risk to another insurer."@en ; .
+
+aog:Reinsurer a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Reinsurer"@en ;
+    skos:definition "A specialized role played by an insurer that provides insurance to other insurers."@en ;
+    skos:broader aog:Insurer .
+
+aog:ReinvestmentRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Reinvestment Risk"@en ;
+    skos:definition "The risk that cash flows from investments will need to be reinvested at lower interest rates than originally expected."@en ;
+    skos:broader aog:InterestRateRisk ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Reinvestment+Risk"^^xsd:anyURI .
+
+aog:ReportedClaim a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Reported Claim"@en ;
+    skos:definition "A claim that has been reported to the insurer."@en ; .
+
+aog:Reserving a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Reserving"@en ;
+    skos:definition "The process of estimating and setting aside funds for future obligations."@en ;
+    skos:broader aog:ActuarialActivity .
+
+aog:ReservingModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Reserving Model"@en ;
+    skos:definition "A model used to estimate claim reserves."@en ;
+    skos:broader aog:ActuarialModel .
+
+aog:RetentionLimit a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Retention Limit"@en ;
+    skos:definition "The maximum amount of risk that an insurer retains before reinsurance coverage applies. Also known as retention or deductible in reinsurance context."@en .
+
+aog:Retrocession a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Retrocession"@en ;
+    skos:definition "A reinsurance transaction where a reinsurer transfers risk to another reinsurer. The reinsurer becomes a retrocedent and the assuming reinsurer is called a retrocessionaire."@en ;
+    skos:broader aog:ReinsuranceContract .
+
+aog:RetrospectiveRating a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Retrospective Rating"@en ;
+    skos:definition "A pricing arrangement where the final premium is adjusted based on actual losses incurred during the policy period."@en ;
+    skos:broader aog:ExperienceRating ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Retrospective+Rating"^^xsd:anyURI .
+
+aog:ReturnOnEquity a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Return on Equity (ROE)"@en ;
+    skos:definition "A measure of profitability relative to equity."@en ;
+    skos:broader aog:FinancialMeasurement .
+
+aog:ReturnPeriod a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Return Period"@en ;
+    skos:definition "A measurement representing the average time interval between events of a given magnitude. For example, a 100-year return period event has a 1% annual probability of occurrence (ASOP 38)."@en ;
+    skos:broader aog:Measurement ;
+    dcterms:source "ASOP 38" .
+
+aog:RiderBenefit a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Rider Benefit"@en ;
+    skos:definition "An optional provision added to an insurance policy that provides additional coverage or benefits. Riders customize policies to meet specific needs."@en .
+
+aog:Right a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Right"@en ;
+    skos:definition "A claim or entitlement held by an agent. Rights are social moments that derive from commitments (UFO-C). Not to be confused with insurance claim."@en .
+
+aog:Risk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk"@en ;
+    skos:definition "Abstract concept representing potential for loss or deviation from objectives. COVER distinguishes three facets: quantitative risk (numeric measure), risk experience (event chain), and risk assessment (agent judgment)."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Risk"^^xsd:anyURI .
+
+aog:RiskAdjustment a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Adjustment"@en ;
+    skos:definition "Under IFRS 17, the risk adjustment represents the compensation an entity requires for bearing the uncertainty about the amount and timing of cash flows from insurance contracts. It reflects the entity's degree of risk aversion."@en ;
+    skos:broader aog:Liability .
+
+aog:RiskAppetite a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Appetite"@en ;
+    skos:definition "The amount and type of risk an entity is willing to pursue or retain in order to achieve its objectives. Broader than risk tolerance (ASOP 51)."@en ;
+    dcterms:source "ASOP 51" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Risk+Appetite"^^xsd:anyURI .
+
+aog:RiskAssessment a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Assessment"@en ;
+    skos:definition "The process of identifying and evaluating risks. Can be decomposed into risk identification, measurement, and mitigation activities (ASOP 51)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 51" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Risk+Assessment"^^xsd:anyURI .
+
+aog:RiskAssessmentJudgment a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Assessment Judgment"@en ;
+    skos:definition "A perceptual ascription of risk by an agent to an object or experience. This is risk as agent judgment, a special case of value ascription (COVER)."@en .
+
+aog:RiskBasedCapital a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk-Based Capital (RBC)"@en ;
+    skos:definition "A capital adequacy standard used in the United States that relates required capital to the risks assumed by an insurer. RBC formulas consider asset risk, underwriting risk, interest rate risk, and business risk."@en ;
+    skos:broader aog:CapitalRequirement ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Risk-Based+Capital"^^xsd:anyURI .
+
+aog:RiskClassification a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Classification"@en ;
+    skos:definition "The process of categorizing risks into groups with similar risk characteristics for pricing purposes. Risk classification enables differentiation of premiums based on expected loss costs."@en ;
+    skos:broader aog:Underwriting ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Risk+Classifications"^^xsd:anyURI .
+
+aog:RiskEnabler a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Enabler"@en ;
+    skos:definition "An object whose dispositions can enable the occurrence of threat or loss events (COVER)."@en .
+
+aog:RiskExperience a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Experience"@en ;
+    skos:definition "A multifaceted hypothetical or actual occurrence involving threat and loss events affecting a risk subject. This is risk as a chain of events (COVER)."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Risk+Experience"^^xsd:anyURI .
+
+aog:RiskIdentification a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Identification"@en ;
+    skos:definition "The process of systematically identifying risks that could affect an entity's objectives. Involves recognizing and documenting potential sources of uncertainty (ASOP 51)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 51" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Risk+Identification"^^xsd:anyURI .
+
+aog:RiskManagementGoal a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Management Goal"@en ;
+    skos:definition "A goal related to identifying, assessing, mitigating, or transferring risks."@en ;
+    skos:broader aog:Goal .
+
+aog:RiskMeasurement a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Measurement"@en ;
+    skos:definition "The process of quantifying the magnitude and likelihood of identified risks. Involves estimating potential impacts and probabilities (ASOP 51)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 51" .
+
+aog:RiskMitigation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Mitigation"@en ;
+    skos:definition "The process of developing and implementing strategies to reduce, transfer, or control risks. Includes risk avoidance, reduction, sharing, and retention (ASOP 51)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 51" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Risk+Mitigation"^^xsd:anyURI .
+
+aog:RiskMonitoring a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Monitoring"@en ;
+    skos:definition "The ongoing process of tracking identified risks, monitoring residual risks, identifying new risks, and evaluating risk mitigation effectiveness (ASOP 51)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 51" .
+
+aog:RiskSelection a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Selection"@en ;
+    skos:definition "The process of choosing which risks to insure based on underwriting criteria and guidelines. Risk selection aims to build a profitable portfolio while avoiding adverse selection."@en ;
+    skos:broader aog:Underwriting .
+
+aog:RiskSubject a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Subject"@en ;
+    skos:definition "A role played by an agent whose objectives may be undermined by loss events. The entity exposed to and bearing risk (COVER)."@en .
+
+aog:RiskTolerance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Risk Tolerance"@en ;
+    skos:definition "The acceptable level of variation in outcomes relative to objectives. Represents the amount of risk an entity is willing to accept in pursuit of its goals (ASOP 51)."@en ;
+    dcterms:source "ASOP 51" .
+
+aog:Salvage a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Salvage"@en ;
+    skos:definition "Property remaining after an insured loss that has residual value. Insurers may take possession of salvage to recover part of claim payments."@en .
+
+aog:ScenarioAnalysis a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Scenario Analysis"@en ;
+    skos:definition "An actuarial activity involving the analysis of specific event scenarios to estimate their potential impact. Commonly used for catastrophe or extreme event analysis to understand tail risk (ASOP 39)."@en ;
+    skos:broader aog:ActuarialActivity ;
+    dcterms:source "ASOP 39" .
+
+aog:ScenarioGeneration a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Scenario Generation"@en ;
+    skos:definition "The process of creating multiple plausible future scenarios for analysis. Scenario generation is used in stochastic modeling and stress testing."@en ;
+    skos:broader aog:ActuarialActivity .
+
+aog:ScheduleRating a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Schedule Rating"@en ;
+    skos:definition "A pricing method that adjusts premiums based on specific characteristics of the risk using a schedule of credits and debits."@en ;
+    skos:broader aog:Pricing ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Schedule+Rating"^^xsd:anyURI .
+
+aog:SensitivityAnalysis a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Sensitivity Analysis"@en ;
+    skos:definition "The process of examining how model outputs change when input assumptions are varied. Sensitivity analysis identifies key drivers and assesses model robustness."@en ;
+    skos:broader aog:ActuarialActivity .
+
+aog:SeverityModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Severity Model"@en ;
+    skos:definition "A component of catastrophe modeling that estimates the magnitude of losses from catastrophic events. Severity models consider vulnerability of exposed property and financial impacts (ASOP 38)."@en ;
+    skos:broader aog:CatastropheModel ;
+    dcterms:source "ASOP 38" .
+
+aog:Solvency2 a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Solvency II"@en ;
+    skos:definition "A comprehensive regulatory framework for insurance firms in the European Union. Solvency II consists of three pillars: quantitative requirements (capital requirements), supervisory review (governance and risk management), and market discipline (disclosure and transparency)."@en ;
+    skos:broader aog:Regulation ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Solvency+II"^^xsd:anyURI .
+
+aog:SolvencyCapitalRequirement a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Solvency Capital Requirement (SCR)"@en ;
+    skos:definition "The capital required under Solvency II to ensure an insurer can meet obligations over a one-year period with 99.5% probability. The SCR can be calculated using the standard formula or an approved internal model."@en ;
+    skos:broader aog:CapitalRequirement .
+
+aog:StandardRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Standard Risk"@en ;
+    skos:definition "A risk classification for applicants with average risk characteristics who qualify for standard premium rates."@en .
+
+aog:StatementOfActuarialOpinion a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Statement of Actuarial Opinion"@en ;
+    skos:definition "A formal regulatory opinion on the adequacy of reserves or financial condition, often required by law. Typically provided by an appointed actuary."@en ;
+    skos:broader aog:ActuarialOpinion ;
+    dcterms:source "ASOP 36, ASOP 41" ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Statement+of+Actuarial+Opinion"^^xsd:anyURI .
+
+aog:StochasticModel a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Stochastic Model"@en ;
+    skos:definition "A model that incorporates random variables and probability distributions to account for uncertainty. Stochastic models produce ranges of possible outcomes rather than single point estimates."@en ;
+    skos:broader aog:ActuarialModel .
+
+aog:StopLossReinsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Stop Loss Reinsurance"@en ;
+    skos:definition "A non-proportional reinsurance agreement that protects against aggregate losses exceeding a specified loss ratio or amount over a period."@en ;
+    skos:broader aog:NonProportionalReinsurance ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Stop-Loss+Reinsurance"^^xsd:anyURI .
+
+aog:StressTesting a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Stress Testing"@en ;
+    skos:definition "The process of evaluating how extreme events or adverse conditions would affect an entity's financial position. Stress testing assesses resilience to worst-case scenarios."@en ;
+    skos:broader aog:ActuarialActivity ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Stress+Testing"^^xsd:anyURI .
+
+aog:Subrogation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Subrogation"@en ;
+    skos:definition "The insurer's right to recover claim payments from third parties responsible for causing the loss. Subrogation allows insurers to pursue recovery after paying claims."@en .
+
+aog:SubstandardRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Substandard Risk"@en ;
+    skos:definition "A risk classification for applicants with worse-than-average risk characteristics who may be charged higher premiums or face coverage limitations."@en .
+
+aog:SurplusReinsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Surplus Reinsurance"@en ;
+    skos:definition "A proportional reinsurance agreement where the ceding insurer retains coverage up to a specified limit and cedes the surplus to the reinsurer."@en ;
+    skos:broader aog:ProportionalReinsurance .
+
+aog:Surrender a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Surrender"@en ;
+    skos:definition "The voluntary termination of a life insurance policy by the policyholder before maturity. The policyholder receives the cash surrender value."@en .
+
+aog:SurrenderValue a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Surrender Value"@en ;
+    skos:definition "The amount payable to a policyholder who voluntarily terminates a life insurance policy before maturity. Surrender value equals cash value minus any surrender charges."@en ;
+    skos:broader aog:CashValue .
+
+aog:SystemicRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Systemic Risk"@en ;
+    skos:definition "A risk that affects an entire market or system, not just individual participants."@en .
+
+aog:TailRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Tail Risk"@en ;
+    skos:definition "The risk of extreme losses in the tail of a probability distribution. Tail risks represent low-probability, high-severity events that can have catastrophic impact (ASOP 39)."@en ;
+    skos:broader aog:Risk ;
+    dcterms:source "ASOP 39" .
+
+aog:TechnologyRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Technology Risk"@en ;
+    skos:definition "The risk of losses from technology failures, system errors, inadequate technology infrastructure, or inability to adapt to technological change."@en ;
+    skos:broader aog:OperationalRisk .
+
+aog:TermLifeInsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Term Life Insurance"@en ;
+    skos:definition "A life insurance product that provides coverage for a specific term."@en ;
+    skos:broader aog:LifeInsurance ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Term+Life+Insurance"^^xsd:anyURI .
+
+aog:ThreatEvent a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Threat Event"@en ;
+    skos:definition "A hypothetical or actual event capable of precipitating a loss event. Threat events form the link between perils and losses in COVER's event chain (COVER)."@en .
+
+aog:TreatyReinsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Treaty Reinsurance"@en ;
+    skos:definition "A reinsurance agreement covering a portfolio or class of business automatically. Treaty reinsurance applies to all risks within the defined scope without individual selection."@en ;
+    skos:broader aog:ReinsuranceContract ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Treaty+Reinsurance"^^xsd:anyURI .
+
+aog:UltimateClaimCost a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Ultimate Claim Cost"@en ;
+    skos:definition "The total cost of a claim including all payments and expenses."@en ; .
+
+aog:Underwriting a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Underwriting"@en ;
+    skos:definition "The process of evaluating and selecting risks for insurance coverage. Underwriting involves assessing applicants, classifying risks, determining appropriate premiums, and deciding whether to accept, modify, or reject insurance applications."@en ;
+    skos:broader aog:ActuarialActivity ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Underwriting"^^xsd:anyURI .
+
+aog:UnderwritingCriteria a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Underwriting Criteria"@en ;
+    skos:definition "Specific factors or standards used to evaluate and classify risks during underwriting. Criteria may include age, health status, occupation, location, claims history, or other risk indicators."@en .
+
+aog:UnderwritingGuidelines a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Underwriting Guidelines"@en ;
+    skos:definition "A set of rules and criteria used by underwriters to evaluate risks and make underwriting decisions. Guidelines specify acceptable risk characteristics, pricing adjustments, and approval authorities."@en ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Underwriting+Guidelines"^^xsd:anyURI .
+
+aog:UninsurableRisk a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Uninsurable Risk"@en ;
+    skos:definition "A risk classification for risks that do not meet criteria for insurance coverage. Can apply to any of the three COVER facets."@en .
+
+aog:UniversalLifeInsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Universal Life Insurance"@en ;
+    skos:definition "A flexible premium permanent life insurance policy with an explicit cash value account that earns interest. Policyholders can adjust premiums and death benefits."@en ;
+    skos:broader aog:LifeInsurance ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Universal+Life+Insurance"^^xsd:anyURI .
+
+aog:Valuation a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Valuation"@en ;
+    skos:definition "The process of determining the economic value of assets, liabilities, or entities."@en ;
+    skos:broader aog:ActuarialActivity ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Valuation"^^xsd:anyURI .
+
+aog:Value a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Value"@en ;
+    skos:definition "The worth, importance, or usefulness of something to an agent. COVER shows that risk is fundamentally intertwined with value (COVER)."@en .
+
+aog:ValueAscription a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Value Ascription"@en ;
+    skos:definition "A judgment by an agent about the value of an object or experience. Risk assessment is a special case of value ascription (COVER)."@en .
+
+aog:ValueEnabler a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Value Enabler"@en ;
+    skos:definition "An object whose dispositions enable the occurrence of value experiences (COVER)."@en .
+
+aog:ValueExperience a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Value Experience"@en ;
+    skos:definition "An event that realizes or delivers value for a value subject. Parallel concept to risk experience (COVER)."@en .
+
+aog:ValueObject a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Value Object"@en ;
+    skos:definition "An object whose dispositions enable value experiences for an agent. Objects that have value to a value subject (COVER)."@en .
+
+aog:ValueOfInForceBusiness a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Value of In-Force Business (VIF)"@en ;
+    skos:definition "The present value of future profits from existing in-force policies. VIF is a major component of embedded value."@en ;
+    skos:broader aog:Measurement .
+
+aog:ValueOfNewBusiness a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Value of New Business (VNB)"@en ;
+    skos:definition "The present value of future profits expected from new policies written in a period. VNB measures the profitability of new sales."@en ;
+    skos:broader aog:Measurement .
+
+aog:VariableLifeInsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Variable Life Insurance"@en ;
+    skos:definition "A permanent life insurance policy where cash values are invested in separate accounts similar to mutual funds. The death benefit and cash value fluctuate based on investment performance."@en ;
+    skos:broader aog:LifeInsurance .
+
+aog:Vulnerability a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Vulnerability"@en ;
+    skos:definition "A disposition of an object at risk or risk enabler that can manifest as threat or loss events. A specific type of disposition related to risk (COVER)."@en ;
+    skos:broader aog:Disposition .
+
+aog:WaiverOfPremiumRider a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Waiver of Premium Rider"@en ;
+    skos:definition "A rider that waives premium payments if the insured becomes disabled, allowing the policy to remain in force without payment."@en ;
+    skos:broader aog:RiderBenefit .
+
+aog:WholeLifeInsurance a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Whole Life Insurance"@en ;
+    skos:definition "A life insurance product that provides lifetime coverage with a savings component."@en ;
+    skos:broader aog:LifeInsurance ;
+    ao:definedOnPage "https://quiz.actuarialnotes.com/wiki/concept/Whole+Life+Insurance"^^xsd:anyURI .
+
+aog:WorkPaper a skos:Concept ;
+    skos:inScheme aog:scheme ;
+    skos:prefLabel "Work Paper"@en ;
+    skos:definition "Documentation supporting actuarial work, including data sources, methods, assumptions, calculations, and results. Work papers provide the detail behind actuarial communications and enable review of the work."@en .

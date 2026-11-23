@@ -1,0 +1,5 @@
+method
+Benktander Method
+Bornhuetter-Ferguson Method
+Chain Ladder Method
+Expected Loss Method

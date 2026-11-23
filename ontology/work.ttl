@@ -1,0 +1,133 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://actuarialnotes.com/ontology/actuarial/work> a owl:Ontology ;
+    dcterms:title "Actuarial Ontology: actuarial work"@en ;
+    dcterms:description "Methods, the steps and tools that carry them out, and one analysis with the assumptions, data and methods it rests on."@en ;
+    owl:imports <http://actuarialnotes.com/ontology/actuarial/core> ;
+    owl:versionInfo "0.8.0" .
+
+#################################################################
+#    Methods and tools
+#################################################################
+
+ao:ActivityType a owl:Class ;
+    rdfs:label "Activity type"@en ;
+    rdfs:comment "An activity type is a kind of actuarial work that the ontology covers, such as ratemaking or reserving. Listed in lists/roles.ttl; a kind of work that is not listed is out of scope."@en .
+
+ao:Step a owl:Class ;
+    rdfs:label "Step"@en ;
+    rdfs:comment "A step is one stage of a method, with a fixed place in the method's order."@en .
+
+ao:Tool a owl:Class ;
+    rdfs:label "Tool"@en ;
+    rdfs:comment "A tool is a calculator that carries out a method or a step of one. The tools are the Actuarial Notes calculators."@en .
+
+ao:ExposureBase a owl:Class ;
+    rdfs:label "Exposure base"@en ;
+    rdfs:comment "An exposure base is the unit that measures a policy's exposure to loss, such as an earned car-year."@en .
+
+ao:hasStep a owl:ObjectProperty ;
+    rdfs:domain ao:Method ;
+    rdfs:range ao:Step ;
+    rdfs:label "has step"@en ;
+    rdfs:comment "Relates a method to one of its steps."@en .
+
+ao:stepOrder a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Step ;
+    rdfs:range xsd:integer ;
+    rdfs:label "step order"@en ;
+    rdfs:comment "The place of a step in its method, counting from 1."@en .
+
+
+ao:takesInput a owl:ObjectProperty ;
+    rdfs:range ao:QuantityKind ;
+    rdfs:label "takes input"@en ;
+    rdfs:comment "Relates a method or a tool to a quantity kind it needs a value of."@en .
+
+ao:produces a owl:ObjectProperty ;
+    rdfs:domain ao:Method ;
+    rdfs:range ao:QuantityKind ;
+    rdfs:label "produces"@en ;
+    rdfs:comment "Relates a method to the quantity kind it derives."@en .
+
+ao:implements a owl:ObjectProperty ;
+    rdfs:domain ao:Tool ;
+    rdfs:range ao:Method ;
+    rdfs:label "implements"@en ;
+    rdfs:comment "Relates a tool to the method it carries out."@en .
+
+ao:handsOffTo a owl:ObjectProperty ;
+    rdfs:domain ao:Tool ;
+    rdfs:range ao:Tool ;
+    rdfs:label "hands off to"@en ;
+    rdfs:comment "Relates a tool to a tool that can take its result as an input."@en .
+
+ao:toolId a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Tool ;
+    rdfs:range xsd:string ;
+    rdfs:label "tool id"@en ;
+    rdfs:comment "The tool's identifier in the Actuarial Notes engine, such as reserving.chain_ladder."@en .
+
+ao:exposureBase a owl:ObjectProperty ;
+    rdfs:domain ao:LineOfBusiness ;
+    rdfs:range ao:ExposureBase ;
+    rdfs:label "has exposure base"@en ;
+    rdfs:comment "Relates a line of business to the exposure base its rates are usually expressed in."@en .
+
+#################################################################
+#    One analysis
+#################################################################
+
+ao:Analysis a owl:Class ;
+    rdfs:subClassOf ao:Activity ;
+    rdfs:label "Analysis"@en ;
+    rdfs:comment "An analysis is an activity in which an actuary derives estimates from data and assumptions, such as one rate indication or one reserve review."@en .
+
+ao:DataSet a owl:Class ;
+    rdfs:label "Data set"@en ;
+    rdfs:comment "A data set is a body of data that an analysis took as given, such as a claims triangle at a valuation date."@en .
+
+ao:MethodApplication a owl:Class ;
+    rdfs:label "Method application"@en ;
+    rdfs:comment "A method application is the fact that an analysis used one method for one step."@en .
+
+
+ao:usesAssumption a owl:ObjectProperty ;
+    rdfs:domain ao:Analysis ;
+    rdfs:range ao:Observation ;
+    rdfs:label "uses assumption"@en ;
+    rdfs:comment "Relates an analysis to an observation it takes as an assumption. An assumption is an observation in use, not a type of its own."@en .
+
+ao:usesData a owl:ObjectProperty ;
+    rdfs:domain ao:Analysis ;
+    rdfs:range ao:DataSet ;
+    rdfs:label "uses data"@en ;
+    rdfs:comment "Relates an analysis to a data set it used."@en .
+
+ao:producedBy a owl:ObjectProperty ;
+    rdfs:domain ao:Observation ;
+    rdfs:range ao:Analysis ;
+    rdfs:label "produced by"@en ;
+    rdfs:comment "Relates an observation that is an estimate to the analysis that derived it."@en .
+
+ao:partOfAnalysis a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:MethodApplication ;
+    rdfs:range ao:Analysis ;
+    rdfs:label "part of analysis"@en ;
+    rdfs:comment "Relates a method application to the analysis it belongs to."@en .
+
+ao:forStep a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:MethodApplication ;
+    rdfs:range ao:Step ;
+    rdfs:label "for step"@en ;
+    rdfs:comment "Relates a method application to the step it was used for."@en .
+
+ao:usedMethod a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:MethodApplication ;
+    rdfs:range ao:Method ;
+    rdfs:label "used method"@en ;
+    rdfs:comment "Relates a method application to the method that was used."@en .

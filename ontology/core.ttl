@@ -1,0 +1,336 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://actuarialnotes.com/ontology/actuarial/core> a owl:Ontology ;
+    dcterms:title "Actuarial Ontology: core"@en ;
+    dcterms:description "The types every module shares: parties and the roles they hold, jurisdictions, lines of business, documents and their editions, and observations."@en ;
+    dcterms:license <https://opensource.org/licenses/MIT> ;
+    dcterms:modified "2026-11-23"^^xsd:date ;
+    owl:versionInfo "0.8.0" .
+
+#################################################################
+#    Top-level categories
+#################################################################
+#
+#    Everything in the ontology is one of these. They are mutually
+#    disjoint, so nothing is, say, both an event and a document.
+#    A word with several senses ("claim", "loss") has one sense per
+#    category; see vocabulary/senses.ttl.
+
+ao:Party a owl:Class ;
+    rdfs:label "Party"@en ;
+    rdfs:comment "A party is a person or an organization that can hold a role, enter a contract or issue a document."@en .
+
+ao:Document a owl:Class ;
+    rdfs:label "Document"@en ;
+    rdfs:comment "A document is a published work, such as a guideline, a statistical exhibit or a report, considered apart from any one edition of it."@en .
+
+ao:Event a owl:Class ;
+    rdfs:label "Event"@en ;
+    rdfs:comment "An event is something that happened at a place over a stretch of time."@en .
+
+ao:Observation a owl:Class ;
+    rdfs:label "Observation"@en ;
+    rdfs:comment "An observation is one stated value of a quantity about a thing, for a period, taken from a source or selected by a party."@en .
+
+ao:Activity a owl:Class ;
+    rdfs:label "Activity"@en ;
+    rdfs:comment "An activity is a piece of work that a party carried out."@en .
+
+ao:Method a owl:Class ;
+    rdfs:label "Method"@en ;
+    rdfs:comment "A method is a defined way of deriving a quantity from other quantities."@en .
+
+ao:Contract a owl:Class ;
+    rdfs:label "Contract"@en ;
+    rdfs:comment "A contract is an agreement between parties that creates obligations, such as an insurance policy or a reinsurance treaty. Reserved for the policies module; no property uses it yet."@en .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ao:Party ao:Document ao:Event ao:Observation ao:Activity ao:Method ao:Contract ) .
+
+#################################################################
+#    Parties and roles
+#################################################################
+
+ao:Organization a owl:Class ;
+    rdfs:subClassOf ao:Party ;
+    rdfs:label "Organization"@en ;
+    rdfs:comment "An organization is a party that is a company, a public body or an association."@en ;
+    owl:disjointWith ao:Person .
+
+ao:Person a owl:Class ;
+    rdfs:subClassOf ao:Party ;
+    rdfs:label "Person"@en ;
+    rdfs:comment "A person is a party that is a human being."@en .
+
+ao:RoleType a owl:Class ;
+    rdfs:label "Role type"@en ;
+    rdfs:comment "A role type is a part a party can play for a time, such as insurer, regulator or policyholder. Role types are individuals, listed in lists/roles.ttl."@en .
+
+ao:RoleAssignment a owl:Class ;
+    rdfs:label "Role assignment"@en ;
+    rdfs:comment "A role assignment is the fact that one party holds one role type, optionally limited to a jurisdiction and a line of business."@en .
+
+ao:heldBy a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:RoleAssignment ;
+    rdfs:range ao:Party ;
+    rdfs:label "held by"@en ;
+    rdfs:comment "Relates a role assignment to the party that holds the role."@en .
+
+ao:roleType a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:RoleAssignment ;
+    rdfs:range ao:RoleType ;
+    rdfs:label "has role type"@en ;
+    rdfs:comment "Relates a role assignment to the role type that is held."@en .
+
+ao:playableBy a owl:AnnotationProperty ;
+    rdfs:label "playable by"@en ;
+    rdfs:comment "Relates a role type to a kind of party (the class Organization or Person) that can hold it."@en .
+
+
+
+#################################################################
+#    Jurisdictions and lines of business
+#################################################################
+
+ao:Jurisdiction a owl:Class ;
+    rdfs:label "Jurisdiction"@en ;
+    rdfs:comment "A jurisdiction is a territory whose law or regulator governs insurance in it, such as Canada or Ontario. Listed in lists/jurisdictions.ttl."@en .
+
+ao:JurisdictionLevel a owl:Class ;
+    rdfs:label "Jurisdiction level"@en ;
+    rdfs:comment "A jurisdiction level is the tier of government a jurisdiction is: national or subnational."@en .
+
+ao:jurisdictionLevel a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Jurisdiction ;
+    rdfs:range ao:JurisdictionLevel ;
+    rdfs:label "has jurisdiction level"@en ;
+    rdfs:comment "Relates a jurisdiction to its tier of government."@en .
+
+ao:partOfJurisdiction a owl:ObjectProperty , owl:TransitiveProperty ;
+    rdfs:domain ao:Jurisdiction ;
+    rdfs:range ao:Jurisdiction ;
+    rdfs:label "part of jurisdiction"@en ;
+    rdfs:comment "Relates a jurisdiction to the larger one that contains it."@en .
+
+ao:isoCode a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Jurisdiction ;
+    rdfs:range xsd:string ;
+    rdfs:label "ISO code"@en ;
+    rdfs:comment "The jurisdiction's ISO 3166-1 or 3166-2 code, as the wiki writes it (CA, CA-ON)."@en .
+
+ao:inJurisdiction a owl:ObjectProperty ;
+    rdfs:range ao:Jurisdiction ;
+    rdfs:label "in jurisdiction"@en ;
+    rdfs:comment "Relates a role assignment, a supervision, a document, an observation or an event to a jurisdiction it concerns or took place in."@en .
+
+ao:LineOfBusiness a owl:Class ;
+    rdfs:label "Line of business"@en ;
+    rdfs:comment "A line of business is a class of insurance by which premiums, claims and rules are grouped, such as private passenger automobile. Listed in lists/lines.ttl."@en .
+
+ao:broaderLine a owl:ObjectProperty , owl:TransitiveProperty ;
+    rdfs:domain ao:LineOfBusiness ;
+    rdfs:range ao:LineOfBusiness ;
+    rdfs:label "broader line"@en ;
+    rdfs:comment "Relates a line of business to a wider line that includes it."@en .
+
+ao:forLine a owl:ObjectProperty ;
+    rdfs:range ao:LineOfBusiness ;
+    rdfs:label "for line"@en ;
+    rdfs:comment "Relates a role assignment, a document or an observation to a line of business it concerns."@en .
+
+#################################################################
+#    Documents, editions and locators
+#################################################################
+
+ao:DocumentEdition a owl:Class ;
+    rdfs:label "Document edition"@en ;
+    rdfs:comment "A document edition is one dated version of a document, the thing a figure or a requirement is read from. It is not a document itself: the document is the work, the edition is one issue of it."@en .
+
+ao:Locator a owl:Class ;
+    rdfs:label "Locator"@en ;
+    rdfs:comment "A locator is a place inside one document edition, such as a section, a page, a table or a cell."@en .
+
+ao:issuedBy a owl:ObjectProperty ;
+    rdfs:domain ao:Document ;
+    rdfs:range ao:Organization ;
+    rdfs:label "issued by"@en ;
+    rdfs:comment "Relates a document to the organization that issues it."@en .
+
+ao:editionOf a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:DocumentEdition ;
+    rdfs:range ao:Document ;
+    rdfs:label "edition of"@en ;
+    rdfs:comment "Relates a document edition to the document it is a version of."@en .
+
+ao:replaces a owl:ObjectProperty ;
+    rdfs:domain ao:DocumentEdition ;
+    rdfs:range ao:DocumentEdition ;
+    rdfs:label "replaces"@en ;
+    rdfs:comment "Relates a document edition to the earlier edition of the same document that it takes the place of."@en .
+
+
+ao:effectiveFrom a owl:DatatypeProperty ;
+    rdfs:range xsd:date ;
+    rdfs:label "effective from"@en ;
+    rdfs:comment "The first date on which a document edition, or a prescribed or published value, applies."@en .
+
+ao:effectiveTo a owl:DatatypeProperty ;
+    rdfs:range xsd:date ;
+    rdfs:label "effective to"@en ;
+    rdfs:comment "The last date on which a document edition applies, where its publisher states one."@en .
+
+ao:sourceUrl a owl:DatatypeProperty ;
+    rdfs:domain ao:DocumentEdition ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "source URL"@en ;
+    rdfs:comment "The publisher's own address for a document edition."@en .
+
+ao:inEdition a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Locator ;
+    rdfs:range ao:DocumentEdition ;
+    rdfs:label "in edition"@en ;
+    rdfs:comment "Relates a locator to the document edition it is a place in."@en .
+
+ao:locatorText a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Locator ;
+    rdfs:range xsd:string ;
+    rdfs:label "locator text"@en ;
+    rdfs:comment "The place within the edition, in the edition's own terms: a section number and title, a page, a table, a cell address."@en .
+
+ao:wikiPage a owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "wiki page"@en ;
+    rdfs:comment "The path of the Actuarial Notes Wiki page a record was exported from."@en .
+
+#################################################################
+#    Observations
+#################################################################
+
+ao:QuantityKind a owl:Class ;
+    rdfs:label "Quantity kind"@en ;
+    rdfs:comment "A quantity kind is a named quantity that can be observed, such as an MCT ratio, a ULAE factor or ultimate claims. Quantity kinds are individuals, listed in lists/quantities.ttl."@en .
+
+ao:Unit a owl:Class ;
+    rdfs:label "Unit"@en ;
+    rdfs:comment "A unit is what a value is counted in: percent, a factor, or a currency."@en .
+
+ao:Period a owl:Class ;
+    rdfs:label "Period"@en ;
+    rdfs:comment "A period is a span of dates that a value relates to, such as an accident year or a reporting quarter."@en .
+
+ao:Basis a owl:Class ;
+    rdfs:label "Basis"@en ;
+    rdfs:comment "A basis is the convention by which experience is assigned to a period: accident year, policy year or calendar year."@en .
+
+ao:ProvenanceStatus a owl:Class ;
+    rdfs:label "Provenance status"@en ;
+    rdfs:comment "A provenance status says how a value came to be: prescribed by an authority, published by a source, reported by the party it is about, selected by an analyst, or estimated by an analysis."@en .
+
+ao:FactCheckStatus a owl:Class ;
+    rdfs:label "Fact-check status"@en ;
+    rdfs:comment "A fact-check status is the state of the wiki's check of a record against its source: unverified, in review, verified, disputed or stale."@en .
+
+ao:about a owl:ObjectProperty ;
+    rdfs:domain ao:Observation ;
+    rdfs:label "about"@en ;
+    rdfs:comment "Relates an observation to the thing its value describes: an organization, an event, a line of business."@en .
+
+ao:quantityKind a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Observation ;
+    rdfs:range ao:QuantityKind ;
+    rdfs:label "has quantity kind"@en ;
+    rdfs:comment "Relates an observation to the quantity it is a value of."@en .
+
+ao:numericValue a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Observation ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "numeric value"@en ;
+    rdfs:comment "The number an observation states, in the observation's unit."@en .
+
+ao:unit a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Observation ;
+    rdfs:range ao:Unit ;
+    rdfs:label "has unit"@en ;
+    rdfs:comment "Relates an observation to the unit its value is counted in."@en .
+
+ao:forPeriod a owl:ObjectProperty ;
+    rdfs:domain ao:Observation ;
+    rdfs:range ao:Period ;
+    rdfs:label "for period"@en ;
+    rdfs:comment "Relates an observation to the period its value relates to."@en .
+
+ao:periodStart a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Period ;
+    rdfs:range xsd:date ;
+    rdfs:label "period start"@en ;
+    rdfs:comment "The first date of a period."@en .
+
+ao:periodEnd a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Period ;
+    rdfs:range xsd:date ;
+    rdfs:label "period end"@en ;
+    rdfs:comment "The last date of a period."@en .
+
+ao:basis a owl:ObjectProperty ;
+    rdfs:domain ao:Observation ;
+    rdfs:range ao:Basis ;
+    rdfs:label "has basis"@en ;
+    rdfs:comment "Relates an observation to the basis its period is on."@en .
+
+ao:statedAt a owl:ObjectProperty ;
+    rdfs:range ao:Locator ;
+    rdfs:label "stated at"@en ;
+    rdfs:comment "Relates an observation or a requirement to the place in a document edition where it is stated."@en .
+
+ao:asOfDate a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Observation ;
+    rdfs:range xsd:date ;
+    rdfs:label "as of date"@en ;
+    rdfs:comment "The date at which an observation's value was measured or estimated."@en .
+
+ao:provenanceStatus a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Observation ;
+    rdfs:range ao:ProvenanceStatus ;
+    rdfs:label "has provenance status"@en ;
+    rdfs:comment "Relates an observation to how its value came to be."@en .
+
+ao:selectedBy a owl:ObjectProperty ;
+    rdfs:domain ao:Observation ;
+    rdfs:range ao:Party ;
+    rdfs:label "selected by"@en ;
+    rdfs:comment "Relates a selected observation to the party who chose its value."@en .
+
+ao:factCheckStatus a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:range ao:FactCheckStatus ;
+    rdfs:label "has fact-check status"@en ;
+    rdfs:comment "Relates a record to the state of the wiki's check of it against its source."@en .
+
+ao:hasComponent a owl:ObjectProperty ;
+    rdfs:domain ao:QuantityKind ;
+    rdfs:range ao:QuantityKind ;
+    rdfs:label "has component"@en ;
+    rdfs:comment "Relates a quantity kind to a quantity kind that is one of the parts it is the sum of."@en .
+
+#################################################################
+#    Glossary links
+#################################################################
+#
+#    Terms themselves are skos:Concept, in vocabulary/.
+
+ao:senseCategory a owl:AnnotationProperty ;
+    rdfs:label "sense category"@en ;
+    rdfs:comment "Relates one sense of a term to the top-level category that things in that sense belong to."@en .
+
+ao:statusOf a owl:AnnotationProperty ;
+    rdfs:label "status of"@en ;
+    rdfs:comment "Relates a term that names a state (paid claim, in-force policy) to the term for the thing in that state. A status is a value on the thing, never a class of its own."@en .
+
+ao:definedOnPage a owl:AnnotationProperty ;
+    rdfs:label "defined on page"@en ;
+    rdfs:comment "Relates a term or a method to the address of the Actuarial Notes Wiki page that defines it."@en .

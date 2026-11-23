@@ -1,0 +1,38 @@
+@prefix ao: <http://actuarialnotes.com/ontology/actuarial#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://actuarialnotes.com/ontology/actuarial/events> a owl:Ontology ;
+    dcterms:title "Actuarial Ontology: events"@en ;
+    dcterms:description "Catastrophe events: when, where and by what peril. Loss estimates for an event are observations about it."@en ;
+    owl:imports <http://actuarialnotes.com/ontology/actuarial/core> ;
+    owl:versionInfo "0.8.0" .
+
+ao:CatastropheEvent a owl:Class ;
+    rdfs:subClassOf ao:Event ;
+    rdfs:label "Catastrophe event"@en ;
+    rdfs:comment "A catastrophe event is an event that caused insured losses to many policyholders and insurers at once."@en .
+
+ao:Peril a owl:Class ;
+    rdfs:label "Peril"@en ;
+    rdfs:comment "A peril is a cause of loss, such as hail, wildfire or an ice storm. Listed in lists/quantities.ttl."@en .
+
+ao:causedByPeril a owl:ObjectProperty ;
+    rdfs:domain ao:Event ;
+    rdfs:range ao:Peril ;
+    rdfs:label "caused by peril"@en ;
+    rdfs:comment "Relates an event to the peril that caused its losses."@en .
+
+ao:startDate a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Event ;
+    rdfs:range xsd:date ;
+    rdfs:label "start date"@en ;
+    rdfs:comment "The first day of an event."@en .
+
+ao:endDate a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain ao:Event ;
+    rdfs:range xsd:date ;
+    rdfs:label "end date"@en ;
+    rdfs:comment "The last day of an event."@en .
